@@ -8,7 +8,7 @@ const money=(v,d=2)=>v==null?'—':'$'+number(v,d);
 const pct=(v,d=2)=>v==null?'—':number(v*100,d)+'%';
 const probFmt=(p)=>p>=.999?'≥99.9%':pct(p,1);
 const get=(id)=>DB.campaigns.find(x=>x.id===id);
-let activePage='overview', trend='cpc', dataTab='campaigns',tableRows=[];
+let activePage='operations', trend='cpc', dataTab='campaigns',tableRows=[];
 function navigate(page){activePage=page;document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===page));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.classList.contains('nav-btn')&&x.dataset.page===page));window.scrollTo({top:0,behavior:'auto'}); if(page==='archive')renderTable();if(page==='lab')renderCompare();if(page==='overview')renderTrend();}
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
 function renderMetrics(){const m=[['광고비',money(DB.summary.spend,2),'SPEND',`${DB.range[0].slice(5).replace('-','/')}–${DB.range[1].slice(5).replace('-','/')} 집계 · 겹치는 기간 제거`],['링크 클릭',number(DB.summary.clicks),'LINK CLICKS','웹사이트 링크 클릭 집계'],['링크 CTR',pct(DB.summary.ctr,2),'ENGAGEMENT','노출 대비 링크 클릭 비율'],['링크 CPC',money(DB.summary.cpc,3),'COST','링크 클릭 1회당 평균 비용']];
