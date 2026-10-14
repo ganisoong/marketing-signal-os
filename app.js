@@ -155,6 +155,71 @@ renderMetrics();renderProb();renderTrend();renderCompare();renderExperiments();r
 })();
 
 
+
+// DECISION-FIRST HERO. Compute from source records, never mix profile-visit objective clicks with LPV denominator.
+function normalizeCampaignName(value){return String(value||'').replace(/\s+/g,' ').trim();}
+function linksEligible(name){
+ const matches=DB.campaigns.filter(x=>!String(x.id).startsWith('UNASSIGNED')&&normalizeCampaignName(x.name)===normalizeCampaignName(name));
+ return matches.length>0 && matches.every(x=>x.type==='actions:link_click');
+}
+function landingGroup(ages,onlyName){
+ const set=new Set(ages), acc={allSpend:0,allImpressions:0,allClicks:0,linkSpend:0,linkImpressions:0,linkClicks:0,lpv:0};
+ for(const r of DB.ageRaw||[]){
+  if(!set.has(r.age))continue;
+  if(onlyName&&normalizeCampaignName(r.name)!==normalizeCampaignName(onlyName))continue;
+  acc.allSpend+=Number(r.spend)||0;acc.allImpressions+=Number(r.impressions)||0;acc.allClicks+=Number(r.clicks)||0;
+  if(linksEligible(r.name)){
+   acc.linkSpend+=Number(r.spend)||0;acc.linkImpressions+=Number(r.impressions)||0;
+   acc.linkClicks+=Number(r.clicks)||0;acc.lpv+=Number(r.lpv)||0;
+  }
+ }
+ acc.ctr=acc.allImpressions?acc.allClicks/acc.allImpressions:null;
+ acc.rate=acc.linkClicks?acc.lpv/acc.linkClicks:null;
+ acc.lpvCost=acc.lpv?acc.linkSpend/acc.lpv:null;
+ return acc;
+}
+function comparisonLine(head,young,older){
+ return '<div class="visit-compare-row">'+
+  '<div class="visit-compare-name">'+esc(head)+'</div>'+
+  '<div class="visit-compare-cell"><strong>'+pct(young.rate,1)+'</strong><span>'+number(young.lpv)+'회 / '+number(young.linkClicks)+'클릭</span></div>'+
+  '<div class="visit-compare-cell"><strong>'+pct(older.rate,1)+'</strong><span>'+number(older.lpv)+'회 / '+number(older.linkClicks)+'클릭</span></div></div>';
+}
+function decisionExemplar(id,positive){
+ const campaign=get(id);
+ if(!campaign)return '';
+ const young=landingGroup(['18-24','25-34'],campaign.name),older=landingGroup(['35-44','45-54'],campaign.name);
+ const youngWins=young.rate>older.rate;
+ const olderWins=older.rate>young.rate;
+ return '<article class="visit-example">'+
+ '<div class="visit-example-meta"><span class="signal-flag '+(positive?'good':'neutral')+'">'+(positive?'가설을 지지하는 사례':'반대 사례도 있음')+'</span>'+
+ '<button class="action evidence-post-link" data-decision-post="'+esc(id)+'">게시물·설정 보기 ↗</button></div>'+
+ '<h4>'+esc(campaign.label)+'</h4>'+
+ '<div class="visit-example-columns"><div><span>18~34세 랜딩 도달 비율</span><strong>'+pct(young.rate,1)+'</strong><small>'+number(young.lpv)+'회 / '+number(young.linkClicks)+'클릭 · 랜딩당 '+money(young.lpvCost,3)+'</small></div>'+
+ '<div><span>35~54세 랜딩 도달 비율</span><strong>'+pct(older.rate,1)+'</strong><small>'+number(older.lpv)+'회 / '+number(older.linkClicks)+'클릭 · 랜딩당 '+money(older.lpvCost,3)+'</small></div></div>'+
+ '<p>'+(olderWins?'이 소재에서는 35~54세의 클릭 후 랜딩 도달 비율이 더 높았습니다.':youngWins?'이 소재에서는 오히려 18~34세의 랜딩 도달 비율이 더 높습니다.':'두 그룹의 랜딩 도달 비율이 같습니다.')+' 타겟 설정이 같았다는 증거는 없습니다.</p>'+
+ '</article>';
+}
+function renderDecisionDesk(){
+ const holder=el('decisionDesk');if(!holder)return;
+ const younger=landingGroup(['18-24','25-34']),older=landingGroup(['35-44','45-54']);
+ const percentPoint=(older.rate-younger.rate)*100;
+ holder.innerHTML='<div class="decision-desk-head"><div><span class="eyebrow">실제 랜딩페이지 행동에서 찾은 핵심 인사이트</span><h2>35~54세는 노출이 적어도<br/>클릭 후 랜딩 도달 비율이 더 높았습니다.</h2><p>광고를 본 사람의 <b>실제 연령대</b>로 분류한 관측 결과입니다. 광고에 <b>설정한 타겟 연령</b>이 무엇인지는 아직 확인되지 않았습니다.</p></div><span class="decision-period">Meta CSV · '+esc(DB.range?.[0]||'')+' ~ '+esc(DB.data_end||'')+'</span></div>'+
+ '<div class="decision-kpi-grid">'+
+ '<div class="decision-kpi"><span>18~34세 · 클릭 → 랜딩</span><strong>'+pct(younger.rate,1)+'</strong><small>랜딩 '+number(younger.lpv)+'회 / 링크 목적 광고 클릭 '+number(younger.linkClicks)+'회</small></div>'+
+ '<div class="decision-kpi accent"><span>35~54세 · 클릭 → 랜딩</span><strong>'+pct(older.rate,1)+'</strong><small>랜딩 '+number(older.lpv)+'회 / 링크 목적 광고 클릭 '+number(older.linkClicks)+'회</small></div>'+
+ '<div class="decision-kpi"><span>35~54세의 비율 차이</span><strong>+'+number(percentPoint,1)+'%p</strong><small>방문율은 높지만 실제 수익까지 좋은 건 아직 모릅니다</small></div>'+
+ '<div class="decision-kpi"><span>랜딩페이지 조회당 비용</span><strong>'+money(younger.lpvCost,3)+' <em>vs</em> '+money(older.lpvCost,3)+'</strong><small>18~34세 vs 35~54세 · 비용은 젊은 층이 소폭 유리</small></div></div>'+
+ '<div class="decision-bottomline"><b>그래서 지금 할 일</b><span>35~54세 타겟을 무조건 확대하지 말고, <b>게시물별 성과를 분리</b>해 실제 설정과 상담·팔로우 전환을 확인하세요. 콘텐츠에 따라 반대 결과도 나옵니다.</span></div>'+
+ '<div class="decision-examples-head"><h3>어떤 게시물이 이런 차이를 만들었나?</h3><p>같은 연령 그룹이라도 모든 광고가 같은 결과를 보인 것은 아닙니다.</p></div>'+
+ '<div class="visit-example-grid">'+
+ decisionExemplar('120252682521260529',true)+
+ decisionExemplar('120252682511880529',false)+'</div>'+
+ '<div class="decision-quality">해석 기준: 클릭 → 랜딩 도달 비율 = <b>랜딩페이지 조회 / 링크 클릭형 캠페인에서 발생한 링크 클릭</b>. 프로필 방문 목적 캠페인은 랜딩 지표가 없으므로 분모에서도 제외했습니다. 서로 다른 연령은 예산 배분과 소재 구성이 달라서 인과적 비교가 아닙니다.</div>'+
+ '<button class="action dark decision-explore" data-page="posts">게시물별로 더 비교하기 ↗</button>';
+ holder.querySelectorAll('[data-decision-post]').forEach(b=>b.addEventListener('click',()=>{navigate('posts');openPost(b.dataset.decisionPost);}));
+ holder.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
+}
+
 // POST LIBRARY: thumbnail references are supplied from the user's own grid screenshot.
 const POST_META=window.SIGNAL_OS_POST_CATALOG||{};
 const POST_THUMBS=window.SIGNAL_OS_THUMBS||{};
@@ -216,4 +281,4 @@ Array.from(document.querySelectorAll('[data-post-filter]')).forEach(b=>b.addEven
 Array.from(document.querySelectorAll('[data-filter-post]')).forEach(b=>b.addEventListener('click',()=>{postFilter=b.dataset.filterPost;navigate('posts');renderPosts()}));
 Array.from(document.querySelectorAll('.triage-item[data-open-post]')).forEach(b=>b.addEventListener('click',()=>openPost(b.dataset.openPost)));
 if(el('postSearch'))el('postSearch').addEventListener('input',renderPosts);
-featuredPosts();renderPosts();
+featuredPosts();renderPosts();renderDecisionDesk();
