@@ -408,7 +408,16 @@ function renderMetaRecommendations(){
   '<details><summary>Meta 원문 · 광고 대상 · 검토 근거 펼치기</summary><dl>'+
   details.map(([key,val])=>'<dt>'+esc(key)+'</dt><dd>'+esc(val||'미확인')+'</dd>').join('')+'</dl></details></article>';
  }
- cards.innerHTML=sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>';
+ 
+ const perf=status.performance_snapshot;
+ const performanceBox=perf&&perf.link_clicks?'<section class="rec-captured-performance"><h3>참고 · Meta 성과 요약 화면</h3><div class="rec-captured-metrics">'+
+ '<span>링크 클릭 <b>'+number(perf.link_clicks)+'회</b></span>'+
+ '<span>지출 <b>'+money(perf.spend,2)+'</b></span>'+
+ '<span>링크 CPC <b>'+money(perf.link_cpc,2)+'</b></span>'+
+ '<span>유사 세트의 중간값 <b>'+money(perf.benchmark_link_cpc,2)+'</b></span></div>'+
+ '<p>이 화면의 광고/세트 식별자와 정확한 집계 기간을 확인하지 못했으므로, 기존 캠페인 누적 수치에 <b>합산하지 않았습니다.</b> 유사 세트 대비 비용 차이도 고객 전환 성과의 우열을 뜻하지 않습니다.</p></section>':'';
+
+ cards.innerHTML=performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
  if(history.length){
   const archive=document.createElement('details');
   archive.className='rec-history';
