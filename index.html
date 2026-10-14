@@ -298,7 +298,7 @@
   </section>
 </section>
  <section id="overview" class="page">
-  <div class="hero"><div class="eyebrow">THE DECISION DESK / OVERVIEW</div><h1>핵심 발견은 한눈에,<br/>근거는 누르면 자세히.</h1><p>현재까지 확인한 광고 인사이트를 카드로 정리했습니다. 좋은 점, 상반된 신호, 관찰할 항목을 누르면 실제 게시물과 근거가 열립니다.</p><div class="subline"><span class="chip em"><span class="dot"></span> 검증된 집계 기준</span><span class="chip">분석 기간 · 09.13 — 10.13</span><span class="chip">자료 수신 · 10.14 (시각 미기록)</span></div></div>
+  <div class="hero"><div class="eyebrow">THE DECISION DESK / OVERVIEW</div><h1>핵심 발견은 한눈에,<br/>근거는 누르면 자세히.</h1><p>현재까지 확인한 광고 인사이트를 카드로 정리했습니다. 좋은 점, 상반된 신호, 관찰할 항목을 누르면 실제 게시물과 근거가 열립니다.</p><div class="subline"><span class="chip em"><span class="dot"></span> 검증된 집계 기준</span><span class="chip">분석 기간 · 09.13 — 10.14</span><span class="chip">자료 수신 · 10.14 (시각 미기록)</span></div></div>
   <div class="notice"><span class="mark">ⓘ</span><span><b>데이터 시차 안내.</b> 이 보고서는 10월 13일까지의 광고 실적입니다. 새 업로드는 9/14~10/13 연령·성별 분류이며, 겹치는 날짜는 다시 합산하지 않고 10/13 실적만 반영했습니다. 동일 제목 캠페인 2개는 10/13에 ID별 분리 불가합니다. 이전 파일을 같은 기간으로 재전송해도 합계에 두 번 더하지 않습니다.</span></div>
   <section id="decisionDesk" class="decision-desk" aria-label="핵심 마케팅 인사이트"></section><div class="report-meta-heading"><h2>광고 집행 요약</h2><p>추가 근거 지표 · 광고비, 클릭, CTR·CPC는 아래에 간단히 정리했습니다.</p></div><div id="insightBoard" class="insight-board"></div><div class="metrics" id="metrics"></div>
   
@@ -357,7 +357,7 @@
   <div class="section-heading"><div><div class="eyebrow">UP NEXT</div><h2>앞으로 비교할 실험 3가지</h2><p>‘진행 예정’은 실제로 광고가 집행됐다는 뜻이 아닙니다.</p></div></div><div id="experimentList"></div>
  </section>
  <section id="archive" class="page">
-  <div class="hero"><div class="eyebrow">DATA VAULT & UPDATE LOG</div><h1>원본은 뒤로.<br/>필요할 때만 깊게.</h1><p>모든 핵심 수치의 근거가 된 실제 10개 캠페인 및 ID 미분리 합산 1건, 307행 일별 실적, 580행 연령·성별 분류, 기존 300행 광고 세트 + 신규 세분화 자료 580행 데이터, 광고 10개 자료와 업로드 이력을 이 파일 하나에 보관했습니다.</p></div>
+  <div class="hero"><div class="eyebrow">DATA VAULT & UPDATE LOG</div><h1>원본은 뒤로.<br/>필요할 때만 깊게.</h1><p>모든 핵심 수치의 근거가 된 실제 10개 캠페인 및 ID 미분리 합산 2건, 316행 일별 실적, 580행 연령·성별 분류, 기존 300행 광고 세트 + 신규 세분화 자료 580행 데이터, 광고 10개 자료와 업로드 이력을 이 파일 하나에 보관했습니다.</p></div>
   <div class="panel" style="margin-bottom:14px"><div class="panel-head"><h3>업로드 이력 · 어떤 데이터가 추가되었나</h3><span class="tiny">원본을 중복 합산하지 않음</span></div><div class="brief-grid" id="uploadHistory"></div></div>
   <div class="panel"><div class="chart-head"><h3>원본 데이터 탐색</h3><button class="action" id="exportCSV">현재 표 CSV로 저장 ↓</button></div><div class="tablist" id="dataTabs"></div><div class="filter-bar"><input type="search" id="tableSearch" placeholder="캠페인명, ID, 연령, 날짜 검색"/><span class="float-note" id="rowCount"></span></div><div class="data-table-wrap"><table class="data-table"><thead id="tableHead"></thead><tbody id="tableBody"></tbody></table></div><div class="table-sub" id="tableNote"></div></div>
   <div class="section-heading"><div><div class="eyebrow">DATA QUALITY</div><h2>판단할 때 지켜야 하는 5가지 원칙</h2></div></div><div class="archive-warning" id="caveats"></div>
@@ -409,7 +409,7 @@
     }
     function loadUI(){
       const main=document.createElement('script');
-      main.src='./app.js?v=operations-20261014-daily2';
+      main.src='./app.js?v=operations-20261014-daily3';
       main.onerror=function(){showError('화면 코드를 불러오지 못했습니다. 새로고침해 주세요.');};
       document.body.appendChild(main);
     }
