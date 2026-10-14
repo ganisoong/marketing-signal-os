@@ -51,7 +51,7 @@ D.daily.push(...entries.filter(r=>r[1]).map(r=>({date:"2026-10-14",id:r[1],spend
 D.unallocated.push({name:old.name.replace("10/13","10/14"),ids:["120252750718860529","120252750732410529"],spend:agg(4),impressions:agg(5),clicks:agg(6),lpv:agg(7),date:"2026-10-14",note:"Meta export omitted campaign ID. Two identically named campaigns; not assigned to either A/B."});
 D.days.push({date:"2026-10-14",spend:59.81,impressions:11785,clicks:194,lpv:94,active:6,ctr:194/11785,cpc:59.81/194,result_link:142,result_profile:56});
 Object.assign(D.summary,{spend:458.77,impressions:109581,clicks:1622,lpv:737,active_count:6,ctr:1622/109581,cpc:458.77/1622,cpm:458.77/109581*1000});
-D.data_end="2026-10-14";D.last_upload="2026-10-14 20:44 KST (수신 기준, 당일 집계)";
+D.range[1]="2026-10-14";D.data_end="2026-10-14";D.last_upload="2026-10-14 20:44 KST (수신 기준, 당일 집계)";
 D.lastDay={date:"2026-10-14",spend:59.81,impressions:11785,clicks:194,lpv:94,ctr:194/11785,cpc:59.81/194,active:6};
 D.demographics_history_through="2026-10-13";
 D.latestCampaignDelivery={as_of:"2026-10-14",active:6,inactive:4,source:"979718671826640-Campaigns-Oct-7-2026-Oct-14-2026.csv",id_quality:"CSV lacks Campaign ID; unique names provisionally joined, duplicate title unassigned"};
