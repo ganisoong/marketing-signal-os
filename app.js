@@ -220,6 +220,52 @@ function renderDecisionDesk(){
  holder.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
 }
 
+
+/* Concise insight board: clickable conclusions + traceable evidence. */
+function insightDefinitions(){
+ const Y=landingGroup(['18-24','25-34']),O=landingGroup(['35-44','45-54']);
+ const support=get('120252682521260529'),reverse=get('120252682511880529');
+ const sy=landingGroup(['18-24','25-34'],support.name),so=landingGroup(['35-44','45-54'],support.name);
+ const ry=landingGroup(['18-24','25-34'],reverse.name),ro=landingGroup(['35-44','45-54'],reverse.name);
+ const A=get('120252750718860529'),B=get('120252750732410529');
+ const new1=get('120252790032910529'),new2=get('120252790030140529');
+ const metric=(title,value,detail)=>({title,value,detail});
+ return [
+ {id:'age',label:'좋은 신호',tone:'good',title:'35~54세는 클릭 후 랜딩 도달 비율이 더 높음',value:pct(O.rate,1)+' vs '+pct(Y.rate,1),short:'35~54세 vs 18~34세 · 그러나 방문당 비용은 젊은 층이 소폭 유리',fact:'실제 노출된 연령별 데이터에서 35~54세가 방문 도달 비율은 높지만, 조회당 비용이 더 낮은 것은 아닙니다.',metrics:[metric('18~34세',pct(Y.rate,1),number(Y.lpv)+'회 / '+number(Y.linkClicks)+'클릭'),metric('35~54세',pct(O.rate,1),number(O.lpv)+'회 / '+number(O.linkClicks)+'클릭'),metric('18~34세 방문당 비용',money(Y.lpvCost,3),'링크 클릭형 광고만'),metric('35~54세 방문당 비용',money(O.lpvCost,3),'링크 클릭형 광고만')],posts:['120252682521260529','120252682511880529'],next:'타겟 연령을 바로 높이지 말고 실제 문의·구매 전환을 측정하고 동일 조건으로 비교합니다.'},
+ {id:'contrast',label:'주제별 차이',tone:'mixed',title:'같은 연령도 콘텐츠 주제에 따라 반응이 반대',value:pct(so.rate,1)+' / '+pct(ry.rate,1),short:'지원동기 35~54세 / 예상질문 18~34세',fact:'지원동기 소재에서는 35~54세가, 예상질문 소재에서는 18~34세가 클릭 후 랜딩 도달 비율이 높았습니다.',metrics:[metric('지원동기 · 18~34세',pct(sy.rate,1),number(sy.lpv)+'회 / '+number(sy.linkClicks)+'클릭'),metric('지원동기 · 35~54세',pct(so.rate,1),number(so.lpv)+'회 / '+number(so.linkClicks)+'클릭'),metric('예상질문 · 18~34세',pct(ry.rate,1),number(ry.lpv)+'회 / '+number(ry.linkClicks)+'클릭'),metric('예상질문 · 35~54세',pct(ro.rate,1),number(ro.lpv)+'회 / '+number(ro.linkClicks)+'클릭')],posts:[support.id,reverse.id],next:'소재 주제와 타겟을 한 번에 바꾸지 않고 변수 하나씩 실험합니다.'},
+ {id:'cost',label:'주의할 점',tone:'mixed',title:'방문 비율이 높아도 랜딩 1회 비용이 낮은 것은 아님',value:money(Y.lpvCost,3)+' vs '+money(O.lpvCost,3),short:'18~34세 vs 35~54세 · 실제 방문 조회당 비용',fact:'젊은 연령대가 랜딩 조회당 비용은 조금 낮았습니다. 즉, 방문율과 방문 단가는 서로 다른 판단 지표입니다.',metrics:[metric('18~34세 링크 목적 광고비',money(Y.linkSpend,2),number(Y.lpv)+'회 랜딩'),metric('35~54세 링크 목적 광고비',money(O.linkSpend,2),number(O.lpv)+'회 랜딩')],posts:[support.id,reverse.id],next:'랜딩 비용 외에도 실제 상담·팔로우 1건당 비용을 확보합니다.'},
+ {id:'ab',label:'엇갈린 성과',tone:'mixed',title:'같은 주제 광고 B는 CTR, A는 랜딩 비용 우세',value:pct(B.ctr,2)+' vs '+pct(A.ctr,2),short:'B의 CTR vs A의 CTR · 개별 캠페인 10/12 기준',fact:'B의 클릭률은 높지만 A가 랜딩페이지 조회를 더 저렴하게 확보했습니다. CTR만으로 광고 승자를 정할 수 없습니다.',metrics:[metric('A · 링크 클릭률',pct(A.ctr,2),number(A.clicks)+'회 / 노출 '+number(A.impressions)),metric('B · 링크 클릭률',pct(B.ctr,2),number(B.clicks)+'회 / 노출 '+number(B.impressions)),metric('A · 랜딩 1회 비용',money(A.spend/A.lpv,3),number(A.lpv)+'회'),metric('B · 랜딩 1회 비용',money(B.spend/B.lpv,3),number(B.lpv)+'회')],posts:[A.id,B.id],next:'설정한 타겟, 게재 위치, 랜딩 URL을 먼저 확인하고 같은 조건으로 A/B 테스트합니다.'},
+ {id:'new',label:'더 지켜보기',tone:'watch',title:'10/13 시작한 생기부 소재 2개는 표본이 부족',value:number(new1.clicks+new2.clicks)+'클릭',short:'두 캠페인 합계 · 첫날 데이터만 존재',fact:'첫날의 노출과 클릭만으로 유지·중단을 판단하기는 이릅니다.',metrics:[metric('생기부 3년 소재',number(new1.clicks)+'클릭',money(new1.spend,2)+' 집행'),metric('생기부 면접 준비 소재',number(new2.clicks)+'클릭',money(new2.spend,2)+' 집행')],posts:[new1.id,new2.id],next:'2~3일 이상 추세와 클릭→랜딩 지표를 더 확인합니다.'}
+ ];
+}
+function showInsight(id){
+ const it=insightDefinitions().find(x=>x.id===id);if(!it)return;
+ const metrics=it.metrics.map(m=>'<div class="insight-proof-stat"><span>'+esc(m.title)+'</span><b>'+esc(m.value)+'</b><small>'+esc(m.detail)+'</small></div>').join('');
+ const posts=it.posts.map(pid=>{
+ const p=get(pid),meta=POST_META[pid]||{},thumb=thumbFor(pid),cover=thumb?'<img src="'+esc(thumb)+'" alt="참고 썸네일">':'<span>이미지 확인 필요</span>';
+ return '<button class="insight-source-post" data-source-post="'+esc(pid)+'">'+cover+'<span><b>'+esc(meta.label||p?.label||pid)+'</b><small>'+esc(pid)+' · 이미지와 광고 ID 연결은 일부 미검증</small></span>↗</button>';
+ }).join('');
+ el('postDetail').innerHTML='<div class="insight-detail-head"><span class="verdict-tag '+(it.tone==='good'?'good':it.tone==='watch'?'watch':'unverified')+'">'+esc(it.label)+'</span><h2>'+esc(it.title)+'</h2><p>'+esc(it.fact)+'</p></div>'+
+ '<h3 class="drawer-section">판단 근거 · 실제 수치</h3><div class="insight-proof-stats">'+metrics+'</div>'+
+ '<h3 class="drawer-section">근거가 된 게시물 (선택하면 상세 열림)</h3><div class="insight-source-list">'+posts+'</div>'+
+ '<h3 class="drawer-section">게시물별 광고 설정</h3><p class="insight-disclaimer">연령별 수치는 실제 광고가 노출된 사람의 연령입니다. 설정한 타겟 연령·지역·관심사·게재 위치는 현재 Meta CSV로 확인되지 않습니다. 위의 게시물 상세에서 확인된 캠페인 ID, 예산, 시작일과 결과 목표를 볼 수 있습니다.</p>'+
+ '<h3 class="drawer-section">그래서 다음엔?</h3><div class="drawer-next">'+esc(it.next)+'</div>'+
+ '<p class="drawer-caption">근거: Meta 광고 CSV (9/13~10/13). 랜딩 도달 비율은 랜딩페이지 조회 / 링크 클릭형 캠페인의 링크 클릭입니다. 광고 목표가 다른 캠페인을 섞지 않았으며 실제 수익·인과관계를 뜻하지 않습니다.</p>';
+ el('postOverlay').classList.add('open');el('postOverlay').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';el('closePost').focus();
+ el('postDetail').querySelectorAll('[data-source-post]').forEach(b=>b.addEventListener('click',()=>{navigate('posts');openPost(b.dataset.sourcePost)}));
+}
+function renderInsightBoard(){
+ const holder=el('insightBoard');if(!holder)return;
+ const items=insightDefinitions();
+ holder.innerHTML='<div class="insight-recap"><span>분석 종료 '+esc(DB.data_end)+'</span><span>누적 광고비 <b>'+money(DB.summary.spend,2)+'</b></span><span>랜딩 조회 <b>'+number(DB.summary.lpv)+'</b></span></div>'+
+ '<div class="insight-section-title"><div><h2>현재까지 검증할 가치가 있는 인사이트</h2><p>결론 먼저. 자세한 광고 근거와 설정은 블록을 누르세요.</p></div><span>광고 효과를 자동으로 조정하지 않습니다</span></div>'+
+ '<div class="insight-board-grid">'+items.map(x=>'<button type="button" class="insight-tile '+x.tone+'" data-open-insight="'+x.id+'"><span class="insight-type">'+esc(x.label)+'</span><strong>'+esc(x.title)+'</strong><span class="insight-figure">'+esc(x.value)+'</span><small>'+esc(x.short)+'</small><span class="insight-open">근거 게시물 · 광고 설정 · 다음 행동 보기 ↗</span></button>').join('')+'</div>'+
+ '<div class="insight-actionbar"><div><strong>다음에 검증할 것</strong><p>설정된 타겟 확인 → 주제별 연령 실험 → 랜딩 이후 문의·팔로우 측정</p></div><button type="button" class="action dark" data-go-posts>게시물별 현황 →</button></div>'+
+ '<p class="insight-qualifier">실제 노출 연령과 설정한 타겟 연령은 다릅니다. 링크 클릭·랜딩 조회로 상담이나 매출 성과를 단정하지 않습니다.</p>';
+ holder.querySelectorAll('[data-open-insight]').forEach(b=>b.addEventListener('click',()=>showInsight(b.dataset.openInsight)));
+ holder.querySelector('[data-go-posts]').addEventListener('click',()=>navigate('posts'));
+}
+
 // POST LIBRARY: thumbnail references are supplied from the user's own grid screenshot.
 const POST_META=window.SIGNAL_OS_POST_CATALOG||{};
 const POST_THUMBS=window.SIGNAL_OS_THUMBS||{};
@@ -281,4 +327,4 @@ Array.from(document.querySelectorAll('[data-post-filter]')).forEach(b=>b.addEven
 Array.from(document.querySelectorAll('[data-filter-post]')).forEach(b=>b.addEventListener('click',()=>{postFilter=b.dataset.filterPost;navigate('posts');renderPosts()}));
 Array.from(document.querySelectorAll('.triage-item[data-open-post]')).forEach(b=>b.addEventListener('click',()=>openPost(b.dataset.openPost)));
 if(el('postSearch'))el('postSearch').addEventListener('input',renderPosts);
-featuredPosts();renderPosts();renderDecisionDesk();
+featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();
