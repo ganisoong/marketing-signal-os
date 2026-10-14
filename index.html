@@ -170,6 +170,26 @@
 .rec-preview span{font-size:11px;color:#77847b}.rec-preview b{color:#195d4b}
 @media(max-width:950px){.rec-grid{grid-template-columns:1fr}}
 
+
+/* Meta Opportunity Score: short decision cards, explicit predictions, historical records */
+.rec-summary>div{display:flex;flex-direction:column;gap:5px;min-width:180px;flex:1}
+.rec-summary>div>strong{font-size:25px;line-height:1.2;color:#155d4b}
+.rec-summary-note{flex-basis:100%;font-size:10px;line-height:1.7;color:#6b7f76;margin:5px 0 0}
+.rec-expected{margin:12px 0 7px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:12px 13px;border-radius:9px;background:#f0f7f2}
+.rec-expected strong{font-size:16px;color:#15684f}
+.rec-expected span{font-size:10px;color:#5b7d70}
+.rec-expected small{font-size:10px;color:#8a9958;margin-left:auto}
+.rec-history{grid-column:1/-1;background:#f5f8f5;border:1px solid #dce6df;border-radius:12px;padding:18px}
+.rec-history>summary{font-size:12px;font-weight:750;color:#516c5d;cursor:pointer}
+.rec-history>.rec-grid{margin-top:15px}
+.rec-captured-performance{grid-column:1/-1;background:#fff9ed;border:1px solid #e9ddc5;padding:17px 20px;border-radius:12px;margin:0 0 3px}
+.rec-captured-performance h3{font-size:13px;margin:0 0 10px;color:#74562d}
+.rec-captured-performance p{font-size:10px;line-height:1.7;color:#876b42;margin:8px 0 0}
+.rec-captured-metrics{display:flex;gap:12px;flex-wrap:wrap}
+.rec-captured-metrics span{font-size:11px;color:#856e4a}
+.rec-captured-metrics b{color:#4c583e}
+.rec-home-strip{margin-top:17px}
+
 </style>
 </head>
 <body>
@@ -233,7 +253,7 @@
  </section>
  <section id="recommendations" class="page">
 <div class="hero"><div class="eyebrow">META OPPORTUNITY SCORE / REVIEW LOG</div><h1>Meta 추천도 확인하되,<br/>그대로 적용하지는 않아요.</h1>
-<p>Meta가 실제 제안한 문구와 예상 효과를 보관하고, 우리 광고 목표를 고려한 판단을 따로 표시합니다. 적용 여부는 직접 결정하고, 적용 후 성과는 별도 검증합니다.</p>
+<p>현재 Opportunity Score 68점에 표시된 추천 5개를 유형별로 정리했습니다. Meta 예상 효과와 Signal OS 검토를 구분하고, 대상 광고 ID가 확인되지 않은 추천은 별도로 표시합니다.</p>
 <div class="subline"><span class="chip em">Meta 추천 원문과 AI 판단 분리</span><span class="chip">광고별 ID 확인 필요</span><span class="chip">자동 적용 없음</span></div></div>
 <div class="notice"><span class="mark">ⓘ</span><span><b>수집 방식.</b> 현재는 보내주신 Meta 추천 화면에서 확인된 내용만 기록합니다. 광고 CSV에 추천이 포함되지 않으며, 추후 별도 Meta API 또는 데이터 서비스로 자동 수집할 수 있습니다. 캡처의 점수는 성과 개선을 보장하지 않습니다.</span></div>
 <div id="recommendationSummary" class="rec-summary"></div>
@@ -278,14 +298,14 @@
     }
     function loadMain(){
       const rec=document.createElement('script');
-      rec.src='./recommendations.js?v=20261014';
+      rec.src='./recommendations.js?v=20261014-list5';
       rec.onload=loadApp;
       rec.onerror=loadApp;
       document.body.appendChild(rec);
     }
     function loadApp(){
       const main=document.createElement('script');
-      main.src='./app.js?v=meta-recommendations-20261014';
+      main.src='./app.js?v=meta-recommendations-list5';
       main.onerror=function(){showError('화면 코드를 불러오지 못했습니다. 새로고침해 주세요.');};
       document.body.appendChild(main);
     }
