@@ -278,15 +278,54 @@ function postCover(id){const url=thumbFor(id),im=POST_META[id]||{};const trust=i
  const note=trust==='exact'?'제공된 썸네일':trust==='subject'?'주제 일치 · 광고 ID 매칭 미검증':trust==='candidate'?'그리드 참고 이미지 · 정확한 광고 일치 미검증':'이미지 없음 · 제공 필요';
  return `<div class="post-card-image">${url?`<img alt="${esc(im.label||'게시물 썸네일')}" src="${url}" loading="lazy"/>`:`<div class="post-no-image"><span class="ph-icon">▧</span><span>썸네일 매칭 대기</span></div>`}<div class="image-mark">${esc(note)}</div></div>`;
 }
-function cardHTML(id){const d=get(id),m=POST_META[id]||{},tag=statusFor(id),name=m.label||d?.label||id;
- const bottom=d?`<span>링크 CPC <b>${money(d.cpc,3)}</b></span><span>클릭 <b>${number(d.clicks)}</b></span>`:`<span>광고비 <b>$0 · 유기 운영 후보</b></span>`;
- return `<button class="post-card" data-open-post="${esc(id)}" aria-label="${esc(name)} 상세 보기">${postCover(id)}<div class="post-card-body"><span class="verdict-tag ${tag}">${POST_TAGS[tag]}</span><h3>${esc(name)}</h3><div class="post-numbers">${bottom}</div></div></button>`;
+
+let postSort='recommended';
+function cardHTML(id){
+ const d=get(id),m=POST_META[id]||{},tag=statusFor(id),name=m.label||d?.label||id;
+ const cost=d?.lpv&&d?.type==='actions:link_click'?d.spend/d.lpv:null;
+ let main='관찰 데이터 대기',secondary='광고 성과 미수집';
+ if(d?.id==='UNASSIGNED_20261013'){main='10/13 동일 제목 2개 합산';secondary=number(d.clicks)+'클릭 · ID별 분리 불가';}
+ else if(d?.type==='actions:link_click'){
+ main=cost==null?'랜딩 성과 확인 필요':'랜딩 방문당 '+money(cost,3);
+ secondary=number(d.lpv)+'회 랜딩 / '+number(d.clicks)+'클릭 · 도달 비율 '+pct(d.clicks?d.lpv/d.clicks:null,1);
+ } else if(d?.type==='profile_visit_view'){main='프로필 방문 목적';secondary='링크 클릭 '+number(d.clicks)+'회 · 실제 팔로우 데이터 미확인';}
+ else if(d){main='더 관찰할 신규 광고';secondary='클릭 '+number(d.clicks)+'회 · 지출 '+money(d.spend,2);}
+ else{main='유기 콘텐츠';secondary='광고 성과와 별도 관리';}
+ const foot=d?'광고비 '+money(d.spend,2)+' · 링크 CPC '+money(d.cpc,3):'조회·댓글·공유 추적 필요';
+ return '<button class="post-card" type="button" data-open-post="'+esc(id)+'" aria-label="'+esc(name)+' 상세 보기">'+postCover(id)+
+ '<div class="post-card-body"><span class="verdict-tag '+tag+'">'+esc(POST_TAGS[tag])+'</span><h3>'+esc(name)+'</h3>'+
+ '<div class="post-decision-highlight">'+esc(main)+'</div><p class="post-decision-sub">'+esc(secondary)+'</p>'+
+ '<p class="post-decision-note">'+esc(m.oneLine||'추가 결과 확인 필요')+'</p>'+
+ '<div class="post-decision-foot">'+esc(foot)+'</div><span class="post-decision-open">근거 · 연령 · 설정 보기 ↗</span></div></button>';
 }
-function renderPosts(){const q=(document.getElementById('postSearch')?.value||'').trim().toLowerCase(), items=POST_KEYS.filter(id=>postFilter==='all'||statusFor(id)===postFilter).filter(id=>{
- const m=POST_META[id]||{},d=get(id);return !q||(m.label||'').toLowerCase().includes(q)||(d?.name||'').toLowerCase().includes(q);
- });el('postGrid').innerHTML=items.map(cardHTML).join('')||'<div class="empty">조건에 맞는 게시물이 없습니다.</div>';el('postsCount').textContent=`총 ${items.length}개 게시물 · 각 카드의 판단은 현재까지의 실적에 한정됩니다.`;
+function postCost(d){return d?.type==='actions:link_click'&&d.lpv>0?d.spend/d.lpv:Infinity;}
+function renderPosts(){
+ const q=(document.getElementById('postSearch')?.value||'').trim().toLowerCase();
+ const items=POST_KEYS.filter(id=>postFilter==='all'||statusFor(id)===postFilter).filter(id=>{
+ const m=POST_META[id]||{},d=get(id);
+ return !q||(m.label||'').toLowerCase().includes(q)||(d?.name||'').toLowerCase().includes(q);
+ });
+ items.sort((a,b)=>{
+ const x=get(a),y=get(b);
+ if(postSort==='cost')return postCost(x)-postCost(y);
+ if(postSort==='clicks')return (y?.clicks||0)-(x?.clicks||0);
+ if(postSort==='spend')return (y?.spend||0)-(x?.spend||0);
+ const weight=id=>({good:0,improve:1,watch:2,unverified:3,organic:4}[statusFor(id)]??5);
+ return weight(a)-weight(b)||postCost(x)-postCost(y);
+ });
+ el('postGrid').innerHTML=items.map(cardHTML).join('')||'<div class="empty">조건에 맞는 게시물이 없습니다.</div>';
+ el('postsCount').textContent=number(items.length)+'개 항목 · 랜딩 비용은 링크 목적 광고에서만 비교합니다.';
  document.querySelectorAll('[data-post-filter]').forEach(b=>b.classList.toggle('active',b.dataset.postFilter===postFilter));
- document.querySelectorAll('[data-open-post]').forEach(b=>{if(b.closest('#postGrid'))b.addEventListener('click',()=>openPost(b.dataset.openPost))});
+ el('postGrid').querySelectorAll('[data-open-post]').forEach(b=>b.addEventListener('click',()=>openPost(b.dataset.openPost)));
+ const summary=el('postQuickSummary');
+ if(summary){
+ const groups=[['좋은 신호','good'],['개선 검토','improve'],['추가 관찰','watch'],['비교 제한','unverified']];
+ summary.innerHTML=groups.map(([name,key])=>{
+ const count=POST_KEYS.filter(id=>statusFor(id)===key).length;
+ return '<button type="button" class="post-summary-cell" data-summary-filter="'+key+'">'+esc(name)+'<strong>'+count+'개</strong></button>';
+ }).join('')+'<p class="post-summary-foot">판정은 현재 광고 클릭·랜딩 근거에 따른 검토 우선순위이며, 최종 구매·팔로우 효과를 뜻하지 않습니다.</p>';
+ summary.querySelectorAll('[data-summary-filter]').forEach(b=>b.addEventListener('click',()=>{postFilter=b.dataset.summaryFilter;renderPosts()}));
+ }
 }
 function featuredPosts(){el('overviewPosts').innerHTML=['120252682521260529','120252750718860529','120252682511880529','120252790032910529'].map(cardHTML).join('');
  el('overviewPosts').querySelectorAll('[data-open-post]').forEach(b=>b.addEventListener('click',()=>openPost(b.dataset.openPost)));
@@ -327,4 +366,5 @@ Array.from(document.querySelectorAll('[data-post-filter]')).forEach(b=>b.addEven
 Array.from(document.querySelectorAll('[data-filter-post]')).forEach(b=>b.addEventListener('click',()=>{postFilter=b.dataset.filterPost;navigate('posts');renderPosts()}));
 Array.from(document.querySelectorAll('.triage-item[data-open-post]')).forEach(b=>b.addEventListener('click',()=>openPost(b.dataset.openPost)));
 if(el('postSearch'))el('postSearch').addEventListener('input',renderPosts);
+if(el('postSort'))el('postSort').addEventListener('change',e=>{postSort=e.target.value;renderPosts();});
 featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();
