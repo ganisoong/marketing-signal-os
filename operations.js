@@ -3,7 +3,7 @@ window.SIGNAL_OS_OPERATIONS={
   "updated_at": "2026-10-14",
   "report_as_of": "2026-10-14 (당일 집계; 종료 전)",
   "last_confirmed_campaign_ids_as_of": "2026-10-12 for duplicate-name pair; single-name current status provisionally mapped",
-  "current_delivery_note": "10/14 캠페인 Day CSV에 active 6개, inactive 4개. Campaign ID 없음: 동일 제목 '하얘진다면' 두 광고는 각각 ID 매칭 불가. 집계 시각은 수신 20:44 KST 기준이며 최종 일별 확정치가 아닐 수 있음.",
+  "current_delivery_note": "10/14 21:49 KST 사용자가 보내준 Instagram 광고 관리 화면: 광고 10건 중 활성 6건, 일시중단 4건. 활성 6건은 생기부 2개, '하얘진다면' 동명 2개, 프로필 목적 2개. 화면 누적 지출 $458.87로 20:44 CSV 기반 $458.77과 $0.10 차이(새 시점/반올림 가능); 이 이미지의 누적액을 기존 CSV에 중복 합산하지 않음.",
   "profile": "인스타그램 @alphaedu_ipsi · Meta Ads 광고 데이터 수동 제출 기반",
   "policy": {
     "auto_pause": false,
@@ -18,12 +18,12 @@ window.SIGNAL_OS_OPERATIONS={
       "level": "긴급",
       "type": "예산 통제",
       "campaign_ids": [],
-      "status": "예산 결정됨 · 실제 Meta 설정 미변경",
-      "title": "전체 광고비 하루 2만원을 넘지 않도록 동시 집행 수 조정 검토",
-      "why": "사용자가 모든 광고 합산 하루 KRW 20,000 가이드를 정함. 직전 자료에서는 광고 6개 활성, 캠페인별 USD 13/일 기록이 있어 그대로 운영하면 예산 초과 위험이 큼. 추정 환산 약 USD 14.96/일(환율 참고, 결제환율·수수료 제외).",
-      "next": "Meta 광고 관리자에서 현재 활성 6개의 실제 예산·종료일을 확인. 다음 집행 전 한 광고만 선별해 약 USD 10~11/일 수준의 계획 예산 또는 3일 기간 총예산·종료일을 설정할지 사용자 승인 받고 조정. Meta는 일일 지출을 정확히 고정하지 않을 수 있어 잔액을 남겨둡니다.",
+      "status": "활성 6개 확인 · 즉시 예산 통제 제안 (실행 미확인)",
+      "title": "하루 2만 원 예산 초과 우려: 활성 광고 6개에서 1개로 축소 검토",
+      "why": "10/14 당일 CSV에 $59.81 지출(약 8만 원), 이어서 받은 광고관리 화면에 활성 6개/일시중지 4개, 누적 $458.87가 표시됐습니다. 누적과 당일 지출을 혼동하면 안 됩니다.",
+      "next": "Meta에서 현재 활성 6개의 예산을 확인. 우선 전부 잠시 정지해 추가 지출을 막고, 동명 '하얘진다면' 2개 중 캠페인 ID로 구분된 1개만 승인 후 3일 소액 재개하는 방안. 또는 생기부 2개+프로필형 2개를 일시중지하고 동명 광고 하나만 남기는 안. 하루 평균 예산으로 절대상한 보장되지 않으므로 종료일/기간 총예산 확인.",
       "due": "2026-10-14",
-      "decision": "현재 활성 6개의 예산 조정/일시중지 검토 최우선 · 자동 변경 없음"
+      "decision": "제안: 기존 활성 6개 → 시험 광고 1개만. 실제 일시중지 및 재개는 사용자 실행 필요."
     },
     {
       "id": "P1",
@@ -33,12 +33,12 @@ window.SIGNAL_OS_OPERATIONS={
         "120252750718860529",
         "120252750732410529"
       ],
-      "status": "효율 후보 · 예산 초과 우려로 전부 유지하지 않음",
+      "status": "둘 중 1개만 선택 검토 · ID 확인 필수",
       "title": "‘하얘진다면’ 광고 두 개는 당분간 유지하며 개별 ID 확인",
-      "why": "10/14 두 광고 합계 지출 $15.77, 링크 클릭 101, 랜딩 조회 69, 랜딩 조회당 비용 $0.229. 동일 제목이라 두 캠페인 각각의 성과는 알 수 없습니다.",
-      "next": "두 광고 개별 캠페인 ID가 포함된 성과를 10/15에 확보. 시청자 연령·타겟 설정도 확인. 현재 두 광고 중 하나만 임의로 중단하지 않음.",
+      "why": "10/14 CSV 두 광고의 당일 LPV 조회당 비용 $0.229(동일 제목 합산). 이어진 21:49 Instagram 광고 관리 화면의 누적 실적은 3번째 $49.29/156 LPV=$0.316, 4번째 $52.00/165 LPV=$0.315로 사실상 비슷해 우열 확정 불가. 각 캠페인 ID 연결 필요.",
+      "next": "현재 광고 3·4번째 중 정확한 Campaign ID를 확인한 뒤 예산 한도에 맞는 1개만 선택하여 $10~11/일 기준 3일 시험. 나머지는 일시중지 검토.",
       "due": "2026-10-15",
-      "decision": "광고 중 한 개를 ID로 정확히 식별한 뒤 우선 시험하는 안 검토; 나머지는 예산 범위에 맞춰 일시중지/축소 선택"
+      "decision": "동명 광고 2개 전체 동시 집행 비추천; 어느 줄이 A인지 미검증"
     },
     {
       "id": "P2",
@@ -301,6 +301,15 @@ window.SIGNAL_OS_OPERATIONS={
       "action": "동시 집행 수 원칙적으로 1개부터, 3일 소액 관찰 → 7일 리뷰. 메타 실제 ON/OFF·예산 및 종료일 확인 후 사용자 승인 필요",
       "reason": "예산 부담으로 과거 광고를 중단했다고 설명했고 총 일일 지출을 제한하기로 함. 환율 기준 20,000원 약 USD 14.96, 계정은 USD 청구.",
       "result": "운영 규칙과 우선순위만 웹앱에 기록. 실제 광고 설정 변경 없음."
+    },
+    {
+      "at": "2026-10-14 21:49 KST",
+      "kind": "Instagram 광고 관리 화면 확인 / 예산 축소 제안",
+      "date_range": "사용자 제공 누적 10개 광고 현황",
+      "headline": "누적 $458.87, 활성 6건/일시중지 4건: 하루 2만원 기준으로 동시 6개 집행은 지나침",
+      "action": "제안: 활성 광고 중 생기부 2개 및 프로필형 2개 중단 검토, 동일 썸네일 '하얘진다면' 둘 중 ID 확인 후 한 개 더 중단; 지출이 더 걱정되면 먼저 활성 전체를 일시중지하고 1개만 예산 정해 재개. 결과 추적은 정지 전/후 구분.",
+      "reason": "누적 LPV당 비용: 하얘진다면 3·4번째 각각 $0.316, $0.315; 생기부 1·2번째 $0.854, $0.800. 프로필 방문형은 목표가 달라 별도 평가; 현재 총 예산이 핵심 제약. 누적 $458.87는 기존 $458.77 CSV와 10센트 차이가 있고 아직 상담·매출 추적 없음.",
+      "result": "추천만 기록 / 사용자가 실제 광고를 중단·재개했다는 확인 없음 / Meta 계정 변경 없음."
     }
   ],
   "upload_spec": {
@@ -368,6 +377,115 @@ window.SIGNAL_OS_OPERATIONS={
       }
     ],
     "user_set_on": "2026-10-14",
-    "source": "사용자: '일단은 하루에 2만원'"
-  }
+    "source": "사용자: '일단은 하루에 2만원'",
+    "latest_visual_snapshot": {
+      "captured": "2026-10-14 21:49 KST",
+      "source": "사용자 제공 Instagram 광고 관리 캡처",
+      "cumulative_total_usd": 458.87,
+      "active": 6,
+      "paused": 4,
+      "screenshot_items": [
+        {
+          "position": 1,
+          "description": "생기부 · 3년 쌓아온 생기부 (썸네일 추정)",
+          "goal": "landing_page_visit",
+          "results": 17,
+          "spend_usd": 14.51,
+          "unit_cost_usd": 0.8535294117647059,
+          "active": true,
+          "recommendation": "pause_candidate"
+        },
+        {
+          "position": 2,
+          "description": "생기부 · 면접 준비 (썸네일 추정)",
+          "goal": "landing_page_visit",
+          "results": 15,
+          "spend_usd": 12,
+          "unit_cost_usd": 0.8,
+          "active": true,
+          "recommendation": "pause_candidate"
+        },
+        {
+          "position": 3,
+          "description": "하얘진다면 · 같은 썸네일 1",
+          "goal": "landing_page_visit",
+          "results": 156,
+          "spend_usd": 49.29,
+          "unit_cost_usd": 0.31596153846153846,
+          "active": true,
+          "recommendation": "choose_one_of_pair"
+        },
+        {
+          "position": 4,
+          "description": "하얘진다면 · 같은 썸네일 2",
+          "goal": "landing_page_visit",
+          "results": 165,
+          "spend_usd": 52,
+          "unit_cost_usd": 0.3151515151515151,
+          "active": true,
+          "recommendation": "choose_one_of_pair"
+        },
+        {
+          "position": 5,
+          "description": "공개된 면접 기출 (썸네일 추정)",
+          "goal": "profile_visit",
+          "results": 154,
+          "spend_usd": 61.31,
+          "unit_cost_usd": 0.39811688311688315,
+          "active": true,
+          "recommendation": "pause_candidate"
+        },
+        {
+          "position": 6,
+          "description": "면접실 입장 (썸네일 추정)",
+          "goal": "profile_visit",
+          "results": 214,
+          "spend_usd": 73.02,
+          "unit_cost_usd": 0.341214953271028,
+          "active": true,
+          "recommendation": "pause_candidate"
+        },
+        {
+          "position": 7,
+          "description": "면접실 입장 · 클릭",
+          "goal": "landing_page_visit",
+          "results": 81,
+          "spend_usd": 44.28,
+          "active": false,
+          "recommendation": "stay_paused"
+        },
+        {
+          "position": 8,
+          "description": "면접이 코앞인데",
+          "goal": "landing_page_visit",
+          "results": 58,
+          "spend_usd": 38.51,
+          "active": false,
+          "recommendation": "stay_paused"
+        },
+        {
+          "position": 9,
+          "description": "지원동기 암기",
+          "goal": "landing_page_visit",
+          "results": 175,
+          "spend_usd": 72.08,
+          "active": false,
+          "recommendation": "stay_paused"
+        },
+        {
+          "position": 10,
+          "description": "예상질문 암기",
+          "goal": "landing_page_visit",
+          "results": 70,
+          "spend_usd": 41.87,
+          "active": false,
+          "recommendation": "stay_paused"
+        }
+      ],
+      "budget_conflict": "당일 목표 20,000 KRW ≈ $14.96(참고 환율)인데 10/14 CSV 부분집계 지출 $59.81 ≈ 79,919 KRW. 기존 데이터의 전체 누적에 더하지 않음",
+      "note": "이 스냅샷 지출은 누적값이고 10/14 하루치가 아님. 광고 수정/일시중지 실무는 사용자 Meta에서 직접 결정·수행하며 Signal OS가 자동 제어하지 않음."
+    },
+    "daily_operating_recommendation": "즉시 예산 통제: 최근 활성 6개 모두 잠시 정지한 후, '하얘진다면' 동일 제목 광고 둘 중 구분된 캠페인 ID 1개를 선택하여 예산 약 $10~11/일 계획·짧은 기간 총예산/종료일 확인 후 승인받아 재개. 즉시 모두 정지가 어렵다면 생기부 2건+프로필 2건을 중단 검토하고 동명 2건 중 1개 추가 중단 검토. 동명 ID 확인 전 임의 선택 금지."
+  },
+  "last_screenshot_as_of": "2026-10-14 21:49 KST"
 };
