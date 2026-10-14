@@ -91,6 +91,60 @@
 @media(max-width:1120px){.decision-kpi-grid{grid-template-columns:1fr 1fr}.decision-desk-head{flex-direction:column}.decision-period{white-space:normal}}
 @media(max-width:740px){.decision-desk{padding:17px;margin-top:0}.decision-kpi-grid{grid-template-columns:1fr 1fr}.decision-kpi{padding:13px 10px}.decision-kpi>strong{font-size:24px}.visit-example-grid{grid-template-columns:1fr}.decision-bottomline{flex-direction:column;gap:3px}.report-meta-heading{display:block}.visit-example-columns strong{font-size:21px}}
 
+
+/* Distinct pages: one-screen insight library and post performance review */
+#overview>.hero{padding:28px 0 12px}
+#overview>.hero h1{font-size:clamp(27px,3vw,38px)}
+#overview>:not(.hero):not(#insightBoard){display:none!important}
+.insight-recap{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:12px 15px;border-radius:10px;background:#edf5f0;color:#55746a;font-size:11px}
+.insight-recap span{border-right:1px solid #c9dfd1;padding-right:14px}
+.insight-recap span:last-child{border-right:0}
+.insight-recap b{font-weight:850;color:#195841}
+.insight-section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:28px 0 13px}
+.insight-section-title h2{font-size:22px;margin:0 0 5px;letter-spacing:-.6px}
+.insight-section-title p{font-size:11px;color:#687e74;margin:0}
+.insight-section-title>span{color:#7f9289;font-size:10px}
+.insight-board-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.insight-tile{text-align:left;display:flex;flex-direction:column;align-items:stretch;min-height:214px;padding:22px;border-radius:14px;border:1px solid #dbe9df;background:white;color:#244539;transition:.18s;min-width:0}
+.insight-tile:hover,.insight-tile:focus-visible{box-shadow:0 9px 27px rgba(11,72,45,.10);transform:translateY(-2px);border-color:#98c3a6;outline-offset:3px}
+.insight-type{align-self:flex-start;font-size:10px;font-weight:850;color:#1b7658;background:#e7f5ea;padding:4px 9px;border-radius:6px}
+.insight-tile.mixed .insight-type{background:#fff1dc;color:#966824}
+.insight-tile.watch .insight-type{background:#f4eeee;color:#755e55}
+.insight-tile>strong{font-size:17px;font-weight:850;line-height:1.42;margin:15px 0 12px;letter-spacing:-.45px}
+.insight-figure{color:#155b48;font-size:clamp(20px,2.5vw,28px);font-weight:850;letter-spacing:-.6px;line-height:1.25}
+.insight-tile>small{font-size:10px;color:#688078;margin:6px 0 12px;line-height:1.7}
+.insight-open{border-top:1px solid #ebf1ec;margin-top:auto;padding-top:12px;color:#21674f;font-size:11px;font-weight:800}
+.insight-actionbar{margin-top:17px;border:1px solid #cbded1;background:#e8f5ec;padding:17px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-radius:11px}
+.insight-actionbar strong{font-size:13px;color:#1d5f49}
+.insight-actionbar p{color:#507066;font-size:11px;line-height:1.7;margin:5px 0 0}
+.insight-qualifier{font-size:10px;color:#7e8c84;margin:12px 0 20px;line-height:1.7}
+.insight-detail-head h2{font-size:22px;line-height:1.4;margin:13px 0 10px}
+.insight-detail-head p{font-size:12px;line-height:1.8;color:#506d60}
+.insight-proof-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.insight-proof-stat{border-radius:10px;background:#f0f7f1;padding:12px;min-width:0}
+.insight-proof-stat span{font-size:10px;display:block;color:#618173}
+.insight-proof-stat b{font-size:22px;display:block;color:#155641;margin:4px 0}
+.insight-proof-stat small{font-size:10px;color:#718779;line-height:1.6}
+.insight-source-list{display:grid;gap:9px;margin-top:9px}
+.insight-source-post{border-radius:9px;border:1px solid #dce8df;background:#f8fbf8;display:flex;align-items:center;gap:12px;text-align:left;color:#245544;padding:9px}
+.insight-source-post img,.insight-source-post>span:first-child{width:56px;height:62px;object-fit:cover;border-radius:5px;flex:none}
+.insight-source-post>span:nth-child(2){flex:1;min-width:0}
+.insight-source-post b{display:block;font-size:12px;line-height:1.5}
+.insight-source-post small{font-size:10px;color:#72867e;display:block;margin-top:4px}
+.insight-disclaimer{font-size:11px;line-height:1.8;border-left:3px solid #deb979;background:#fff8ea;padding:13px}
+.post-quick-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:3px 0 19px}
+.post-summary-cell{background:white;border:1px solid #dce7df;border-radius:10px;padding:15px;font-size:11px;cursor:pointer;text-align:left;color:#546e60}
+.post-summary-cell strong{font-size:25px;color:#185940;display:block;margin-top:6px}
+.post-summary-foot{grid-column:1/-1;font-size:10px;color:#7f9088;margin:0}
+.post-card .post-card-body{display:flex;flex-direction:column}
+.post-decision-highlight{font-size:14px;font-weight:850;color:#18614b;margin:10px 0 4px;line-height:1.4}
+.post-decision-sub{font-size:11px;color:#55716a;margin:0 0 11px;line-height:1.65}
+.post-decision-note{font-size:11px;color:#748780;line-height:1.65;margin:0 0 10px}
+.post-decision-foot{margin-top:auto;border-top:1px solid #e7eee8;padding-top:9px;font-size:10px;color:#73877d}
+.post-decision-open{display:block;color:#14684d;font-size:11px;font-weight:850;margin-top:11px}
+@media(max-width:850px){.insight-board-grid{grid-template-columns:1fr}.post-quick-summary{grid-template-columns:repeat(2,1fr)}.insight-section-title{display:block}.insight-actionbar{align-items:flex-start;flex-direction:column}.insight-tile{min-height:180px}}
+@media(max-width:520px){.insight-proof-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.insight-proof-stat b{font-size:17px}.insight-recap span{width:100%;border:0}.insight-board-grid{gap:10px}.post-quick-summary{gap:7px}}
+
 </style>
 </head>
 <body>
@@ -98,19 +152,19 @@
 <aside class="side">
  <div class="brand"><div class="brand-top"><span class="brand-glyph">↗</span><div><div class="brand-name">Signal OS</div><div class="brand-sub">MARKETING INTELLIGENCE</div></div></div></div>
  <div class="nav-section">WORKSPACE</div>
- <button class="nav-btn active" data-page="overview"><span class="nav-number">01</span><span class="nav-label">핵심 현황</span><span class="nav-right">↗</span></button>
- <button class="nav-btn" data-page="posts"><span class="nav-number">02</span><span class="nav-label">게시물별 보기</span><span class="nav-right">↗</span></button>
-  <button class="nav-btn" data-page="evidence"><span class="nav-number">03</span><span class="nav-label">인사이트 · 확률</span><span class="nav-right">↗</span></button>
- <button class="nav-btn" data-page="lab"><span class="nav-number">04</span><span class="nav-label">비교 · 다음 실험</span><span class="nav-right">↗</span></button>
+ <button class="nav-btn active" data-page="overview"><span class="nav-number">01</span><span class="nav-label">핵심 인사이트</span><span class="nav-right">↗</span></button>
+ <button class="nav-btn" data-page="posts"><span class="nav-number">02</span><span class="nav-label">게시물 현황</span><span class="nav-right">↗</span></button>
+  <button class="nav-btn" data-page="evidence"><span class="nav-number">04</span><span class="nav-label">분석 근거 · 확률</span><span class="nav-right">↗</span></button>
+ <button class="nav-btn" data-page="lab"><span class="nav-number">03</span><span class="nav-label">비교 · 다음 실험</span><span class="nav-right">↗</span></button>
  <button class="nav-btn" data-page="archive"><span class="nav-number">05</span><span class="nav-label">데이터 보관함</span><span class="nav-right">↗</span></button>
  <div class="side-bottom"><div class="source-indicator"><span class="dot"></span> META ADS · CSV 스냅샷</div><div class="side-date">2026. 09. 13 — 10. 13</div><div class="side-help">실시간 연동 아님<br/>마지막 자료 수신: 10.14 (시각 미기록)<br/>모든 성과 수치 USD 기준</div></div>
 </aside>
 <main class="content">
  <header class="topbar"><div class="location">INSTAGRAM <small>/ MARKETING PERFORMANCE REVIEW</small></div><div class="top-actions"><span class="top-meta">업데이트 v2.0 · 2026.10.14</span><button class="action" id="exportData">데이터 백업 ↓</button><button class="action dark" data-page="archive">원본 보기 ↗</button></div></header>
  <section id="overview" class="page active">
-  <div class="hero"><div class="eyebrow">THE DECISION DESK / OVERVIEW</div><h1>가장 효율적인 연령과 소재,<br/>실제 랜딩 반응부터 보세요.</h1><p>노출·클릭량보다 웹사이트 랜딩페이지 조회로 이어졌는지, 어떤 소재에서는 반대 결과가 나왔는지부터 확인합니다.</p><div class="subline"><span class="chip em"><span class="dot"></span> 검증된 집계 기준</span><span class="chip">분석 기간 · 09.13 — 10.13</span><span class="chip">자료 수신 · 10.14 (시각 미기록)</span></div></div>
+  <div class="hero"><div class="eyebrow">THE DECISION DESK / OVERVIEW</div><h1>핵심 발견은 한눈에,<br/>근거는 누르면 자세히.</h1><p>현재까지 확인한 광고 인사이트를 카드로 정리했습니다. 좋은 점, 상반된 신호, 관찰할 항목을 누르면 실제 게시물과 근거가 열립니다.</p><div class="subline"><span class="chip em"><span class="dot"></span> 검증된 집계 기준</span><span class="chip">분석 기간 · 09.13 — 10.13</span><span class="chip">자료 수신 · 10.14 (시각 미기록)</span></div></div>
   <div class="notice"><span class="mark">ⓘ</span><span><b>데이터 시차 안내.</b> 이 보고서는 10월 13일까지의 광고 실적입니다. 새 업로드는 9/14~10/13 연령·성별 분류이며, 겹치는 날짜는 다시 합산하지 않고 10/13 실적만 반영했습니다. 동일 제목 캠페인 2개는 10/13에 ID별 분리 불가합니다. 이전 파일을 같은 기간으로 재전송해도 합계에 두 번 더하지 않습니다.</span></div>
-  <section id="decisionDesk" class="decision-desk" aria-label="핵심 마케팅 인사이트"></section><div class="report-meta-heading"><h2>광고 집행 요약</h2><p>추가 근거 지표 · 광고비, 클릭, CTR·CPC는 아래에 간단히 정리했습니다.</p></div><div class="metrics" id="metrics"></div>
+  <section id="decisionDesk" class="decision-desk" aria-label="핵심 마케팅 인사이트"></section><div class="report-meta-heading"><h2>광고 집행 요약</h2><p>추가 근거 지표 · 광고비, 클릭, CTR·CPC는 아래에 간단히 정리했습니다.</p></div><div id="insightBoard" class="insight-board"></div><div class="metrics" id="metrics"></div>
   
    <div class="post-triage" id="postTriage"><div class="post-triage-heading">지금 광고, 그래서 어떻게 할까?<span>데이터에 근거한 현재의 판단 · 자동으로 광고 설정을 바꾸지는 않습니다</span></div><div class="triage-grid">
       <button class="triage-item positive" data-open-post="120252682521260529"><span>좋은 신호 <b>02</b></span><strong>클릭 효율 후보</strong><small>지원동기 암기 · 하얘진다면 A</small><em>근거와 한계 보기 →</em></button>
@@ -132,8 +186,8 @@
  </section>
 
   <section id="posts" class="page">
-    <div class="hero"><div class="eyebrow">CREATIVE LIBRARY · PERFORMANCE REVIEW</div><h1>게시물을 누르면,<br/>판단이 바로 보이도록.</h1><p>기존에 집행한 광고와 게시물의 실제 썸네일을 함께 보고, 무엇이 좋았고 무엇을 바꿔봐야 할지 판단합니다. 사진은 사용자께서 보내주신 인스타 그리드 캡처에서 가져왔으며, 광고 ID로 매칭되지 않은 사진에는 표시했습니다.</p><div class="subline"><span class="chip em">현재 데이터 10/13까지</span><span class="chip">타겟 설정과 실제 노출 연령을 구분</span><span class="chip">정확한 매칭이 없는 소재는 표시</span></div></div>
-    <div class="post-toolbar"><div class="filter-label">판단별 모아보기</div><div class="post-filters" id="postFilters"><button class="active" data-post-filter="all">전체</button><button data-post-filter="good">좋은 신호</button><button data-post-filter="improve">개선 검토</button><button data-post-filter="watch">지켜보기</button><button data-post-filter="unverified">비교 제한</button><button data-post-filter="organic">유기 콘텐츠</button></div><input id="postSearch" type="search" placeholder="게시물 제목 검색" aria-label="게시물 검색"/></div>
+    <div class="hero"><div class="eyebrow">CREATIVE LIBRARY · PERFORMANCE REVIEW</div><h1>게시물마다,<br/>무엇이 좋고 아쉬운지.</h1><p>썸네일과 핵심 성과를 함께 봅니다. 링크형 광고는 방문당 비용·랜딩 도달을 우선 표시하고, 프로필 방문형 광고는 따로 구분합니다.</p><div class="subline"><span class="chip em">현재 데이터 10/13까지</span><span class="chip">타겟 설정과 실제 노출 연령을 구분</span><span class="chip">정확한 매칭이 없는 소재는 표시</span></div></div>
+    <div id="postQuickSummary" class="post-quick-summary"></div><div class="post-toolbar"><div class="filter-label">판단별 모아보기</div><div class="post-filters" id="postFilters"><button class="active" data-post-filter="all">전체</button><button data-post-filter="good">좋은 신호</button><button data-post-filter="improve">개선 검토</button><button data-post-filter="watch">지켜보기</button><button data-post-filter="unverified">비교 제한</button><button data-post-filter="organic">유기 콘텐츠</button></div><select id="postSort" class="select-box" aria-label="게시물 정렬"><option value="recommended">중요도 순서</option><option value="cost">랜딩 비용 낮은 순</option><option value="clicks">클릭 많은 순</option><option value="spend">광고비 높은 순</option></select><input id="postSearch" type="search" placeholder="게시물 제목 검색" aria-label="게시물 검색"/></div>
     <div class="posts-count" id="postsCount"></div><div class="post-grid" id="postGrid"></div>
     <div class="post-legend"><strong>판정 기준</strong><p><b>좋은 신호</b>는 CPC/후속 랜딩에서 현재 평균보다 유리한 근거가 있는 광고, <b>개선 검토</b>는 비용이나 후속 행동 점검이 필요한 광고, <b>지켜보기</b>는 표본 또는 목표별 성과가 부족한 광고입니다. 광고의 승패나 미래 성과를 단정하지 않습니다.</p></div>
   </section>
@@ -189,7 +243,7 @@
     }
     function loadMain(){
       const main=document.createElement('script');
-      main.src='./app.js?v=decision-20261014';
+      main.src='./app.js?v=insights-layout-20261014';
       main.onerror=function(){showError('화면 코드를 불러오지 못했습니다. 새로고침해 주세요.');};
       document.body.appendChild(main);
     }
