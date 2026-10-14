@@ -250,6 +250,19 @@
 @media(max-width:1170px){.ops-schedule-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.ops-decision-grid,.ops-experiment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:750px){.ops-decision-grid,.ops-experiment-grid{grid-template-columns:1fr}.ops-schedule-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ops-priority-item{grid-template-columns:minmax(0,1fr) 80px 12px;padding:14px}.ops-snapshot{align-items:stretch}}
 
+
+.ops-budget{background:#fff;border-radius:14px;border:1px solid #c9e0d0;padding:21px;margin:0 0 26px}
+.ops-budget h2{font-size:24px;color:#155b43;margin:9px 0}
+.ops-budget p{font-size:11px;color:#60776a;line-height:1.9;margin:9px 0}
+.ops-budget-flex{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:17px 0}
+.ops-budget-flex>div{background:#edf6ef;padding:14px;border-radius:9px;display:grid;gap:6px}
+.ops-budget-flex>div:last-child{background:#fff5e5}
+.ops-budget-flex strong{font-size:14px;color:#175e44}
+.ops-budget-flex>div:last-child strong{color:#9e6529}
+.ops-budget-flex span{font-size:10px;color:#667f70;line-height:1.7}
+.ops-budget .ops-budget-alert{background:#fff6e9;border:1px solid #eed9b9;border-radius:8px;padding:10px 13px;color:#8c632f}
+@media(max-width:850px){.ops-budget-flex{grid-template-columns:1fr}.ops-budget{padding:15px}}
+
 </style>
 </head>
 <body>
@@ -275,7 +288,19 @@
     <p>광고 수치를 기억할 필요 없이, 매일 받은 자료를 기준으로 운영 판단·일정·실험·결과를 이어서 기록합니다. 광고 상태 변경은 직접 승인 후 실행합니다.</p>
   </div>
   <section class="ops-snapshot" id="opsSnapshot" aria-label="운영 데이터 상태"></section>
-  <section class="ops-decision-zone">
+  <section class="ops-budget" aria-label="광고 예산 관리">
+ <div class="eyebrow">TOTAL PAID ADS BUDGET · 사용자 지정</div>
+ <h2>하루 전체 광고비: 최대 ₩20,000 가이드</h2>
+ <p><b>광고별 2만 원이 아니라, 켜져 있는 모든 광고의 합계입니다.</b> 현재 USD 청구 기준 환율 참고로 약 $14.96/일에 해당합니다.</p>
+ <div class="ops-budget-flex">
+  <div><strong>광고 1개부터</strong><span>소액 운영 · 3일 관찰 → 7일 재평가</span></div>
+  <div><strong>계획 일예산 $10~11</strong><span>환율과 지출 변동을 고려해 여유 남기기</span></div>
+  <div><strong>10/14 지출 $59.81</strong><span>이미 받은 CSV의 당일 중간 집계 · 환율 참고로 약 ₩80,000</span></div>
+ </div>
+ <p class="ops-budget-alert">최근 자료에는 광고 6개가 활성으로 나옵니다. <b>현재 Meta 광고 예산·종료일을 먼저 확인하세요.</b> Signal OS는 실제 광고를 끄거나 일일 지출을 자동 제한하지 않습니다.</p>
+ <a class="action dark" href="https://adsmanager.facebook.com/" rel="noopener noreferrer" target="_blank">Meta 광고 관리자에서 예산 확인 ↗</a>
+</section>
+<section class="ops-decision-zone">
     <div class="ops-section-heading"><div><span class="eyebrow">01 / DECISIONS</span><h2>오늘의 운영 판단</h2><p>멈춤/재개/유지/관찰을 권고하되, 데이터가 부족하면 무리하게 판단하지 않습니다.</p></div></div>
     <div id="opsDecisionCards" class="ops-decision-grid"></div>
   </section>
