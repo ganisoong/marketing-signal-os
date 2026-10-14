@@ -1,0 +1,12 @@
+window.SIGNAL_OS_THUMBS={
+"1-2":"./assets/thumbs/1-2.webp",
+"1-3":"./assets/thumbs/1-3.webp",
+"1-4":"./assets/thumbs/1-4.webp",
+"1-5":"./assets/thumbs/1-5.webp",
+"1-6":"./assets/thumbs/1-6.webp",
+"2-1":"./assets/thumbs/2-1.webp",
+"2-2":"./assets/thumbs/2-2.webp",
+"2-3":"./assets/thumbs/2-2.webp",
+"2-4":"./assets/thumbs/2-4.webp",
+"2-5":"./assets/thumbs/2-5.webp"
+};
