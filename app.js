@@ -14,14 +14,74 @@ document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',(
 function renderMetrics(){const m=[['광고비',money(DB.summary.spend,2),'SPEND',`${DB.range[0].slice(5).replace('-','/')}–${DB.range[1].slice(5).replace('-','/')} 집계 · 겹치는 기간 제거`],['링크 클릭',number(DB.summary.clicks),'LINK CLICKS','웹사이트 링크 클릭 집계'],['링크 CTR',pct(DB.summary.ctr,2),'ENGAGEMENT','노출 대비 링크 클릭 비율'],['링크 CPC',money(DB.summary.cpc,3),'COST','링크 클릭 1회당 평균 비용']];
  el('metrics').innerHTML=m.map(x=>`<div class="metric"><div class="metric-top"><span>${esc(x[0])}</span><span class="metric-kicker">${x[2]}</span></div><div class="metric-value">${esc(x[1])}</div><div class="metric-foot">${esc(x[3])}</div></div>`).join('');el('miniCpm').textContent=money(DB.summary.cpm,2);el('miniLpv').textContent=number(DB.summary.lpv)+'회 · 해당 목표에서 제공된 지표';}
 const PROBCARDS=[
- {type:'소재 간 CTR',head:'“하얘진다면” B의 클릭률이 A보다 높을 가능성',key:'B_ctr_gt_A',support:'10/12까지 기준 · B 2.09% (124/5,935) · A 1.71% (142/8,322)',detail:'클릭 유도 반응에서는 B가 높을 가능성이 있으나, CPC는 A $0.206 / B $0.208로 거의 동일합니다.'},
- {type:'클릭 → 랜딩',head:'같은 주제 A가 B보다 랜딩 도달 비율이 높을 가능성',key:'A_lpv_rate_gt_B',support:'10/12까지 기준 · A 60.6% (86/142) · B 53.2% (66/124)',detail:'후속 랜딩까지 본다면 A가 유리할 수 있습니다. 단, 표본과 트래킹 방식 한계를 확인해야 합니다.'},
- {type:'연령별 CTR',head:'25~34세의 클릭률이 18~24세보다 높을 가능성',key:'age_25_34_ctr_gt_18_24',support:'25~34세 1.62% (527/32,473) · 18~24세 1.12% (461/41,115)',detail:'관찰된 노출 효율 비교입니다. 대상 연령 설정 차이나 최종 전환의 우수성을 뜻하지 않습니다.'},
- {type:'일별 CTR · 관찰',head:'10/13 링크 CTR이 10/12보다 높을 모형상 가능성',key:'Oct13_ctr_gt_Oct12',support:'10/13 1.56% (285/18,237) · 10/12 1.36% (237/17,450)',detail:'두 날짜는 광고별 집행 비중이 달라진 서로 다른 노출 집단입니다. 원인을 확정하거나 재현 확률로 해석하면 안 됩니다.'},
- {type:'성별 CTR',head:'여성 노출 그룹의 클릭률이 남성보다 높을 가능성',key:'female_ctr_gt_male',support:'여성 1.69% (854/50,542) · 남성 1.20% (560/46,529)',detail:'노출 성별에 따른 반응 차이입니다. 같은 조건의 무작위 성별 실험이 아니므로 인과관계는 알 수 없습니다.'}
+ {type:'소재별 클릭률',key:'B_ctr_gt_A',head:'같은 주제 광고 B가 A보다 더 잘 클릭된 것으로 보일까?',subject:'「면접장에서 머릿속이 하얘진다면?」 광고 2개 · 10월 12일까지 개별 캠페인 비교',verdict:'클릭률은 B 우위. 하지만 최종 광고 승자는 미정.',summary:'B의 링크 CTR은 2.09%, A는 1.71%입니다. 반면 클릭당 비용은 A $0.206 / B $0.208로 거의 같고, A의 랜딩 조회 비용이 더 낮습니다.',evidence:[{title:'광고 A · 캠페인 끝 718860',detail:'노출 8,322 · 클릭 142 · CTR 1.71% · CPC $0.206',id:'120252750718860529'},{title:'광고 B · 캠페인 끝 732410',detail:'노출 5,935 · 클릭 124 · CTR 2.09% · CPC $0.208',id:'120252750732410529'}],caution:'10/13 광고 실적은 동일 제목의 두 광고를 구분하지 못했습니다. 위 비교는 10/12까지만 적용됩니다. 타겟·배치·시기 차이가 있을 수 있습니다.',action:'다음 실험: 타겟·게재 위치를 통제하고 썸네일 또는 첫 문구만 바꿔 CTR과 랜딩 조회 비용을 함께 비교하세요.',source:'Meta 캠페인별 10/12 누적 CSV · 캠페인 ID 718860 / 732410'},
+ {type:'클릭 후 랜딩 도달',key:'A_lpv_rate_gt_B',head:'같은 주제 광고 A는 클릭 이후 랜딩페이지까지 더 잘 도달했을까?',subject:'「면접장에서 머릿속이 하얘진다면?」 광고 2개 · 10월 12일까지',verdict:'A의 랜딩 도달 비율은 더 높을 가능성. 추가 표본 필요.',summary:'링크를 클릭한 사람 중 랜딩페이지 조회로 이어진 비율은 A 60.6%, B 53.2%입니다. 다만 랜딩 지표는 페이지 속도나 추적 설정에도 영향을 받습니다.',evidence:[{title:'광고 A · 캠페인 끝 718860',detail:'클릭 142 → 랜딩 조회 86 · 전환 비율 60.6% · 랜딩당 $0.340',id:'120252750718860529'},{title:'광고 B · 캠페인 끝 732410',detail:'클릭 124 → 랜딩 조회 66 · 전환 비율 53.2% · 랜딩당 $0.390',id:'120252750732410529'}],caution:'랜딩 도달 비율은 실제 구매·팔로우 전환율이 아닙니다. 클릭과 랜딩 추적은 독립 시행이 아닐 수 있습니다.',action:'다음 실험: 두 광고의 실제 연결 URL·랜딩 속도·CTA·추적 조건을 확인하세요.',source:'Meta Ads 링크 클릭·Landing Page Views · 10/12까지'},
+ {type:'전체 광고의 연령별 반응',key:'age_25_34_ctr_gt_18_24',head:'25~34세에서 클릭률이 더 높았다는 말은 어느 게시물의 결과일까?',subject:'특정 게시물 하나가 아니라 여러 캠페인의 연령별 노출·클릭을 합산한 비교',verdict:'관측된 CTR은 25~34세가 높음. 최적 타겟이라는 뜻은 아님.',summary:'25~34세: 32,473회 노출에 527클릭(1.62%). 18~24세: 41,115회 노출에 461클릭(1.12%). 아래를 누르면 실제 기여 게시물별 클릭 수가 펼쳐집니다.',cohorts:[{label:'25~34세',type:'age',value:'25-34'},{label:'18~24세',type:'age',value:'18-24'}],caution:'캠페인별 예산·소재·설정이 섞여 있어 연령 때문이라고 확정할 수 없습니다. 같은 제목의 광고 2개는 분류 CSV에 캠페인 ID가 없어 합산되어 있습니다.',action:'다음 실험: 실제 문의·상담 전환을 확보한 뒤, 동일한 소재·예산 조건에서 연령별 반응을 비교하세요.',source:'Meta Age × Gender Breakdown CSV · 9/13~10/13 · 캠페인 여러 개 합산'},
+ {type:'날짜별 CTR 변화',key:'Oct13_ctr_gt_Oct12',head:'10월 13일 클릭률이 12일보다 높았던 이유는?',subject:'같은 게시물 A/B가 아닌 서로 다른 날짜의 광고 전체 비교',verdict:'CTR은 상승했지만 어떤 소재가 원인인지는 확정 불가.',summary:'10/12: 17,450회 노출에 237클릭(1.36%). 10/13: 18,237회 노출에 285클릭(1.56%). 두 날은 집행 중인 광고 구성이 다릅니다.',dates:['2026-10-12','2026-10-13'],caution:'다른 날짜에는 다른 광고가 집행됐을 수 있습니다. 클릭당 비용은 $0.282 → $0.281로 거의 변하지 않았습니다.',action:'다음 실험: 일별 캠페인별 지출 비중과 신규 소재 효과를 분리해 확인하세요.',source:'Meta 날짜별 캠페인 · 10/12와 10/13'},
+ {type:'전체 광고의 성별 반응',key:'female_ctr_gt_male',head:'여성이 남성보다 더 클릭했다는 근거가 되는 게시물은?',subject:'특정 게시물 하나가 아니라 여러 광고에서 실제 노출된 성별 그룹 비교',verdict:'여성 노출 그룹에서 CTR이 높음. 여성만 타겟하라는 뜻은 아님.',summary:'여성: 50,542회 노출에 854클릭(1.69%). 남성: 46,529회 노출에 560클릭(1.20%). 어떤 게시물이 클릭을 만들었는지는 아래에 표시합니다.',cohorts:[{label:'여성',type:'gender',value:'female'},{label:'남성',type:'gender',value:'male'}],caution:'광고가 남녀에게 동등한 조건으로 무작위 노출된 실험이 아닙니다. 유료 전환·매출 자료도 없습니다.',action:'다음 실험: 성별 최종 전환 자료를 확보하고 같은 소재·게재 위치로 비교하세요.',source:'Meta Age × Gender Breakdown CSV · 9/13~10/13'}
 ];
-function probabilityCard(c,compact=false){const p=DB.prob[c.key];return `<article class="prob-card"><div class="prob-top"><span class="prob-type">${esc(c.type)}</span><span class="badge">모형 추정</span></div><h3>${esc(c.head)}</h3><div class="prob-number"><strong>${probFmt(p)}</strong><span>사후 우위 확률</span></div><div class="bar-track"><div class="bar-fill" style="width:${Math.min(100,p*100)}%"></div></div><div class="prob-data">${esc(c.support)}</div>${compact?'':`<div class="prob-desc">${esc(c.detail)}</div>`}</article>`;}
-function renderProb(){el('probCards').innerHTML=PROBCARDS.map(x=>probabilityCard(x)).join('');el('overviewProb').innerHTML=PROBCARDS.slice(0,2).map(x=>probabilityCard(x,true)).join('');}
+function evidencePostButton(id,label){
+ return '<button type="button" class="evidence-post-link" data-evidence-post="'+esc(id)+'">'+esc(label||'이 광고 상세 보기')+' ↗</button>';
+}
+function evidenceSourceLink(c){
+ const parts=(c.evidence||[]).map(v=>'<li><div><strong>'+esc(v.title)+'</strong><p>'+esc(v.detail)+'</p></div>'+evidencePostButton(v.id,'성과·설정·썸네일 보기')+'</li>');
+ return '<ul class="prob-evidence-list">'+parts.join('')+'</ul>';
+}
+function contributorNames(names){
+ const norm=v=>String(v||'').replace(/\s+/g,' ').trim();
+ const matches=DB.campaigns.filter(x=>norm(x.name)===norm(names));
+ return matches.length===1?matches[0].id:null;
+}
+function contributorRows(type,value){
+ const map=new Map();
+ for(const a of DB.ageRaw||[]){
+  if(a[type]!==value)continue;
+  const k=String(a.name||'');
+  let cur=map.get(k);
+  if(!cur){cur={name:k,clicks:0,impressions:0};map.set(k,cur);}
+  cur.clicks+=Number(a.clicks||0);cur.impressions+=Number(a.impressions||0);
+ }
+ return [...map.values()].sort((a,b)=>b.clicks-a.clicks);
+}
+function cohortEvidence(c){
+ return '<div class="prob-cohort-grid">'+c.cohorts.map(g=>{
+  const rows=contributorRows(g.type,g.value),totalClicks=rows.reduce((sum,r)=>sum+r.clicks,0),totalImps=rows.reduce((sum,r)=>sum+r.impressions,0);
+  const top=rows.slice(0,5).map((r,i)=>{
+   const id=contributorNames(r.name),title=r.name.replace(/^Instagram 게시물:\s*/,'').replace(/\s+/g,' ').trim();
+   return '<li><div><strong>'+esc(title)+'</strong><p>클릭 '+number(r.clicks)+' · 노출 '+number(r.impressions)+' · CTR '+pct(r.impressions?r.clicks/r.impressions:null,2)+(id?'':' · 동일 제목 광고 합산 또는 ID 확인 필요')+'</p></div>'+(id?evidencePostButton(id,'게시물 보기'):'')+'</li>';
+  }).join('');
+  return '<section class="cohort-block"><h4>'+esc(g.label)+' · '+number(totalClicks)+'클릭 / '+number(totalImps)+'노출</h4><ol class="prob-evidence-list">'+top+'</ol><p class="prob-disclaimer">많이 클릭된 순서이며, 해당 연령에서 어떤 썸네일이 더 잘 작동하는지 검증한 순위는 아닙니다.</p></section>';
+ }).join('')+'</div>';
+}
+function dailyEvidence(c){
+ return '<div class="prob-cohort-grid">'+c.dates.map(date=>{
+  const map=new Map();
+  for(const r of DB.ageRaw||[]){if(r.date!==date)continue;const k=r.name;const q=map.get(k)||{name:k,clicks:0,impressions:0};q.clicks+=r.clicks||0;q.impressions+=r.impressions||0;map.set(k,q);}
+  const top=[...map.values()].sort((a,b)=>b.clicks-a.clicks).slice(0,4);
+  return '<section class="cohort-block"><h4>'+esc(date)+' · 클릭 기여 게시물</h4><ol class="prob-evidence-list">'+top.map(r=>'<li><div><strong>'+esc(r.name.replace(/^Instagram 게시물:\s*/,'').replace(/\s+/g,' '))+'</strong><p>'+number(r.clicks)+'클릭 / '+number(r.impressions)+'노출</p></div></li>').join('')+'</ol></section>';
+ }).join('')+'</div>';
+}
+function probabilityCard(c,compact=false){
+ const p=DB.prob[c.key];
+ const summary='<p class="prob-explain">'+esc(c.summary)+'</p>';
+ const source='<p class="prob-source">자료: '+esc(c.source)+'</p>';
+ const deeper=c.evidence?evidenceSourceLink(c):c.cohorts?cohortEvidence(c):c.dates?dailyEvidence(c):'';
+ return '<article class="prob-card proof-card"><div class="prob-top"><span class="prob-type">'+esc(c.type)+'</span><span class="badge">모형 기반 · 미래 성공률 아님</span></div>'+
+  '<h3>'+esc(c.head)+'</h3><p class="proof-scope">'+esc(c.subject)+'</p>'+
+  '<div class="prob-verdict"><span>현재 판단</span><strong>'+esc(c.verdict)+'</strong></div>'+summary+
+  '<div class="proof-probability"><span>관측 자료에 단순 확률 모형을 적용한 결과</span><strong>'+probFmt(p)+'</strong><small>상대 지표의 우위 확률 · 광고 승률 아님</small></div>'+
+  '<div class="bar-track"><div class="bar-fill" style="width:'+Math.min(100,p*100)+'%"></div></div>'+
+  '<details class="prob-proof" '+(!compact?'open':'')+'><summary>어떤 광고·수치가 근거인지 보기 <span aria-hidden="true">⌄</span></summary><div class="proof-inner">'+deeper+source+'</div></details>'+
+  (!compact?'<div class="proof-action"><b>그래서 다음엔?</b><p>'+esc(c.action)+'</p></div><p class="prob-disclaimer">주의: '+esc(c.caution)+'</p>':'')+
+  '</article>';
+}
+function renderProb(){
+ el('probCards').innerHTML=PROBCARDS.map(x=>probabilityCard(x)).join('');
+ el('overviewProb').innerHTML=PROBCARDS.slice(0,2).map(x=>probabilityCard(x,true)).join('');
+ for(const b of document.querySelectorAll('[data-evidence-post]')){
+   b.addEventListener('click',()=>{navigate('posts');openPost(b.dataset.evidencePost);});
+ }
+}
 function niceMax(max){let step=Math.pow(10,Math.floor(Math.log10(max||1)));let n=Math.ceil(max/step);if(n<=2)return 2*step;if(n<=5)return 5*step;return 10*step;}
 function renderTrend(){const items=DB.days.filter(x=>x.spend>0), labels=items.map(x=>x.date.slice(5).replace('-','/')), field=trend;
  const formatY=x=>field==='ctr'?pct(x,1):field==='cpc'?money(x,2):money(x,0);
