@@ -480,9 +480,9 @@ function renderOperations(){
  (stale?'<p style="font-weight:850;color:#a3662c">마지막 판단일 이후 데이터가 갱신되지 않았습니다. 지금 상태를 확인하려면 최신 파일을 보내주세요.</p>':'')+
  '</div><div class="ops-fresh">'+(stale?'추가 업로드 필요':'오늘 운영 초안')+'</div>';
  const decisionCards=[
-  {label:'예산 통제 · 일시중지 검토',value:'5개 후보',desc:'현재 켜진 광고 6개 중 생기부 2개 + 프로필 2개 + 동명 광고 중 1개. 모두 실제 중단되었다는 뜻은 아닙니다.',tone:'amber',id:'P0'},
-  {label:'집중 운영 후보',value:'1개만 선택',desc:'하얘진다면 두 광고 중 1개를 캠페인 ID로 구분한 다음 3일 소액 시험. 둘의 누적 방문 비용은 비슷합니다.',tone:'green',id:'P1'},
-  {label:'최신 화면 · 누적 지출',value:'$458.87',desc:'사용자 캡처 누적 10개 광고 합계. 10/14 당일 CSV 지출 $59.81과 혼동하지 마세요.',tone:'blue',id:'P0'}
+  {label:'사용자 선택 · 유지할 광고',value:'생기부 릴스 2개',desc:'3년 쌓아온 생기부 / 생기부 면접 준비. 두 개만 더 관찰하기로 결정했습니다. 실제 Meta 상태 확인 필요.',tone:'green',id:'P2'},
+  {label:'예산 통제 · 잠시 쉴 광고',value:'기존 활성 4개',desc:'하얘진다면 광고 2개 + 프로필 방문 목적 광고 2개를 일시중지할 계획. 실제 일시중지 완료 여부는 미확인.',tone:'amber',id:'P0'},
+  {label:'10/16 · 다시 판단',value:'방문 효율 비교',desc:'생기부 두 릴스의 3일간 지출·링크 클릭·랜딩 조회를 비교한 뒤 지속·교체 여부 결정.',tone:'blue',id:'P2'}
  ];
  el('opsDecisionCards').innerHTML=decisionCards.map(v=>'<button type="button" class="ops-decision-card '+v.tone+'" data-ops-detail="priority" data-ops-id="'+v.id+'"><small>'+esc(v.label)+'</small><strong>'+esc(v.value)+'</strong><p>'+esc(v.desc)+'</p><span style="margin-top:auto;font-size:10px;font-weight:800;color:#267454">판단 근거 보기 ↗</span></button>').join('');
  el('opsPriorities').innerHTML=os.priorities.map(it=>'<button type="button" class="ops-priority-item" data-ops-detail="priority" data-ops-id="'+esc(it.id)+'"><div><span class="ops-priority-tag">'+esc(it.level)+' · '+esc(it.type)+'</span><span style="font-size:10px;color:#7b8e82">'+esc(it.status)+'</span><strong>'+esc(it.title)+'</strong><p>'+esc(it.why)+'</p></div><time>'+esc(it.due.slice(5).replace('-','/'))+'<br>확인</time><span class="ops-priority-arrow">↗</span></button>').join('');
