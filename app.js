@@ -370,37 +370,61 @@ if(el('postSort'))el('postSort').addEventListener('change',e=>{postSort=e.target
 
 // Keep provider-reported recommendation separate from assistant evaluation.
 function renderMetaRecommendations(){
- const list=window.SIGNAL_OS_RECOMMENDATIONS||[];
+ const all=window.SIGNAL_OS_RECOMMENDATIONS||[],status=window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS||{};
+ const items=all.filter(r=>!r.archived),history=all.filter(r=>r.archived);
  const cards=el('recommendationCards'),summary=el('recommendationSummary');
  if(!cards||!summary)return;
- summary.innerHTML='<strong>'+number(list.length)+'건</strong><span>캡처로 상세 내용이 확인된 Meta 추천만 등록 · 방금 본 5개 추천의 전체 항목은 아직 미수집</span>';
- cards.innerHTML=list.map(r=>{
-  const meta=r.meta||{},review=r.review||{};
-  const numberLine=meta.currentCost!=null&&meta.estimatedCost!=null?'<div class="rec-preview"><span>현재 <b>'+money(meta.currentCost,2)+'</b></span><span>Meta 예상 <b>'+money(meta.estimatedCost,2)+'</b></span><span>'+esc(meta.score||'')+'</span></div>':'<div class="rec-preview"><span>Meta 추천 점수: '+esc(meta.score||'미제공')+'</span></div>';
+ const priorities={
+  'meta-20261014-website':['1 · 기반 구축','전환 추적 먼저'],
+  'meta-20261014-reels-916':['2 · 테스트 후보','소재 확인 후'],
+  'meta-20261014-creative':['3 · 미리보기','메시지 훼손 확인'],
+  'meta-20261014-adv-placements':['4 · 실험 가능','목표별 테스트'],
+  'meta-20261014-fragmentation-six':['5 · 잠정 보류','세트 병합 주의']
+ };
+ const order=Object.keys(priorities);
+ const sorted=items.slice().sort((a,b)=>order.indexOf(a.id)-order.indexOf(b.id));
+ summary.innerHTML='<div><strong>'+number(items.length)+'건</strong><span>Meta가 현재 표시한 추천 묶음 · 대상 캠페인/광고 ID는 아직 미매칭</span></div>'+
+ '<div><strong>'+number(status.opportunity_score)+'점</strong><span>Opportunity Score (100점 만점) · 적용 시 최대 +'+number(status.potential_points)+'점 안내</span></div>'+
+ '<p class="rec-summary-note">Meta의 예상 개선율과 점수는 확정 성과가 아닙니다. 항목별 절감률을 합산하거나 점수 상승을 실제 매출 증가로 해석하지 않습니다.</p>';
+ function card(r){
+  const meta=r.meta||{},review=r.review||{},pri=priorities[r.id]||['이전 기록','효력 재확인 필요'];
+  const estimate=meta.percentEstimate!=null?'<strong>'+number(meta.percentEstimate,1)+'% 개선 가능성</strong><span>Meta 예상 · '+esc(meta.unit||'결과당 비용')+'</span>':'<span>예상 효율 수치 미제공</span>';
+  const numbers=meta.currentCost!=null&&meta.estimatedCost!=null?
+    '<div class="rec-preview"><span>현재 <b>'+money(meta.currentCost,2)+'</b></span><span>Meta 예상 <b>'+money(meta.estimatedCost,2)+'</b></span></div>':'';
   const details=[
-   ['Meta의 원문',meta.headline],
-   ['Meta의 제안',meta.recommendation],
-   ['Meta의 예측/설명',meta.detail],
-   ['어느 광고인가?',r.target],
-   ['확인한 자료',r.evidence?.source],
-   ['제가 우려하는 점',review.risk],
-   ['확인할 다음 행동',review.next]
+   ['Meta 원문',meta.headline],
+   ['Meta 제안',meta.recommendation],
+   ['Meta 근거/부가 설명',meta.detail],
+   ['대상 범위',r.scope],
+   ['개별 광고/세트',r.target],
+   ['제가 우려하는 부분',review.risk],
+   ['다음 행동',review.next],
+   ['보내주신 자료',r.evidence?.source]
   ];
-  return '<article class="rec-card"><div class="rec-card-head"><span class="rec-card-type">Meta 제안 · '+esc(r.category||'')+'</span><span class="rec-card-status">'+esc(r.status||'')+'</span></div>'+
-  '<h3>'+esc(r.title)+'</h3><p>추천 시점: '+esc(r.received)+' · '+esc(r.scope)+'</p>'+numberLine+
-  '<div class="rec-card-decision"><strong>Signal OS 판단: '+esc(review.verdict||'검토 필요')+'</strong><p>'+esc(review.why||'')+'</p></div>'+
-  '<details><summary>Meta 원문 · 근거 · 적용 전 체크사항 자세히 보기</summary><dl>'+
-  details.map(([label,val])=>'<dt>'+esc(label)+'</dt><dd>'+esc(val||'정보 없음')+'</dd>').join('')+
-  '</dl></details></article>';
- }).join('')||'<p class="empty">아직 확인된 추천이 없습니다.</p>';
+  return '<article class="rec-card"><div class="rec-card-head"><span class="rec-card-type">'+esc(pri[0])+' · '+esc(r.category||'')+'</span><span class="rec-card-status">'+esc(r.status||'')+'</span></div>'+
+  '<h3>'+esc(r.title)+'</h3><p>'+esc(r.scope)+'</p>'+
+  '<div class="rec-expected">'+estimate+'<small>'+esc(meta.score||'')+'</small></div>'+numbers+
+  '<div class="rec-card-decision"><strong>Signal OS 검토: '+esc(pri[1])+'</strong><p>'+esc(review.verdict||'검토 필요')+' — '+esc(review.why||'')+'</p></div>'+
+  '<details><summary>Meta 원문 · 광고 대상 · 검토 근거 펼치기</summary><dl>'+
+  details.map(([key,val])=>'<dt>'+esc(key)+'</dt><dd>'+esc(val||'미확인')+'</dd>').join('')+'</dl></details></article>';
+ }
+ cards.innerHTML=sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>';
+ if(history.length){
+  const archive=document.createElement('details');
+  archive.className='rec-history';
+  archive.innerHTML='<summary>이전 팝업 추천 '+number(history.length)+'건 (현재 유효 여부 미확인)</summary>'+
+  '<div class="rec-grid">'+history.map(card).join('')+'</div>';
+  cards.appendChild(archive);
+ }
  const holder=el('insightBoard');
  if(holder&&!holder.querySelector('[data-open-recommendations]')){
   const section=document.createElement('div');
   section.className='rec-summary rec-home-strip';
-  section.innerHTML='<div><strong>Meta 추천 '+number(list.length)+'건 기록</strong><span style="display:block">자동 적용하지 않고 예상 효과와 검증 필요성을 따로 관리합니다.</span></div><button type="button" class="action" data-open-recommendations>Meta 추천 검토 ↗</button>';
+  section.innerHTML='<div><strong>Meta 추천 '+number(items.length)+'건 · Opportunity Score '+number(status.opportunity_score)+'점</strong>'+
+  '<span style="display:block">추천 점수보다 현재 성과·실험 목적이 우선. 자동 적용하지 않고 검토합니다.</span></div>'+
+  '<button type="button" class="action" data-open-recommendations>Meta 추천 검토 ↗</button>';
   holder.appendChild(section);
   section.querySelector('button').addEventListener('click',()=>navigate('recommendations'));
  }
 }
-
 featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();
