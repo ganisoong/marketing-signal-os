@@ -261,7 +261,7 @@ function renderInsightBoard(){
  '<div class="insight-section-title"><div><h2>현재까지 검증할 가치가 있는 인사이트</h2><p>결론 먼저. 자세한 광고 근거와 설정은 블록을 누르세요.</p></div><span>광고 효과를 자동으로 조정하지 않습니다</span></div>'+
  '<div class="insight-board-grid">'+items.map(x=>'<button type="button" class="insight-tile '+x.tone+'" data-open-insight="'+x.id+'"><span class="insight-type">'+esc(x.label)+'</span><strong>'+esc(x.title)+'</strong><span class="insight-figure">'+esc(x.value)+'</span><small>'+esc(x.short)+'</small><span class="insight-open">근거 게시물 · 광고 설정 · 다음 행동 보기 ↗</span></button>').join('')+'</div>'+
  '<div class="insight-actionbar"><div><strong>다음에 검증할 것</strong><p>설정된 타겟 확인 → 주제별 연령 실험 → 랜딩 이후 문의·팔로우 측정</p></div><button type="button" class="action dark" data-go-posts>게시물별 현황 →</button></div>'+
- '<p class="insight-qualifier">실제 노출 연령과 설정한 타겟 연령은 다릅니다. 링크 클릭·랜딩 조회로 상담이나 매출 성과를 단정하지 않습니다.</p>';
+ '<p class="insight-qualifier">연령·성별 분석은 10/13까지, 일별 캠페인 성과는 10/14까지입니다. 실제 노출 연령과 설정 타겟 연령은 다르며, 랜딩 조회로 상담·매출을 단정하지 않습니다.</p>';
  holder.querySelectorAll('[data-open-insight]').forEach(b=>b.addEventListener('click',()=>showInsight(b.dataset.openInsight)));
  holder.querySelector('[data-go-posts]').addEventListener('click',()=>navigate('posts'));
 }
@@ -284,7 +284,7 @@ function cardHTML(id){
  const d=get(id),m=POST_META[id]||{},tag=statusFor(id),name=m.label||d?.label||id;
  const cost=d?.lpv&&d?.type==='actions:link_click'?d.spend/d.lpv:null;
  let main='관찰 데이터 대기',secondary='광고 성과 미수집';
- if(d?.id==='UNASSIGNED_20261013'){main='10/13 동일 제목 2개 합산';secondary=number(d.clicks)+'클릭 · ID별 분리 불가';}
+ if(d?.id?.startsWith('UNASSIGNED_')){main=(d.start?.slice(5).replace('-','/')||'날짜 미확인')+' 동일 제목 2개 합산';secondary=number(d.clicks)+'클릭 · ID별 분리 불가';}
  else if(d?.type==='actions:link_click'){
  main=cost==null?'랜딩 성과 확인 필요':'랜딩 방문당 '+money(cost,3);
  secondary=number(d.lpv)+'회 랜딩 / '+number(d.clicks)+'클릭 · 도달 비율 '+pct(d.clicks?d.lpv/d.clicks:null,1);
@@ -342,7 +342,7 @@ function ageTable(d){if(!d)return '<p class="drawer-caption">확인 가능한 �
  const top=d.rows.slice(0,6);const max=d.total||1;return `<div>${top.map(r=>`<div class="age-row"><b>${esc(r.age)}세</b><div class="age-progress"><i style="width:${(r.impressions/max*100).toFixed(1)}%"></i></div><div class="age-value">${pct(r.impressions/max,1)}</div></div>`).join('')}</div><p class="drawer-caption">${d.ambiguous?'⚠ 같은 캠페인명 2개가 합쳐진 연령 분포입니다. A/B 각각의 설정이나 노출 분포로 해석하지 마세요.':'해당 이름 캠페인의 연령별 실제 노출 분포입니다.'} 타겟으로 설정한 연령과 다르며, 실제 구매·문의 효율을 뜻하지 않습니다.</p>`}
 function row(label,value){return `<dt>${esc(label)}</dt><dd>${esc(value)}</dd>`}
 function openPost(id){const m=POST_META[id]||{},d=get(id),organic=!d,status=statusFor(id),age=demographicFor(d),set=adsetFor(d),ad=rankFor(d);
- let image=thumbFor(id),name=m.label||d?.label||'게시물',interpret=m.oneLine||'추가 자료 확인 필요';const period=d?.id==='UNASSIGNED_20261013'?'10/13 합산·ID 분리 불가':d?.id?.startsWith('120252750')?'10/12까지 개별 ID 실적(10/13 합산 제외)':`수집 기간 내 집계 (최대 ${DB.data_end})`;
+ let image=thumbFor(id),name=m.label||d?.label||'게시물',interpret=m.oneLine||'추가 자료 확인 필요';const period=String(d?.id||'').startsWith('UNASSIGNED_')?(d.start+' 동명 광고 2개 합산·ID 분리 불가'):d?.id?.startsWith('120252750')?'10/12까지 개별 ID 실적(10/13 합산 제외)':`수집 기간 내 집계 (최대 ${DB.data_end})`;
  const goals=!d?'유기 콘텐츠':d.type==='actions:link_click'?'링크 클릭':d.type==='profile_visit_view'?'프로필 방문':'결과 유형 재확인';
  const stats=d?[
  ['광고비',money(d.spend)],['링크 클릭',number(d.clicks)],['클릭당 비용',money(d.cpc,3)],['클릭률',pct(d.ctr,2)],['노출',number(d.impressions)],['랜딩 조회',d.type==='profile_visit_view'?'목표 외 미제공':number(d.lpv)]
@@ -351,11 +351,11 @@ function openPost(id){const m=POST_META[id]||{},d=get(id),organic=!d,status=stat
  const source=m.imageConfidence==='candidate'?'이 이미지는 사용자 그리드에서 같은 주제로 보이는 참고 이미지입니다. 해당 캠페인의 정확한 광고 이미지라고 확인된 것은 아닙니다.':m.imageConfidence==='subject'?'이미지의 주제는 일치하지만 광고 ID별 매칭은 아직 확인되지 않았습니다.':m.imageConfidence==='missing'?'해당 광고의 썸네일은 제공된 그리드에서 정확히 찾지 못해 표시하지 않았습니다.':'';
  const settingRows=organic? [row('유형','유기 콘텐츠 · 광고 아님'),row('예산','0달러 (광고 미집행 가정이 아닌 현재 운영 제안)'),row('광고 성과','아직 미수집')]:[
  row('캠페인 ID',d.id.startsWith('UNASSIGNED')?'10/13 두 캠페인 합산':d.id),
- row('세트 시작일',set?.starts||d.start||'확인 필요'),row('예산 위치',set?.budget||'과거 파일 미확인'),row('일예산','$13 (과거 업로드 파일 기준, 추후 변경 여부 미확인)'),
+ row('세트 시작일',set?.starts||d.start||'확인 필요'),row('10/14 CSV 게재 상태',d.delivery==='active'?'집행 중 (이름 기준 임시 매칭)':d.delivery==='inactive'?'비활성 (이름 기준 임시 매칭)':'개별 상태 확인 필요'),row('예산 위치',set?.budget||'과거 파일 미확인'),row('일예산','$13 (과거 업로드 파일 기준, 추후 변경 여부 미확인)'),
  row('보고 기여 설정','7일 클릭 / 1일 조회 (기존 파일 기준)'),row('목표 기준',goals),
  row('설정한 타겟 연령','확인되지 않음'),row('설정한 지역 / 상세 관심사','확인되지 않음'),row('게재 위치 / 최적화','확인되지 않음'),row('광고 품질 평가',adnote)
  ];
- el('postDetail').innerHTML=`<div class="post-detail-head">${image?`<img src="${image}" alt="${esc(name)} 그리드 이미지"/>`:'<div class="drawer-image-fallback">광고와 연결된 이미지<br>확인 필요</div>'}<div><span class="verdict-tag ${status}">${POST_TAGS[status]}</span><h2>${esc(name)}</h2><div class="post-subline">${esc(period)}<br>${d?.id==='UNASSIGNED_20261013'?'10/13 동일 제목 캠페인 두 개의 합산':`기준 목표: ${esc(goals)}`}</div></div></div><div class="drawer-verdict ${status}"><span class="eyebrow">그래서, 현재의 판단은?</span><strong>${POST_TAGS[status]}</strong><p>${esc(interpret)}</p></div><h3 class="drawer-section">실제 성과</h3><div class="post-stat-grid">${stats.map(([k,v])=>`<div class="post-stat"><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join('')}</div><h3 class="drawer-section">광고 설정 · 확인된 것만</h3><dl class="drawer-info">${settingRows.join('')}</dl><h3 class="drawer-section">광고가 실제로 노출된 연령</h3>${organic?'<p class="drawer-caption">일반 릴스 인사이트가 들어오면 연령별 노출 데이터를 추가할 수 있습니다.</p>':ageTable(age)}<h3 class="drawer-section">다음에 해볼 실험</h3><div class="drawer-next">${esc(m.experiment||'동일 조건의 광고 설정과 성과 확인 후 추가 실험 설계')}</div>${source?`<div class="drawer-data-limit">${esc(source)}</div>`:''}<p class="drawer-caption">분석은 관찰된 광고 실적 기반입니다. 광고의 인과적 개선이나 미래 성공을 보장하지 않으며, CTR/CPC만으로 실제 매출 효과를 판단하지 않습니다.</p>`;
+ el('postDetail').innerHTML=`<div class="post-detail-head">${image?`<img src="${image}" alt="${esc(name)} 그리드 이미지"/>`:'<div class="drawer-image-fallback">광고와 연결된 이미지<br>확인 필요</div>'}<div><span class="verdict-tag ${status}">${POST_TAGS[status]}</span><h2>${esc(name)}</h2><div class="post-subline">${esc(period)}<br>${String(d?.id||'').startsWith('UNASSIGNED_')?'같은 제목 캠페인 두 개의 당일 합산':`기준 목표: ${esc(goals)}`}</div></div></div><div class="drawer-verdict ${status}"><span class="eyebrow">그래서, 현재의 판단은?</span><strong>${POST_TAGS[status]}</strong><p>${esc(interpret)}</p></div><h3 class="drawer-section">실제 성과</h3><div class="post-stat-grid">${stats.map(([k,v])=>`<div class="post-stat"><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join('')}</div><h3 class="drawer-section">광고 설정 · 확인된 것만</h3><dl class="drawer-info">${settingRows.join('')}</dl><h3 class="drawer-section">광고가 실제로 노출된 연령</h3>${organic?'<p class="drawer-caption">일반 릴스 인사이트가 들어오면 연령별 노출 데이터를 추가할 수 있습니다.</p>':ageTable(age)}<h3 class="drawer-section">다음에 해볼 실험</h3><div class="drawer-next">${esc(m.experiment||'동일 조건의 광고 설정과 성과 확인 후 추가 실험 설계')}</div>${source?`<div class="drawer-data-limit">${esc(source)}</div>`:''}<p class="drawer-caption">분석은 관찰된 광고 실적 기반입니다. 광고의 인과적 개선이나 미래 성공을 보장하지 않으며, CTR/CPC만으로 실제 매출 효과를 판단하지 않습니다.</p>`;
  const overlay=el('postOverlay');overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';el('closePost').focus();
 }
 function closePost(){el('postOverlay').classList.remove('open');el('postOverlay').setAttribute('aria-hidden','true');document.body.style.overflow='';}
