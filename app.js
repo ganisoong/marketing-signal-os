@@ -436,4 +436,66 @@ function renderMetaRecommendations(){
   section.querySelector('button').addEventListener('click',()=>navigate('recommendations'));
  }
 }
-featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();
+
+
+/* OPERATIONS AGENT / authoritative plan and audit. All ad changes require user approval. */
+function opsData(){return window.SIGNAL_OS_OPERATIONS||null;}
+function opsCampaignButtons(ids){
+ return (ids||[]).map(id=>{
+  const campaign=get(id);
+  if(!campaign)return '<p class="drawer-caption">캠페인 ID '+esc(id)+'는 현재 데이터와 매칭되지 않았습니다.</p>';
+  return '<button type="button" class="ops-related-item" data-ops-campaign="'+esc(id)+'">'+esc(campaign.label||campaign.name)+' · '+esc(id)+' ↗</button>';
+ }).join('');
+}
+function openOpsDetail(kind,id){
+ const os=opsData();if(!os)return;
+ let item,main=[],title='';
+ if(kind==='priority'){
+  item=os.priorities.find(x=>x.id===id);if(!item)return;title=item.title;
+  main=[['현재 판단',item.decision],['판단 근거',item.why],['다음 데이터 요청/실행',item.next],['검토 마감',item.due],['진행 상태',item.status]];
+ }else if(kind==='schedule'){
+  item=os.cadence.find(x=>x.date===id);if(!item)return;title=item.title;
+  main=[['데이터를 확인할 날짜',item.date+' · '+item.frequency],['필요한 자료',item.request],['기대하는 분석 결과',item.outcome]];
+ }else if(kind==='experiment'){
+  item=os.experiments.find(x=>x.id===id);if(!item)return;title=item.title;
+  main=[['가설',item.hypothesis],['실험/추적 방법',item.setup],['검증할 KPI',item.metrics.join(' · ')],['판단 조건',item.rule],['다음 점검',item.next_review],['점검 후',item.after],['현재 상태',item.status]];
+ } else return;
+ const rowHTML=main.map(([heading,value])=>'<div><b>'+esc(heading)+'</b><p>'+esc(value||'추가 확인 필요')+'</p></div>').join('');
+ const poster=opsCampaignButtons(item.campaign_ids||[]);
+ el('postDetail').innerHTML='<span class="eyebrow">MARKETING OPERATIONS / 진행 기록</span><h2 style="line-height:1.4;margin-top:13px">'+esc(title)+'</h2><p class="ops-drawer-intro">이 계획은 수집한 광고 성과와 현재까지 알려진 상황으로 작성됐습니다. 실제 광고 ON/OFF, 예산, 소재 설정은 자동으로 바꾸지 않습니다.</p>'+
+ '<div class="ops-drawer-list">'+rowHTML+'</div>'+
+ (poster?'<h3 class="drawer-section">관련 캠페인 · 실제 성과 보기</h3><div class="ops-related-list">'+poster+'</div>':'')+
+ '<h3 class="drawer-section">판단 전에 확인</h3><div class="ops-notice">광고 일시중지·재개·예산 변경은 확인된 최신 캠페인 ID·기간·목표·전환 실적을 확인하고, 사용자의 승인 후에만 진행합니다. 데이터가 부족하면 추천을 보류합니다.</div>';
+ const overlay=el('postOverlay');overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';el('closePost').focus();
+ overlay.querySelectorAll('[data-ops-campaign]').forEach(b=>b.addEventListener('click',()=>{navigate('posts');openPost(b.dataset.opsCampaign)}));
+}
+function renderOperations(){
+ const os=opsData();
+ const holder=el('opsSnapshot');
+ if(!holder)return;
+ if(!os){holder.innerHTML='<p>운영 계획 데이터를 불러오지 못했습니다. 새로고침해 주세요.</p>';return;}
+ const now=new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Seoul'});
+ const stale=now>os.updated_at;
+ holder.innerHTML='<div class="ops-snapshot-main"><strong>광고 운영 판단 기준: '+esc(os.updated_at)+' · 확정 성과: '+esc(os.report_as_of)+'까지</strong><p>'+esc(os.current_delivery_note)+'</p>'+
+ (stale?'<p style="font-weight:850;color:#a3662c">마지막 판단일 이후 데이터가 갱신되지 않았습니다. 지금 상태를 확인하려면 최신 파일을 보내주세요.</p>':'')+
+ '</div><div class="ops-fresh">'+(stale?'추가 업로드 필요':'오늘 운영 초안')+'</div>';
+ const decisionCards=[
+  {label:'지금 바로 OFF할 광고',value:'확정 0건',desc:'현재 ID별 집행 상태와 최신 전환이 부족합니다. 중단 확정 대신 재검토합니다.',tone:'amber',id:'P1'},
+  {label:'지금 바로 재개할 광고',value:'확정 0건',desc:'이미 꺼진 광고가 어떤 목표·성과 때문인지 확인하고 재개 여부를 제안합니다.',tone:'blue',id:'P3'},
+  {label:'지금 우선 추적할 광고',value:'생기부 소재 2건',desc:'10/13 신규 광고 2종. 성급한 중단 대신 3일차 데이터를 점검할 계획입니다.',tone:'green',id:'P2'}
+ ];
+ el('opsDecisionCards').innerHTML=decisionCards.map(v=>'<button type="button" class="ops-decision-card '+v.tone+'" data-ops-detail="priority" data-ops-id="'+v.id+'"><small>'+esc(v.label)+'</small><strong>'+esc(v.value)+'</strong><p>'+esc(v.desc)+'</p><span style="margin-top:auto;font-size:10px;font-weight:800;color:#267454">판단 근거 보기 ↗</span></button>').join('');
+ el('opsPriorities').innerHTML=os.priorities.map(it=>'<button type="button" class="ops-priority-item" data-ops-detail="priority" data-ops-id="'+esc(it.id)+'"><div><span class="ops-priority-tag">'+esc(it.level)+' · '+esc(it.type)+'</span><span style="font-size:10px;color:#7b8e82">'+esc(it.status)+'</span><strong>'+esc(it.title)+'</strong><p>'+esc(it.why)+'</p></div><time>'+esc(it.due.slice(5).replace('-','/'))+'<br>확인</time><span class="ops-priority-arrow">↗</span></button>').join('');
+ el('opsSchedule').innerHTML=os.cadence.map(it=>'<button type="button" class="ops-schedule-item" data-ops-detail="schedule" data-ops-id="'+esc(it.date)+'"><small>'+esc(it.window)+' · '+esc(it.frequency)+'</small><time>'+esc(it.date.slice(5).replace('-','/'))+'</time><strong>'+esc(it.title)+'</strong><span>'+esc(it.outcome)+'</span></button>').join('');
+ el('opsExperiments').innerHTML=os.experiments.map(it=>'<button type="button" class="ops-experiment-item" data-ops-detail="experiment" data-ops-id="'+esc(it.id)+'"><span class="ops-experiment-label">'+esc(it.id)+' · '+esc(it.kind)+'</span><strong>'+esc(it.title)+'</strong><p>'+esc(it.hypothesis)+'</p><footer><span>'+esc(it.status)+'</span><span>다음 '+esc(it.next_review.slice(5).replace('-','/'))+' ↗</span></footer></button>').join('');
+ el('opsHistory').innerHTML=os.decisions.slice().reverse().map(it=>'<article class="ops-history"><time>'+esc(it.at)+' · '+esc(it.kind)+'</time><strong>'+esc(it.headline)+'</strong><p><b>다음:</b> '+esc(it.action)+'</p><p><b>현재 처리:</b> '+esc(it.result)+'</p></article>').join('');
+ el('opsUploadGuide').innerHTML='<div class="ops-upload-guide"><h3>매일 어떤 자료를 보내면 되나요?</h3>'+
+ '<p><b>① Meta 광고 관리자:</b> '+esc(os.upload_spec.preferred)+'</p>'+
+ '<p><b>② 캡처로 보낼 때:</b> '+esc(os.upload_spec.screenshot)+'</p>'+
+ '<p><b>③ 짧게 알려줄 사항:</b> '+esc(os.upload_spec.manual)+'</p>'+
+ '<p><b>제가 갱신할 내용:</b> '+esc(os.upload_spec.scorecard)+'</p>'+
+ '<p style="font-size:10px;margin-top:9px">이 웹사이트는 Meta에 실시간 연결되지 않습니다. 자료를 보내주시면 제가 분석하고 GitHub의 운영 일정·판단 기록을 갱신합니다. 표시된 리뷰 일정이 자동 알림을 보내는 것은 아닙니다.</p></div>';
+ document.querySelectorAll('[data-ops-detail]').forEach(b=>b.addEventListener('click',()=>openOpsDetail(b.dataset.opsDetail,b.dataset.opsId)));
+}
+
+featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();renderOperations();
