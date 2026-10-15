@@ -96,7 +96,7 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
     "received": "2026-10-15",
     "scope": "2026-10-15 사용자 최신 캡처: 2개 광고 세트 · 유사 목표/소재·서로 다른 오디언스 · 대상 ID 미확인",
     "target": "해당 광고/광고 세트의 정확한 ID는 Preview·Get started에서 확인 필요",
-    "status": "사용자 Apply now 클릭 · Meta 게시 준비 중 (완료 미확인)",
+    "status": "적용 실패: 생기부 광고 편집 제한 · 1개 세트만 Complete",
     "category": "학습 구조",
     "title": "유사한 광고 세트 2개 통합",
     "archived": false,
