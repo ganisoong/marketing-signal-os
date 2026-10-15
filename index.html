@@ -293,6 +293,78 @@
 @media(max-width:1080px){.weekly-days{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:750px){.ops-weekly{padding:16px}.weekly-days{grid-template-columns:repeat(2,minmax(0,1fr))}.weekly-kpis{grid-template-columns:1fr}.weekly-foot{flex-direction:column;align-items:stretch}.weekly-stage{align-items:flex-start}}
 
+
+/* Marketing Signal OS evaluation-first cockpit: five fast cards, details on hover or tap */
+.eval-landing{padding:27px 0 10px}
+.eval-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin:0 0 25px}
+.eval-heading h1{font-size:clamp(30px,3.2vw,42px);letter-spacing:-1.9px;font-weight:900;line-height:1.15;margin:8px 0 10px}
+.eval-heading p{color:#678078;font-size:12px;line-height:1.8;max-width:730px;margin:0}
+.eval-asof{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:10px 13px;border-radius:10px;border:1px solid #deebe3;background:#fff}
+.eval-asof-dot{width:8px;height:8px;background:#d2ad56;border-radius:50%;flex:none}
+.eval-asof strong{font-size:11px;color:#3e6b59}
+.eval-asof small{font-size:10px;color:#82948c}
+.eval-five-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;align-items:stretch;overflow:visible}
+.eval-tile{position:relative;border:1px solid #dfebe3;border-radius:16px;background:white;min-width:0;min-height:225px;box-shadow:0 7px 30px rgba(26,59,42,.038);transition:box-shadow .16s ease,border-color .16s ease;overflow:visible}
+.eval-tile:hover,.eval-tile[open]{z-index:20;box-shadow:0 14px 36px rgba(22,68,46,.12);border-color:#b1d2ba}
+.eval-tile summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;align-items:flex-start;height:100%;min-height:225px;padding:20px 20px 18px;outline-offset:3px}
+.eval-tile summary::-webkit-details-marker{display:none}
+.eval-overline{font-size:10px;font-weight:850;color:#82948a;letter-spacing:1px;display:flex;gap:12px;justify-content:space-between;align-items:center;width:100%}
+.eval-flag{font-size:10px;letter-spacing:0;border-radius:99px;padding:4px 9px;background:#eef3ee;color:#647e6c;font-weight:900;white-space:nowrap}
+.eval-flag.red{color:#ac3c3f;background:#fff0ee}.eval-flag.green{color:#146949;background:#e2f4e8}
+.eval-flag.blue{color:#2c6487;background:#e9f3f9}.eval-flag.caution{color:#9b6b2a;background:#fff2df}
+.eval-label{font-size:17px;font-weight:850;letter-spacing:-.55px;color:#264e3b;margin:16px 0 13px}
+.eval-metric{font-size:clamp(29px,3.1vw,42px);font-weight:900;letter-spacing:-1.8px;color:#194d3c;line-height:1.16;word-break:keep-all}
+.eval-budget.over .eval-metric{color:#be4a4e}.eval-budget.within .eval-metric{color:#128356}
+.eval-metric small{font-size:14px;font-weight:750;letter-spacing:0;color:#809187;margin-left:6px}
+.eval-metric.small{font-size:clamp(19px,2vw,25px);letter-spacing:-1px;line-height:1.35}
+.eval-description{font-size:11px;color:#63786d;line-height:1.7;margin-top:10px}
+.eval-meta{font-size:11px;color:#537063;line-height:1.6;font-weight:700;margin:9px 0 0}
+.eval-expand{font-size:10px;color:#17724d;font-weight:850;margin-top:auto;padding-top:15px}
+.eval-budget{background:linear-gradient(150deg,#fff 70%,#fff6f5)}.eval-budget.within{background:linear-gradient(150deg,#fff 70%,#eef9f2)}
+.eval-testing{grid-column:span 2;background:linear-gradient(125deg,#fff 66%,#f1f8f5)}
+.eval-ai{background:linear-gradient(135deg,#fff 65%,#eff5ff)}
+.eval-flyout{display:none;position:absolute;top:calc(100% - 2px);left:0;z-index:30;width:max(100%,min(430px,85vw));max-height:470px;overflow-y:auto;padding:18px;background:#fff;border:1px solid #d0e4d5;box-shadow:0 16px 38px rgba(21,57,35,.17);border-radius:0 0 16px 16px}
+.eval-cadence>.eval-flyout,.eval-ai>.eval-flyout{left:auto;right:0}
+.eval-tile:hover>.eval-flyout,.eval-tile[open]>.eval-flyout,.eval-tile:focus-within>.eval-flyout{display:block}
+.eval-flyout h3{font-size:13px;font-weight:850;margin:0 0 13px;color:#204c37}
+.eval-flyout h3 small{font-weight:550;color:#7b9285;margin-left:6px;font-size:10px}
+.eval-flyout>p{font-size:10px;color:#667f70;line-height:1.8;margin:12px 0 0}
+.eval-mini-legend{display:flex;gap:8px;align-items:center;font-size:10px;color:#72867d}
+.eval-dot{height:8px;width:8px;border-radius:50%;display:inline-block}
+.eval-dot.red{background:#d46b68}.eval-dot.green{background:#3aa67c}
+.eval-chart{height:168px;display:flex;align-items:stretch;gap:7px;border-bottom:1px solid #e0e7df;margin-top:14px;padding:0 0 10px}
+.eval-bar-col{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px}
+.eval-bar-value{font-size:9px;color:#668277;white-space:nowrap}
+.eval-bar-track{flex:1;min-height:85px;width:100%;display:flex;align-items:flex-end;justify-content:center}
+.eval-bar{width:65%;border-radius:5px 5px 1px 1px;min-height:3px}
+.eval-bar.bad{background:linear-gradient(#e5a49b,#c55450)}.eval-bar.good{background:linear-gradient(#a7dec1,#198c65)}
+.eval-bar-date{font-size:9px;color:#6f8379;white-space:nowrap}
+.eval-title-list{display:grid;gap:3px}.eval-title-list-row{display:grid;grid-template-columns:8px 1fr auto;gap:9px;align-items:center;padding:8px 0;border-bottom:1px solid #edf1ec}
+.eval-title-list-row>span:nth-child(2){font-size:11px;font-weight:750;line-height:1.5}
+.eval-title-list-row time{font-size:9px;color:#81938a;white-space:nowrap}
+.eval-title-dot{background:#5da77e;width:7px;height:7px;border-radius:50%}
+.eval-calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.eval-day-name{font-size:10px;color:#8a9e90;text-align:center;font-weight:750}
+.eval-day,.eval-day-empty{height:33px;display:flex;align-items:center;justify-content:center;position:relative;font-size:11px;color:#73887d;border-radius:7px}
+.eval-day.is-start{background:#dff1e6;color:#195d42;font-weight:850}
+.eval-day i{height:4px;width:4px;background:#22965d;border-radius:50%;position:absolute;bottom:3px}
+.eval-milestones{display:grid;gap:8px}.eval-milestone{display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid #edf0ea;padding:7px 0}
+.eval-milestone time{font-size:11px;color:#27875c;font-weight:850;min-width:40px}
+.eval-milestone span{font-size:11px;color:#436351;line-height:1.6}
+.eval-check{background:#f0f7f0;border-radius:8px;padding:12px;font-size:11px;line-height:2;color:#3b6651;margin-top:10px}
+.eval-reference{display:inline-block;font-size:10px;font-weight:850;color:#17634d;margin-top:10px;text-decoration:underline}
+.eval-nextline{margin-top:15px;display:flex;justify-content:space-between;align-items:center;gap:16px;background:#e9f4ed;border:1px solid #d4e5d8;border-radius:14px;padding:17px 20px}
+.eval-nextline strong{font-size:12px;color:#245e43}
+.eval-nextline p{font-size:11px;line-height:1.8;color:#5d7b69;margin:5px 0 0}
+.eval-trust{font-size:10px;color:#7d9183;line-height:1.85;margin:12px 0 16px}
+.eval-old-operations{margin:14px 0 0;border-top:1px solid #e3ebe4;padding-top:11px}
+.eval-old-operations>summary{font-size:11px;color:#5d7867;font-weight:800;cursor:pointer;padding:12px 0;list-style:none}
+.eval-old-operations>summary::-webkit-details-marker{display:none}
+.eval-old-operations>summary span{color:#1c7754;float:right}
+.eval-old-operations[open]>summary{border-bottom:1px solid #dfeae1}
+@media(max-width:1100px){.eval-five-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.eval-testing{grid-column:span 2}.eval-ai{grid-column:span 2}}
+@media(max-width:720px){.eval-heading{flex-direction:column}.eval-five-grid{grid-template-columns:1fr}.eval-testing,.eval-ai{grid-column:auto}.eval-tile{min-height:0}.eval-tile summary{min-height:185px}.eval-flyout{position:relative;top:auto;left:auto!important;right:auto!important;width:100%;max-height:none;box-shadow:none;border-radius:0 0 15px 15px}.eval-tile:hover>.eval-flyout:not(:focus-within){display:none}.eval-tile[open]>.eval-flyout{display:block!important}.eval-nextline{flex-direction:column;align-items:stretch}.eval-landing{padding-top:17px}.eval-asof{width:100%}}
+
 </style>
 </head>
 <body>
@@ -300,7 +372,7 @@
 <aside class="side">
  <div class="brand"><div class="brand-top"><span class="brand-glyph">↗</span><div><div class="brand-name">Signal OS</div><div class="brand-sub">MARKETING INTELLIGENCE</div></div></div></div>
  <div class="nav-section">WORKSPACE</div>
- <button class="nav-btn active" data-page="operations"><span class="nav-number">01</span><span class="nav-label">오늘의 운영</span><span class="nav-right">↗</span></button>
+ <button class="nav-btn active" data-page="operations"><span class="nav-number">01</span><span class="nav-label">평가 홈</span><span class="nav-right">↗</span></button>
   <button class="nav-btn" data-page="overview"><span class="nav-number">02</span><span class="nav-label">핵심 인사이트</span><span class="nav-right">↗</span></button>
  <button class="nav-btn" data-page="posts"><span class="nav-number">03</span><span class="nav-label">게시물 현황</span><span class="nav-right">↗</span></button>
   <button class="nav-btn" data-page="recommendations"><span class="nav-number">04</span><span class="nav-label">Meta 추천 검토</span><span class="nav-right">↗</span></button>
@@ -312,6 +384,17 @@
 <main class="content">
  <header class="topbar"><div class="location">INSTAGRAM <small>/ MARKETING PERFORMANCE REVIEW</small></div><div class="top-actions"><span class="top-meta">업데이트 v2.0 · 2026.10.14</span><button class="action" id="exportData">데이터 백업 ↓</button><button class="action dark" data-page="archive">원본 보기 ↗</button></div></header>
  <section id="operations" class="page active">
+ <div class="eval-landing" aria-label="마케팅 핵심 평가">
+  <div class="eval-heading">
+   <div><span class="eyebrow">MARKETING SIGNAL OS / EVALUATION</span><h1>오늘의 평가</h1><p>수치와 상태만 먼저 확인하세요. 각 블록에 마우스를 올리거나 눌러 근거와 다음 행동을 볼 수 있습니다.</p></div>
+   <div class="eval-asof"><span class="eval-asof-dot"></span><strong>최근 자료 기준</strong><small>광고 10/14 · 운영 계획 10/15</small></div>
+  </div>
+  <div id="evalTiles" class="eval-five-grid" aria-live="polite"></div>
+  <div class="eval-nextline"><div><strong>이번 주의 한 가지 목표</strong><p>생기부 릴스 2개의 기준선을 지키면서 Meta 문구 개선 기능을 한 광고에만 시험하고, 10/22 랜딩 비용을 비교합니다.</p></div><button type="button" class="action dark" data-page="posts">게시물별 성과 보기 ↗</button></div>
+  <p class="eval-trust">Meta에 자동 연결된 실시간 화면이 아닙니다. CSV 또는 캡처를 전달받아 갱신하며, 광고 예산이나 소재를 임의로 변경하지 않습니다.</p>
+ </div>
+ <details class="eval-old-operations"><summary>운영 세부 기록 · 기존 분석 및 일정 보기 <span>펼치기 ↓</span></summary>
+
   <div class="hero ops-hero">
     <div class="eyebrow">MARKETING OPERATIONS AGENT / DAILY ACTION DESK</div>
     <h1>오늘 어떤 광고를 보고,<br/>다음에 무엇을 할까?</h1>
@@ -352,6 +435,7 @@
     <div id="opsHistory"></div>
     <div id="opsUploadGuide"></div>
   </section>
+ </details>
 </section>
  <section id="overview" class="page">
   <div class="hero"><div class="eyebrow">THE DECISION DESK / OVERVIEW</div><h1>핵심 발견은 한눈에,<br/>근거는 누르면 자세히.</h1><p>현재까지 확인한 광고 인사이트를 카드로 정리했습니다. 좋은 점, 상반된 신호, 관찰할 항목을 누르면 실제 게시물과 근거가 열립니다.</p><div class="subline"><span class="chip em"><span class="dot"></span> 검증된 집계 기준</span><span class="chip">분석 기간 · 09.13 — 10.14</span><span class="chip">자료 수신 · 10.14 (시각 미기록)</span></div></div>
@@ -465,7 +549,7 @@
     }
     function loadUI(){
       const main=document.createElement('script');
-      main.src='./app.js?v=text-creative-20261015';
+      main.src='./app.js?v=eval-home-20261015-v1';
       main.onerror=function(){showError('화면 코드를 불러오지 못했습니다. 새로고침해 주세요.');};
       document.body.appendChild(main);
     }
