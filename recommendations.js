@@ -94,31 +94,31 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
   {
     "id": "meta-20261015-fragmentation",
     "received": "2026-10-15",
-    "scope": "Ad sets 2, different audiences",
+    "scope": "2026-10-15 사용자 최신 캡처: 2개 광고 세트 · 유사 목표/소재·서로 다른 오디언스 · 대상 ID 미확인",
     "target": "해당 광고/광고 세트의 정확한 ID는 Preview·Get started에서 확인 필요",
-    "status": "검토 필요 · 미적용",
+    "status": "적용 보류 · Get started로 2개 광고세트 확인 필요",
     "category": "학습 구조",
     "title": "유사한 광고 세트 2개 통합",
     "archived": false,
     "meta": {
       "headline": "Combine 2 similar ad sets impacted by fragmentation",
       "recommendation": "Combine 2 similar ad sets into one ad set",
-      "score": "+15 opportunity points",
-      "unit": "similar advertisers' outcome",
-      "detail": "Meta는 비슷한 소재와 설정인데 타겟만 달라 학습이 분산된 두 광고세트를 통합하라고 제안. 타 광고주의 7일 결과 More Traffic."
+      "score": "이 화면 상단 +16 points across ads / 4개 추천 합계 +27점 (해당 항목 개별 점수 미확인)",
+      "unit": "link CPC: current $0.21; Meta predicted $0.19 / -10%",
+      "detail": "10/15 새 화면: Combine 2 similar ad sets impacted by fragmentation. 서로 다른 오디언스를 사용하는 비슷한 목표·소재의 광고세트 2개를 통합하면 링크 클릭당 비용이 10% 낮아질 수 있다는 Meta 예측. 현재 평균 $0.21 → 예측 $0.19. 아직 대상 ID 미확인."
     },
     "review": {
       "verdict": "현재는 적용 보류",
       "why": "연령/오디언스별 차이를 실험하는 세트라면 합치는 순간 비교 구조가 사라짐",
       "risk": "통합으로 배포학습이 새로 시작될 수 있고 기존 비교 기록이 불명확해질 수 있음",
-      "next": "정확한 두 Ad set ID·타겟·목표·예산 확인 후 의도적 분리였는지 먼저 판단",
+      "next": "Apply now 누르지 않고 Get started에서 통합 대상 2개 Ad set ID, 연령·지역·예산·목표 및 실제 통합 조건 확인 → 변경 전 수치 스냅샷 보존 → 통합 여부 결정",
       "confidence": "사용자 캡처 기반 Meta 예측, 실제 적용효과 미측정"
     },
     "evidence": {
-      "source": "10/15 Meta Actions screenshot · +15 points",
+      "source": "2026-10-15 사용자 신규 Opportunity score hover 캡처 · 2 ad sets, current CPC $0.21, predicted $0.19, 4 recommendations/+27 total",
       "linkVerified": false,
       "reported": "Meta 제공 추천 및 예상 효과",
-      "unknown": "실제 적용 대상 ID, 적용 여부/시각, 변경 후 성과"
+      "unknown": "두 Ad set의 ID 및 이름, 실제 해당 생기부 광고가 포함되었는지 여부, 통합 후 타겟/예산·게재 설정, 적용 여부/시각, 전후 성과"
     }
   },
   {
