@@ -1,13 +1,197 @@
 window.SIGNAL_OS_RECOMMENDATIONS=[
   {
+    "id": "meta-20261015-text-creative",
+    "received": "2026-10-15",
+    "scope": "Ads 2 · 두 개 광고가 추천 대상이라고 표시(각 ID는 아직 확인 전)",
+    "target": "해당 광고/광고 세트의 정확한 ID는 Preview·Get started에서 확인 필요",
+    "status": "검토 필요 · 미적용",
+    "category": "Advantage+ 소재 문구",
+    "title": "AI 텍스트 개선 기능 시험",
+    "archived": false,
+    "meta": {
+      "headline": "You could get 3% lower cost per result with 1 more Advantage+ creative enhancement",
+      "recommendation": "Deliver different creative variations with text improvements",
+      "score": "+6 opportunity points",
+      "percentEstimate": 3,
+      "unit": "cost per result",
+      "detail": "Meta는 기존 광고 문구를 자동 개선하는 크리에이티브 기능 1개 추가를 제안. Ads 2로 표시됨. 변경 전 Preview로 문구를 확인 가능."
+    },
+    "review": {
+      "verdict": "이번 주 1순위 · 두 광고 동시 변경 말고 한 광고부터",
+      "why": "기존 생기부 릴스 두 개를 유지하면서 작은 문구 변경 효과를 관찰할 수 있음. 다만 두 광고 모두 추천 대상인지는 Preview 확인 필요.",
+      "risk": "입시 관련 사실/의미 왜곡 또는 후킹 문구 변경. 두 광고를 동시에 바꾸면 어떤 변경이 효과를 냈는지 구분 불가",
+      "next": "Preview로 광고 2개 대상 및 수정 문구 확인 → 동의한 광고 1개에만 적용 → 날짜별 랜딩 방문 비용 3~4일 비교 → 나머지 1개 적용 여부 결정",
+      "confidence": "사용자 캡처 기반 Meta 예측, 실제 적용효과 미측정"
+    },
+    "evidence": {
+      "source": "10/15 사용자 제공 Meta Actions screenshot · Ads 2 text improvements",
+      "linkVerified": false,
+      "reported": "Meta 제공 추천 및 예상 효과",
+      "unknown": "실제 적용 대상 ID, 적용 여부/시각, 변경 후 성과"
+    }
+  },
+  {
+    "id": "meta-20261015-lpv-goal",
+    "received": "2026-10-15",
+    "scope": "Ad sets 4 · 해당하는 4개 세트 ID 미확인",
+    "target": "해당 광고/광고 세트의 정확한 ID는 Preview·Get started에서 확인 필요",
+    "status": "검토 필요 · 미적용",
+    "category": "광고 목표 최적화",
+    "title": "랜딩페이지 조회 최적화 목표로 변경",
+    "archived": false,
+    "meta": {
+      "headline": "You could get a 23% lower cost per landing page view by updating your performance goal",
+      "recommendation": "Update performance goal to Maximize number of landing page views",
+      "score": "추천 포인트 화면에 별도 표시 없음",
+      "percentEstimate": 23,
+      "unit": "cost per landing page view",
+      "detail": "Meta는 클릭만 늘리기보다 랜딩 조회가 발생하도록 광고 전달을 최적화할 것을 제안. 화면은 LPV 목표에 더 이상 Meta Pixel이 필수는 아니라고 안내. 전환/구매 이벤트 연결과는 별개."
+    },
+    "review": {
+      "verdict": "다음 실험으로 분리 · 이번 주 문구 실험과 동시 적용 금지",
+      "why": "Signal OS가 실제 랜딩페이지 조회를 주요 KPI로 사용하므로 목표 자체는 적합할 가능성. 다만 결과 최적화 변경은 노출되는 사용자 구성을 바꿀 수 있음.",
+      "risk": "학습/배달 전략이 달라지고 이전 클릭 목표와 목표 자체가 달라 직접 비교가 어려움",
+      "next": "이번 주 문구 개선 실험 결과 확인 후 별도 주간에 4개 대상과 연결 URL을 확인하고 한 세트씩 변경",
+      "confidence": "사용자 캡처 기반 Meta 예측, 실제 적용효과 미측정"
+    },
+    "evidence": {
+      "source": "10/15 Meta Actions screenshot · LPV goal 23%",
+      "linkVerified": false,
+      "reported": "Meta 제공 추천 및 예상 효과",
+      "unknown": "실제 적용 대상 ID, 적용 여부/시각, 변경 후 성과"
+    }
+  },
+  {
+    "id": "meta-20261015-budget",
+    "received": "2026-10-15",
+    "scope": "Campaign 1 · Current daily budget $13.00",
+    "target": "해당 광고/광고 세트의 정확한 ID는 Preview·Get started에서 확인 필요",
+    "status": "검토 필요 · 미적용",
+    "category": "예산 증액",
+    "title": "하루 예산 증액 권고",
+    "archived": false,
+    "meta": {
+      "headline": "You could get more results by increasing the budget of 1 campaign",
+      "recommendation": "Increase daily budget of 1 campaign",
+      "score": "+7 opportunity points",
+      "unit": "number of results",
+      "detail": "Meta는 예산 증액 시 총 결과가 늘어날 수 있다고 표시. 현재 일일 예산 USD 13, 새로운 예산 입력 제안."
+    },
+    "review": {
+      "verdict": "지금 적용하지 않음",
+      "why": "전체 광고 계정 하루 2만원 제한이 있고 현재 두 광고 운영을 우선하기 때문",
+      "risk": "광고별 $13의 동시 집행은 하루 총 지출 2만원 가이드를 넘기기 쉬움",
+      "next": "두 캠페인의 현재 일예산/합계와 종료일을 확인한 뒤 지출 가이드부터 맞춤",
+      "confidence": "사용자 캡처 기반 Meta 예측, 실제 적용효과 미측정"
+    },
+    "evidence": {
+      "source": "10/15 Meta Account Overview screenshot · budget $13",
+      "linkVerified": false,
+      "reported": "Meta 제공 추천 및 예상 효과",
+      "unknown": "실제 적용 대상 ID, 적용 여부/시각, 변경 후 성과"
+    }
+  },
+  {
+    "id": "meta-20261015-fragmentation",
+    "received": "2026-10-15",
+    "scope": "Ad sets 2, different audiences",
+    "target": "해당 광고/광고 세트의 정확한 ID는 Preview·Get started에서 확인 필요",
+    "status": "검토 필요 · 미적용",
+    "category": "학습 구조",
+    "title": "유사한 광고 세트 2개 통합",
+    "archived": false,
+    "meta": {
+      "headline": "Combine 2 similar ad sets impacted by fragmentation",
+      "recommendation": "Combine 2 similar ad sets into one ad set",
+      "score": "+15 opportunity points",
+      "unit": "similar advertisers' outcome",
+      "detail": "Meta는 비슷한 소재와 설정인데 타겟만 달라 학습이 분산된 두 광고세트를 통합하라고 제안. 타 광고주의 7일 결과 More Traffic."
+    },
+    "review": {
+      "verdict": "현재는 적용 보류",
+      "why": "연령/오디언스별 차이를 실험하는 세트라면 합치는 순간 비교 구조가 사라짐",
+      "risk": "통합으로 배포학습이 새로 시작될 수 있고 기존 비교 기록이 불명확해질 수 있음",
+      "next": "정확한 두 Ad set ID·타겟·목표·예산 확인 후 의도적 분리였는지 먼저 판단",
+      "confidence": "사용자 캡처 기반 Meta 예측, 실제 적용효과 미측정"
+    },
+    "evidence": {
+      "source": "10/15 Meta Actions screenshot · +15 points",
+      "linkVerified": false,
+      "reported": "Meta 제공 추천 및 예상 효과",
+      "unknown": "실제 적용 대상 ID, 적용 여부/시각, 변경 후 성과"
+    }
+  },
+  {
+    "id": "meta-20261015-placements",
+    "received": "2026-10-15",
+    "scope": "Ad sets 2 eligible, 대상 ID 미확인",
+    "target": "해당 광고/광고 세트의 정확한 ID는 Preview·Get started에서 확인 필요",
+    "status": "검토 필요 · 미적용",
+    "category": "자동 게재 위치",
+    "title": "Advantage+ placements로 배치 확대",
+    "archived": false,
+    "meta": {
+      "headline": "Use Advantage+ placements for 2 eligible ad sets",
+      "recommendation": "Allow Meta to select additional placements",
+      "score": "+2 opportunity points",
+      "percentEstimate": 11.7,
+      "unit": "cost per result",
+      "detail": "화면에 Based on our experiment, 11.7% lower cost per result 표시. 적용 가능 광고세트 2건."
+    },
+    "review": {
+      "verdict": "이번 주는 적용 안 함",
+      "why": "문구 변경 효과를 따로 볼 수 있도록 게재 위치는 변경하지 않음",
+      "risk": "광고가 다른 위치에 노출되면서 콘텐츠 표시 방식이나 유입 성격이 달라질 수 있음",
+      "next": "문구 실험 종료 후 실제 광고 대상과 게재 위치별 성과 확인",
+      "confidence": "사용자 캡처 기반 Meta 예측, 실제 적용효과 미측정"
+    },
+    "evidence": {
+      "source": "10/15 Meta account overview screenshot · placements",
+      "linkVerified": false,
+      "reported": "Meta 제공 추천 및 예상 효과",
+      "unknown": "실제 적용 대상 ID, 적용 여부/시각, 변경 후 성과"
+    }
+  },
+  {
+    "id": "meta-20261015-website",
+    "received": "2026-10-15",
+    "scope": "Campaigns 2 · 정확한 웹사이트/광고 ID 미확인",
+    "target": "해당 광고/광고 세트의 정확한 ID는 Preview·Get started에서 확인 필요",
+    "status": "검토 필요 · 미적용",
+    "category": "전환 추적 인프라",
+    "title": "웹사이트 연결해 오프사이트 전환 최적화",
+    "archived": false,
+    "meta": {
+      "headline": "You could get 25% lower cost per offsite conversion by connecting your website",
+      "recommendation": "Connect your website to track and optimize offsite conversions",
+      "score": "+2 opportunity points",
+      "percentEstimate": 25,
+      "unit": "cost per offsite conversion",
+      "detail": "Meta는 웹사이트 연결과 전환 추적으로 오프사이트 전환당 비용이 낮아질 가능성을 표시. 실험에 근거한 예측."
+    },
+    "review": {
+      "verdict": "별도 인프라 작업으로 계획",
+      "why": "실제 상담/신청이 발생했는지 보려면 전환 이벤트 추적이 필요함",
+      "risk": "측정 설정·이벤트 중복 제거·개인정보 처리·전환 목표의 정확성 검증이 필요함",
+      "next": "랜딩 URL과 상담 완료 지점부터 확인하고 Meta Pixel/CAPI 등 적합한 측정 방식 선택",
+      "confidence": "사용자 캡처 기반 Meta 예측, 실제 적용효과 미측정"
+    },
+    "evidence": {
+      "source": "10/15 Meta account overview screenshot · website",
+      "linkVerified": false,
+      "reported": "Meta 제공 추천 및 예상 효과",
+      "unknown": "실제 적용 대상 ID, 적용 여부/시각, 변경 후 성과"
+    }
+  },
+  {
     "id": "meta-20261014-fragmentation-six",
     "received": "2026-10-14",
     "scope": "광고 세트 · 6개 유사 세트/다수 묶음",
     "target": "추천 대상 광고세트 ID 확인 필요",
-    "status": "검토 대기",
+    "status": "이전 화면 추천 · 현재 표시 여부 미확인",
     "category": "구조/학습",
     "title": "유사 광고 세트 통합 (fragmentation)",
-    "archived": false,
+    "archived": true,
     "meta": {
       "headline": "Lower cost per result potential if you combine 6 similar ad sets affected by fragmentation",
       "recommendation": "Combine 6 similar ad sets affected by fragmentation",
@@ -37,10 +221,10 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
     "received": "2026-10-14",
     "scope": "광고 세트 · 1개 화면 + 추가 세부 항목 3개 표시",
     "target": "해당 광고/세트 ID 미확인",
-    "status": "검토 대기",
+    "status": "이전 화면 추천 · 현재 표시 여부 미확인",
     "category": "릴스 포맷",
     "title": "릴스 9:16 세로 영상 + 오디오 최적화",
-    "archived": false,
+    "archived": true,
     "meta": {
       "headline": "Lower cost per result potential if you optimize your Reels format",
       "recommendation": "Include a fullscreen vertical video (9:16) with audio in your Reels ads",
@@ -70,10 +254,10 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
     "received": "2026-10-14",
     "scope": "광고 세트 · 적용 가능 2개",
     "target": "광고 세트 ID 2개 미확인",
-    "status": "검토 대기",
+    "status": "이전 화면 추천 · 현재 표시 여부 미확인",
     "category": "게재 위치",
     "title": "Advantage+ 게재 위치 확장",
-    "archived": false,
+    "archived": true,
     "meta": {
       "headline": "Use Advantage+ placements for 2 eligible ad sets",
       "recommendation": "Advantage+ placements automatically selects additional placements while making the most of your budget",
@@ -103,10 +287,10 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
     "received": "2026-10-14",
     "scope": "광고(Ads) · 4개 표시",
     "target": "개별 광고 ID 미확인",
-    "status": "검토 대기",
+    "status": "이전 화면 추천 · 현재 표시 여부 미확인",
     "category": "소재 최적화",
     "title": "Advantage+ 크리에이티브 개선 추가",
-    "archived": false,
+    "archived": true,
     "meta": {
       "headline": "8% lower cost per result potential if you use 1 more Advantage+ creative enhancement",
       "recommendation": "Deliver different creative variations and visual touch-ups when Meta predicts performance improvement",
@@ -136,10 +320,10 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
     "received": "2026-10-14",
     "scope": "캠페인 · 2개 표시",
     "target": "해당 사이트 및 캠페인 ID 미확인",
-    "status": "검토 대기",
+    "status": "이전 화면 추천 · 현재 표시 여부 미확인",
     "category": "전환 측정",
     "title": "웹사이트 연결 및 오프사이트 전환 최적화",
-    "archived": false,
+    "archived": true,
     "meta": {
       "headline": "You could get 25% lower cost per offsite conversion by connecting your website",
       "recommendation": "Connect your website to improve conversion signal and audience targeting",
@@ -169,7 +353,7 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
     "received": "2026-10-14",
     "scope": "광고(Ads) 수준 · 개별 광고 미확인",
     "target": "광고 ID 확인 필요",
-    "status": "이전 추천 · 현재 여부 미확인",
+    "status": "이전 화면 추천 · 현재 표시 여부 미확인",
     "category": "소재 최적화",
     "title": "Advantage+ 크리에이티브 개선 1개 추가",
     "meta": {
@@ -202,7 +386,7 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
     "received": "2026-10-14",
     "scope": "광고 세트(Ad sets) 수준 · 대상 2개 미확인",
     "target": "광고 세트 ID 2개 확인 필요",
-    "status": "이전 추천 · 현재 여부 미확인",
+    "status": "이전 화면 추천 · 현재 표시 여부 미확인",
     "category": "학습·구조 최적화",
     "title": "비슷한 광고 세트 2개 통합 검토",
     "meta": {
@@ -232,18 +416,15 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
   }
 ];
 window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
-  "snapshot_date": "2026-10-14",
-  "opportunity_score": 68,
-  "potential_points": 32,
-  "available_top_level_recommendations": 5,
-  "note": "68점+최대 32점 표시. 개별 항목의 예상 효과는 서로 합산하지 않으며, 점수 개선은 매출/전환 효율 개선을 증명하지 않습니다.",
-  "performance_snapshot": {
-    "link_clicks": 216,
-    "link_cpc": 0.19,
-    "spend": 41.22,
-    "benchmark_link_cpc": 0.18,
-    "scope": "캠페인/세트 특정 불가, 집계 화면의 독립 스냅샷",
-    "date_window": "화면상 명시 불명",
-    "not_merged": true
-  }
+  "snapshot_date": "2026-10-15",
+  "opportunity_score": null,
+  "potential_points": null,
+  "available_top_level_recommendations": 6,
+  "note": "10/15 Meta Actions 화면은 4건 +28점 또는 3건 +21점(보기 범위/선택에 따라 다름), 별도 계정 추천 화면에는 추가 목록이 표시됨. 68점은 10/14 계정 화면의 이전 점수이며 10/15 현재 점수로 검증되지 않음.",
+  "previous_score_snapshot": {
+    "date": "2026-10-14",
+    "opportunity_score": 68,
+    "potential_points": 32
+  },
+  "performance_snapshot": null
 };
