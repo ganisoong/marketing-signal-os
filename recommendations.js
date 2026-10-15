@@ -439,9 +439,77 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "campaign_id": null,
     "measurement_at": null,
     "measurement_period": null,
-    "identity_status": "ad name and ID not visible; candidate for 3-year student-record Reel but not verified",
-    "metric_note": "Website visits are not assumed equivalent to LPV, and views are not the same as impressions. Do not add or subtract historical $25.45 and LPV 27.",
-    "status": "User-confirmed screen immediately before Apply now; change has not been verified as applied"
+    "identity_status": "First active campaign and first active ad confirmed by screenshot order and user; numeric IDs still not shown in Meta screenshot",
+    "metric_note": "3,603 views (not impressions); 33 website visits (not automatically LPV); $28.02 spend. Historic $25.45/27 LPV a separate metric and collection time.",
+    "status": "Pre-Apply now cumulative snapshot of first active Reel; effect not evaluated",
+    "campaign_name": "3년 동안 쌓아온 생기부",
+    "campaign_name_verified_by": "User-provided two-row active Campaigns screenshot + ordered Ads status list",
+    "campaign_id_candidate": "120252790032910529"
   },
-  "performance_snapshot": null
+  "performance_snapshot": null,
+  "campaign_snapshots_before_apply": {
+    "received_at": "2026-10-15 (exact screenshot time not displayed)",
+    "context": "Two active rows in Campaigns view, three rows active / paused / active in Ads view. User confirms active entries match by top-to-bottom order.",
+    "requested_action": "Opportunity score recommendation to combine 2 similar ad sets; not verified as applied",
+    "confirmed_adset_ids": [],
+    "precise_meta_ad_ids_confirmed": false,
+    "items": [
+      {
+        "position": 1,
+        "active_position": 1,
+        "campaign": "3년 동안 쌓아온 생기부",
+        "delivery": "active",
+        "views": 3603,
+        "views_display": "3,603",
+        "views_exact": true,
+        "website_visits": 33,
+        "spend_usd": 28.02,
+        "website_visit_cost": 0.8490909090909091,
+        "campaign_id_candidate": "120252790032910529",
+        "id_status": "Prior CSV name-based match; ID absent from latest screenshot",
+        "matching_evidence": "Campaigns screenshot first active row ↔ Ads screenshot first active row (user-confirmed order)"
+      },
+      {
+        "position": 3,
+        "active_position": 2,
+        "campaign": "면접장에서 머릿속이 하얘진다면",
+        "delivery": "active",
+        "views": null,
+        "views_display": "약 13,000",
+        "views_exact": false,
+        "website_visits": 170,
+        "spend_usd": 54.64,
+        "website_visit_cost": 0.32141176470588234,
+        "campaign_id_candidate": null,
+        "other_candidate_ids": [
+          "120252750718860529",
+          "120252750732410529"
+        ],
+        "id_status": "Which of two previous duplicate-name campaigns cannot be determined; do not assign",
+        "matching_evidence": "Campaigns screenshot second active row ↔ Ads screenshot third (active) row (user-confirmed order)"
+      },
+      {
+        "position": 2,
+        "active_position": null,
+        "campaign": "중간 광고 · 이름 미확인",
+        "delivery": "paused",
+        "views": 3823,
+        "views_display": "3,823",
+        "views_exact": true,
+        "website_visits": 27,
+        "spend_usd": 21.27,
+        "website_visit_cost": 0.7877777777777778,
+        "campaign_id_candidate": null,
+        "id_status": "Ad name/ID not visible",
+        "matching_evidence": "Ads screenshot middle paused row; excluded from active two"
+      }
+    ],
+    "warnings": [
+      "views from user interface are not Meta impressions / reach",
+      "website visits cannot be equated with Meta landing page views from other reports absent definition check",
+      "relative active ad order is confirmed, actual Ad IDs and two ad sets targeted by combine recommendation are not confirmed",
+      "do not combine spend across cumulative snapshots with different as-of or reporting period",
+      "no apply success confirmation, so no post-change outcome exists"
+    ]
+  }
 };
