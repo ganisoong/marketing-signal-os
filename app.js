@@ -651,4 +651,28 @@ function renderWeekProjects(){
  holder.querySelectorAll('[data-week-project]').forEach(button=>button.addEventListener('click',()=>openWeeklyProject(button.dataset.weekProject)));
 }
 
-featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();renderOperations();renderWeeklyFocus();renderEvaluationHome();renderWeekProjects();
+function renderProjectTracker(){
+ const os=window.SIGNAL_OS_OPERATIONS||{},projects=os.weekly_projects?.projects||[];
+ const main=projects.find(x=>x.id==='META-REC-ALL'),side=projects.find(x=>x.id==='APPEAL-AB');
+ const root=el('projectTracker'),sideRoot=el('projectSideList');if(!root||!main)return;
+ const fmtDay=x=>String(x||'').slice(5).replace('-','/');
+ const ready=main.recommendations.filter(x=>x.decision!=='보류');
+ const pause=main.recommendations.filter(x=>x.decision==='보류');
+ const postItems=(main.baseline?.posts||[]).map(x=>'<div><b>'+esc(x.name)+'</b><span>'+number(x.landing_page_views)+' LPV · '+money(x.spend_usd)+' · 조회당 '+money(x.lpv_cost_usd,3)+'</span></div>').join('');
+ const reco=main.recommendations.map(x=>'<div class="project-recommend-row"><span class="project-rec-state '+(x.decision==='보류'?'held':'')+'">'+esc(x.decision)+'</span><div><strong>'+esc(x.name)+'</strong><p>'+esc(x.status)+' · '+esc(x.action)+'</p></div></div>').join('');
+ const phases=(main.phases||[]).map(x=>'<div class="project-progress-line"><time>'+fmtDay(x.date)+'</time><div><b>'+esc(x.title)+'</b><p>'+esc(x.note)+'</p></div></div>').join('');
+ const logs=(main.progress_log||[]).slice().reverse().map(x=>'<div class="project-log-item"><small>'+esc(x.at)+' · '+esc(x.kind)+' · '+esc(x.status)+'</small><strong>'+esc(x.headline)+'</strong><p>'+esc(x.detail)+'</p></div>').join('');
+ root.innerHTML='<article class="project-primary"><div class="project-topline"><span>PROJECT 01 · META RECOMMENDATION IMPACT</span><em>'+esc(main.status)+'</em></div>'+ 
+ '<h2>'+esc(main.title)+'</h2><p class="project-lead">'+esc(main.goal)+'</p>'+ 
+ '<div class="project-kpis"><div><small>시작일</small><strong>'+fmtDay(main.started_at)+'</strong><span>2026년 프로젝트 등록</span></div><div><small>현재 단계</small><strong>'+number(main.progress_stage||1)+' / '+number(main.progress_stage_total||4)+'</strong><span>'+esc(main.phase_current||'확인 중')+'</span></div><div><small>적용 확인</small><strong>'+number(main.changes_logged||0)+'건</strong><span>미확인 적용은 제외</span></div><div><small>첫 결과 점검</small><strong>'+fmtDay(main.deadline)+'</strong><span>적용 일정에 따라 조정 가능</span></div></div>'+ 
+ '<div class="project-cols"><section class="project-panel"><h3>실험 변경 전 · 변경 후</h3><div class="project-before-after"><div class="project-measure"><small>변경 전</small><strong>기준선 확보</strong><span>10/15 캡처, 개별 소재 연결은 임시</span></div><div class="project-measure waiting"><small>변경 후</small><strong>미수집</strong><span>실제 추천 적용 시각 및 이후 CSV 필요</span></div></div><div class="project-post-baseline">'+postItems+'</div><p class="project-mini-note">'+esc(main.baseline?.notes||'')+'</p></section>'+ 
+ '<section class="project-panel"><h3>Meta 추천별 검토 · '+ready.length+'건 조건 검토 / '+pause.length+'건 보류</h3><div class="project-recommend-list">'+reco+'</div></section>'+ 
+ '<section class="project-panel"><h3>추적 일정 · 10/15~10/22</h3><div class="project-progress">'+phases+'</div></section>'+ 
+ '<section class="project-panel"><h3>대화에서 확정한 진행 기록</h3><div class="project-log">'+logs+'</div><p class="project-mini-note">실제 광고 적용을 확인한 뒤 적용 목록과 수치가 여기 추가됩니다.</p></section></div>'+ 
+ '<div class="project-next"><div><h3>다음 확인 · '+esc(main.next_action?.headline||'Meta 추천 대상 확인')+'</h3><p>'+esc((main.next_action?.deliverables||[]).join(' · '))+'</p></div><b>'+fmtDay(main.next_action?.due)+'</b></div>'+ 
+ '<p class="project-mini-note">'+esc(main.comparison)+' '+esc(main.caution)+'</p></article>';
+ if(side&&sideRoot)sideRoot.innerHTML='<article class="project-secondary"><span class="eyebrow">PROJECT 02 · CONTENT MESSAGE TEST</span><h3>'+esc(side.title)+'</h3><p>게시 전 기획 단계 · A: 불안·공감형 / B: 해결·효능형. 10/19~20 게시 제안, 10/27에 양쪽 7일 성과 비교 예정.</p><button type="button" id="openAppealProject">소구점 프로젝트 자세히 보기 ↗</button></article>';
+ const btn=el('openAppealProject');if(btn)btn.addEventListener('click',()=>openWeeklyProject('APPEAL-AB'));
+}
+
+featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();renderOperations();renderWeeklyFocus();renderEvaluationHome();renderWeekProjects();renderProjectTracker();
