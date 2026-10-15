@@ -455,7 +455,15 @@ function renderMetaRecommendations(){
  '<li><b>후속 검증 대기:</b> 24시간·72시간·7일 성과 수집 후 같은 정의의 링크 CPC·방문당 비용을 비교하고 변경 효과를 검토</li></ol>'+
  '<p class="caption" style="margin:10px 0 0">Meta 예상 절감률은 실제 성과가 아닙니다. 추천의 적용 대상은 Meta 화면에 2개 광고로만 표시되며, 현재 활성화된 두 릴스가 대상이라는 ID 수준 확인은 없습니다.</p>'+
  '</section>':'';
- cards.innerHTML=executionBox+preApplyBox+performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
+ const followup=status.followup_delivery_snapshot;
+ const followupBox=followup?'<section class="rec-captured-performance" aria-label="Meta 광고 검토 후속 상태" style="margin-bottom:14px">'+
+ '<h3>10/15 최신 상태 · 하얘진다면 광고 검토</h3>'+
+ '<p><b>핵심:</b> Meta 광고 세트 단계의 Complete가 실제 광고 게재 완료를 뜻하지 않습니다. 현재 아래 광고는 <b>게재되지 않음 · 광고 검토</b> 상태입니다. 거절 확정은 아니며, 통합 시도가 재검토를 직접 유발했는지는 확인 전입니다.</p>'+
+ followup.rows.map(x=>'<div style="padding:10px 0;border-top:1px solid #e7ebe8"><strong>'+
+ esc(x.campaign)+'</strong><span class="chip" style="margin-left:8px">'+esc(x.delivery_label||(x.delivery==='active'?'활성':x.delivery==='paused'?'일시 중단':'상태 확인 필요'))+'</span>'+
+ '<div class="rec-captured-metrics"><span>조회수 <b>'+esc(x.views_display)+'회</b></span><span>웹사이트 방문 <b>'+number(x.website_visits)+'회</b></span><span>누적 지출 <b>'+money(x.spend_usd,2)+'</b></span></div></div>').join('')+
+ '<p class="caption">현재 누적값은 이전 캡처와 별도 시점의 값입니다. 광고 검토 중 집계가 증가하더라도 실제 새 게재를 의미하지 않을 수 있습니다. 광고 관리자 변경 이력과 심사 상세 확인이 다음 단계입니다.</p></section>':'';
+ cards.innerHTML=followupBox+executionBox+preApplyBox+performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
  if(history.length){
   const archive=document.createElement('details');
   archive.className='rec-history';
