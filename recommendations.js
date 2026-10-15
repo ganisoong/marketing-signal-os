@@ -415,6 +415,7 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
     "sourceVersion": "과거 팝업 캡처"
   }
 ];
+
 window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
   "snapshot_date": "2026-10-15",
   "opportunity_score": null,
@@ -456,7 +457,8 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "complete_name": "면접장에서 머릿속이 하얘진다면",
     "failed_name": "3년 동안 쌓아온 생기부",
     "error_code_message": "Boosted Post Editing Is Only Allowed in Instagram App",
-    "note": "Meta showed Recommendation wasn't applied. One ad set Complete, the other Fix errors; ad 0 of 1. Other items may have been published. No verified complete consolidation or improvement."
+    "note": "Meta showed Recommendation wasn't applied. One ad set Complete, the other Fix errors; ad 0 of 1. Other items may have been published. No verified complete consolidation or improvement.",
+    "followup_delivery": "2026-10-15 screenshot: '면접장에서 머릿속이 하얘진다면' 게재되지 않음 / 광고 검토; 생기부 Active; 가운데 광고 Paused."
   },
   "performance_snapshot": null,
   "campaign_snapshots_before_apply": {
@@ -533,7 +535,7 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "recommendation_name": "Combine 2 similar ad sets impacted by fragmentation",
     "change_category": "Ad set structure / audience fragmentation optimization",
     "operator": "User manually clicked Apply now in Meta Ads Manager",
-    "meta_message": "Recommendation wasn\u0027t applied; some items not published",
+    "meta_message": "Recommendation wasn't applied; some items not published",
     "meta_detail": "Fragmentation will be applied to 2 ads",
     "impacted_ads_as_displayed": 2,
     "affected_ad_ids_verified": [],
@@ -547,7 +549,7 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "projected_only": true,
     "actual_outcome": null,
     "evidence": "2026-10-15 user Meta Ads Manager screenshot with bottom-right preparation notice and Opportunity score pane",
-    "note": "2 ads is explicit UI message but exact two ads/adsets unverified; cannot infer which two active Reels were changed solely from list. No Text improvements application. No confirmation that changes are published successfully."
+    "note": "2 ads is explicit UI message but exact two ads/adsets unverified; cannot infer which two active Reels were changed solely from list. No Text improvements application. No confirmation that changes are published successfully. New Instagram screenshot: '면접장에서 머릿속이 하얘진다면' now not delivering and in Ad review; exact cause of review not verified."
   },
   "ads_manager_at_click": {
     "captured_on": "2026-10-15",
@@ -579,5 +581,51 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
       }
     ],
     "warning": "These are Meta Campaigns table values at click screenshot, NOT post-publish performance or necessarily same reporting period as earlier Instagram 28.02/33 and 54.64/170."
+  },
+  "followup_delivery_snapshot": {
+    "date": "2026-10-15",
+    "observed_at": "unknown (user screenshot received 10/15)",
+    "source": "Instagram ad management follow-up screenshot, three ordered rows",
+    "context": "After unsuccessful Meta fragmentation Apply now: 1 ad set Complete and 1 Fix errors, ad 0 of 1, recommendation not applied.",
+    "rows": [
+      {
+        "campaign": "3년 동안 쌓아온 생기부",
+        "delivery": "active",
+        "views_display": "3,650",
+        "views_exact": 3650,
+        "website_visits": 34,
+        "spend_usd": 28.42,
+        "previous_views_display": "3,603",
+        "previous_website_visits": 33,
+        "previous_spend_usd": 28.02
+      },
+      {
+        "campaign": "중간 광고 · 이름 미확인",
+        "delivery": "paused",
+        "views_display": "3,824",
+        "views_exact": 3824,
+        "website_visits": 27,
+        "spend_usd": 21.28,
+        "previous_views_display": "3,823",
+        "previous_website_visits": 27,
+        "previous_spend_usd": 21.27
+      },
+      {
+        "campaign": "면접장에서 머릿속이 하얘진다면",
+        "delivery": "not_delivering_under_review",
+        "delivery_label": "게재되지 않음 · 광고 검토",
+        "views_display": "약 13,000 (UI 반올림)",
+        "views_exact": null,
+        "website_visits": 173,
+        "spend_usd": 54.85,
+        "previous_views_display": "약 13,000",
+        "previous_website_visits": 170,
+        "previous_spend_usd": 54.64
+      }
+    ],
+    "review_reason": "not confirmed; may be related to Meta partial publish, but causal link cannot be determined from screenshot",
+    "no_delivery_note": "Ad-level review does not indicate rejection. Spend/visit cumulative increases may reflect reporting latency or actions before review, not proof of delivery during review.",
+    "followup": "Check Meta/Instagram ad review detail and Ads Manager Activity history; do not repeat Apply now or modify budgets until confirmed.",
+    "identity_note": "Ad set Complete earlier ≠ currently delivering Ad; campaign to individual Meta Ad ID remains unverified."
   }
 };
