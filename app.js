@@ -375,16 +375,17 @@ function renderMetaRecommendations(){
  const cards=el('recommendationCards'),summary=el('recommendationSummary');
  if(!cards||!summary)return;
  const priorities={
-  'meta-20261014-website':['1 · 기반 구축','전환 추적 먼저'],
-  'meta-20261014-reels-916':['2 · 테스트 후보','소재 확인 후'],
-  'meta-20261014-creative':['3 · 미리보기','메시지 훼손 확인'],
-  'meta-20261014-adv-placements':['4 · 실험 가능','목표별 테스트'],
-  'meta-20261014-fragmentation-six':['5 · 잠정 보류','세트 병합 주의']
+  'meta-20261015-text-creative':['1 · 이번 주 시험','문구 미리보기 우선'],
+  'meta-20261015-lpv-goal':['2 · 다음 시험','방문 최적화 목표'],
+  'meta-20261015-website':['3 · 인프라 과제','전환 측정 검토'],
+  'meta-20261015-placements':['4 · 추후 시험','게재 위치 검증'],
+  'meta-20261015-fragmentation':['5 · 보류','비교 실험 훼손 위험'],
+  'meta-20261015-budget':['6 · 보류','하루 2만 원 예산 우선']
  };
  const order=Object.keys(priorities);
  const sorted=items.slice().sort((a,b)=>order.indexOf(a.id)-order.indexOf(b.id));
- summary.innerHTML='<div><strong>'+number(items.length)+'건</strong><span>Meta가 현재 표시한 추천 묶음 · 대상 캠페인/광고 ID는 아직 미매칭</span></div>'+
- '<div><strong>'+number(status.opportunity_score)+'점</strong><span>Opportunity Score (100점 만점) · 적용 시 최대 +'+number(status.potential_points)+'점 안내</span></div>'+
+ summary.innerHTML='<div><strong>'+number(items.length)+'건</strong><span>10/15 여러 Meta 화면에 표시된 추천 유형 · 대상 광고/광고세트 ID는 일부 미매칭</span></div>'+
+ '<div><strong>'+(status.opportunity_score==null?'신규 점수 미확인':number(status.opportunity_score)+'점')+'</strong><span>이전 계정 화면 10/14에 68점 확인 · 10/15 세부 추천 점수는 화면별로 다름</span></div>'+
  '<p class="rec-summary-note">Meta의 예상 개선율과 점수는 확정 성과가 아닙니다. 항목별 절감률을 합산하거나 점수 상승을 실제 매출 증가로 해석하지 않습니다.</p>';
  function card(r){
   const meta=r.meta||{},review=r.review||{},pri=priorities[r.id]||['이전 기록','효력 재확인 필요'];
@@ -511,12 +512,12 @@ function renderWeeklyFocus(){
  '<div class="weekly-stage"><strong>추천 미적용</strong><span>적용 대상 확인 대기</span></div></div>'+
  '<div class="weekly-kpis"><div><span>한 주 예산 기준</span><b>전체 하루 2만 원</b><small>두 광고 합산, 예산 자동 제한 아님</small></div>'+
  '<div><span>가장 중요한 성과</span><b>랜딩 조회당 비용</b><small>광고비 ÷ 랜딩페이지 조회</small></div>'+
- '<div><span>적용 전/후 수치</span><b>아직 미측정</b><small>변경 시각과 날짜별 데이터 필요</small></div></div>'+
+ '<div><span>변경 전 누적 방문 비용</span><b>'+(focus.baseline?.screenshot?.ads?.map(x=>money(x.lpv_cost_usd,3)).join(' / ')||'기록 대기')+'</b><small>생기부 릴스 1 / 2 · 최신 캡처</small></div></div>'+
  '<div class="weekly-body"><div class="weekly-intro"><strong>이번 주는 이렇게 합니다</strong>'+
  '<p>10/15~17은 두 생기부 광고의 변경 전 기록. 10/18은 해당 광고가 실제 Meta 추천 대상이고 수정 내용에 동의한 경우에만 1개 광고에 적용. 10/19~21 추적, 10/22 정리.</p></div>'+
  '<div class="weekly-days">'+steps.map((step,i)=>'<button class="weekly-day" type="button" data-weekly-phase="'+i+'">'+
  '<span>'+esc(dateShort(step.date))+'</span><strong>'+esc(step.name)+'</strong><small>'+esc(step.deliverable)+'</small><em>자세히 ↗</em></button>').join('')+'</div></div>'+
- '<div class="weekly-foot"><div><strong>적용 전에 꼭 확인</strong><p>과거 Meta 추천 화면에서는 최신 생기부 릴스 2개가 이 추천의 적용 대상인지 검증되지 않았습니다. 대상이 아니라면 억지로 다른 광고를 재개하지 않습니다. 적용 전/후 단순 비교를 인과적 효과로 단정하지 않습니다.</p></div>'+
+ '<div class="weekly-foot"><div><strong>적용 전에 꼭 확인</strong><p>최신 Meta 화면에는 AI 문구 개선 대상 Ads 2가 표시됩니다. 그것이 현재 생기부 릴스 두 광고인지 Preview로 확인해야 합니다. 두 소재 자체가 달라 변경 전후 수치만으로 인과 효과를 단정하지 않습니다.</p></div>'+
  '<button type="button" class="action dark" data-weekly-recs>Meta 추천 내용 보기 ↗</button></div>';
  root.querySelector('[data-weekly-recs]').addEventListener('click',()=>navigate('recommendations'));
  root.querySelectorAll('[data-weekly-phase]').forEach(b=>b.addEventListener('click',()=>{
