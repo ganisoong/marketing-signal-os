@@ -96,7 +96,7 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
     "received": "2026-10-15",
     "scope": "2026-10-15 사용자 최신 캡처: 2개 광고 세트 · 유사 목표/소재·서로 다른 오디언스 · 대상 ID 미확인",
     "target": "해당 광고/광고 세트의 정확한 ID는 Preview·Get started에서 확인 필요",
-    "status": "적용 보류 · Get started로 2개 광고세트 확인 필요",
+    "status": "사용자 Apply now 클릭 · Meta 게시 준비 중 (완료 미확인)",
     "category": "학습 구조",
     "title": "유사한 광고 세트 2개 통합",
     "archived": false,
@@ -105,20 +105,20 @@ window.SIGNAL_OS_RECOMMENDATIONS=[
       "recommendation": "Combine 2 similar ad sets into one ad set",
       "score": "이 화면 상단 +16 points across ads / 4개 추천 합계 +27점 (해당 항목 개별 점수 미확인)",
       "unit": "link CPC: current $0.21; Meta predicted $0.19 / -10%",
-      "detail": "10/15 새 화면: Combine 2 similar ad sets impacted by fragmentation. 서로 다른 오디언스를 사용하는 비슷한 목표·소재의 광고세트 2개를 통합하면 링크 클릭당 비용이 10% 낮아질 수 있다는 Meta 예측. 현재 평균 $0.21 → 예측 $0.19. 아직 대상 ID 미확인."
+      "detail": "10/15 새 화면: Combine 2 similar ad sets impacted by fragmentation. 서로 다른 오디언스를 사용하는 비슷한 목표·소재의 광고세트 2개를 통합하면 링크 클릭당 비용이 10% 낮아질 수 있다는 Meta 예측. 현재 평균 $0.21 → 예측 $0.19. 아직 대상 ID 미확인. 사용자가 10/15 Apply now를 클릭했으며 Meta가 두 광고에 Fragmentation 변경을 게시 준비 중이라고 표시함. 개선율은 아직 검증되지 않음."
     },
     "review": {
-      "verdict": "현재는 적용 보류",
-      "why": "연령/오디언스별 차이를 실험하는 세트라면 합치는 순간 비교 구조가 사라짐",
+      "verdict": "사용자 직접 실행 요청됨 · 실제 게시 성공 여부 미확인",
+      "why": "사용자가 10/15 Meta 광고 관리자에서 Apply now 클릭. 화면 하단에 'Preparing to publish changes', 'Fragmentation will be applied to 2 ads' 표시. 실제 최종 게재·광고 세트 통합 확인 전까지 실행 완료로 분류하지 않음.",
       "risk": "통합으로 배포학습이 새로 시작될 수 있고 기존 비교 기록이 불명확해질 수 있음",
-      "next": "Apply now 누르지 않고 Get started에서 통합 대상 2개 Ad set ID, 연령·지역·예산·목표 및 실제 통합 조건 확인 → 변경 전 수치 스냅샷 보존 → 통합 여부 결정",
+      "next": "Meta 게시 완료/실패 알림과 새로고침 후 광고 세트 구성을 확인 → 변경된 광고 세트 2개 ID 및 예산·타겟 확인 → 24h·72h·7d 후 동일 보고 기간/목표의 실제 CPC·웹사이트 방문당 비용과 변경 전 기준 비교.",
       "confidence": "사용자 캡처 기반 Meta 예측, 실제 적용효과 미측정"
     },
     "evidence": {
-      "source": "2026-10-15 사용자 신규 Opportunity score hover 캡처 · 2 ad sets, current CPC $0.21, predicted $0.19, 4 recommendations/+27 total",
+      "source": "2026-10-15 사용자 신규 Opportunity score hover 캡처 · 2 ad sets, current CPC $0.21, predicted $0.19, 4 recommendations/+27 total / 10/15 사용자 Apply now 클릭 직후 Meta 광고 관리자 전체 화면: Preparing to publish changes; Fragmentation will be applied to 2 ads",
       "linkVerified": false,
       "reported": "Meta 제공 추천 및 예상 효과",
-      "unknown": "두 Ad set의 ID 및 이름, 실제 해당 생기부 광고가 포함되었는지 여부, 통합 후 타겟/예산·게재 설정, 적용 여부/시각, 전후 성과"
+      "unknown": "Meta 게시 완료/실패 여부, 실제 적용 시각, 실제 변경된 광고·광고세트 ID, 통합 후 타겟·예산, 변경 후 성과"
     }
   },
   {
@@ -434,7 +434,7 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "spend_usd": 28.02,
     "delivery": "active",
     "recommended_change": "Combine 2 similar ad sets impacted by fragmentation",
-    "apply_status": "not_confirmed",
+    "apply_status": "clicked_pending_publish",
     "advertisement_id": null,
     "campaign_id": null,
     "measurement_at": null,
@@ -450,7 +450,7 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
   "campaign_snapshots_before_apply": {
     "received_at": "2026-10-15 (exact screenshot time not displayed)",
     "context": "Two active rows in Campaigns view, three rows active / paused / active in Ads view. User confirms active entries match by top-to-bottom order.",
-    "requested_action": "Opportunity score recommendation to combine 2 similar ad sets; not verified as applied",
+    "requested_action": "10/15 user clicked Apply now, Meta says preparing to publish; snapshots remain pre-change evidence, not post-change",
     "confirmed_adset_ids": [],
     "precise_meta_ad_ids_confirmed": false,
     "items": [
@@ -509,7 +509,63 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
       "website visits cannot be equated with Meta landing page views from other reports absent definition check",
       "relative active ad order is confirmed, actual Ad IDs and two ad sets targeted by combine recommendation are not confirmed",
       "do not combine spend across cumulative snapshots with different as-of or reporting period",
-      "no apply success confirmation, so no post-change outcome exists"
+      "Apply now was clicked; Meta shows preparing_to_publish but has not confirmed success, so post-change outcome is still unmeasured"
     ]
+  },
+  "apply_event": {
+    "event_id": "META-FRAGMENTATION-20261015-APPLY-CLICK",
+    "date": "2026-10-15",
+    "time": "Meta 화면에는 정확한 클릭 시각/타임스탬프 없음",
+    "action": "Apply now clicked by user",
+    "recommendation_id": "meta-20261015-fragmentation",
+    "recommendation_name": "Combine 2 similar ad sets impacted by fragmentation",
+    "change_category": "Ad set structure / audience fragmentation optimization",
+    "operator": "User manually clicked Apply now in Meta Ads Manager",
+    "meta_message": "Preparing to publish changes",
+    "meta_detail": "Fragmentation will be applied to 2 ads",
+    "impacted_ads_as_displayed": 2,
+    "affected_ad_ids_verified": [],
+    "affected_adset_ids_verified": [],
+    "publish_status": "preparing_to_publish",
+    "published_at": null,
+    "completed": false,
+    "expected_link_cpc_before_usd": 0.21,
+    "expected_link_cpc_after_usd": 0.19,
+    "expected_reduction_percent": 10,
+    "projected_only": true,
+    "actual_outcome": null,
+    "evidence": "2026-10-15 user Meta Ads Manager screenshot with bottom-right preparation notice and Opportunity score pane",
+    "note": "2 ads is explicit UI message but exact two ads/adsets unverified; cannot infer which two active Reels were changed solely from list. No Text improvements application. No confirmation that changes are published successfully."
+  },
+  "ads_manager_at_click": {
+    "captured_on": "2026-10-15",
+    "report_range": "not visible; do not combine with Instagram cumulative ad summaries",
+    "stage": "after click while Preparing to publish changes",
+    "rows": [
+      {
+        "campaign": "3년 동안 쌓아온 생기부",
+        "campaign_id": "120252790032910529",
+        "id_verification": "name-based prior CSV match",
+        "delivery": "active",
+        "spend_usd": 19.57,
+        "impressions": 2462,
+        "reach": 2077,
+        "link_clicks": 43,
+        "link_cpc_usd": 0.46,
+        "daily_budget_usd": 13
+      },
+      {
+        "campaign": "면접장에서 머릿속이 하얘진다면",
+        "campaign_id": null,
+        "delivery": "active",
+        "spend_usd": 50.11,
+        "impressions": 11937,
+        "reach": 9559,
+        "link_clicks": 257,
+        "link_cpc_usd": 0.19,
+        "daily_budget_usd": 13
+      }
+    ],
+    "warning": "These are Meta Campaigns table values at click screenshot, NOT post-publish performance or necessarily same reporting period as earlier Instagram 28.02/33 and 54.64/170."
   }
 };
