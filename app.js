@@ -651,28 +651,61 @@ function renderWeekProjects(){
  holder.querySelectorAll('[data-week-project]').forEach(button=>button.addEventListener('click',()=>openWeeklyProject(button.dataset.weekProject)));
 }
 
+
+/* Sparse project index: start date and title only; all detailed records open on click. */
+function projectDate(value){
+ const s=String(value||'').slice(0,10);
+ return /^\d{4}-\d{2}-\d{2}$/.test(s)?s.replaceAll('-','.'):'날짜 확인 필요';
+}
+function openProjectDetail(id){
+ const projects=window.SIGNAL_OS_OPERATIONS?.weekly_projects?.projects||[];
+ const p=projects.find(x=>x.id===id);
+ if(!p)return;
+ if(id!=='META-REC-ALL'){openWeeklyProject(id);return;}
+ const date=projectDate(p.started_at||p.registration_date||p.period_start);
+ const base=p.baseline?.posts||[];
+ const comparison=base.map(a=>
+ '<div class="project-detail-evidence"><b>'+esc(a.name)+'</b><span>LPV '+number(a.landing_page_views)+' · 지출 '+money(a.spend_usd)+' · 조회당 '+money(a.lpv_cost_usd,3)+'</span></div>').join('');
+ const recommendations=(p.recommendations||[]).map(a=>
+ '<div class="project-recommend-row"><span class="project-rec-state '+(a.decision==='보류'?'held':'')+'">'+esc(a.decision)+'</span><div><strong>'+esc(a.name)+'</strong><p>'+esc(a.status)+' · '+esc(a.action)+'</p></div></div>').join('');
+ const milestones=(p.phases||[]).map(a=>
+ '<div class="project-progress-line"><time>'+esc(projectDate(a.date).slice(5))+'</time><div><b>'+esc(a.title)+'</b><p>'+esc(a.note)+'</p></div></div>').join('');
+ const records=(p.progress_log||[]).slice().reverse().map(a=>
+ '<div class="project-log-item"><small>'+esc(a.at)+' · '+esc(a.kind)+' · '+esc(a.status)+'</small><strong>'+esc(a.headline)+'</strong><p>'+esc(a.detail)+'</p></div>').join('');
+ const changes=(p.change_log||[]).map(a=>
+ '<div class="project-log-item"><small>'+esc(a.at||a.date||'시간 확인 필요')+'</small><strong>'+esc(a.headline||a.title||'변경 기록')+'</strong><p>'+esc(a.detail||'')+'</p></div>').join('');
+ const notes=(p.evaluation_rules||[]).map(s=>'<div class="project-detail-rule">• '+esc(s)+'</div>').join('');
+ const after=p.after_data?
+ '<p>'+esc(JSON.stringify(p.after_data))+'</p>':
+ '<p class="project-detail-empty">아직 확인된 적용 후 성과가 없습니다. 추천 적용 시각과 변경 후 CSV를 받으면 여기에 비교 결과가 추가됩니다.</p>';
+ el('postDetail').innerHTML=
+ '<div class="project-detail-header"><span class="eyebrow">PROJECT 01 / META RECOMMENDATION</span><h2>'+esc(p.title)+'</h2><p>시작일 '+esc(date)+' · '+esc(p.status)+'</p></div>'+
+ '<div class="project-detail-stats"><div><small>현재 단계</small><strong>'+number(p.progress_stage||1)+' / '+number(p.progress_stage_total||4)+'</strong></div><div><small>적용 확인</small><strong>'+number(p.changes_logged||0)+'건</strong></div><div><small>첫 결과 점검</small><strong>'+esc(projectDate(p.deadline).slice(5))+'</strong></div></div>'+
+ '<h3 class="drawer-section">목표</h3><p class="project-detail-copy">'+esc(p.goal)+'</p>'+
+ '<h3 class="drawer-section">변경 전 기록</h3><div class="project-detail-evidence-list">'+comparison+'</div><p class="drawer-caption">'+esc(p.baseline?.notes||'')+'</p>'+
+ '<h3 class="drawer-section">변경 후 기록</h3>'+after+
+ '<h3 class="drawer-section">Meta 추천별 상태</h3><div class="project-recommend-list">'+recommendations+'</div>'+
+ '<h3 class="drawer-section">진행 일정</h3><div class="project-progress">'+milestones+'</div>'+
+ '<h3 class="drawer-section">프로젝트 진행 기록</h3><div class="project-log">'+records+(changes||'')+'</div>'+
+ '<h3 class="drawer-section">다음 할 일</h3><div class="drawer-next">'+esc(p.next_action?.headline||'추천 적용 대상 확인')+' · '+esc(p.next_action?.due||'')+'</div>'+
+ '<h3 class="drawer-section">결과 해석 원칙</h3><div class="project-detail-rules">'+notes+'</div>'+
+ '<p class="drawer-caption">진행 기록은 대화로 확인된 사항만 반영합니다. Meta의 추천은 자동으로 적용되지 않으며, 실제 적용 여부 확인 전에는 완료로 표시하지 않습니다.</p>';
+ const overlay=el('postOverlay');
+ overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');
+ document.body.style.overflow='hidden';el('closePost').focus();
+}
 function renderProjectTracker(){
- const os=window.SIGNAL_OS_OPERATIONS||{},projects=os.weekly_projects?.projects||[];
- const main=projects.find(x=>x.id==='META-REC-ALL'),side=projects.find(x=>x.id==='APPEAL-AB');
- const root=el('projectTracker'),sideRoot=el('projectSideList');if(!root||!main)return;
- const fmtDay=x=>String(x||'').slice(5).replace('-','/');
- const ready=main.recommendations.filter(x=>x.decision!=='보류');
- const pause=main.recommendations.filter(x=>x.decision==='보류');
- const postItems=(main.baseline?.posts||[]).map(x=>'<div><b>'+esc(x.name)+'</b><span>'+number(x.landing_page_views)+' LPV · '+money(x.spend_usd)+' · 조회당 '+money(x.lpv_cost_usd,3)+'</span></div>').join('');
- const reco=main.recommendations.map(x=>'<div class="project-recommend-row"><span class="project-rec-state '+(x.decision==='보류'?'held':'')+'">'+esc(x.decision)+'</span><div><strong>'+esc(x.name)+'</strong><p>'+esc(x.status)+' · '+esc(x.action)+'</p></div></div>').join('');
- const phases=(main.phases||[]).map(x=>'<div class="project-progress-line"><time>'+fmtDay(x.date)+'</time><div><b>'+esc(x.title)+'</b><p>'+esc(x.note)+'</p></div></div>').join('');
- const logs=(main.progress_log||[]).slice().reverse().map(x=>'<div class="project-log-item"><small>'+esc(x.at)+' · '+esc(x.kind)+' · '+esc(x.status)+'</small><strong>'+esc(x.headline)+'</strong><p>'+esc(x.detail)+'</p></div>').join('');
- root.innerHTML='<article class="project-primary"><div class="project-topline"><span>PROJECT 01 · META RECOMMENDATION IMPACT</span><em>'+esc(main.status)+'</em></div>'+ 
- '<h2>'+esc(main.title)+'</h2><p class="project-lead">'+esc(main.goal)+'</p>'+ 
- '<div class="project-kpis"><div><small>시작일</small><strong>'+fmtDay(main.started_at)+'</strong><span>2026년 프로젝트 등록</span></div><div><small>현재 단계</small><strong>'+number(main.progress_stage||1)+' / '+number(main.progress_stage_total||4)+'</strong><span>'+esc(main.phase_current||'확인 중')+'</span></div><div><small>적용 확인</small><strong>'+number(main.changes_logged||0)+'건</strong><span>미확인 적용은 제외</span></div><div><small>첫 결과 점검</small><strong>'+fmtDay(main.deadline)+'</strong><span>적용 일정에 따라 조정 가능</span></div></div>'+ 
- '<div class="project-cols"><section class="project-panel"><h3>실험 변경 전 · 변경 후</h3><div class="project-before-after"><div class="project-measure"><small>변경 전</small><strong>기준선 확보</strong><span>10/15 캡처, 개별 소재 연결은 임시</span></div><div class="project-measure waiting"><small>변경 후</small><strong>미수집</strong><span>실제 추천 적용 시각 및 이후 CSV 필요</span></div></div><div class="project-post-baseline">'+postItems+'</div><p class="project-mini-note">'+esc(main.baseline?.notes||'')+'</p></section>'+ 
- '<section class="project-panel"><h3>Meta 추천별 검토 · '+ready.length+'건 조건 검토 / '+pause.length+'건 보류</h3><div class="project-recommend-list">'+reco+'</div></section>'+ 
- '<section class="project-panel"><h3>추적 일정 · 10/15~10/22</h3><div class="project-progress">'+phases+'</div></section>'+ 
- '<section class="project-panel"><h3>대화에서 확정한 진행 기록</h3><div class="project-log">'+logs+'</div><p class="project-mini-note">실제 광고 적용을 확인한 뒤 적용 목록과 수치가 여기 추가됩니다.</p></section></div>'+ 
- '<div class="project-next"><div><h3>다음 확인 · '+esc(main.next_action?.headline||'Meta 추천 대상 확인')+'</h3><p>'+esc((main.next_action?.deliverables||[]).join(' · '))+'</p></div><b>'+fmtDay(main.next_action?.due)+'</b></div>'+ 
- '<p class="project-mini-note">'+esc(main.comparison)+' '+esc(main.caution)+'</p></article>';
- if(side&&sideRoot)sideRoot.innerHTML='<article class="project-secondary"><span class="eyebrow">PROJECT 02 · CONTENT MESSAGE TEST</span><h3>'+esc(side.title)+'</h3><p>게시 전 기획 단계 · A: 불안·공감형 / B: 해결·효능형. 10/19~20 게시 제안, 10/27에 양쪽 7일 성과 비교 예정.</p><button type="button" id="openAppealProject">소구점 프로젝트 자세히 보기 ↗</button></article>';
- const btn=el('openAppealProject');if(btn)btn.addEventListener('click',()=>openWeeklyProject('APPEAL-AB'));
+ const projects=window.SIGNAL_OS_OPERATIONS?.weekly_projects?.projects||[];
+ const holder=el('projectTracker');if(!holder)return;
+ holder.innerHTML='<div class="project-index-grid">'+projects.map(p=>{
+  const start=projectDate(p.started_at||p.registration_date||p.period_start);
+  return '<button type="button" class="project-index-card" data-open-project="'+esc(p.id)+'" aria-label="'+esc(p.title)+' 상세 내용 열기">'+
+   '<span class="project-index-date">'+esc(start)+'</span>'+
+   '<strong class="project-index-name">'+esc(p.title)+'</strong>'+
+   '<span class="project-index-arrow" aria-hidden="true">↗</span></button>';
+ }).join('')+'</div>';
+ holder.querySelectorAll('[data-open-project]').forEach(button=>
+  button.addEventListener('click',()=>openProjectDetail(button.dataset.openProject)));
 }
 
 featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();renderOperations();renderWeeklyFocus();renderEvaluationHome();renderWeekProjects();renderProjectTracker();
