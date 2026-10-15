@@ -428,6 +428,15 @@ window.SIGNAL_OS_OPERATIONS={
       "action": "Meta 추천은 적격성/예산/타겟/법적 조건 확인 후 단계별 적용 로그. 소구점 A/B 릴스는 일반 게시로 초안 작성·업로드 일정 제안, 24h/72h/7d 비교. 10/22 Meta 1차 평가, 10/27 콘텐츠 양쪽 7일 평가.",
       "reason": "사용자 명시적인 이번 주 목표. 하루 전체 광고비 KRW20,000. 동시에 광고 설정·크리에이티브·타겟을 바꾸면 인과효과 분리 불가.",
       "result": "Signal OS 운영 계획 기록만 완료; 실제 Meta 추천 적용/새 게시물 업로드/광고 일시중지는 아직 확인되지 않음."
+    },
+    {
+      "at": "2026-10-15",
+      "kind": "프로젝트 진행 페이지 생성",
+      "date_range": "2026-10-15 이후",
+      "headline": "Meta 추천 적용 전후 성과 검증 프로젝트 등록",
+      "action": "대화에서 확인되는 적용 내용·날짜·비교 결과를 이 프로젝트 로그에 누적. 적용 전은 10/15 기준선, 후속 점검은 10/22.",
+      "reason": "사용자 요청: 왼쪽 02 프로젝트 진행 페이지에서 현재 진행과 변경 내역을 지속적으로 확인",
+      "result": "계획과 기준선 기록 완료. Meta 실제 추천 적용 여부 미확인"
     }
   ],
   "upload_spec": {
@@ -800,10 +809,10 @@ window.SIGNAL_OS_OPERATIONS={
         "id": "META-REC-ALL",
         "number": "01",
         "category": "META RECOMMENDATIONS",
-        "title": "Meta 추천 적용 전후 비교",
+        "title": "Meta 추천 적용 전후 성과 검증",
         "short": "적용 가능한 기능을 검토하고 실제 사용 전·후 성과 비교",
-        "status": "시작 전 · 승인 및 대상 확인",
-        "status_type": "pending",
+        "status": "진행 중 · 기준선 확보 / Meta 실제 적용 대기",
+        "status_type": "tracking",
         "window": "10/15–10/22",
         "deadline": "2026-10-22",
         "checkpoint": "2026-10-18",
@@ -940,7 +949,58 @@ window.SIGNAL_OS_OPERATIONS={
         ],
         "caution": "'할 수 있는 건 다'는 모두 즉시 눌러도 좋다는 의미로 해석하지 않습니다. 예산 증액과 세트 병합은 보류. 목표·게재 위치·크리에이티브는 조건 확인 후 단계별 검토합니다.",
         "result": "아직 어떤 Meta 추천도 적용했다고 확인되지 않음",
-        "last_checked": "2026-10-15"
+        "last_checked": "2026-10-15",
+        "project_name": "Meta Recommendation Impact Test",
+        "started_at": "2026-10-15",
+        "started_time_note": "2026-10-15 사용자 프로젝트 등록 시점; 추천 실제 적용 날짜는 별도 기록",
+        "last_updated": "2026-10-15",
+        "phase_current": "01 / 적용 전 수치 확보 및 추천 검토",
+        "progress_stage": 1,
+        "progress_stage_total": 4,
+        "actual_completion_date": null,
+        "next_action": {
+          "due": "2026-10-16",
+          "headline": "Meta 추천별 적용 대상 및 변경 내용 확인",
+          "deliverables": [
+            "추천별 대상 캠페인/광고 ID",
+            "변경할 문구·목표·게재위치 미리보기",
+            "광고별 예산·일시중지 상태",
+            "각 추천 실제 적용 여부와 적용 시각"
+          ],
+          "status": "확인 필요"
+        },
+        "progress_log": [
+          {
+            "at": "2026-10-15",
+            "kind": "시작",
+            "status": "프로젝트 등록",
+            "headline": "Meta 추천 적용 전후 성과 검증 프로젝트 시작",
+            "detail": "하루 2만원 예산 안에서 적용 가능한 추천들을 검토. 예산 증액·의도적인 실험 구조를 무너뜨릴 광고 세트 통합은 보류."
+          },
+          {
+            "at": "2026-10-15",
+            "kind": "변경 전 데이터",
+            "status": "확보",
+            "headline": "생기부 릴스 2개 누적 지출·랜딩 수 저장",
+            "detail": "3년 쌓아온 생기부 $24.88 / LPV 27 / 조회당 $0.921. 생기부 면접 준비 $20.98 / LPV 27 / 조회당 $0.777. 캡처 시각 불명; 같은 기간 CSV와 합산 금지."
+          },
+          {
+            "at": "2026-10-15",
+            "kind": "진행 원칙",
+            "status": "적용 대기",
+            "headline": "추천을 적용한 항목과 시각을 기록해 변경 전후 비교",
+            "detail": "여러 추천을 동시에 적용하면 각 기능별 효과는 구분할 수 없으므로 전체 변경 묶음의 전후 성과로만 해석. 실제 Meta 적용은 확인 전."
+          }
+        ],
+        "change_log": [],
+        "after_data": null,
+        "evaluation_rules": [
+          "추천 적용 전후 동일 목표·ID·동등한 측정 기간을 비교",
+          "어떤 기능을 어느 광고에 언제 적용했는지 기록",
+          "여러 추천을 함께 적용하면 각 추천의 개별 효과로 단정하지 않음",
+          "ROAS는 실제 매출 및 전환 데이터가 없으면 추정하지 않음",
+          "모든 광고 합산 하루 2만 원 가이드 유지, 예산 증액은 보류"
+        ]
       },
       {
         "id": "APPEAL-AB",
@@ -948,7 +1008,7 @@ window.SIGNAL_OS_OPERATIONS={
         "category": "CONTENT APPEAL A/B",
         "title": "불안·공감형 vs 해결·효능형",
         "short": "같은 생기부 면접 주제, 다른 심리적 소구점 비교",
-        "status": "게시 기획 · 아직 업로드 전",
+        "status": "별도 프로젝트 · 문안 기획 중 / 실제 게시 전",
         "status_type": "planned",
         "window": "10/16–10/27",
         "deadline": "2026-10-27",
@@ -1045,7 +1105,8 @@ window.SIGNAL_OS_OPERATIONS={
         "budget": "이번 실험은 우선 유기 게시로 운영해 광고비를 추가하지 않습니다. 두 게시물 유료 A/B는 Meta 추천 시험 종료 후 같은 예산으로 별도 진행 가능.",
         "dependencies": "업로드 날짜와 소재는 사용자 확정 전 계획 단계. 자동 업로드/자동 집행 없음.",
         "result": "아직 게시물이 제작·게시됐다는 확인 없음",
-        "last_checked": "2026-10-15"
+        "last_checked": "2026-10-15",
+        "registration_date": "2026-10-15"
       }
     ],
     "focus_end_note": "Meta 추천 적용 전후 비교 결과와 소구점 A/B 결과는 서로 다른 실험으로 관리하고, 광고 지출까지 한 표에 섞어 인과적 결론을 내리지 않습니다."
