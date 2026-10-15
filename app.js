@@ -418,16 +418,24 @@ function renderMetaRecommendations(){
  '<span>유사 세트의 중간값 <b>'+money(perf.benchmark_link_cpc,2)+'</b></span></div>'+
  '<p>이 화면의 광고/세트 식별자와 정확한 집계 기간을 확인하지 못했으므로, 기존 캠페인 누적 수치에 <b>합산하지 않았습니다.</b> 유사 세트 대비 비용 차이도 고객 전환 성과의 우열을 뜻하지 않습니다.</p></section>':'';
 
- const preApply=status.pre_apply_snapshot;
- const preApplyBox=preApply?'<section class="rec-captured-performance" aria-label="Apply now 직전 기준 스냅샷">'+
- '<h3>10/15 · Apply now 직전 기준 스냅샷 (실제 적용은 미확인)</h3>'+
+ const currentShots=status.campaign_snapshots_before_apply;
+ const shots=currentShots?.items||[];
+ const preApplyBox=shots.length?'<section class="rec-captured-performance" aria-label="Apply now 직전 두 활성 광고의 현재 성과">'+
+ '<h3>10/15 · Apply now 직전 활성 광고 2개 기준값</h3>'+
+ '<p class="caption">캠페인 목록 위→아래 순서와 광고 목록의 활성 행 ①·③을 사용자가 매칭했습니다. 가운데 일시 중단 광고는 별도 보관했습니다.</p>'+
+ shots.map(x=>'<div style="padding:14px 0;border-bottom:1px solid #e7ebe8">'+
+ '<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:6px"><strong>'+
+ esc(x.delivery==='active'?'활성 '+x.active_position+' · '+x.campaign:'참고 · 일시 중단 · '+x.campaign)+
+ '</strong><span class="chip">'+esc(x.delivery==='active'?'집행 중':'일시 중단')+'</span></div>'+
  '<div class="rec-captured-metrics">'+
- '<span>조회수 <b>'+number(preApply.views)+'회</b></span>'+
- '<span>웹사이트 방문 <b>'+number(preApply.website_visits)+'회</b></span>'+
- '<span>누적 지출 <b>'+money(preApply.spend_usd,2)+'</b></span>'+
- '<span>웹사이트 방문당 비용 <b>'+money(preApply.spend_usd/preApply.website_visits,3)+'</b></span>'+
- '</div><p><b>변경 예정:</b> 유사 광고 세트 2개 통합(Combine 2 similar ad sets). Meta 적용 대상인 두 광고세트 ID는 확인되지 않았습니다. 화면에는 활성 상태만 보이며 광고명·ID·집계 기간·캡처 시각은 표시되지 않습니다.</p>'+
- '<p>조회수는 노출·도달과 구별하고, 웹사이트 방문은 랜딩페이지 조회(LPV)와 동일하다고 가정하지 않습니다. 과거 생기부 릴스 $25.45/LPV 27회와 합산하거나 단순 차감하지 않습니다. 실제 Apply now 적용·변경 시각 확인 후 동일 광고의 동일 지표로 후속 성과를 비교합니다.</p>'+
+ '<span>조회수 <b>'+esc(x.views_display)+'회</b></span>'+
+ '<span>웹사이트 방문 <b>'+number(x.website_visits)+'회</b></span>'+
+ '<span>누적 지출 <b>'+money(x.spend_usd,2)+'</b></span>'+
+ '<span>방문당 비용 <b>'+money(x.website_visit_cost,3)+'</b></span>'+
+ '</div>'+
+ '<p class="caption" style="margin:7px 0 0">'+esc(x.id_status)+'</p></div>').join('')+
+ '<p style="margin:12px 0 0"><b>변경 검토:</b> Meta의 유사 광고세트 2개 통합 추천. 실제 통합 대상인 광고세트 ID, 적용 여부·시각은 미확인입니다. 이 표는 변경 이전 수치이며 변경 후 성과를 나타내지 않습니다.</p>'+
+ '<p class="caption" style="margin:6px 0 0">조회수는 노출수와 다르고 웹사이트 방문은 별도 CSV의 랜딩페이지 조회(LPV)와 동일 지표라고 단정하지 않습니다. 두 번째 광고의 1.3만 회는 반올림 표시입니다. 기존 생기부 광고의 $25.45/LPV 27회와 단순 합산하거나 차감하지 않습니다.</p>'+
  '</section>':'';
  cards.innerHTML=preApplyBox+performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
  if(history.length){
