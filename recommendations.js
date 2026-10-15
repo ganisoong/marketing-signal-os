@@ -426,5 +426,22 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "opportunity_score": 68,
     "potential_points": 32
   },
+  "pre_apply_snapshot": {
+    "received_date": "2026-10-15",
+    "source": "사용자 업로드 Meta 활성 광고 요약 캡처",
+    "views": 3603,
+    "website_visits": 33,
+    "spend_usd": 28.02,
+    "delivery": "active",
+    "recommended_change": "Combine 2 similar ad sets impacted by fragmentation",
+    "apply_status": "not_confirmed",
+    "advertisement_id": null,
+    "campaign_id": null,
+    "measurement_at": null,
+    "measurement_period": null,
+    "identity_status": "ad name and ID not visible; candidate for 3-year student-record Reel but not verified",
+    "metric_note": "Website visits are not assumed equivalent to LPV, and views are not the same as impressions. Do not add or subtract historical $25.45 and LPV 27.",
+    "status": "User-confirmed screen immediately before Apply now; change has not been verified as applied"
+  },
   "performance_snapshot": null
 };
