@@ -3,7 +3,7 @@ window.SIGNAL_OS_OPERATIONS={
   "updated_at": "2026-10-15",
   "report_as_of": "2026-10-14 (당일 집계; 종료 전)",
   "last_confirmed_campaign_ids_as_of": "2026-10-12 for duplicate-name pair; single-name current status provisionally mapped",
-  "current_delivery_note": "10/15 사용자 신규 스크린샷: 두 생기부 광고가 모두 활성 표시, 각각 누적 지출 $24.88 / $20.98, 랜딩 조회 27 / 27. 나머지 4개가 실제 중단됐는지는 이 캡처만으로 확인 불가. 광고 문구 개선은 아직 적용 전. CSV는 10/14까지 667행(날짜×연령×성별), 같은 데이터 기간이므로 기존 누적에 중복 추가 금지.",
+  "current_delivery_note": "10/15 사용자 광고 관리 캡처: 활성 '3년 쌓아온 생기부', '면접장에서 머릿속이 하얘진다면?' 두 광고. '생기부 면접 준비'는 일시중지. 같은 날 받은 Ads CSV는 10/14까지 60행의 두 광고 성과만 담았고 Ad ID·Campaign ID 열은 없음.",
   "profile": "인스타그램 @alphaedu_ipsi · Meta Ads 광고 데이터 수동 제출 기반",
   "policy": {
     "auto_pause": false,
@@ -437,6 +437,15 @@ window.SIGNAL_OS_OPERATIONS={
       "action": "대화에서 확인되는 적용 내용·날짜·비교 결과를 이 프로젝트 로그에 누적. 적용 전은 10/15 기준선, 후속 점검은 10/22.",
       "reason": "사용자 요청: 왼쪽 02 프로젝트 진행 페이지에서 현재 진행과 변경 내역을 지속적으로 확인",
       "result": "계획과 기준선 기록 완료. Meta 실제 추천 적용 여부 미확인"
+    },
+    {
+      "at": "2026-10-15",
+      "kind": "프로젝트 기준선 확보 · 실집행 광고 정정",
+      "date_range": "2026-09-15~2026-10-14",
+      "headline": "현재 활성 광고 2개(생기부·하얘진다면)의 Meta Ads 날짜별 CSV 확인",
+      "action": "Ad ID를 추가 확보하고, Meta 추천 실제 적용 대상/기능/적용 시각을 기록한 다음 변경 후 성과 비교. 추천 자동 적용 없음.",
+      "reason": "Ads CSV 60행, 2개 Ad name, 일자별 결과 확인. 누적 USD $19.57/LPV22, USD $50.11/LPV158. 현재 10/15 캡처는 별도 이후 스냅샷으로 분리.",
+      "result": "프로젝트 변경 전 기준선 등록 완료. 광고 집행 상태와 비용 설정은 수정하지 않음."
     }
   ],
   "upload_spec": {
@@ -628,7 +637,7 @@ window.SIGNAL_OS_OPERATIONS={
     "period_start": "2026-10-15",
     "period_end": "2026-10-21",
     "decision_date": "2026-10-22",
-    "status": "복수 Meta 추천 검토 계획 · 개별 항목 적용 여부 미확인",
+    "status": "변경 전 Ads CSV 확인 완료 / 현재 활성 2개 ID 보완 필요 / Meta 추천 미적용",
     "recommendation_id": "meta-20261015-text-creative",
     "recommendation_title": "Advantage+ creative enhancement: text improvements for 2 eligible ads",
     "why_selected": "사용자 요청에 따라 적용 가능한 Meta 추천의 전후 성과를 비교합니다. 동시 적용 시 각 권고의 개별 효과는 분리 불가하며, 하루 전체 광고비 2만원 가이드를 지킵니다.",
@@ -636,12 +645,12 @@ window.SIGNAL_OS_OPERATIONS={
       {
         "id": "120252790032910529",
         "name": "3년 쌓아온 생기부",
-        "eligibility": "확인 필요"
+        "eligibility": "Meta 추천 적용 대상 확인 필요"
       },
       {
-        "id": "120252790030140529",
-        "name": "생기부 면접 준비",
-        "eligibility": "확인 필요"
+        "id": null,
+        "name": "면접장에서 머릿속이 하얘진다면?",
+        "eligibility": "정확한 Ad ID 확인 필요"
       }
     ],
     "required_preconditions": [
@@ -729,64 +738,73 @@ window.SIGNAL_OS_OPERATIONS={
       "meta_forecast": "Meta의 3% 비용 개선은 계정 화면의 예상값이며, 현재 두 생기부 릴스에 실제로 같은 개선이 발생한다는 보장 없음"
     },
     "daily_log": [],
-    "result": "2026-10-15 기준선은 저장됨. Meta 추천 적용은 아직 확인되지 않음. 광고 예산 증액과 실험을 방해하는 세트 병합은 보류.",
+    "result": "변경 전 일별 성과를 Ads 60행에서 확보. 변경 후 실적 미수집. 적용 시각을 기록한 뒤 10/22 비교 예정.",
     "next_week_candidate": "문구 개선 시험 결과 확인 후 두 번째 생기부 광고에 순차 확대하거나 랜딩페이지 조회 최적화(+23% 예상)를 단일 후속 실험으로 분리",
     "baseline": {
       "screenshot": {
         "date": "2026-10-15",
-        "captured_at": "촬영 시각 미확인 · 사용자가 10/15 오전 업로드",
-        "source": "Instagram 광고 관리 최근 생기부 광고 2개 캡처",
-        "kind": "변경 전 광고별 누적 스냅샷",
+        "source": "사용자 Instagram 광고관리 현황 화면",
         "ads": [
           {
             "name": "3년 쌓아온 생기부",
-            "campaign_id": "120252790032910529",
-            "match": "기존 캠페인명과 썸네일 주제 기준 임시 연결",
-            "status": "active",
-            "impressions_displayed": 3156,
+            "date": "2026-10-15 (시간 미확인)",
+            "impressions_displayed": 3213,
             "landing_page_views": 27,
-            "spend_usd": 24.88,
-            "lpv_cost_usd": 0.9214814814814815
+            "spend_usd": 25.45,
+            "cost_per_lpv_usd": 0.9425925925925925
           },
           {
-            "name": "생기부 면접 준비",
-            "campaign_id": "120252790030140529",
-            "match": "기존 캠페인명과 썸네일 주제 기준 임시 연결",
-            "status": "active",
-            "impressions_displayed": 3759,
-            "landing_page_views": 27,
-            "spend_usd": 20.98,
-            "lpv_cost_usd": 0.7770370370370371
+            "name": "면접장에서 머릿속이 하얘진다면?",
+            "date": "2026-10-15 (시간 미확인)",
+            "impressions_displayed": 12000,
+            "impressions_is_rounded": true,
+            "landing_page_views": 159,
+            "spend_usd": 50.83,
+            "cost_per_lpv_usd": 0.319685534591195
           }
         ]
       },
       "csv": {
-        "source": "979718671826640-Campaigns-Sep-15-2026-Oct-14-2026 (1).csv",
-        "period": "2026-10-13~2026-10-14",
-        "rows": 667,
-        "granularity": "date × age × gender × campaign name",
+        "source": "979718671826640-Ads-Sep-15-2026-Oct-14-2026.csv",
+        "period": "2026-09-15~2026-10-14",
+        "rows": 60,
+        "granularity": "date × ad name",
         "campaign_id_present": false,
-        "period_end": "2026-10-14",
         "ads": [
           {
             "name": "3년 쌓아온 생기부",
-            "cumulative_spend_usd": 19.57,
-            "cumulative_link_clicks": 43,
-            "cumulative_lpv": 22,
-            "cumulative_impressions": 2462,
-            "day_1014_spend_usd": 13.25,
-            "day_1014_link_clicks": 32,
-            "day_1014_lpv": 19
+            "ad_name": "Instagram 게시물: 📚 3년 동안 쌓아온 생기부, 면접에서는 어떻게 말해야...",
+            "campaign_id": "120252790032910529",
+            "campaign_id_verified": false,
+            "ad_id": null,
+            "spend_usd": 19.57,
+            "impressions": 2462,
+            "link_clicks": 43,
+            "landing_page_views": 22,
+            "ctr": 0.017465475223395612,
+            "cpc_usd": 0.4551162790697674,
+            "lpv_cost_usd": 0.8895454545454545,
+            "period_start": "2026-10-13",
+            "period_end": "2026-10-14",
+            "status_in_export": "active"
           },
           {
-            "name": "생기부 면접 준비",
-            "cumulative_spend_usd": 17.28,
-            "cumulative_link_clicks": 38,
-            "cumulative_lpv": 20,
-            "cumulative_impressions": 3102,
-            "day_1014_spend_usd": 13.9,
-            "day_1014_link_clicks": 30,
-            "day_1014_lpv": 16
+            "name": "면접장에서 머릿속이 하얘진다면?",
+            "ad_name": "Instagram 게시물: 면접장에서 머릿속이 하얘진다면? 😵‍💫 예상 질문 100개를...",
+            "campaign_id": null,
+            "campaign_id_verified": false,
+            "ad_id": null,
+            "spend_usd": 50.11,
+            "impressions": 11937,
+            "link_clicks": 257,
+            "landing_page_views": 158,
+            "ctr": 0.021529697578956185,
+            "cpc_usd": 0.1949805447470817,
+            "lpv_cost_usd": 0.3171518987341772,
+            "period_start": "2026-10-10",
+            "period_end": "2026-10-14",
+            "status_in_export": "active",
+            "identity_note": "동일 제목의 캠페인이 과거 2개 존재했으므로 Ad ID 없이 특정 A/B 캠페인과 대응 불가"
           }
         ]
       },
@@ -811,7 +829,7 @@ window.SIGNAL_OS_OPERATIONS={
         "category": "META RECOMMENDATIONS",
         "title": "Meta 추천 적용 전후 성과 검증",
         "short": "적용 가능한 기능을 검토하고 실제 사용 전·후 성과 비교",
-        "status": "진행 중 · 기준선 확보 / Meta 실제 적용 대기",
+        "status": "진행 중 · 변경 전 CSV 확보 / Meta 추천 실제 적용 대기",
         "status_type": "tracking",
         "window": "10/15–10/22",
         "deadline": "2026-10-22",
@@ -828,31 +846,131 @@ window.SIGNAL_OS_OPERATIONS={
           "상담·구매 전환 (확보 가능할 때)"
         ],
         "baseline": {
-          "as_of": "2026-10-15 · Meta 광고 관리 캡처 누적",
+          "as_of": "2026-10-14 · Meta Ads 탭 Day breakdown CSV",
+          "source_file": "979718671826640-Ads-Sep-15-2026-Oct-14-2026.csv",
+          "source_rows": 60,
+          "date_range": [
+            "2026-09-15",
+            "2026-10-14"
+          ],
+          "verification": "Ads 탭에서 두 광고 이름만 필터링됨. 날짜별 수치는 확인. Ad ID·Campaign ID·Ad set ID 열 없음.",
           "verified_campaign_ids": false,
-          "notes": "CSV 10/14까지 데이터와 누적 캡처는 서로 합산하지 않음. 각 광고 식별자 확인 전 임시 소재 연결.",
+          "notes": "이 CSV는 10/14까지이며 두 광고 집행일 전체 합계입니다. 10/15 캡처의 지출/랜딩은 이후 누적 관측치이므로 더하거나 동일 기간으로 해석하지 않습니다. 같은 제목의 다른 캠페인과 ID로 구분하지 못함.",
           "posts": [
             {
               "name": "3년 쌓아온 생기부",
+              "ad_name": "Instagram 게시물: 📚 3년 동안 쌓아온 생기부, 면접에서는 어떻게 말해야...",
               "campaign_id": "120252790032910529",
-              "match": "기존 캠페인명과 썸네일 주제 기준 임시 연결",
-              "status": "active",
-              "impressions_displayed": 3156,
-              "landing_page_views": 27,
-              "spend_usd": 24.88,
-              "lpv_cost_usd": 0.9214814814814815
+              "campaign_id_verified": false,
+              "ad_id": null,
+              "spend_usd": 19.57,
+              "impressions": 2462,
+              "link_clicks": 43,
+              "landing_page_views": 22,
+              "ctr": 0.017465475223395612,
+              "cpc_usd": 0.4551162790697674,
+              "lpv_cost_usd": 0.8895454545454545,
+              "period_start": "2026-10-13",
+              "period_end": "2026-10-14",
+              "status_in_export": "active"
             },
             {
-              "name": "생기부 면접 준비",
-              "campaign_id": "120252790030140529",
-              "match": "기존 캠페인명과 썸네일 주제 기준 임시 연결",
-              "status": "active",
-              "impressions_displayed": 3759,
-              "landing_page_views": 27,
-              "spend_usd": 20.98,
-              "lpv_cost_usd": 0.7770370370370371
+              "name": "면접장에서 머릿속이 하얘진다면?",
+              "ad_name": "Instagram 게시물: 면접장에서 머릿속이 하얘진다면? 😵‍💫 예상 질문 100개를...",
+              "campaign_id": null,
+              "campaign_id_verified": false,
+              "ad_id": null,
+              "spend_usd": 50.11,
+              "impressions": 11937,
+              "link_clicks": 257,
+              "landing_page_views": 158,
+              "ctr": 0.021529697578956185,
+              "cpc_usd": 0.1949805447470817,
+              "lpv_cost_usd": 0.3171518987341772,
+              "period_start": "2026-10-10",
+              "period_end": "2026-10-14",
+              "status_in_export": "active",
+              "identity_note": "동일 제목의 캠페인이 과거 2개 존재했으므로 Ad ID 없이 특정 A/B 캠페인과 대응 불가"
             }
-          ]
+          ],
+          "daily": [
+            {
+              "date": "2026-10-10",
+              "name": "면접장에서 머릿속이 하얘진다면?",
+              "spend_usd": 1.22,
+              "impressions": 235,
+              "link_clicks": 4,
+              "landing_page_views": 2
+            },
+            {
+              "date": "2026-10-11",
+              "name": "면접장에서 머릿속이 하얘진다면?",
+              "spend_usd": 14.9,
+              "impressions": 3415,
+              "link_clicks": 77,
+              "landing_page_views": 38
+            },
+            {
+              "date": "2026-10-12",
+              "name": "면접장에서 머릿속이 하얘진다면?",
+              "spend_usd": 9.65,
+              "impressions": 2285,
+              "link_clicks": 43,
+              "landing_page_views": 26
+            },
+            {
+              "date": "2026-10-13",
+              "name": "면접장에서 머릿속이 하얘진다면?",
+              "spend_usd": 15.45,
+              "impressions": 3804,
+              "link_clicks": 92,
+              "landing_page_views": 60
+            },
+            {
+              "date": "2026-10-13",
+              "name": "3년 쌓아온 생기부",
+              "spend_usd": 6.32,
+              "impressions": 838,
+              "link_clicks": 11,
+              "landing_page_views": 3
+            },
+            {
+              "date": "2026-10-14",
+              "name": "면접장에서 머릿속이 하얘진다면?",
+              "spend_usd": 8.89,
+              "impressions": 2198,
+              "link_clicks": 41,
+              "landing_page_views": 32
+            },
+            {
+              "date": "2026-10-14",
+              "name": "3년 쌓아온 생기부",
+              "spend_usd": 13.25,
+              "impressions": 1624,
+              "link_clicks": 32,
+              "landing_page_views": 19
+            }
+          ],
+          "latest_screenshot": [
+            {
+              "name": "3년 쌓아온 생기부",
+              "date": "2026-10-15 (시간 미확인)",
+              "impressions_displayed": 3213,
+              "landing_page_views": 27,
+              "spend_usd": 25.45,
+              "cost_per_lpv_usd": 0.9425925925925925
+            },
+            {
+              "name": "면접장에서 머릿속이 하얘진다면?",
+              "date": "2026-10-15 (시간 미확인)",
+              "impressions_displayed": 12000,
+              "impressions_is_rounded": true,
+              "landing_page_views": 159,
+              "spend_usd": 50.83,
+              "cost_per_lpv_usd": 0.319685534591195
+            }
+          ],
+          "roas_available": false
         },
         "recommendations": [
           {
@@ -948,26 +1066,26 @@ window.SIGNAL_OS_OPERATIONS={
           }
         ],
         "caution": "'할 수 있는 건 다'는 모두 즉시 눌러도 좋다는 의미로 해석하지 않습니다. 예산 증액과 세트 병합은 보류. 목표·게재 위치·크리에이티브는 조건 확인 후 단계별 검토합니다.",
-        "result": "아직 어떤 Meta 추천도 적용했다고 확인되지 않음",
+        "result": "10/14까지 Ads CSV 기준선 기록 완료. 적용 후 데이터 없음, Meta 추천 실제 변경은 확인되지 않음.",
         "last_checked": "2026-10-15",
         "project_name": "Meta Recommendation Impact Test",
         "started_at": "2026-10-15",
         "started_time_note": "2026-10-15 사용자 프로젝트 등록 시점; 추천 실제 적용 날짜는 별도 기록",
         "last_updated": "2026-10-15",
-        "phase_current": "01 / 적용 전 수치 확보 및 추천 검토",
+        "phase_current": "01 / 변경 전 성과 확정 · 광고 ID 추가 확인",
         "progress_stage": 1,
         "progress_stage_total": 4,
         "actual_completion_date": null,
         "next_action": {
           "due": "2026-10-16",
-          "headline": "Meta 추천별 적용 대상 및 변경 내용 확인",
+          "headline": "Meta 추천별 적용 대상과 Ad ID 확인",
           "deliverables": [
-            "추천별 대상 캠페인/광고 ID",
-            "변경할 문구·목표·게재위치 미리보기",
-            "광고별 예산·일시중지 상태",
-            "각 추천 실제 적용 여부와 적용 시각"
+            "Ad ID·Ad set ID·Campaign ID 포함 내보내기(가능할 때)",
+            "광고별 Meta 추천 대상 확인",
+            "Preview에서 실제 문구·게재 위치·목표 변경 내용",
+            "실제 적용 여부와 시각 기록"
           ],
-          "status": "확인 필요"
+          "status": "사용자 자료 대기"
         },
         "progress_log": [
           {
@@ -990,6 +1108,20 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "적용 대기",
             "headline": "추천을 적용한 항목과 시각을 기록해 변경 전후 비교",
             "detail": "여러 추천을 동시에 적용하면 각 기능별 효과는 구분할 수 없으므로 전체 변경 묶음의 전후 성과로만 해석. 실제 Meta 적용은 확인 전."
+          },
+          {
+            "at": "2026-10-15",
+            "kind": "변경 전 Ads 일별 CSV",
+            "status": "확보·확인",
+            "headline": "실제 활성 광고 두 개를 기준선으로 갱신",
+            "detail": "업로드 파일 60행, Sep15–Oct14, 광고 2개. 생기부: $19.57/43링크클릭/22LPV($0.890/LPV); 하얘진다면: $50.11/257링크클릭/158LPV($0.317/LPV). 이름별 일자 기록 저장. Ad ID 및 Campaign ID가 없으므로 광고 ID 확정 불가. Meta 추천 미적용."
+          },
+          {
+            "at": "2026-10-15",
+            "kind": "최신 활성 상태",
+            "status": "확인·수정",
+            "headline": "대상 광고를 생기부 + 하얘진다면로 정정",
+            "detail": "사용자 최근 광고 관리 캡처에서 활성 광고는 '3년 쌓아온 생기부'와 '면접장에서 머릿속이 하얘진다면?'. '생기부 면접 준비'는 일시중지 표시. 프로젝트 기준선의 잘못된 두 번째 광고 연결을 정정."
           }
         ],
         "change_log": [],
