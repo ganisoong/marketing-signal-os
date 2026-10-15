@@ -580,10 +580,75 @@ function renderEvaluationHome(){
  '<details class="eval-tile eval-budget '+(over?'over':'within')+'"><summary><span class="eval-overline">01 / BUDGET <b class="eval-flag '+(over?'red':'green')+'">'+(over?'초과':'이내')+'</b></span><span class="eval-label">하루 광고비</span><strong class="eval-metric">'+(spent===null?'자료 없음':won(spent))+'</strong><span class="eval-description">'+esc(displayDate(latest?.date))+' 마지막 확인 · 목표 '+won(cap)+'</span><span class="eval-meta">'+(spent===null?'일별 지출 데이터 확인 필요':(over?'한도 대비 +':'한도 대비 ')+won(Math.abs(spent-cap)))+'</span><span class="eval-expand">일별 그래프 보기 ↗</span></summary><div class="eval-flyout"><h3>일자별 광고비 <small>참고 환율 기준 원화 환산</small></h3><div class="eval-mini-legend"><span class="eval-dot red"></span>한도 초과 <span class="eval-dot green"></span>한도 이내</div><div class="eval-chart">'+bars+'</div><p>10월 14일 기록은 당일 중간 집계입니다. 오늘(10/15) 지출은 아직 수집되지 않았습니다. 실제 결제 금액은 환율·수수료와 차이가 있습니다.</p></div></details>',
  '<details class="eval-tile eval-posts"><summary><span class="eval-overline">02 / CONTENT <b class="eval-flag neutral">자료 기준</b></span><span class="eval-label">확인된 광고 소재</span><strong class="eval-metric">'+topics.length+'<small>개 주제</small></strong><span class="eval-description">광고 CSV에서 주제 중복을 제거한 수치</span><span class="eval-meta">최근 생기부 소재 2개 관찰 중</span><span class="eval-expand">게시물 제목 목록 ↗</span></summary><div class="eval-flyout"><h3>확인된 콘텐츠 주제 <small>'+topics.length+'개</small></h3><div class="eval-title-list">'+list+'</div><p>실제 인스타그램 전체 게시물 수는 아닙니다. 광고를 집행한 소재 주제만 집계했습니다.</p></div></details>',
  '<details class="eval-tile eval-cadence"><summary><span class="eval-overline">03 / CADENCE <b class="eval-flag caution">임시값</b></span><span class="eval-label">콘텐츠 업로드 주기</span><strong class="eval-metric">'+(provisional===null?'—':number(provisional,1))+'<small>일*</small></strong><span class="eval-description">*게시일 미확인 · 광고 시작일 간격 기준</span><span class="eval-meta">최근 시작일 '+esc(displayDate(lastUpload))+'</span><span class="eval-expand">월별 기록 달력 ↗</span></summary><div class="eval-flyout"><h3>'+yyyy+'년 '+mm+'월 <small>광고 캠페인 시작일 달력</small></h3>'+calendar+'<p>초록 점은 인스타그램 게시일이 아니라 광고 시작일입니다. 실제 업로드 일자를 받으면 평균 주기를 게시일 기준으로 교체합니다.</p></div></details>',
- '<details class="eval-tile eval-testing"><summary><span class="eval-overline">04 / EXPERIMENT <b class="eval-flag blue">관찰 중</b></span><span class="eval-label">현재 진행 테스트</span><strong class="eval-metric">2<small>개 릴스</small></strong><span class="eval-description">메타 AI 문구 개선 · 실제 적용 전</span><span class="eval-meta">결론 예정 <b>'+esc(displayDate(weekly.phases?.at(-1)?.date||'2026-10-22'))+'</b> · 변화 추적</span><span class="eval-expand">시험 일정 펼치기 ↗</span></summary><div class="eval-flyout"><h3>이번 주 실험 계획 <small>아직 Meta 설정 변경 없음</small></h3><div class="eval-milestones">'+testList+'</div><p>Preview에서 추천 대상과 변경할 문구를 먼저 확인하고, 한 광고만 적용해 비교할 예정입니다. 일정은 자료 확보에 따라 달라질 수 있습니다.</p></div></details>',
+ '<details class="eval-tile eval-testing"><summary><span class="eval-overline">04 / EXPERIMENT <b class="eval-flag blue">계획 등록</b></span><span class="eval-label">이번 주 프로젝트</span><strong class="eval-metric">2<small>개 프로젝트</small></strong><span class="eval-description">Meta 추천 전후 비교 + 소구점 A/B</span><span class="eval-meta">1차 <b>10/22</b> · 소구점 최종 <b>10/27</b></span><span class="eval-expand">시험 일정 펼치기 ↗</span></summary><div class="eval-flyout"><h3>이번 주 실험 계획 <small>아직 Meta 설정 변경 없음</small></h3><div class="eval-milestones">'+testList+'</div><p>Meta 추천은 적용 전후의 전체 변화를 기록하고, 소구점 A/B는 별도 콘텐츠로 24시간·72시간·7일 반응을 확인합니다. 게시 및 광고 변경은 아직 실행 확인 전입니다.</p></div></details>',
  '<details class="eval-tile eval-ai"><summary><span class="eval-overline">05 / NEXT MOVE <b class="eval-flag green">AI 추천 1순위</b></span><span class="eval-label">다음 테스트 추천</span><strong class="eval-metric small">'+recommend+'</strong><span class="eval-description">Meta 예상: 결과당 비용 약 3% 개선 가능성</span><span class="eval-meta">문구 확인 → 한 광고 적용 → 10/22 평가</span><span class="eval-expand">추천 근거 · 주의점 ↗</span></summary><div class="eval-flyout"><h3>왜 이 테스트가 우선일까?</h3><p>현재 운영할 생기부 릴스 2개가 있으므로 광고비 증액 없이 크리에이티브 문구라는 한 변수만 검증할 수 있습니다. 다만 Meta 추천 대상 광고인지 Preview 확인이 먼저입니다.</p><div class="eval-check">① 수정 문구가 입시 정보를 왜곡하지 않는지 확인<br>② 다른 타겟·예산·게재 위치는 함께 변경하지 않기<br>③ 결과는 CTR만이 아니라 랜딩 조회당 비용으로 평가</div><p>Meta의 3%는 예측이지 실제 개선 보장이 아닙니다.</p><a class="eval-reference" href="https://www.facebook.com/business/ads/facebook-instagram-reels-ads" target="_blank" rel="noopener noreferrer">Meta 공식 Reels 가이드 · 테스트와 소재 원칙 ↗</a></div></details>'
  ];
  holder.innerHTML=cards.join('');
 }
 
-featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();renderOperations();renderWeeklyFocus();renderEvaluationHome();
+
+
+/* Weekly initiative cards: current user-selected scope, planned state versus actual state. */
+function openWeeklyProject(id){
+ const op=window.SIGNAL_OS_OPERATIONS?.weekly_projects;
+ const p=op?.projects?.find(x=>x.id===id);if(!p)return;
+ const mainDetails=[
+  ['이번 프로젝트의 목표',p.goal],
+  ['진행 상태',p.status],
+  ['점검·완료 제안',p.deadline+' · 게시/적용 시작일이 바뀌면 재계산'],
+  ['성과 지표',(p.metrics||[]).join(' · ')]
+ ];
+ let special='';
+ if(id==='META-REC-ALL'){
+  const recs=(p.recommendations||[]).map(r=>'<div class="week-rec-entry"><span class="week-rec-class '+(r.decision==='보류'?'held':'ready')+'">'+esc(r.decision)+'</span><div><strong>'+esc(r.name)+'</strong><small>'+esc(r.meta_projection)+'</small><p>'+esc(r.action)+'</p></div></div>').join('');
+  const snapshots=(p.baseline?.posts||[]).map(x=>'<div class="week-snapshot"><strong>'+esc(x.name)+'</strong><span>지출 '+money(x.spend_usd)+' / LPV '+number(x.landing_page_views)+' / 방문당 '+money(x.lpv_cost_usd,3)+'</span></div>').join('');
+  special='<h3 class="drawer-section">Meta 추천 6종 · 각각의 현재 판단</h3><div class="week-rec-list">'+recs+'</div>'+
+   '<h3 class="drawer-section">변경 전 누적 기준선</h3><div class="week-snapshot-list">'+snapshots+'</div>'+
+   '<p class="drawer-caption">'+esc(p.baseline?.notes||'')+'</p>'+
+   '<div class="ops-notice">'+esc(p.caution)+' '+esc(p.comparison)+'</div>';
+ }else{
+  const variants=(p.variants||[]).map(v=>'<div class="week-variant"><span>'+esc(v.key)+' · '+esc(v.type)+'</span><strong>'+esc(v.title)+'</strong><p>'+esc(v.hypothesis)+'</p></div>').join('');
+  special='<h3 class="drawer-section">비교할 콘텐츠 두 가지</h3><div class="week-variants">'+variants+'</div>'+
+   '<h3 class="drawer-section">실험 변수</h3><div class="ops-drawer-list">'+
+   '<div><b>동일하게 유지</b><p>'+esc((p.variables?.fixed||[]).join(' · '))+'</p></div>'+
+   '<div><b>다르게 변경</b><p>'+esc((p.variables?.changed||[]).join(' · '))+'</p></div>'+
+   '<div><b>광고비</b><p>'+esc(p.budget)+'</p></div></div>'+
+   '<div class="ops-notice">'+esc(p.rules)+' '+esc(p.dependencies)+'</div>';
+ }
+ const timeline=(p.phases||[]).map(row=>'<div class="week-phase"><time>'+esc(row.date.slice(5).replace('-','/'))+'</time><div><strong>'+esc(row.title)+'</strong><p>'+esc(row.note)+'</p></div></div>').join('');
+ const core=mainDetails.map(([title,value])=>'<div><b>'+esc(title)+'</b><p>'+esc(value||'아직 확인되지 않음')+'</p></div>').join('');
+ el('postDetail').innerHTML='<span class="eyebrow">THIS WEEK / PROJECT '+esc(p.number)+'</span>'+
+ '<h2 style="margin:12px 0;line-height:1.36">'+esc(p.title)+'</h2><p class="ops-drawer-intro">'+esc(p.short)+'</p>'+
+ '<div class="ops-drawer-list">'+core+'</div>'+special+
+ '<h3 class="drawer-section">점검·진행 일정</h3><div class="week-phase-list">'+timeline+'</div>'+
+ '<p class="drawer-caption">현재는 진행 계획을 기록한 상태입니다. Meta 광고를 자동으로 변경하거나 인스타 게시물을 자동 업로드하지 않습니다.</p>';
+ const overlay=el('postOverlay');overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';el('closePost').focus();
+}
+function renderWeekProjects(){
+ const holder=el('weekProjects'),area=window.SIGNAL_OS_OPERATIONS?.weekly_projects;
+ if(!holder||!area)return;
+ const projects=area.projects||[],meta=projects.find(p=>p.id==='META-REC-ALL'),appeal=projects.find(p=>p.id==='APPEAL-AB');
+ if(!meta||!appeal)return;
+ const testEligible=meta.recommendations.filter(r=>r.decision!=='보류').length;
+ const held=meta.recommendations.length-testEligible;
+ const makeList=meta.recommendations.filter(r=>r.decision!=='보류').map(r=>'<span class="week-mini-task">'+esc(r.name)+'</span>').join('');
+ holder.innerHTML=
+ '<div class="week-project-header"><div><span class="eyebrow">ACTIVE FOCUS / THIS WEEK</span><h2>이번 주, 두 가지를 검증합니다.</h2><p>둘 다 아직 적용·게시 완료로 확인된 것은 아닙니다. 계획, 변경 시각, 결과를 따로 기록합니다.</p></div>'+
+ '<span class="week-budget-badge">하루 전체 광고비 '+number(area.budget?.account_daily_cap_krw||20000)+'원 가이드</span></div>'+
+ '<div class="week-project-grid">'+
+ '<button type="button" class="week-project-card meta" data-week-project="'+esc(meta.id)+'"><span class="week-card-top"><span>01 · META RECOMMENDATIONS</span><small>'+esc(meta.status)+'</small></span>'+
+ '<strong class="week-card-title">Meta 추천, 가능한 것부터 적용하고<br>전후 성과 비교</strong>'+
+ '<span class="week-card-explain">총 '+meta.recommendations.length+'종 중 <b>'+testEligible+'종 적용 조건 검토</b> · '+held+'종 보류</span>'+
+ '<span class="week-task-pills">'+makeList+'</span>'+
+ '<span class="week-card-metrics"><span><b>10/22</b><small>1차 성과 비교</small></span><span><b>적용 0건 확인</b><small>기록 기준</small></span></span>'+
+ '<span class="week-card-cta">추천별 체크리스트 · 변경 전 수치 · 일정 보기 <b>↗</b></span></button>'+
+ '<button type="button" class="week-project-card appeal" data-week-project="'+esc(appeal.id)+'"><span class="week-card-top"><span>02 · CONTENT APPEAL A/B</span><small>'+esc(appeal.status)+'</small></span>'+
+ '<strong class="week-card-title">불안·공감형 vs 해결·효능형<br>같은 생기부 주제로 비교</strong>'+
+ '<span class="week-copy-duel"><span><b>A · 불안/공감</b><small>'+esc(appeal.variants[0]?.title||'')+'</small></span><span><b>B · 해결/효능</b><small>'+esc(appeal.variants[1]?.title||'')+'</small></span></span>'+
+ '<span class="week-card-metrics"><span><b>10/19~20</b><small>게시 제안 · 미확정</small></span><span><b>10/27</b><small>7일 비교 예정</small></span></span>'+
+ '<span class="week-card-cta">A/B 소재·24h/72h/7d 추적 일정 보기 <b>↗</b></span></button></div>'+
+ '<p class="week-caveat">* Meta 추천을 여러 개 함께 적용하면 전체 변경 전후 비교는 가능하지만 <b>각 기능의 독립 효과는 알 수 없습니다.</b> 새 소구점 콘텐츠는 먼저 일반 릴스로 게시해 추가 광고비 없이 비교합니다.</p>';
+ holder.querySelectorAll('[data-week-project]').forEach(button=>button.addEventListener('click',()=>openWeeklyProject(button.dataset.weekProject)));
+}
+
+featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();renderOperations();renderWeeklyFocus();renderEvaluationHome();renderWeekProjects();
