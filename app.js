@@ -514,10 +514,10 @@ function renderWeeklyFocus(){
  '<div><span>가장 중요한 성과</span><b>랜딩 조회당 비용</b><small>광고비 ÷ 랜딩페이지 조회</small></div>'+
  '<div><span>변경 전 누적 방문 비용</span><b>'+(focus.baseline?.screenshot?.ads?.map(x=>money(x.lpv_cost_usd,3)).join(' / ')||'기록 대기')+'</b><small>생기부 릴스 1 / 2 · 최신 캡처</small></div></div>'+
  '<div class="weekly-body"><div class="weekly-intro"><strong>이번 주는 이렇게 합니다</strong>'+
- '<p>10/15~17은 두 생기부 광고의 변경 전 기록. 10/18은 해당 광고가 실제 Meta 추천 대상이고 수정 내용에 동의한 경우에만 1개 광고에 적용. 10/19~21 추적, 10/22 정리.</p></div>'+
+ '<p>10/15~17에는 적용 대상·예산·변경 전 수치를 확인하고, 조건에 맞는 Meta 추천을 10/18 이후 단계별로 시험합니다. 10/22에 적용 전후 수치를 비교합니다.</p></div>'+
  '<div class="weekly-days">'+steps.map((step,i)=>'<button class="weekly-day" type="button" data-weekly-phase="'+i+'">'+
  '<span>'+esc(dateShort(step.date))+'</span><strong>'+esc(step.name)+'</strong><small>'+esc(step.deliverable)+'</small><em>자세히 ↗</em></button>').join('')+'</div></div>'+
- '<div class="weekly-foot"><div><strong>적용 전에 꼭 확인</strong><p>최신 Meta 화면에는 AI 문구 개선 대상 Ads 2가 표시됩니다. 그것이 현재 생기부 릴스 두 광고인지 Preview로 확인해야 합니다. 두 소재 자체가 달라 변경 전후 수치만으로 인과 효과를 단정하지 않습니다.</p></div>'+
+ '<div class="weekly-foot"><div><strong>적용 전에 꼭 확인</strong><p>Meta 추천별 대상 광고와 Preview를 확인하고, 예산 증액 및 실험을 방해할 수 있는 세트 병합은 보류합니다. 여러 설정을 변경하면 전체 묶음의 전후 비교로 해석하며 개별 설정의 인과적 효과는 분리하지 않습니다.</p></div>'+
  '<button type="button" class="action dark" data-weekly-recs>Meta 추천 내용 보기 ↗</button></div>';
  root.querySelector('[data-weekly-recs]').addEventListener('click',()=>navigate('recommendations'));
  root.querySelectorAll('[data-weekly-phase]').forEach(b=>b.addEventListener('click',()=>{
