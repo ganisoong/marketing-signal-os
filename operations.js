@@ -829,7 +829,7 @@ window.SIGNAL_OS_OPERATIONS={
         "category": "META RECOMMENDATIONS",
         "title": "Meta 추천 적용 전후 성과 검증",
         "short": "적용 가능한 기능을 검토하고 실제 사용 전·후 성과 비교",
-        "status": "진행 중 · 변경 전 CSV 확보 / Meta 추천 실제 적용 대기",
+        "status": "진행 중 · 적용 대상 릴스 확인 / 추천 범위·실행 여부 확인 대기",
         "status_type": "tracking",
         "window": "10/15–10/22",
         "deadline": "2026-10-22",
@@ -1077,15 +1077,15 @@ window.SIGNAL_OS_OPERATIONS={
         "progress_stage_total": 4,
         "actual_completion_date": null,
         "next_action": {
-          "due": "2026-10-16",
-          "headline": "Meta 추천별 적용 대상과 Ad ID 확인",
+          "due": "2026-10-15",
+          "headline": "선택한 생기부 릴스의 Meta 추천 유형과 적용 범위 확인",
           "deliverables": [
-            "Ad ID·Ad set ID·Campaign ID 포함 내보내기(가능할 때)",
-            "광고별 Meta 추천 대상 확인",
-            "Preview에서 실제 문구·게재 위치·목표 변경 내용",
-            "실제 적용 여부와 시각 기록"
+            "Advantage+ Text improvements 여부",
+            "실제로 변경되는 광고 Ad ID/광고 수",
+            "Preview에서 문구 수정 내용",
+            "Apply now 실제 클릭 시각"
           ],
-          "status": "사용자 자료 대기"
+          "status": "사용자 확인 대기"
         },
         "progress_log": [
           {
@@ -1122,6 +1122,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "확인·수정",
             "headline": "대상 광고를 생기부 + 하얘진다면로 정정",
             "detail": "사용자 최근 광고 관리 캡처에서 활성 광고는 '3년 쌓아온 생기부'와 '면접장에서 머릿속이 하얘진다면?'. '생기부 면접 준비'는 일시중지 표시. 프로젝트 기준선의 잘못된 두 번째 광고 연결을 정정."
+          },
+          {
+            "at": "2026-10-15 17:12 KST",
+            "kind": "실험 대상 사용자 확인",
+            "status": "적용 전",
+            "headline": "Meta 추천 Apply now 대상으로 '3년 쌓아온 생기부' 릴스 확인",
+            "detail": "사용자가 실제 추천을 적용해볼 대상으로 3년 쌓아온 생기부 릴스를 지정. 추천 타입과 Ads 1개/2개 적용 범위는 현재 캡처로는 확정하지 못함. 사용자가 Apply now를 눌렀는지는 미확인. 10/15 캡처 누적 $25.45, LPV 27, LPV당 $0.943을 변경 전 스냅샷으로 기록."
           }
         ],
         "change_log": [],
@@ -1132,7 +1139,24 @@ window.SIGNAL_OS_OPERATIONS={
           "여러 추천을 함께 적용하면 각 추천의 개별 효과로 단정하지 않음",
           "ROAS는 실제 매출 및 전환 데이터가 없으면 추정하지 않음",
           "모든 광고 합산 하루 2만 원 가이드 유지, 예산 증액은 보류"
-        ]
+        ],
+        "test_subject_confirmation": {
+          "received_at": "2026-10-15 17:12 KST",
+          "name": "3년 동안 쌓아온 생기부, 면접에서는 어떻게 말해야...",
+          "associated_campaign_id": "120252790032910529",
+          "campaign_id_source": "기존 CSV 이름 매핑(별도의 광고 Ad ID는 미수집)",
+          "confirmed_by_user": true,
+          "apply_now_clicked": false,
+          "meta_recommendation_type": "미확인 · Meta Text improvements일 가능성이 있지만 확정할 수 없음",
+          "scope_warning": "광고 1개만 변경되는지 Preview/적용 범위를 확인. Ads 2로 보이면 두 광고 동시 변경 여부 확인.",
+          "baseline_snapshot": {
+            "as_of": "2026-10-15 화면 누적",
+            "spend_usd": 25.45,
+            "landing_page_views": 27,
+            "cost_per_lpv_usd": 0.9425925925925925
+          },
+          "next": "추천 이름, 실제 수정 항목, 광고 1개 대상 여부 확인 후 사용자가 직접 Apply now를 누르면 적용 시각과 변경 후 실적 기록"
+        }
       },
       {
         "id": "APPEAL-AB",
