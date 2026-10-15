@@ -498,4 +498,43 @@ function renderOperations(){
  document.querySelectorAll('[data-ops-detail]').forEach(b=>b.addEventListener('click',()=>openOpsDetail(b.dataset.opsDetail,b.dataset.opsId)));
 }
 
-featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();renderOperations();
+
+/* Week-one Meta recommendation experiment: planned vs confirmed, never automatic. */
+function renderWeeklyFocus(){
+ const root=el('opsWeekly'),focus=opsData()?.weekly_focus;
+ if(!root||!focus)return;
+ const dateShort=value=>String(value||'').slice(5).replace('-','/');
+ const steps=focus.phases||[];
+ root.innerHTML=
+ '<div class="weekly-head"><div><span class="eyebrow">WEEKLY EXPERIMENT · '+esc(dateShort(focus.period_start))+'—'+esc(dateShort(focus.period_end))+'</span>'+
+ '<h2>'+esc(focus.title)+'</h2><p>'+esc(focus.why_selected)+'</p></div>'+
+ '<div class="weekly-stage"><strong>추천 미적용</strong><span>적용 대상 확인 대기</span></div></div>'+
+ '<div class="weekly-kpis"><div><span>한 주 예산 기준</span><b>전체 하루 2만 원</b><small>두 광고 합산, 예산 자동 제한 아님</small></div>'+
+ '<div><span>가장 중요한 성과</span><b>랜딩 조회당 비용</b><small>광고비 ÷ 랜딩페이지 조회</small></div>'+
+ '<div><span>적용 전/후 수치</span><b>아직 미측정</b><small>변경 시각과 날짜별 데이터 필요</small></div></div>'+
+ '<div class="weekly-body"><div class="weekly-intro"><strong>이번 주는 이렇게 합니다</strong>'+
+ '<p>10/15~17은 두 생기부 광고의 변경 전 기록. 10/18은 해당 광고가 실제 Meta 추천 대상이고 수정 내용에 동의한 경우에만 1개 광고에 적용. 10/19~21 추적, 10/22 정리.</p></div>'+
+ '<div class="weekly-days">'+steps.map((step,i)=>'<button class="weekly-day" type="button" data-weekly-phase="'+i+'">'+
+ '<span>'+esc(dateShort(step.date))+'</span><strong>'+esc(step.name)+'</strong><small>'+esc(step.deliverable)+'</small><em>자세히 ↗</em></button>').join('')+'</div></div>'+
+ '<div class="weekly-foot"><div><strong>적용 전에 꼭 확인</strong><p>과거 Meta 추천 화면에서는 최신 생기부 릴스 2개가 이 추천의 적용 대상인지 검증되지 않았습니다. 대상이 아니라면 억지로 다른 광고를 재개하지 않습니다. 적용 전/후 단순 비교를 인과적 효과로 단정하지 않습니다.</p></div>'+
+ '<button type="button" class="action dark" data-weekly-recs>Meta 추천 내용 보기 ↗</button></div>';
+ root.querySelector('[data-weekly-recs]').addEventListener('click',()=>navigate('recommendations'));
+ root.querySelectorAll('[data-weekly-phase]').forEach(b=>b.addEventListener('click',()=>{
+   const phase=steps[Number(b.dataset.weeklyPhase)];
+   if(!phase)return;
+   const block=[
+    ['이날 할 일',phase.name],
+    ['보내주실 자료',phase.request],
+    ['제가 판단하고 기록할 것',phase.deliverable],
+    ['변경 전 확인',focus.required_preconditions.join(' · ')],
+    ['검증할 핵심 KPI',focus.success.primary_metric],
+    ['실험의 한계',focus.success.inference]
+   ];
+   el('postDetail').innerHTML='<span class="eyebrow">WEEKLY META EXPERIMENT</span><h2 style="margin:13px 0">'+esc(phase.date)+' · '+esc(phase.name)+'</h2>'+
+   '<div class="ops-drawer-list">'+block.map(([k,v])=>'<div><b>'+esc(k)+'</b><p>'+esc(v)+'</p></div>').join('')+'</div>'+
+   '<div class="ops-notice">이 일정은 운영 계획으로, 실제 추천 기능이 적용되었거나 광고가 자동 변경되었다는 의미가 아닙니다. 적용할 수 있는 광고인지 먼저 확인하고 사용자의 승인을 받습니다.</div>';
+   const overlay=el('postOverlay');overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';el('closePost').focus();
+ }));
+}
+
+featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();renderOperations();renderWeeklyFocus();
