@@ -438,8 +438,9 @@ function renderMetaRecommendations(){
  '<p class="caption" style="margin:6px 0 0">조회수는 노출수와 다르고 웹사이트 방문은 별도 CSV의 랜딩페이지 조회(LPV)와 동일 지표라고 단정하지 않습니다. 두 번째 광고의 1.3만 회는 반올림 표시입니다. 기존 생기부 광고의 $25.45/LPV 27회와 단순 합산하거나 차감하지 않습니다.</p>'+
  '</section>':'';
  const execution=status.apply_event;
+ const failedPublish=status.apply_failure_snapshot;
  const executionBox=execution?'<section class="rec-captured-performance" aria-label="Meta 추천 Apply now 실행 및 게시 상태" style="margin-bottom:15px;border:1px solid #d7e5db">'+
- '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:9px"><span class="chip em">10/15 · Apply now 실행 요청</span><span class="chip">Meta 게시 준비 중 · 완료 확인 대기</span></div>'+
+ '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:9px"><span class="chip em">10/15 · Apply now 실행 요청</span><span class="chip">'+(failedPublish?'추천 적용 실패 · 부분 게시 확인':'Meta 게시 준비 중 · 완료 확인 대기')+'</span></div>'+
  '<h3>유사 광고 세트 2개 통합 권고 실행</h3>'+
  '<p><b>변경 종류:</b> 광고 문구를 개선한 것이 아니라 Meta의 광고 세트 파편화(Fragmentation)를 줄이기 위한 통합 최적화 요청입니다. 추천 원문은 <i>Combine 2 similar ad sets impacted by fragmentation</i>입니다.</p>'+
  '<div class="rec-captured-metrics"><span>대상 <b>'+number(execution.impacted_ads_as_displayed)+'개 광고로 표시</b></span>'+
@@ -447,9 +448,10 @@ function renderMetaRecommendations(){
  '<span>Meta 예측 CPC <b>'+money(execution.expected_link_cpc_after_usd,2)+'</b></span>'+
  '<span>예상 개선 <b>'+number(execution.expected_reduction_percent)+'%</b></span></div>'+
  '<div style="padding:12px 15px;background:#f7f9f7;border-radius:10px;margin-top:12px"><strong>Meta 표시 상태 · '+esc(execution.meta_message)+'</strong><p style="margin:6px 0 0">'+esc(execution.meta_detail)+'</p><p class="caption" style="margin:7px 0 0">게시 성공 알림이나 실제 세트 구조 변경은 미확인. 클릭/요청과 적용 완료는 서로 다릅니다.</p></div>'+
+ (failedPublish?'<div style="border:1px solid #e8b9b1;background:#fff6f4;padding:13px 15px;border-radius:10px;margin-top:12px"><strong>Meta 추천 적용 실패 (10/15)</strong><p>두 광고 세트 중 <b>하얘진다면 Complete</b> / <b>3년 동안 쌓아온 생기부 Fix errors</b>. 광고 단계에서도 1개 게시 실패. Meta 오류는 Boosted Post Editing Is Only Allowed in Instagram App. 나머지 일부 항목은 게시됐을 수 있으므로 변경 이력 확인 전 성과 개선 판단 금지.</p></div>':'')+
  '<ol style="padding-left:20px;margin:13px 0 0"><li><b>변경 전 기록:</b> 아래 활성 릴스 2개 및 중단 광고의 10/15 누적 스냅샷 보관</li>'+
  '<li><b>실행 기록:</b> 사용자 Apply now 클릭, Meta 게시 준비 중 팝업 확인</li>'+
- '<li><b>적용 확인 대기:</b> 게시 완료 또는 실패 알림, 실제 영향을 받는 광고/광고세트 ID 및 변경 설정 확인</li>'+
+ '<li><b>결과 확인:</b> '+(failedPublish?'생기부 광고세트 Fix errors, 하얘진다면 광고세트 Complete. 전체 통합 추천 실패, 기타 변경은 확인 필요':'게시 완료 또는 실패 알림과 실제 변경된 광고세트 ID 확인 필요')+'</li>'+
  '<li><b>후속 검증 대기:</b> 24시간·72시간·7일 성과 수집 후 같은 정의의 링크 CPC·방문당 비용을 비교하고 변경 효과를 검토</li></ol>'+
  '<p class="caption" style="margin:10px 0 0">Meta 예상 절감률은 실제 성과가 아닙니다. 추천의 적용 대상은 Meta 화면에 2개 광고로만 표시되며, 현재 활성화된 두 릴스가 대상이라는 ID 수준 확인은 없습니다.</p>'+
  '</section>':'';
