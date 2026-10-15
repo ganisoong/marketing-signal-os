@@ -446,6 +446,18 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "campaign_name_verified_by": "User-provided two-row active Campaigns screenshot + ordered Ads status list",
     "campaign_id_candidate": "120252790032910529"
   },
+  "apply_failure_snapshot": {
+    "date": "2026-10-15",
+    "status": "recommendation_failed_with_partial_publication",
+    "adsets_total": 2,
+    "adsets_complete": 1,
+    "adsets_failed": 1,
+    "ads_failed": 1,
+    "complete_name": "면접장에서 머릿속이 하얘진다면",
+    "failed_name": "3년 동안 쌓아온 생기부",
+    "error_code_message": "Boosted Post Editing Is Only Allowed in Instagram App",
+    "note": "Meta showed Recommendation wasn't applied. One ad set Complete, the other Fix errors; ad 0 of 1. Other items may have been published. No verified complete consolidation or improvement."
+  },
   "performance_snapshot": null,
   "campaign_snapshots_before_apply": {
     "received_at": "2026-10-15 (exact screenshot time not displayed)",
@@ -521,12 +533,12 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "recommendation_name": "Combine 2 similar ad sets impacted by fragmentation",
     "change_category": "Ad set structure / audience fragmentation optimization",
     "operator": "User manually clicked Apply now in Meta Ads Manager",
-    "meta_message": "Preparing to publish changes",
+    "meta_message": "Recommendation wasn\u0027t applied; some items not published",
     "meta_detail": "Fragmentation will be applied to 2 ads",
     "impacted_ads_as_displayed": 2,
     "affected_ad_ids_verified": [],
     "affected_adset_ids_verified": [],
-    "publish_status": "preparing_to_publish",
+    "publish_status": "partial_publish_failed",
     "published_at": null,
     "completed": false,
     "expected_link_cpc_before_usd": 0.21,
