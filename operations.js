@@ -1,9 +1,9 @@
 window.SIGNAL_OS_OPERATIONS={
   "schema_version": 1,
-  "updated_at": "2026-10-14",
+  "updated_at": "2026-10-15",
   "report_as_of": "2026-10-14 (당일 집계; 종료 전)",
   "last_confirmed_campaign_ids_as_of": "2026-10-12 for duplicate-name pair; single-name current status provisionally mapped",
-  "current_delivery_note": "최종 수신한 Instagram 화면(10/14 21:49 KST)은 활성 6개·일시중지 4개. 이후 사용자가 최근 생기부 릴스 2개만 남기기로 결정했으나 실제 광고를 끈 화면은 아직 확인하지 못함. 현재 집행 상태는 다시 확인 필요.",
+  "current_delivery_note": "10/15 사용자 신규 스크린샷: 두 생기부 광고가 모두 활성 표시, 각각 누적 지출 $24.88 / $20.98, 랜딩 조회 27 / 27. 나머지 4개가 실제 중단됐는지는 이 캡처만으로 확인 불가. 광고 문구 개선은 아직 적용 전. CSV는 10/14까지 667행(날짜×연령×성별), 같은 데이터 기간이므로 기존 누적에 중복 추가 금지.",
   "profile": "인스타그램 @alphaedu_ipsi · Meta Ads 광고 데이터 수동 제출 기반",
   "policy": {
     "auto_pause": false,
@@ -16,17 +16,17 @@ window.SIGNAL_OS_OPERATIONS={
     {
       "id": "P-META-W1",
       "level": "높음",
-      "type": "Meta 추천 실험",
+      "type": "Meta 문구 개선 실험",
       "campaign_ids": [
         "120252790032910529",
         "120252790030140529"
       ],
-      "status": "릴스 포맷 추천 적격성 확인 필요 · 미적용",
-      "title": "이번 주: 생기부 릴스 중 1개에 9:16·오디오 추천 적용 가능 여부 확인",
-      "why": "하루 총 예산 2만 원으로 광고 2개만 운영하고 싶음. Meta의 릴스 형식 추천은 화면에 존재하지만 두 신규 생기부 릴스가 실제 적용 대상인지는 미확인.",
-      "next": "Meta Opportunity Score의 'Optimize your Reels format'에서 Show more를 열어 해당 광고 이름/ID를 확인. 10/15~17 기준선 수집. 적격하다면 10/18 한 광고에만 적용 검토 후 10/22 비용 비교.",
-      "due": "2026-10-17",
-      "decision": "추천 자동 적용 금지 · 다른 광고 재개 금지 · 적용 대상 미확인 시 이번 주 실험 보류"
+      "status": "적용 전 스냅샷 기록 완료 · Preview 확인 대기",
+      "title": "이번 주: 생기부 릴스 2개 중 1개에 Meta 문구 개선 기능 테스트",
+      "why": "10/15 Meta Actions 화면에서 Ads 2 대상 'text improvements', 예상 비용 3% 개선(보장 아님)을 확인. 최신 릴스 2개 누적 LPV 비용은 각각 $0.921, $0.777. 아직 Meta 추천 대상과 실제 광고 ID 연결 확인 필요.",
+      "next": "Meta에서 Advantage+ creative enhancement의 Preview를 열어 변경 대상 및 AI 문구 확인. 승인되면 10/18 한 광고에만 적용 후 10/22 비교. 두 광고 동시 변경 및 다른 Meta 추천 동시 적용은 보류.",
+      "due": "2026-10-16",
+      "decision": "문구 개선 효과를 한 광고부터 관찰; 두 번째는 결론 후 확대 검토"
     },
     {
       "id": "P0",
@@ -130,65 +130,65 @@ window.SIGNAL_OS_OPERATIONS={
   "cadence": [
     {
       "date": "2026-10-15",
-      "window": "오늘",
-      "title": "기준선 1일차 · 광고 상태 확인",
+      "window": "이번 주 Meta 실험",
+      "title": "변경 전 누적 기준선 확보",
       "frequency": "일간",
-      "request": "두 생기부 광고의 현재 활성 표시, 예산, 10/15 날짜별 데이터, Meta 추천의 Show more 적용 대상",
-      "outcome": "적격성 확인 및 기본 지표 1일치",
+      "request": "제출한 Meta 두 광고 누적 캡처와 10/14까지 CSV를 기록. 실제 광고 ON/OFF·예산 변경 시각과 나머지 4개 중지 여부 확인",
+      "outcome": "두 광고 누적 LPV당 비용 $0.921 / $0.777을 기준선으로 보관(집행 기간 차이 주의)",
       "experiment_id": "META-REELS-FORMAT-WEEK1"
     },
     {
       "date": "2026-10-16",
-      "window": "이번 실험",
-      "title": "기준선 2일차 · 초기 점검",
+      "window": "이번 주 Meta 실험",
+      "title": "Meta Preview · 실제 적용 대상 확인",
       "frequency": "일간",
-      "request": "캠페인 ID별 10/16 지출·링크 클릭·랜딩 조회·노출, 설정/예산 변경 이력",
-      "outcome": "광고 간 성과 비교, 조기 중단 필요 여부 검토",
+      "request": "Advantage+ creative enhancement > Preview에서 광고 2개 이름/ID, AI가 변경할 문구 예시 캡처",
+      "outcome": "이 기능이 두 생기부 릴스에 적용 가능한지, 어느 한 광고에 먼저 사용할지 결정",
       "experiment_id": "META-REELS-FORMAT-WEEK1"
     },
     {
       "date": "2026-10-17",
-      "window": "이번 실험",
-      "title": "기준선 3일차 · 적용 승인 판단",
+      "window": "이번 주 Meta 실험",
+      "title": "문구 품질·예산 검토",
       "frequency": "일간",
-      "request": "10/15~10/17 광고별 일별 성과와 추천 대상/미리보기 화면",
-      "outcome": "실험 적용 가능 여부, 적용할 1개 ID 선택",
+      "request": "적용 전 최종 날짜별 광고 성과 + 광고별 실제 일예산, 종료일 및 문구 왜곡 여부",
+      "outcome": "승인 가능한 실험 내용과 실험 전 데이터 확정",
       "experiment_id": "META-REELS-FORMAT-WEEK1"
     },
     {
       "date": "2026-10-18",
-      "window": "이번 실험",
-      "title": "추천 적용일 (조건 충족 시)",
+      "window": "이번 주 Meta 실험",
+      "title": "문구 개선을 한 광고에만 적용 (조건부)",
       "frequency": "일간",
-      "request": "변경을 승인했다면 정확한 적용 시각, 광고 ID, 변경 전후 캡처",
-      "outcome": "한 광고만 변경하고 개입 이벤트 기록 / 미적격 시 적용하지 않음",
+      "request": "미리보기 적합성과 사용자 승인이 확보되면 광고 1개만 적용 후 변경 시각·화면 기록",
+      "outcome": "한 가지 변경만 기록(대상 불명/부적절하면 이번 주 미적용)",
       "experiment_id": "META-REELS-FORMAT-WEEK1"
     },
     {
       "date": "2026-10-19",
-      "window": "이번 실험",
-      "title": "적용 후 1차 관찰",
+      "window": "이번 주 Meta 실험",
+      "title": "적용 후 최초 확인",
       "frequency": "일간",
-      "request": "10/18~10/19 날짜별 지출·클릭·LPV 및 Meta 상태",
-      "outcome": "방문비용 방향 확인, 필요시 데이터 추가 확보",
+      "request": "적용한 광고/그대로 둔 광고의 날짜별 광고비·클릭·랜딩 조회 및 상태",
+      "outcome": "기준선 대비 개선/악화의 방향 확인",
       "experiment_id": "META-REELS-FORMAT-WEEK1"
     },
     {
       "date": "2026-10-21",
-      "window": "이번 실험",
-      "title": "후속 누적 점검",
+      "window": "이번 주 Meta 실험",
+      "title": "적용 후 3~4일 누적 비교",
       "frequency": "일간",
-      "request": "10/18~10/21 날짜별 성과·문의·팔로우 및 다른 변경 유무",
-      "outcome": "적용 후 수치와 첫 3일 기준선 나란히 비교",
+      "request": "10/18~10/21 두 광고의 날짜별 광고비·클릭·LPV, 다른 변경 이력",
+      "outcome": "변경 후 LPV당 비용·CTR·방문율 비교, 데이터 충분성 판단",
       "experiment_id": "META-REELS-FORMAT-WEEK1"
     },
     {
       "date": "2026-10-22",
-      "window": "이번 실험",
-      "title": "주간 결론 및 차주 실험 선택",
+      "window": "이번 주 Meta 실험",
+      "title": "결론 및 두 번째 광고 적용 여부 결정",
       "frequency": "일간",
-      "request": "10/15~10/21 전체 날짜별 ID 성과 + 적용 시각 + 최종 문의 전환",
-      "outcome": "유지/원복/추가 관찰 권고 및 다음 1개 Meta 추천 제안",
+      "request": "변경 전/후 동일 집계 기준 CSV + 결과값 + 적용 시각",
+      "outcome": "유지/원복/추가 관찰 결정. 두 번째 릴스 문구 개선 적용 여부 별도 검토",
       "experiment_id": "META-REELS-FORMAT-WEEK1"
     },
     {
@@ -374,6 +374,15 @@ window.SIGNAL_OS_OPERATIONS={
       "action": "10/15~17 기준선 수집, 10/18 적격성·승인 조건 충족 시 한 광고만 변경, 10/19~21 추적, 10/22 랜딩 비용 비교. 다른 추천 병행 적용 금지.",
       "reason": "사용자 요청: Meta Ads 추천 실제 적용 전후 효율을 추적하고 싶음. 계정 전체 하루 2만 원 및 최근 릴스 2개 운영 선택 유지. 이전 Meta 캡처에서는 적용 대상의 캠페인 ID 미확인.",
       "result": "실험 일정만 작성, 실제 Meta 추천 적용되지 않음. 광고 상태·예산 변경 사실도 아직 재확인하지 못함."
+    },
+    {
+      "at": "2026-10-15 오전 KST (화면 촬영 시각 미확인)",
+      "date_range": "2026-10-13~10/15 오전, 변경 전 스냅샷",
+      "kind": "Meta 추천 실험 전 측정값 기록",
+      "headline": "생기부 릴스 2개: LPV 27회씩, 누적 지출 $24.88/$20.98. Meta 3% text improvement는 아직 미적용",
+      "action": "Meta Advantage+ Creative의 Preview를 열어 적격 광고 2개/변경 문구 확인. 첫 번째에는 한 광고만 적용 후 10/22 비교, 두 번째는 순차 테스트.",
+      "reason": "Meta 추천은 문구 개선에 3% 예상 효과, 예산 증가·광고 세트 병합·최적화 목표 변경을 동시에 하면 성과 원인 추적 불가. CSV는 10/14 날짜별 캠페인 연령×성별 667행이며 신규 스냅샷 수치와 혼합·합산하지 않음.",
+      "result": "기준선과 실험 순서만 OS에 기록. 사용자가 실제 'Apply now'를 눌렀다는 확인 없음."
     }
   ],
   "upload_spec": {
@@ -560,15 +569,15 @@ window.SIGNAL_OS_OPERATIONS={
   "last_screenshot_as_of": "2026-10-14 21:49 KST",
   "weekly_focus": {
     "id": "META-REELS-FORMAT-WEEK1",
-    "title": "릴스 형식 최적화 추천이 실제 랜딩 비용을 낮출까?",
+    "title": "Advantage+ 크리에이티브 '문구 개선'은 실제 랜딩 비용을 낮출까?",
     "label": "이번 주 단일 추천 검증",
     "period_start": "2026-10-15",
     "period_end": "2026-10-21",
     "decision_date": "2026-10-22",
-    "status": "대상 광고·실제 게재 상태 확인 대기 / 아직 적용 안 함",
-    "recommendation_id": "meta-20261014-reels-916",
-    "recommendation_title": "Optimize your Reels format: 9:16 full-screen vertical video with audio",
-    "why_selected": "최신 생기부 릴스 2개에 적용 가능하다면, 입시 정보를 전달하는 영상 형식을 개선하는 단일 변수 테스트로 우선 적합. 다만 Meta 캡처에서 이 두 광고가 추천 대상인지 확인되지 않았다.",
+    "status": "적용 전 성과 기록 완료 · Meta Preview에서 대상/변형 확인 대기 · 아직 미적용",
+    "recommendation_id": "meta-20261015-text-creative",
+    "recommendation_title": "Advantage+ creative enhancement: text improvements for 2 eligible ads",
+    "why_selected": "사용자가 제공한 10/15 Meta 화면에서 'text improvements', Ads 2, '3% lower cost per result' 추천이 확인됨. 실제 대상 광고 이름/ID는 Preview 확인 전까지 미확인. 이전 9:16 영상 추천은 최신 화면에서 확인되지 않아 이번 주 우선 실험에서 제외.",
     "keep_ads": [
       {
         "id": "120252790032910529",
@@ -582,22 +591,24 @@ window.SIGNAL_OS_OPERATIONS={
       }
     ],
     "required_preconditions": [
-      "10/14 사용자 선택대로 생기부 릴스 2개만 집행 중인지 실제 상태 확인",
-      "광고 2개의 실제 일예산, 광고 목표, 랜딩 URL, 타겟, 게재 위치 확인",
-      "Meta '릴스 포맷 최적화' > Show more 또는 Get started를 열어 대상 광고 세트/소재에 최신 생기부 릴스가 포함되는지 확인",
-      "Preview에서 9:16 오디오·텍스트 안전영역·핵심 메시지 왜곡 여부 확인",
-      "예산, 타겟, CTA, 광고 목표, 게재 위치 등 다른 변수는 동일하게 유지 가능해야 함",
-      "변경 적용 전 사용자 명시적 승인; Signal OS는 Meta 설정을 수정하지 않음"
+      "최근 생기부 릴스 두 광고만 활성인지 실제 Meta 상태 재확인; 이전에 활성 6개 화면은 더 오래된 기록",
+      "Meta Advantage+ creative enhancement의 Preview에서 Ads 2가 '3년 쌓아온 생기부', '생기부 면접 준비'인지 광고명/ID 확인",
+      "기존 문구와 Meta 수정 예시를 비교해 입시 정보의 사실·의미가 바뀌지 않는지 확인",
+      "하루 전체 광고 예산 2만 원 가이드 및 광고별 실제 예산/종료일 확인",
+      "다른 변수(타겟, 입찰, 캠페인 목표, 게재 위치, 랜딩 URL)를 동시에 바꾸지 않음",
+      "적용할 광고 한 개만 선택·시각 기록. 다른 광고는 그대로 두고 관찰. 두 소재가 달라 엄격한 A/B 통제군은 아님",
+      "Meta 광고 변경은 실제 사용자 승인 후 수동으로 진행"
     ],
     "intervention": {
-      "scope": "적격 생기부 릴스 광고 1개에만 9:16 전체화면/오디오 제안을 반영할지 검토. 다른 릴스는 가능하면 변경하지 않음",
+      "scope": "생기부 릴스 2개 중 Preview에서 적격 확인된 1개만 Advantage+ Creative 'text improvements' 활성화 검토",
       "date_planned": "2026-10-18",
       "applied": false,
       "applied_at": null,
       "campaign_id": null,
       "control_campaign_id": null,
       "exact_change": null,
-      "cancelled_if": "해당 릴스가 적용 대상이 아니거나, 수정 과정에서 새 광고 생성/광고 목표·오디언스·예산/게재 위치 등 다른 변수가 바뀌면 이번 주 적용은 연기"
+      "cancelled_if": "생기부 릴스 2개가 추천 적용 대상이 아니거나 문구 의미가 왜곡되거나 예산·타겟·목표 변경이 동반될 경우 적용 보류",
+      "both_ads_requested": "사용자는 두 개 광고 모두 실험하고 싶다고 밝혔으나, 한 번에 둘 다 변경하지 않고 첫 광고 결과 확인 후 두 번째에 순차 적용을 검토"
     },
     "daily_budget": {
       "cap_krw": 20000,
@@ -608,62 +619,124 @@ window.SIGNAL_OS_OPERATIONS={
     "phases": [
       {
         "date": "2026-10-15",
-        "name": "기준선 1일차 · 광고 상태 확인",
-        "request": "두 생기부 광고의 현재 활성 표시, 예산, 10/15 날짜별 데이터, Meta 추천의 Show more 적용 대상",
-        "deliverable": "적격성 확인 및 기본 지표 1일치"
+        "name": "변경 전 누적 기준선 확보",
+        "request": "제출한 Meta 두 광고 누적 캡처와 10/14까지 CSV를 기록. 실제 광고 ON/OFF·예산 변경 시각과 나머지 4개 중지 여부 확인",
+        "deliverable": "두 광고 누적 LPV당 비용 $0.921 / $0.777을 기준선으로 보관(집행 기간 차이 주의)"
       },
       {
         "date": "2026-10-16",
-        "name": "기준선 2일차 · 초기 점검",
-        "request": "캠페인 ID별 10/16 지출·링크 클릭·랜딩 조회·노출, 설정/예산 변경 이력",
-        "deliverable": "광고 간 성과 비교, 조기 중단 필요 여부 검토"
+        "name": "Meta Preview · 실제 적용 대상 확인",
+        "request": "Advantage+ creative enhancement > Preview에서 광고 2개 이름/ID, AI가 변경할 문구 예시 캡처",
+        "deliverable": "이 기능이 두 생기부 릴스에 적용 가능한지, 어느 한 광고에 먼저 사용할지 결정"
       },
       {
         "date": "2026-10-17",
-        "name": "기준선 3일차 · 적용 승인 판단",
-        "request": "10/15~10/17 광고별 일별 성과와 추천 대상/미리보기 화면",
-        "deliverable": "실험 적용 가능 여부, 적용할 1개 ID 선택"
+        "name": "문구 품질·예산 검토",
+        "request": "적용 전 최종 날짜별 광고 성과 + 광고별 실제 일예산, 종료일 및 문구 왜곡 여부",
+        "deliverable": "승인 가능한 실험 내용과 실험 전 데이터 확정"
       },
       {
         "date": "2026-10-18",
-        "name": "추천 적용일 (조건 충족 시)",
-        "request": "변경을 승인했다면 정확한 적용 시각, 광고 ID, 변경 전후 캡처",
-        "deliverable": "한 광고만 변경하고 개입 이벤트 기록 / 미적격 시 적용하지 않음"
+        "name": "문구 개선을 한 광고에만 적용 (조건부)",
+        "request": "미리보기 적합성과 사용자 승인이 확보되면 광고 1개만 적용 후 변경 시각·화면 기록",
+        "deliverable": "한 가지 변경만 기록(대상 불명/부적절하면 이번 주 미적용)"
       },
       {
         "date": "2026-10-19",
-        "name": "적용 후 1차 관찰",
-        "request": "10/18~10/19 날짜별 지출·클릭·LPV 및 Meta 상태",
-        "deliverable": "방문비용 방향 확인, 필요시 데이터 추가 확보"
+        "name": "적용 후 최초 확인",
+        "request": "적용한 광고/그대로 둔 광고의 날짜별 광고비·클릭·랜딩 조회 및 상태",
+        "deliverable": "기준선 대비 개선/악화의 방향 확인"
       },
       {
         "date": "2026-10-21",
-        "name": "후속 누적 점검",
-        "request": "10/18~10/21 날짜별 성과·문의·팔로우 및 다른 변경 유무",
-        "deliverable": "적용 후 수치와 첫 3일 기준선 나란히 비교"
+        "name": "적용 후 3~4일 누적 비교",
+        "request": "10/18~10/21 두 광고의 날짜별 광고비·클릭·LPV, 다른 변경 이력",
+        "deliverable": "변경 후 LPV당 비용·CTR·방문율 비교, 데이터 충분성 판단"
       },
       {
         "date": "2026-10-22",
-        "name": "주간 결론 및 차주 실험 선택",
-        "request": "10/15~10/21 전체 날짜별 ID 성과 + 적용 시각 + 최종 문의 전환",
-        "deliverable": "유지/원복/추가 관찰 권고 및 다음 1개 Meta 추천 제안"
+        "name": "결론 및 두 번째 광고 적용 여부 결정",
+        "request": "변경 전/후 동일 집계 기준 CSV + 결과값 + 적용 시각",
+        "deliverable": "유지/원복/추가 관찰 결정. 두 번째 릴스 문구 개선 적용 여부 별도 검토"
       }
     ],
     "success": {
-      "primary_metric": "랜딩페이지 조회당 비용 = 실제 집행 광고비 / 랜딩페이지 조회",
+      "primary_metric": "LPV당 비용 = 광고비 / 랜딩페이지 조회",
       "secondary_metrics": [
-        "링크 클릭→랜딩 도달 비율",
         "링크 CTR",
-        "클릭당 비용",
-        "최종 문의/팔로우 전환 (있을 때만)",
-        "총 광고비"
+        "링크 클릭→랜딩 도달 비율",
+        "CPC",
+        "랜딩페이지 조회 수",
+        "누적 광고비",
+        "문의/팔로우/실제 전환(있을 때)"
       ],
-      "target": "적용 전 대비 LPV당 비용이 내려가고, 유효 방문과 후속 문의 품질이 떨어지지 않는지 확인",
-      "inference": "사전/사후 비교는 날짜·소재·알고리즘 학습 변화가 섞일 수 있어 인과적 A/B 실험으로 단정하지 않음. 두 소재는 서로 달라 엄격한 통제군이 아님.",
-      "meta_forecast": "Meta 화면의 3%/1%/16%/21% 등 추천 효과는 다른 광고세트 예시별 예측이며 두 생기부 릴스의 예상 개선폭으로 사용하지 않음."
+      "target": "문구 개선을 적용한 한 광고에서 LPV당 비용·방문 품질이 함께 개선되는지 방향을 확인, 별도 날짜별 비용과 결과를 비교",
+      "inference": "서로 다른 두 소재는 무작위 통제군이 아니며 변경 전후 비교에는 시간·학습·소재 차이가 섞인다. 통계적 인과 효과로 확정하지 않음",
+      "meta_forecast": "Meta의 3% 비용 개선은 계정 화면의 예상값이며, 현재 두 생기부 릴스에 실제로 같은 개선이 발생한다는 보장 없음"
     },
     "daily_log": [],
-    "result": "미실시 · 시작 성과 및 적용 대상 확인 대기",
-    "next_week_candidate": "다음 주에는 실제 적격성이 확인된 Advantage+ Creative Preview 또는 게재 위치 추천 중 하나만 별도 테스트. 광고 세트 통합과 전환 연결은 먼저 목적/세팅 확인."
+    "result": "적용 전 기준선 스냅샷 확보 · 텍스트 개선 추천 대상 및 적용 여부 미확인",
+    "next_week_candidate": "문구 개선 시험 결과 확인 후 두 번째 생기부 광고에 순차 확대하거나 랜딩페이지 조회 최적화(+23% 예상)를 단일 후속 실험으로 분리",
+    "baseline": {
+      "screenshot": {
+        "date": "2026-10-15",
+        "captured_at": "촬영 시각 미확인 · 사용자가 10/15 오전 업로드",
+        "source": "Instagram 광고 관리 최근 생기부 광고 2개 캡처",
+        "kind": "변경 전 광고별 누적 스냅샷",
+        "ads": [
+          {
+            "name": "3년 쌓아온 생기부",
+            "campaign_id": "120252790032910529",
+            "match": "기존 캠페인명과 썸네일 주제 기준 임시 연결",
+            "status": "active",
+            "impressions_displayed": 3156,
+            "landing_page_views": 27,
+            "spend_usd": 24.88,
+            "lpv_cost_usd": 0.9214814814814815
+          },
+          {
+            "name": "생기부 면접 준비",
+            "campaign_id": "120252790030140529",
+            "match": "기존 캠페인명과 썸네일 주제 기준 임시 연결",
+            "status": "active",
+            "impressions_displayed": 3759,
+            "landing_page_views": 27,
+            "spend_usd": 20.98,
+            "lpv_cost_usd": 0.7770370370370371
+          }
+        ]
+      },
+      "csv": {
+        "source": "979718671826640-Campaigns-Sep-15-2026-Oct-14-2026 (1).csv",
+        "period": "2026-10-13~2026-10-14",
+        "rows": 667,
+        "granularity": "date × age × gender × campaign name",
+        "campaign_id_present": false,
+        "period_end": "2026-10-14",
+        "ads": [
+          {
+            "name": "3년 쌓아온 생기부",
+            "cumulative_spend_usd": 19.57,
+            "cumulative_link_clicks": 43,
+            "cumulative_lpv": 22,
+            "cumulative_impressions": 2462,
+            "day_1014_spend_usd": 13.25,
+            "day_1014_link_clicks": 32,
+            "day_1014_lpv": 19
+          },
+          {
+            "name": "생기부 면접 준비",
+            "cumulative_spend_usd": 17.28,
+            "cumulative_link_clicks": 38,
+            "cumulative_lpv": 20,
+            "cumulative_impressions": 3102,
+            "day_1014_spend_usd": 13.9,
+            "day_1014_link_clicks": 30,
+            "day_1014_lpv": 16
+          }
+        ]
+      },
+      "interpretation": "캡처는 CSV 기간 이후 반영된 누적값일 수 있으나 시점 정확히 미확인. 같은 누적값을 서로 더하지 않음. 스냅샷 비교에는 Meta의 지연 집계·재귀속 가능성이 있으므로 동일 설정의 날짜별 재수집 필요."
+    }
   }
 };
