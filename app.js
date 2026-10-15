@@ -418,7 +418,18 @@ function renderMetaRecommendations(){
  '<span>유사 세트의 중간값 <b>'+money(perf.benchmark_link_cpc,2)+'</b></span></div>'+
  '<p>이 화면의 광고/세트 식별자와 정확한 집계 기간을 확인하지 못했으므로, 기존 캠페인 누적 수치에 <b>합산하지 않았습니다.</b> 유사 세트 대비 비용 차이도 고객 전환 성과의 우열을 뜻하지 않습니다.</p></section>':'';
 
- cards.innerHTML=performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
+ const preApply=status.pre_apply_snapshot;
+ const preApplyBox=preApply?'<section class="rec-captured-performance" aria-label="Apply now 직전 기준 스냅샷">'+
+ '<h3>10/15 · Apply now 직전 기준 스냅샷 (실제 적용은 미확인)</h3>'+
+ '<div class="rec-captured-metrics">'+
+ '<span>조회수 <b>'+number(preApply.views)+'회</b></span>'+
+ '<span>웹사이트 방문 <b>'+number(preApply.website_visits)+'회</b></span>'+
+ '<span>누적 지출 <b>'+money(preApply.spend_usd,2)+'</b></span>'+
+ '<span>웹사이트 방문당 비용 <b>'+money(preApply.spend_usd/preApply.website_visits,3)+'</b></span>'+
+ '</div><p><b>변경 예정:</b> 유사 광고 세트 2개 통합(Combine 2 similar ad sets). Meta 적용 대상인 두 광고세트 ID는 확인되지 않았습니다. 화면에는 활성 상태만 보이며 광고명·ID·집계 기간·캡처 시각은 표시되지 않습니다.</p>'+
+ '<p>조회수는 노출·도달과 구별하고, 웹사이트 방문은 랜딩페이지 조회(LPV)와 동일하다고 가정하지 않습니다. 과거 생기부 릴스 $25.45/LPV 27회와 합산하거나 단순 차감하지 않습니다. 실제 Apply now 적용·변경 시각 확인 후 동일 광고의 동일 지표로 후속 성과를 비교합니다.</p>'+
+ '</section>':'';
+ cards.innerHTML=preApplyBox+performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
  if(history.length){
   const archive=document.createElement('details');
   archive.className='rec-history';
