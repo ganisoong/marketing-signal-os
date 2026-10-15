@@ -538,4 +538,52 @@ function renderWeeklyFocus(){
  }));
 }
 
-featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();renderOperations();renderWeeklyFocus();
+
+// Evaluation homepage: measured values, explicit freshness, and touch/hover details.
+function renderEvaluationHome(){
+ const holder=el('evalTiles');if(!holder)return;
+ const os=window.SIGNAL_OS_OPERATIONS||{},policy=os.budget_policy||{},weekly=os.weekly_focus||{};
+ const won=v=>'₩'+Math.round(v).toLocaleString('ko-KR');
+ const cap=Number(policy.daily_total_budget_krw)||20000;
+ const fx=Number(policy.fx_reference?.krw_per_usd)||1336.82;
+ const days=(DB.days||[]).filter(x=>x.date>='2026-10-07'&&x.date<=DB.data_end&&Number(x.spend)>0).sort((a,b)=>a.date.localeCompare(b.date));
+ const latest=days.at(-1),spent=latest?latest.spend*fx:null,over=spent!==null&&spent>cap;
+ const displayDate=d=>String(d||'').slice(5).replace('-','/');
+ const topics=[
+  ['120252682521260529','지원동기 암기 경계'],
+  ['120252682511880529','예상질문 암기 경계'],
+  ['120252687461960529','면접이 코앞인데'],
+  ['120252725830220529','면접실 어떻게 들어갈 거야?'],
+  ['120252745926050529','공개된 면접 기출'],
+  ['120252750718860529','면접장에서 머릿속이 하얘진다면?'],
+  ['120252790032910529','3년 쌓아온 생기부'],
+  ['120252790030140529','생기부 면접 준비']
+ ].map(([id,title])=>{const d=get(id);return {id,title,date:d?.start||d?.first||null};});
+ const startDates=[...new Set(topics.map(x=>x.date).filter(Boolean))].sort();
+ const gaps=startDates.slice(1).map((date,i)=>(Date.parse(date)-Date.parse(startDates[i]))/86400000);
+ const provisional=gaps.length?gaps.reduce((s,v)=>s+v,0)/gaps.length:null;
+ const lastUpload=startDates.at(-1);
+ const yyyy=Number((lastUpload||DB.data_end).slice(0,4)),mm=Number((lastUpload||DB.data_end).slice(5,7));
+ const first=new Date(Date.UTC(yyyy,mm-1,1)).getUTCDay();
+ const count=new Date(Date.UTC(yyyy,mm,0)).getUTCDate();
+ const marked=new Set(startDates);
+ const calendar='<div class="eval-calendar">'+['일','월','화','수','목','금','토'].map(d=>'<span class="eval-day-name">'+d+'</span>').join('')+
+ Array.from({length:first},()=>'<span class="eval-day-empty"></span>').join('')+
+ Array.from({length:count},(_,i)=>{const day=i+1,date=yyyy+'-'+String(mm).padStart(2,'0')+'-'+String(day).padStart(2,'0');return '<span class="eval-day'+(marked.has(date)?' is-start':'')+'" title="'+(marked.has(date)?'광고 캠페인 시작 기록':'시작 기록 없음')+'">'+day+(marked.has(date)?'<i></i>':'')+'</span>';}).join('')+'</div>';
+ const bars=days.map(x=>{const krw=x.spend*fx,pctHeight=Math.max(7,Math.min(100,Math.round(krw/Math.max(cap*1.25,...days.map(y=>y.spend*fx))*100)));return '<div class="eval-bar-col"><span class="eval-bar-value">'+Math.round(krw/1000)+'천</span><div class="eval-bar-track"><div class="eval-bar '+(krw>cap?'bad':'good')+'" style="height:'+pctHeight+'%"></div></div><span class="eval-bar-date">'+displayDate(x.date)+'</span></div>';}).join('');
+ const list=topics.map(x=>'<div class="eval-title-list-row"><span class="eval-title-dot"></span><span>'+esc(x.title)+'</span><time>'+esc(displayDate(x.date))+' 광고 시작</time></div>').join('');
+ const phase=weekly.phases||[];
+ const schedule=phase.filter(x=>['2026-10-15','2026-10-16','2026-10-18','2026-10-19','2026-10-22'].includes(x.date));
+ const testList=schedule.map(x=>'<div class="eval-milestone"><time>'+esc(displayDate(x.date))+'</time><span>'+esc(x.name)+'</span></div>').join('');
+ const recommend='Meta Advantage+ 문구 개선';
+ const cards=[
+ '<details class="eval-tile eval-budget '+(over?'over':'within')+'"><summary><span class="eval-overline">01 / BUDGET <b class="eval-flag '+(over?'red':'green')+'">'+(over?'초과':'이내')+'</b></span><span class="eval-label">하루 광고비</span><strong class="eval-metric">'+(spent===null?'자료 없음':won(spent))+'</strong><span class="eval-description">'+esc(displayDate(latest?.date))+' 마지막 확인 · 목표 '+won(cap)+'</span><span class="eval-meta">'+(spent===null?'일별 지출 데이터 확인 필요':(over?'한도 대비 +':'한도 대비 ')+won(Math.abs(spent-cap)))+'</span><span class="eval-expand">일별 그래프 보기 ↗</span></summary><div class="eval-flyout"><h3>일자별 광고비 <small>참고 환율 기준 원화 환산</small></h3><div class="eval-mini-legend"><span class="eval-dot red"></span>한도 초과 <span class="eval-dot green"></span>한도 이내</div><div class="eval-chart">'+bars+'</div><p>10월 14일 기록은 당일 중간 집계입니다. 오늘(10/15) 지출은 아직 수집되지 않았습니다. 실제 결제 금액은 환율·수수료와 차이가 있습니다.</p></div></details>',
+ '<details class="eval-tile eval-posts"><summary><span class="eval-overline">02 / CONTENT <b class="eval-flag neutral">자료 기준</b></span><span class="eval-label">확인된 광고 소재</span><strong class="eval-metric">'+topics.length+'<small>개 주제</small></strong><span class="eval-description">광고 CSV에서 주제 중복을 제거한 수치</span><span class="eval-meta">최근 생기부 소재 2개 관찰 중</span><span class="eval-expand">게시물 제목 목록 ↗</span></summary><div class="eval-flyout"><h3>확인된 콘텐츠 주제 <small>'+topics.length+'개</small></h3><div class="eval-title-list">'+list+'</div><p>실제 인스타그램 전체 게시물 수는 아닙니다. 광고를 집행한 소재 주제만 집계했습니다.</p></div></details>',
+ '<details class="eval-tile eval-cadence"><summary><span class="eval-overline">03 / CADENCE <b class="eval-flag caution">임시값</b></span><span class="eval-label">콘텐츠 업로드 주기</span><strong class="eval-metric">'+(provisional===null?'—':number(provisional,1))+'<small>일*</small></strong><span class="eval-description">*게시일 미확인 · 광고 시작일 간격 기준</span><span class="eval-meta">최근 시작일 '+esc(displayDate(lastUpload))+'</span><span class="eval-expand">월별 기록 달력 ↗</span></summary><div class="eval-flyout"><h3>'+yyyy+'년 '+mm+'월 <small>광고 캠페인 시작일 달력</small></h3>'+calendar+'<p>초록 점은 인스타그램 게시일이 아니라 광고 시작일입니다. 실제 업로드 일자를 받으면 평균 주기를 게시일 기준으로 교체합니다.</p></div></details>',
+ '<details class="eval-tile eval-testing"><summary><span class="eval-overline">04 / EXPERIMENT <b class="eval-flag blue">관찰 중</b></span><span class="eval-label">현재 진행 테스트</span><strong class="eval-metric">2<small>개 릴스</small></strong><span class="eval-description">메타 AI 문구 개선 · 실제 적용 전</span><span class="eval-meta">결론 예정 <b>'+esc(displayDate(weekly.phases?.at(-1)?.date||'2026-10-22'))+'</b> · 변화 추적</span><span class="eval-expand">시험 일정 펼치기 ↗</span></summary><div class="eval-flyout"><h3>이번 주 실험 계획 <small>아직 Meta 설정 변경 없음</small></h3><div class="eval-milestones">'+testList+'</div><p>Preview에서 추천 대상과 변경할 문구를 먼저 확인하고, 한 광고만 적용해 비교할 예정입니다. 일정은 자료 확보에 따라 달라질 수 있습니다.</p></div></details>',
+ '<details class="eval-tile eval-ai"><summary><span class="eval-overline">05 / NEXT MOVE <b class="eval-flag green">AI 추천 1순위</b></span><span class="eval-label">다음 테스트 추천</span><strong class="eval-metric small">'+recommend+'</strong><span class="eval-description">Meta 예상: 결과당 비용 약 3% 개선 가능성</span><span class="eval-meta">문구 확인 → 한 광고 적용 → 10/22 평가</span><span class="eval-expand">추천 근거 · 주의점 ↗</span></summary><div class="eval-flyout"><h3>왜 이 테스트가 우선일까?</h3><p>현재 운영할 생기부 릴스 2개가 있으므로 광고비 증액 없이 크리에이티브 문구라는 한 변수만 검증할 수 있습니다. 다만 Meta 추천 대상 광고인지 Preview 확인이 먼저입니다.</p><div class="eval-check">① 수정 문구가 입시 정보를 왜곡하지 않는지 확인<br>② 다른 타겟·예산·게재 위치는 함께 변경하지 않기<br>③ 결과는 CTR만이 아니라 랜딩 조회당 비용으로 평가</div><p>Meta의 3%는 예측이지 실제 개선 보장이 아닙니다.</p><a class="eval-reference" href="https://www.facebook.com/business/ads/facebook-instagram-reels-ads" target="_blank" rel="noopener noreferrer">Meta 공식 Reels 가이드 · 테스트와 소재 원칙 ↗</a></div></details>'
+ ];
+ holder.innerHTML=cards.join('');
+}
+
+featuredPosts();renderPosts();renderDecisionDesk();renderInsightBoard();renderMetaRecommendations();renderOperations();renderWeeklyFocus();renderEvaluationHome();
