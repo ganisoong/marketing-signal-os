@@ -263,6 +263,36 @@
 .ops-budget .ops-budget-alert{background:#fff6e9;border:1px solid #eed9b9;border-radius:8px;padding:10px 13px;color:#8c632f}
 @media(max-width:850px){.ops-budget-flex{grid-template-columns:1fr}.ops-budget{padding:15px}}
 
+
+/* Focused Meta learning loop: one change, dated evidence and explicit gates. */
+.ops-weekly{border:1px solid #c9e1d2;background:white;border-radius:16px;padding:23px;margin:0 0 30px}
+.weekly-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px}
+.weekly-head h2{font-size:22px;letter-spacing:-.6px;margin:8px 0}
+.weekly-head p{font-size:11px;color:#647b6f;line-height:1.85;margin:0;max-width:650px}
+.weekly-stage{display:flex;flex-direction:column;align-items:flex-end;gap:4px;background:#fff4e4;border-radius:10px;padding:12px 14px}
+.weekly-stage strong{font-size:12px;color:#995e22}
+.weekly-stage span{font-size:10px;color:#98734c}
+.weekly-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:19px 0}
+.weekly-kpis>div{display:flex;flex-direction:column;gap:6px;background:#eff8f2;border-radius:10px;padding:15px}
+.weekly-kpis span{font-size:10px;color:#768c7b}
+.weekly-kpis b{font-size:16px;color:#17543e}
+.weekly-kpis small{font-size:10px;color:#718377;line-height:1.5}
+.weekly-intro strong{font-size:13px;color:#245841}
+.weekly-intro p{font-size:11px;color:#557365;line-height:1.8;margin:6px 0 15px}
+.weekly-days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.weekly-day{padding:13px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:7px;border:1px solid #dce8de;background:#fafdfa;border-radius:9px;color:#245845;cursor:pointer;min-width:0}
+.weekly-day:hover{background:#eff8f2;border-color:#9bc6a9}
+.weekly-day>span{font-size:11px;color:#237654;font-weight:800}
+.weekly-day strong{font-size:11px;line-height:1.6;color:#254d3f}
+.weekly-day small{font-size:10px;color:#71867a;line-height:1.6}
+.weekly-day em{font-size:10px;font-style:normal;margin-top:auto;color:#167455;font-weight:850}
+.weekly-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:15px;border-top:1px solid #e5eee7;margin-top:17px}
+.weekly-foot>div{flex:1}
+.weekly-foot strong{font-size:11px;color:#986624}
+.weekly-foot p{font-size:11px;line-height:1.8;color:#728276;margin:6px 0 0}
+@media(max-width:1080px){.weekly-days{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:750px){.ops-weekly{padding:16px}.weekly-days{grid-template-columns:repeat(2,minmax(0,1fr))}.weekly-kpis{grid-template-columns:1fr}.weekly-foot{flex-direction:column;align-items:stretch}.weekly-stage{align-items:flex-start}}
+
 </style>
 </head>
 <body>
@@ -300,6 +330,7 @@
  <p class="ops-budget-alert">마지막으로 확인된 화면에는 6개가 활성으로 나옵니다. 사용자는 최신 릴스 2개만 남기기로 결정했습니다. <b>나머지 4개의 중지 완료와 두 광고의 실제 예산·종료일을 확인하세요.</b> Signal OS는 실제 광고를 끄거나 일일 지출을 자동 제한하지 않습니다.</p>
  <a class="action dark" href="https://adsmanager.facebook.com/" rel="noopener noreferrer" target="_blank">Meta 광고 관리자에서 예산 확인 ↗</a>
 </section>
+<section id="opsWeekly" class="ops-weekly" aria-label="이번 주 Meta 추천 실험"></section>
 <section class="ops-decision-zone">
     <div class="ops-section-heading"><div><span class="eyebrow">01 / DECISIONS</span><h2>오늘의 운영 판단</h2><p>멈춤/재개/유지/관찰을 권고하되, 데이터가 부족하면 무리하게 판단하지 않습니다.</p></div></div>
     <div id="opsDecisionCards" class="ops-decision-grid"></div>
@@ -434,7 +465,7 @@
     }
     function loadUI(){
       const main=document.createElement('script');
-      main.src='./app.js?v=two-reels-budget-20261014';
+      main.src='./app.js?v=meta-reels-week-20261015';
       main.onerror=function(){showError('화면 코드를 불러오지 못했습니다. 새로고침해 주세요.');};
       document.body.appendChild(main);
     }
