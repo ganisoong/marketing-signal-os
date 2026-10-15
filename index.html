@@ -481,6 +481,29 @@
 @media(max-width:900px){.project-cols{grid-template-columns:1fr}.project-kpis{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.project-workspace{padding-top:18px}.project-primary{padding:15px}.project-kpis{gap:7px}.project-kpis>div{padding:12px}.project-kpis strong{font-size:16px}.project-primary h2{font-size:22px}.project-before-after{grid-template-columns:1fr}}
 
+
+/* Project index: no statuses or detail until a user selects a project */
+.project-index-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.project-index-card{position:relative;display:flex;flex-direction:column;gap:14px;align-items:flex-start;justify-content:flex-start;min-height:162px;padding:26px 55px 24px 24px;border-radius:16px;border:1px solid #dce9df;background:#fff;color:#1f4534;text-align:left;box-shadow:0 7px 26px rgba(31,71,43,.035);transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;cursor:pointer}
+.project-index-card:hover,.project-index-card:focus-visible{background:#f6fbf7;border-color:#a3cbb2;box-shadow:0 12px 28px rgba(29,75,45,.09);transform:translateY(-2px);outline-offset:3px}
+.project-index-date{font-size:13px;letter-spacing:.3px;font-variant-numeric:tabular-nums;color:#257854;font-weight:850}
+.project-index-name{font-size:clamp(17px,2.2vw,22px);line-height:1.45;letter-spacing:-.7px;font-weight:880;word-break:keep-all}
+.project-index-arrow{position:absolute;bottom:22px;right:23px;font-size:22px;color:#478f69}
+.project-detail-header h2{font-size:24px;line-height:1.4;margin:10px 0 7px}
+.project-detail-header p{font-size:11px;line-height:1.8;color:#6b8375;margin:0}
+.project-detail-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}
+.project-detail-stats>div{padding:12px;background:#f0f7f2;border-radius:9px;min-width:0}
+.project-detail-stats small{font-size:10px;color:#7b9586;display:block}
+.project-detail-stats strong{font-size:17px;color:#205d41;display:block;margin-top:6px}
+.project-detail-copy{font-size:12px;line-height:1.85;color:#536e5d}
+.project-detail-evidence-list{display:grid;gap:8px}
+.project-detail-evidence{background:#f0f7f2;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:5px}
+.project-detail-evidence b{font-size:12px;color:#2b6245}
+.project-detail-evidence span{font-size:11px;color:#5b7965}
+.project-detail-empty{font-size:11px;color:#7f8f83;line-height:1.8;background:#f8faf8;border:1px dashed #dce9e0;border-radius:8px;padding:13px}
+.project-detail-rule{font-size:11px;color:#54705e;line-height:1.8;border-bottom:1px solid #eef2ee;padding:6px 0}
+@media(max-width:800px){.project-index-grid{grid-template-columns:1fr}.project-index-card{min-height:130px;padding:20px 47px 18px 20px}.project-index-name{font-size:19px}}
+
 </style>
 </head>
 <body>
@@ -558,13 +581,10 @@
 
  <section id="projects" class="page">
   <div class="project-workspace">
-   <div class="project-hero"><div><span class="eyebrow">PROJECT 02 / OPERATION JOURNAL</span><h1>프로젝트 진행</h1><p>지금 진행하는 인스타 실험의 목표, 기준선, 실제 변경 기록과 다음 점검 날짜를 하나의 페이지에서 관리합니다.</p></div><span class="project-updated">프로젝트 등록 · 2026.10.15</span></div>
-   <div id="projectTracker" aria-label="Meta 추천 전후 성과 검증 프로젝트"></div>
-   <div id="projectSideList" aria-label="다른 진행·기획 프로젝트"></div>
-   <p class="project-footnote">이 프로젝트는 이 대화에서 새 데이터를 받거나 결정을 내릴 때마다 제가 기록을 갱신하는 방식입니다. Meta 자동 연결·광고 변경·자동 업로드 기능은 아닙니다.</p>
+    <div class="project-hero"><div><span class="eyebrow">PROJECTS / IN PROGRESS</span><h1>프로젝트 진행</h1></div></div>
+    <div id="projectTracker" aria-label="프로젝트 목록"></div>
   </div>
  </section>
-
  <section id="overview" class="page">
   <div class="hero"><div class="eyebrow">THE DECISION DESK / OVERVIEW</div><h1>핵심 발견은 한눈에,<br/>근거는 누르면 자세히.</h1><p>현재까지 확인한 광고 인사이트를 카드로 정리했습니다. 좋은 점, 상반된 신호, 관찰할 항목을 누르면 실제 게시물과 근거가 열립니다.</p><div class="subline"><span class="chip em"><span class="dot"></span> 검증된 집계 기준</span><span class="chip">분석 기간 · 09.13 — 10.14</span><span class="chip">자료 수신 · 10.14 (시각 미기록)</span></div></div>
   <div class="notice"><span class="mark">ⓘ</span><span><b>데이터 시차 안내.</b> 이 보고서는 10월 13일까지의 광고 실적입니다. 새 업로드는 9/14~10/13 연령·성별 분류이며, 겹치는 날짜는 다시 합산하지 않고 10/13 실적만 반영했습니다. 동일 제목 캠페인 2개는 10/13에 ID별 분리 불가합니다. 이전 파일을 같은 기간으로 재전송해도 합계에 두 번 더하지 않습니다.</span></div>
