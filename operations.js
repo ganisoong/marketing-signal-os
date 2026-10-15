@@ -28,17 +28,17 @@ window.SIGNAL_OS_OPERATIONS={
     {
       "id": "P-META-W1",
       "level": "높음",
-      "type": "Meta 문구 개선 실험",
+      "type": "Meta 최적화 실행·검증",
       "campaign_ids": [
         "120252790032910529",
         "120252790030140529"
       ],
-      "status": "6개 항목 검토 계획 · 적용 완료 0건 확인",
+      "status": "Frag. 통합 1건 Apply now 클릭 · 게시 준비 중(완료 0건 확인)",
       "title": "이번 주: Meta 추천 적용 가능한 항목을 단계적으로 검토하고 전후 성과 비교",
       "why": "User wishes to try all practicable Meta recommendations. Current account-wide budget cap KRW 20,000/day means budget increase is incompatible, and ad set merge may compromise appeal/targ experiment.",
-      "next": "Meta Preview/Get Started에서 광고별 적용 대상·예산·목표 확인 → 문구 개선, 랜딩 조회 최적화, 게재 위치, 웹사이트 전환 연결을 차례로 검토 및 실행 로그 기록 → 10/22 이전/이후 LPV당 비용 비교. 증액·무분별 통합은 보류.",
+      "next": "Meta 게시 완료/실패 알림 확인 → 변경된 2개 광고/세트 ID·타겟·예산 확인 → 24h/72h/7d 동일 성과 지표 기록 및 10/22 1차 비교. 다른 추천은 분리 보류.",
       "due": "2026-10-22",
-      "decision": "실제 적용 여부는 사용자가 Meta에서 변경한 뒤 확인, 여러 변경의 개별 효과는 단정 금지"
+      "decision": "사용자가 Fragmentation Apply now를 직접 클릭. Meta 게시 준비 화면 확인, 실제 성공 전까지 적용 완료로 표시하지 않음. Text improvements 별도 미적용."
     },
     {
       "id": "P0",
@@ -446,6 +446,14 @@ window.SIGNAL_OS_OPERATIONS={
       "action": "Ad ID를 추가 확보하고, Meta 추천 실제 적용 대상/기능/적용 시각을 기록한 다음 변경 후 성과 비교. 추천 자동 적용 없음.",
       "reason": "Ads CSV 60행, 2개 Ad name, 일자별 결과 확인. 누적 USD $19.57/LPV22, USD $50.11/LPV158. 현재 10/15 캡처는 별도 이후 스냅샷으로 분리.",
       "result": "프로젝트 변경 전 기준선 등록 완료. 광고 집행 상태와 비용 설정은 수정하지 않음."
+    },
+    {
+      "at": "2026-10-15 (시각 미표시)",
+      "kind": "Meta 추천 직접 실행 · 게시 준비 중",
+      "headline": "Fragmentation (유사 광고 세트 통합) Apply now 클릭",
+      "action": "Meta 게시 확인 결과와 두 광고/광고세트의 정확한 식별자 수집. 다른 최적화는 별도로 관리.",
+      "reason": "사용자 화면의 '10% lower cost per link click potential' 추천을 실행. Meta는 'Fragmentation will be applied to 2 ads'라고 안내.",
+      "result": "Meta 게시 준비 중, 완료 여부 미확인. 예상 CPC $0.21→$0.19는 사후 실측 아님."
     }
   ],
   "upload_spec": {
@@ -829,7 +837,7 @@ window.SIGNAL_OS_OPERATIONS={
         "category": "META RECOMMENDATIONS",
         "title": "Meta 추천 적용 전후 성과 검증",
         "short": "적용 가능한 기능을 검토하고 실제 사용 전·후 성과 비교",
-        "status": "진행 중 · 적용 대상 릴스 확인 / 추천 범위·실행 여부 확인 대기",
+        "status": "진행 중 · 10/15 Apply now 클릭, Meta 게시 준비 중 (실제 완료 확인 대기)",
         "status_type": "tracking",
         "window": "10/15–10/22",
         "deadline": "2026-10-22",
@@ -837,7 +845,7 @@ window.SIGNAL_OS_OPERATIONS={
         "goal": "개선 기능들을 적용한 전체 변경 묶음이 같은 광고 목표의 LPV당 비용과 후속 행동을 개선하는지 확인",
         "applied": false,
         "changes_logged": 0,
-        "comparison": "추천 여러 개를 한꺼번에 적용하면 '변경 묶음 전후'만 평가할 수 있고 각 기능의 독립 효과를 알 수 없습니다. 한 기능씩 적용·기록하면 더 정확합니다.",
+        "comparison": "이번 실험은 Meta의 유사 광고세트 통합 요청에 대한 사전·사후 관찰입니다. 전후 동일 광고 ID와 지표·보고 기간을 매칭하여 링크 CPC, 방문당 비용 등 비교하고, 광고 세트 구조·예산·타겟 변화로 인한 교란을 명시합니다. 통제군 없는 원인 확정은 금지.",
         "metrics": [
           "랜딩페이지 조회당 비용 (USD/LPV)",
           "링크 클릭 후 랜딩 도달율 (LPV/링크 클릭)",
@@ -970,7 +978,38 @@ window.SIGNAL_OS_OPERATIONS={
               "cost_per_lpv_usd": 0.319685534591195
             }
           ],
-          "roas_available": false
+          "roas_available": false,
+          "ui_pre_apply": {
+            "as_of": "2026-10-15 (캡처 시각 미표시)",
+            "unit": "Instagram 광고 요약 UI - Meta CSV LPV와 다른 지표",
+            "items": [
+              {
+                "name": "3년 동안 쌓아온 생기부",
+                "delivery": "active",
+                "views": 3603,
+                "website_visits": 33,
+                "spend_usd": 28.02,
+                "website_visit_cost_usd": 0.8490909090909091
+              },
+              {
+                "name": "면접장에서 머릿속이 하얘진다면",
+                "delivery": "active",
+                "views_display": "1.3만(반올림)",
+                "website_visits": 170,
+                "spend_usd": 54.64,
+                "website_visit_cost_usd": 0.32141176470588234
+              },
+              {
+                "name": "중간 광고 (이름 불명)",
+                "delivery": "paused",
+                "views": 3823,
+                "website_visits": 27,
+                "spend_usd": 21.27,
+                "website_visit_cost_usd": 0.7877777777777778
+              }
+            ],
+            "restriction": "활성 2개를 이름-순서로 확인하되, Meta 통합을 받는 '2 ads'는 ID로 검증 안 됨. 이 UI의 '웹사이트 방문'과 이전 CSV LPV는 별도 지표; 합산 금지."
+          }
         },
         "recommendations": [
           {
@@ -1022,10 +1061,10 @@ window.SIGNAL_OS_OPERATIONS={
             "id": "meta-20261015-fragmentation",
             "name": "유사 광고 세트 병합",
             "meta_projection": "학습 분산 완화 가능·타 광고주 유입 증가 관측",
-            "decision": "보류",
-            "status": "A/B 비교 및 타겟 실험과 충돌 가능",
-            "action": "변경하지 않고 대상 광고 세트 IDs/목표·타겟 차이만 기록",
-            "feasible": "현재 실험 설계와 충돌"
+            "decision": "사용자 실행 요청 · 게시 확인 대기",
+            "status": "10/15 Apply now 클릭, Meta 'Preparing to publish changes / Fragmentation will be applied to 2 ads' 표시",
+            "action": "게시 성공/실패 화면과 실제 병합 대상 2개 Ad set ID·변경 전후 타겟, 예산 확인. 동일 지표 24h/72h/7d 점검.",
+            "feasible": "요청됨 / 적용 완료 확인 대기"
           }
         ],
         "phases": [
@@ -1063,29 +1102,34 @@ window.SIGNAL_OS_OPERATIONS={
             "date": "2026-10-22",
             "title": "1차 결과 정리",
             "note": "변경 묶음의 유의미한 방향성 판단, 추가 관찰/원복/재시험 권고"
+          },
+          {
+            "date": "2026-10-15",
+            "title": "사용자가 광고 세트 통합 Apply now 클릭",
+            "note": "Meta 하단 게시 준비 중 확인. 게시 완료가 아니라 변경 요청만 증빙됨. 대상 ID/성공 여부 추가 확인 필요."
           }
         ],
-        "caution": "'할 수 있는 건 다'는 모두 즉시 눌러도 좋다는 의미로 해석하지 않습니다. 예산 증액과 세트 병합은 보류. 목표·게재 위치·크리에이티브는 조건 확인 후 단계별 검토합니다.",
-        "result": "10/14까지 Ads CSV 기준선 기록 완료. 적용 후 데이터 없음, Meta 추천 실제 변경은 확인되지 않음.",
+        "caution": "'광고세트 통합' 추천을 사용자가 10/15 직접 클릭했습니다. 화면에는 게시 준비 중으로 표시돼 완료로 확정할 수 없습니다. 다른 추천인 Text improvements나 예산 증액은 실제 적용 확인되지 않았습니다. 통합이 성공하면 광고 구조/타겟이 바뀌어 전후 비교의 인과적 해석에 제약이 생길 수 있습니다.",
+        "result": "사용자가 10/15 Fragmentation 통합 추천 Apply now 클릭. Meta의 'Preparing to publish changes / Fragmentation will be applied to 2 ads'를 확인. 게시 성공·실제 ID·사후 효과는 아직 미확인.",
         "last_checked": "2026-10-15",
         "project_name": "Meta Recommendation Impact Test",
         "started_at": "2026-10-15",
         "started_time_note": "2026-10-15 사용자 프로젝트 등록 시점; 추천 실제 적용 날짜는 별도 기록",
         "last_updated": "2026-10-15",
-        "phase_current": "01 / 변경 전 성과 확정 · 광고 ID 추가 확인",
-        "progress_stage": 1,
+        "phase_current": "02 / Meta 광고세트 통합 게시 준비 중",
+        "progress_stage": 2,
         "progress_stage_total": 4,
         "actual_completion_date": null,
         "next_action": {
           "due": "2026-10-15",
-          "headline": "선택한 생기부 릴스의 Meta 추천 유형과 적용 범위 확인",
+          "headline": "Meta 게시 완료/실패 상태를 확인하고 통합된 광고세트 ID·설정을 캡처",
           "deliverables": [
-            "Advantage+ Text improvements 여부",
-            "실제로 변경되는 광고 Ad ID/광고 수",
-            "Preview에서 문구 수정 내용",
-            "Apply now 실제 클릭 시각"
+            "게시 완료 또는 실패 알림",
+            "실제 변경된 두 광고/광고세트 ID",
+            "통합 후 타겟·예산·목표 변경 여부",
+            "24시간·72시간·7일 후 동일 지표 성과"
           ],
-          "status": "사용자 확인 대기"
+          "status": "Apply now 클릭 확인 · 게시 성공 확인 대기"
         },
         "progress_log": [
           {
@@ -1129,9 +1173,28 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "적용 전",
             "headline": "Meta 추천 Apply now 대상으로 '3년 쌓아온 생기부' 릴스 확인",
             "detail": "사용자가 실제 추천을 적용해볼 대상으로 3년 쌓아온 생기부 릴스를 지정. 추천 타입과 Ads 1개/2개 적용 범위는 현재 캡처로는 확정하지 못함. 사용자가 Apply now를 눌렀는지는 미확인. 10/15 캡처 누적 $25.45, LPV 27, LPV당 $0.943을 변경 전 스냅샷으로 기록."
+          },
+          {
+            "at": "2026-10-15 · 정확한 시각 미확인",
+            "kind": "Meta 추천 적용 요청",
+            "status": "게시 준비 중 · 완료 미확인",
+            "headline": "Apply now 클릭: 유사 광고 세트 통합(Fragmentation)",
+            "detail": "사용자 직접 클릭. Meta는 'Preparing to publish changes'와 'Fragmentation will be applied to 2 ads' 표시. 2개 광고의 정확한 Ad ID는 아직 미확인. 문구 개선(Text improvements)을 적용한 것이 아님."
           }
         ],
-        "change_log": [],
+        "change_log": [
+          {
+            "at": "2026-10-15 · 클릭 시각 미표시",
+            "title": "Meta 추천 'Fragmentation' Apply now 클릭 → 게시 준비 중",
+            "headline": "광고 세트 2개 통합 추천 실행 요청 · 두 광고에 적용 준비 중",
+            "kind": "사용자 직접 Meta 설정 변경 요청",
+            "status": "preparing_to_publish · 성공 미확인",
+            "detail": "Meta Opportunity score에서 'Combine 2 similar ad sets impacted by fragmentation' Apply now 클릭. 하단 팝업: 'Preparing to publish changes' / 'Fragmentation will be applied to 2 ads'. Meta 예측 링크 CPC $0.21→$0.19 (-10%). 실제 적용 완료, 대상 광고/세트 ID·적용 시각, 성과 변화는 미확인.",
+            "evidence": "10/15 Meta Ads Manager 사용자 캡처",
+            "baseline_note": "10/15 변경 전 UI: 생기부 조회 3603·웹 방문33·$28.02 / 하얘진다면 약 1.3만 조회·웹 방문170·$54.64. 독립 Meta 보고 기간의 CSV $19.57·$50.11과 단순 합산 금지.",
+            "next": "게시 완료/실패 확인 → 실제 변경 대상 2개 광고세트 ID 식별 → 24h·72h·7d 비교"
+          }
+        ],
         "after_data": null,
         "evaluation_rules": [
           "추천 적용 전후 동일 목표·ID·동등한 측정 기간을 비교",
@@ -1146,8 +1209,8 @@ window.SIGNAL_OS_OPERATIONS={
           "associated_campaign_id": "120252790032910529",
           "campaign_id_source": "기존 CSV 이름 매핑(별도의 광고 Ad ID는 미수집)",
           "confirmed_by_user": true,
-          "apply_now_clicked": false,
-          "meta_recommendation_type": "미확인 · Meta Text improvements일 가능성이 있지만 확정할 수 없음",
+          "apply_now_clicked": true,
+          "meta_recommendation_type": "Fragmentation: 유사 광고 세트 2개 통합 권고 클릭. 실제 대상의 생기부 포함 여부는 ID로 확인 필요.",
           "scope_warning": "광고 1개만 변경되는지 Preview/적용 범위를 확인. Ads 2로 보이면 두 광고 동시 변경 여부 확인.",
           "baseline_snapshot": {
             "as_of": "2026-10-15 화면 누적",
@@ -1155,7 +1218,7 @@ window.SIGNAL_OS_OPERATIONS={
             "landing_page_views": 27,
             "cost_per_lpv_usd": 0.9425925925925925
           },
-          "next": "추천 이름, 실제 수정 항목, 광고 1개 대상 여부 확인 후 사용자가 직접 Apply now를 누르면 적용 시각과 변경 후 실적 기록"
+          "next": "게시 완료 또는 실패 알림 확인 → 실제 Meta 광고세트/광고 ID 2개 확보"
         }
       },
       {
