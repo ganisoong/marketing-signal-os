@@ -33,12 +33,12 @@ window.SIGNAL_OS_OPERATIONS={
         "120252790032910529",
         "120252790030140529"
       ],
-      "status": "Frag. 통합 1건 Apply now 클릭 · 게시 준비 중(완료 0건 확인)",
+      "status": "유사 광고세트 통합 적용 실패 · 부분 게시 확인 필요",
       "title": "이번 주: Meta 추천 적용 가능한 항목을 단계적으로 검토하고 전후 성과 비교",
       "why": "User wishes to try all practicable Meta recommendations. Current account-wide budget cap KRW 20,000/day means budget increase is incompatible, and ad set merge may compromise appeal/targ experiment.",
-      "next": "Meta 게시 완료/실패 알림 확인 → 변경된 2개 광고/세트 ID·타겟·예산 확인 → 24h/72h/7d 동일 성과 지표 기록 및 10/22 1차 비교. 다른 추천은 분리 보류.",
+      "next": "인스타 앱의 생기부 홍보 광고 확인 및 Meta 변경 이력 점검. 통합 재시도·다른 추천 추가 적용은 보류.",
       "due": "2026-10-22",
-      "decision": "사용자가 Fragmentation Apply now를 직접 클릭. Meta 게시 준비 화면 확인, 실제 성공 전까지 적용 완료로 표시하지 않음. Text improvements 별도 미적용."
+      "decision": "추천 적용 실패, 하얘진다면 세트 Complete / 생기부 세트 Fix errors. 완료된 전체 통합으로 간주하지 않음."
     },
     {
       "id": "P0",
@@ -837,7 +837,7 @@ window.SIGNAL_OS_OPERATIONS={
         "category": "META RECOMMENDATIONS",
         "title": "Meta 추천 적용 전후 성과 검증",
         "short": "적용 가능한 기능을 검토하고 실제 사용 전·후 성과 비교",
-        "status": "진행 중 · 10/15 Apply now 클릭, Meta 게시 준비 중 (실제 완료 확인 대기)",
+        "status": "Meta 광고 세트 통합 적용 실패 · 일부 항목 게시 가능, 수정 내역 확인 필요",
         "status_type": "tracking",
         "window": "10/15–10/22",
         "deadline": "2026-10-22",
@@ -1061,10 +1061,10 @@ window.SIGNAL_OS_OPERATIONS={
             "id": "meta-20261015-fragmentation",
             "name": "유사 광고 세트 병합",
             "meta_projection": "학습 분산 완화 가능·타 광고주 유입 증가 관측",
-            "decision": "사용자 실행 요청 · 게시 확인 대기",
-            "status": "10/15 Apply now 클릭, Meta 'Preparing to publish changes / Fragmentation will be applied to 2 ads' 표시",
-            "action": "게시 성공/실패 화면과 실제 병합 대상 2개 Ad set ID·변경 전후 타겟, 예산 확인. 동일 지표 24h/72h/7d 점검.",
-            "feasible": "요청됨 / 적용 완료 확인 대기"
+            "decision": "적용 실패 확인",
+            "status": "10/15 Recommendation wasn't applied. 한 세트 Complete, 생기부 Fix errors, Ad 1개 게시 실패",
+            "action": "Instagram 앱 홍보 관리에서 수정 가능 범위 확인. 이미 Complete로 표시된 세트의 실제 변경 이력도 확인.",
+            "feasible": "Meta 광고 관리자 편집 제한"
           }
         ],
         "phases": [
@@ -1110,26 +1110,25 @@ window.SIGNAL_OS_OPERATIONS={
           }
         ],
         "caution": "'광고세트 통합' 추천을 사용자가 10/15 직접 클릭했습니다. 화면에는 게시 준비 중으로 표시돼 완료로 확정할 수 없습니다. 다른 추천인 Text improvements나 예산 증액은 실제 적용 확인되지 않았습니다. 통합이 성공하면 광고 구조/타겟이 바뀌어 전후 비교의 인과적 해석에 제약이 생길 수 있습니다.",
-        "result": "사용자가 10/15 Fragmentation 통합 추천 Apply now 클릭. Meta의 'Preparing to publish changes / Fragmentation will be applied to 2 ads'를 확인. 게시 성공·실제 ID·사후 효과는 아직 미확인.",
+        "result": "Meta Recommendation wasn't applied. 두 광고세트 중 1개 Complete(하얘진다면), 1개 Fix errors(3년 생기부). 광고 1개도 게시 실패. 일부 변경은 게시됐을 수 있으나 통합 성공 및 성과는 확인 안 됨.",
         "last_checked": "2026-10-15",
         "project_name": "Meta Recommendation Impact Test",
         "started_at": "2026-10-15",
         "started_time_note": "2026-10-15 사용자 프로젝트 등록 시점; 추천 실제 적용 날짜는 별도 기록",
         "last_updated": "2026-10-15",
-        "phase_current": "02 / Meta 광고세트 통합 게시 준비 중",
+        "phase_current": "02 / 적용 실패 원인 확인 · 인스타그램 앱 제한",
         "progress_stage": 2,
         "progress_stage_total": 4,
         "actual_completion_date": null,
         "next_action": {
           "due": "2026-10-15",
-          "headline": "Meta 게시 완료/실패 상태를 확인하고 통합된 광고세트 ID·설정을 캡처",
+          "headline": "Meta 재시도 보류 · 인스타그램 앱에서 생기부 홍보 광고의 편집 제한 확인",
           "deliverables": [
-            "게시 완료 또는 실패 알림",
-            "실제 변경된 두 광고/광고세트 ID",
-            "통합 후 타겟·예산·목표 변경 여부",
-            "24시간·72시간·7일 후 동일 지표 성과"
+            "생기부 릴스의 인스타그램 앱 홍보 관리 상태",
+            "하얘진다면 Complete 항목의 실제 변경 여부",
+            "Meta 광고 세트 변경 이력"
           ],
-          "status": "Apply now 클릭 확인 · 게시 성공 확인 대기"
+          "status": "추천 적용 실패 확인"
         },
         "progress_log": [
           {
@@ -1180,6 +1179,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "게시 준비 중 · 완료 미확인",
             "headline": "Apply now 클릭: 유사 광고 세트 통합(Fragmentation)",
             "detail": "사용자 직접 클릭. Meta는 'Preparing to publish changes'와 'Fragmentation will be applied to 2 ads' 표시. 2개 광고의 정확한 Ad ID는 아직 미확인. 문구 개선(Text improvements)을 적용한 것이 아님."
+          },
+          {
+            "at": "2026-10-15",
+            "kind": "실패 원인 확인",
+            "status": "Meta 추천 적용 실패",
+            "headline": "통합 작업 중 생기부 광고 편집 제한으로 오류 발생",
+            "detail": "광고 세트 하나는 Complete지만 생기부 세트는 Fix errors, 광고 하나도 게시되지 않음. 성공한 변경이 무엇인지는 미확인. 실행 직전 스냅샷 보존."
           }
         ],
         "change_log": [
@@ -1193,6 +1199,14 @@ window.SIGNAL_OS_OPERATIONS={
             "evidence": "10/15 Meta Ads Manager 사용자 캡처",
             "baseline_note": "10/15 변경 전 UI: 생기부 조회 3603·웹 방문33·$28.02 / 하얘진다면 약 1.3만 조회·웹 방문170·$54.64. 독립 Meta 보고 기간의 CSV $19.57·$50.11과 단순 합산 금지.",
             "next": "게시 완료/실패 확인 → 실제 변경 대상 2개 광고세트 ID 식별 → 24h·72h·7d 비교"
+          },
+          {
+            "at": "2026-10-15 · Meta 오류 확인",
+            "kind": "적용 실패",
+            "status": "실패 · 일부 게시 항목은 재확인 필요",
+            "headline": "Fragmentation 추천 완전 적용 실패 — 인스타 앱 편집 제한",
+            "detail": "'Some items not published'와 'Recommendation wasn't applied'. Ad sets 1 of 2: '면접장에서 머릿속이 하얘진다면' Complete, '3년 동안 쌓아온 생기부' Fix errors. Ad 0 of 1. 원인: 'Boosted Post Editing Is Only Allowed in Instagram App'.",
+            "next": "재시도하지 않고 Instagram 앱 광고 관리 및 Meta 변경 이력 확인"
           }
         ],
         "after_data": null,
@@ -1219,6 +1233,17 @@ window.SIGNAL_OS_OPERATIONS={
             "cost_per_lpv_usd": 0.9425925925925925
           },
           "next": "게시 완료 또는 실패 알림 확인 → 실제 Meta 광고세트/광고 ID 2개 확보"
+        },
+        "apply_failure": {
+          "received_date": "2026-10-15",
+          "action": "Fragmentation recommendation Apply now",
+          "alert": "Some items not published / Recommendation wasn't applied",
+          "adsets": "1 of 2 Complete",
+          "ads": "0 of 1",
+          "complete_adset": "면접장에서 머릿속이 하얘진다면",
+          "failed_adset": "3년 동안 쌓아온 생기부",
+          "error": "Boosted Post Editing Is Only Allowed in Instagram App",
+          "interpretation": "전체 추천 적용 실패, 일부 항목은 게시됐을 가능성. 실제 최종 광고세트 구조 확인 필요."
         }
       },
       {
