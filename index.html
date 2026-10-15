@@ -365,6 +365,61 @@
 @media(max-width:1100px){.eval-five-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.eval-testing{grid-column:span 2}.eval-ai{grid-column:span 2}}
 @media(max-width:720px){.eval-heading{flex-direction:column}.eval-five-grid{grid-template-columns:1fr}.eval-testing,.eval-ai{grid-column:auto}.eval-tile{min-height:0}.eval-tile summary{min-height:185px}.eval-flyout{position:relative;top:auto;left:auto!important;right:auto!important;width:100%;max-height:none;box-shadow:none;border-radius:0 0 15px 15px}.eval-tile:hover>.eval-flyout:not(:focus-within){display:none}.eval-tile[open]>.eval-flyout{display:block!important}.eval-nextline{flex-direction:column;align-items:stretch}.eval-landing{padding-top:17px}.eval-asof{width:100%}}
 
+
+/* Weekly focus: projects first, KPIs second. Click for full plan without crowding assessment cards. */
+.week-projects{margin:6px 0 25px}
+.week-project-header{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:12px;margin:0 0 14px}
+.week-project-header h2{font-size:22px;letter-spacing:-.85px;margin:6px 0 4px;font-weight:880}
+.week-project-header p{font-size:11px;color:#6d8676;line-height:1.7;margin:0}
+.week-budget-badge{display:inline-block;border:1px solid #d2e4d8;border-radius:100px;padding:8px 13px;background:#eaf6ec;color:#356e52;font-size:11px;font-weight:800;white-space:nowrap}
+.week-project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.week-project-card{background:white;border:1px solid #d8e4dc;border-top:4px solid #3a8c67;border-radius:16px;text-align:left;display:flex;flex-direction:column;align-items:stretch;padding:23px;gap:0;min-height:365px;color:#244c39;cursor:pointer;transition:box-shadow .16s,transform .16s,border-color .16s;min-width:0}
+.week-project-card.appeal{border-top-color:#698eab}
+.week-project-card:hover,.week-project-card:focus-visible{transform:translateY(-2px);border-color:#a3cab2;box-shadow:0 14px 28px rgba(20,61,38,.10);outline-offset:3px}
+.week-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:10px;letter-spacing:1px;color:#55806a;font-weight:850}
+.week-card-top small{font-size:10px;letter-spacing:0;color:#996b32;background:#fff4e7;border-radius:6px;padding:5px 8px;font-weight:800}
+.week-card-title{display:block;font-size:clamp(18px,2vw,24px);letter-spacing:-.85px;line-height:1.43;font-weight:880;margin:17px 0 12px}
+.week-card-explain{font-size:11px;color:#597363;line-height:1.7}
+.week-card-explain b{color:#197650}
+.week-task-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.week-mini-task{border-radius:100px;background:#eaf5ef;color:#327054;padding:6px 9px;font-size:10px;font-weight:780}
+.week-copy-duel{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 8px}
+.week-copy-duel>span{background:#f3f7f5;border:1px solid #e3ece5;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.week-copy-duel>span:nth-child(2){background:#eef4f9;border-color:#dae6ef}
+.week-copy-duel b{font-size:11px;color:#205e4a}
+.week-copy-duel>span:nth-child(2) b{color:#426a94}
+.week-copy-duel small{font-size:10px;line-height:1.7;color:#596e64;word-break:keep-all}
+.week-card-metrics{display:flex;gap:20px;flex-wrap:wrap;margin-top:auto;padding-top:16px}
+.week-card-metrics>span{display:flex;flex-direction:column;gap:5px}
+.week-card-metrics b{font-size:18px;color:#184e3e;letter-spacing:-.55px;line-height:1.2}
+.week-card-metrics small{color:#85998c;font-size:10px}
+.week-card-cta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#217656;font-weight:850;border-top:1px solid #e7ede7;padding-top:11px;margin-top:17px}
+.week-card-cta b{font-size:19px}
+.week-caveat{color:#7b897e;font-size:10px;line-height:1.9;margin:10px 0 0}
+.week-rec-list,.week-snapshot-list,.week-phase-list{display:grid;gap:9px}
+.week-rec-entry{display:grid;grid-template-columns:78px 1fr;gap:10px;align-items:start;padding:13px 10px;border:1px solid #e3ece5;background:#fafdfa;border-radius:9px}
+.week-rec-class{padding:5px 7px;border-radius:6px;color:#24724e;background:#e1f1e7;font-weight:850;font-size:10px;text-align:center}
+.week-rec-class.held{color:#936936;background:#fff1df}
+.week-rec-entry strong{display:block;font-size:12px;color:#294d38;margin:0 0 4px}
+.week-rec-entry small{font-size:10px;color:#718b7b}
+.week-rec-entry p{margin:7px 0 0;line-height:1.75;font-size:11px;color:#5f7767}
+.week-snapshot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;background:#f0f7f2;border-radius:8px;padding:12px;font-size:11px}
+.week-snapshot strong{color:#285e44}
+.week-snapshot span{color:#4e7260}
+.week-variants{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.week-variant{display:flex;flex-direction:column;gap:8px;border:1px solid #dce9df;background:#f3f8f4;border-radius:9px;padding:14px}
+.week-variant:nth-child(2){background:#f0f5fa;border-color:#dce5f0}
+.week-variant>span{font-size:11px;color:#2a8560;font-weight:850}
+.week-variant:nth-child(2)>span{color:#487899}
+.week-variant strong{font-size:13px;line-height:1.55}
+.week-variant p{font-size:11px;line-height:1.7;color:#678073;margin:0}
+.week-phase{display:grid;grid-template-columns:52px 1fr;gap:11px;align-items:start;padding:10px;border:1px solid #e4eee5;background:#fff;border-radius:9px}
+.week-phase time{font-size:12px;color:#248358;font-weight:850}
+.week-phase strong{font-size:11px;line-height:1.5;color:#345e47}
+.week-phase p{font-size:10px;color:#738779;line-height:1.7;margin:3px 0 0}
+@media(max-width:880px){.week-project-grid{grid-template-columns:1fr}.week-project-card{min-height:0}.week-card-title{font-size:21px}}
+@media(max-width:500px){.week-project-card{padding:17px}.week-copy-duel,.week-variants{grid-template-columns:1fr}.week-project-header{align-items:flex-start}.week-card-title br{display:none}}
+
 </style>
 </head>
 <body>
@@ -389,8 +444,9 @@
    <div><span class="eyebrow">MARKETING SIGNAL OS / EVALUATION</span><h1>오늘의 평가</h1><p>수치와 상태만 먼저 확인하세요. 각 블록에 마우스를 올리거나 눌러 근거와 다음 행동을 볼 수 있습니다.</p></div>
    <div class="eval-asof"><span class="eval-asof-dot"></span><strong>최근 자료 기준</strong><small>광고 10/14 · 운영 계획 10/15</small></div>
   </div>
+  <section id="weekProjects" class="week-projects" aria-label="이번 주 두 가지 핵심 마케팅 실험"></section>
   <div id="evalTiles" class="eval-five-grid" aria-live="polite"></div>
-  <div class="eval-nextline"><div><strong>이번 주의 한 가지 목표</strong><p>생기부 릴스 2개의 기준선을 지키면서 Meta 문구 개선 기능을 한 광고에만 시험하고, 10/22 랜딩 비용을 비교합니다.</p></div><button type="button" class="action dark" data-page="posts">게시물별 성과 보기 ↗</button></div>
+  <div class="eval-nextline"><div><strong>이번 주 실행 원칙</strong><p>Meta 추천 적용 전후 비교와 소구점 A/B를 분리해 기록합니다. 하루 전체 광고비 2만 원을 넘기지 않는 계획으로, 실제 광고/게시 변경은 적용 전 확인합니다.</p></div><button type="button" class="action dark" data-page="posts">게시물별 성과 보기 ↗</button></div>
   <p class="eval-trust">Meta에 자동 연결된 실시간 화면이 아닙니다. CSV 또는 캡처를 전달받아 갱신하며, 광고 예산이나 소재를 임의로 변경하지 않습니다.</p>
  </div>
  <details class="eval-old-operations"><summary>운영 세부 기록 · 기존 분석 및 일정 보기 <span>펼치기 ↓</span></summary>
@@ -549,7 +605,7 @@
     }
     function loadUI(){
       const main=document.createElement('script');
-      main.src='./app.js?v=eval-home-20261015-v1';
+      main.src='./app.js?v=two-projects-20261015';
       main.onerror=function(){showError('화면 코드를 불러오지 못했습니다. 새로고침해 주세요.');};
       document.body.appendChild(main);
     }
