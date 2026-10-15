@@ -636,6 +636,40 @@
 <div class="notice"><span class="mark">ⓘ</span><span><b>수집 방식.</b> 현재는 보내주신 Meta 추천 화면에서 확인된 내용만 기록합니다. 광고 CSV에 추천이 포함되지 않으며, 추후 별도 Meta API 또는 데이터 서비스로 자동 수집할 수 있습니다. 캡처의 점수는 성과 개선을 보장하지 않습니다.</span></div>
 <div id="recommendationSummary" class="rec-summary"></div>
 <div id="recommendationCards" class="rec-grid"></div>
+
+<!-- META_TEXT_EXPERIMENT_START: update this block as new verified snapshots arrive -->
+<section id="metaTextExperiment" aria-label="생기부 릴스 Meta 문구 개선 실험 기록" style="margin:28px 0 22px">
+  <div class="section-heading"><div><div class="eyebrow">CHANGE LOG / BEFORE → AFTER</div><h2>‘3년 동안 쌓아온 생기부’ — 문구 개선 실험</h2><p>광고 설정 변경 전 수치, 실제 변경 내용, 후속 성과, 검증 결론을 각각 분리해 남깁니다.</p></div></div>
+  <div class="panel" style="border:1px solid #dbe8e1">
+    <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+      <span class="chip em">1단계 · 변경 전 자료 등록</span>
+      <span class="chip">2단계 · Apply now 적용 확인 전</span>
+      <span class="chip">분석 결론 · 대기</span>
+    </div>
+    <h3 style="margin:0 0 10px">변경 전 기준값 · 누적 스냅샷</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px">
+      <div style="padding:15px;background:#f5f8f6;border-radius:12px"><div class="caption">누적 광고비 (USD)</div><strong style="font-size:24px">$25.45</strong></div>
+      <div style="padding:15px;background:#f5f8f6;border-radius:12px"><div class="caption">랜딩페이지 조회</div><strong style="font-size:24px">27회</strong></div>
+      <div style="padding:15px;background:#f5f8f6;border-radius:12px"><div class="caption">랜딩 조회당 비용</div><strong style="font-size:24px">$0.943</strong></div>
+    </div>
+    <p class="caption" style="margin-top:11px">근거: 2026-10-15에 제공된 이전 대화 화면에 적힌 Meta 광고 수치. 원래 Meta 화면의 캡처 시각·조회 기간·광고 ID는 미확인. ‘적용 직전 동일 시각’ 실측으로 확정된 값이 아니라 임시 기준값입니다. 다른 날짜의 누적 수치를 단순 합산하지 않습니다.</p>
+    <details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">추가 근거 · 10/14 광고 CSV 스냅샷</summary>
+      <p style="margin:9px 0 0">10/13–10/14 Ads 내보내기 자료에서 같은 제목 광고에 연결된 값: 광고비 $19.57 · 노출 2,462 · 링크 클릭 43 · 랜딩페이지 조회 22 · 조회당 비용 약 $0.890. 광고/캠페인 ID가 빠진 CSV이므로 소재명 기반 임시 연결입니다. 다른 시점의 누적 자료이므로 위 $25.45/27회에 더하지 않습니다.</p>
+    </details>
+  </div>
+  <div class="panel" style="margin-top:12px">
+    <h3 style="margin:0 0 12px">변경 이력 및 비교 진행 단계</h3>
+    <ol style="padding-left:23px;margin:0;display:grid;gap:14px">
+      <li><strong>기준 데이터 기록 — 완료 (10/15 수신)</strong><div class="caption">캠페인 ID 임시 연결: 120252790032910529. 누적 $25.45/LPV 27회. 실제 변경 직전 최종 스냅샷 수집 필요.</div></li>
+      <li><strong>Meta 추천 적용 — 실행 여부 확인 대기</strong><div class="caption">추천 항목: Advantage+ Creative의 Text improvements(광고 텍스트 자동 변형). Meta UI의 ‘Ads 2’는 두 광고가 대상일 가능성을 뜻함. 실제 적용된 광고 개수/ID, 바뀐 텍스트, 적용 시각은 아직 미확인. 사용자가 Apply now를 누른 것으로 기록하지 않음.</div></li>
+      <li><strong>변경 후 성과 수집 — 대기</strong><div class="caption">적용 시점 기록 후 24시간·72시간·7일에 지출, 노출, 링크 클릭, 랜딩 조회, 랜딩당 비용을 저장. 동일 광고·같은 기여 설정·동일 목표 기준으로 관찰. 변경 전/후 누적 스냅샷과 각 관측 구간을 구분.</div></li>
+      <li><strong>효과 검증 및 결론 — 대기</strong><div class="caption">증분 랜딩 비용 = (후속 누적 지출−변경 직전 누적 지출) ÷ (후속 누적 LPV−변경 직전 누적 LPV). 이전 동일 길이 구간의 LPV당 비용과 비교하고, 예산·타겟·학사 일정·게재 시기 변화도 함께 검토. 통제군 없이 ‘Meta 추천 덕분’이라는 인과·통계적 유의성을 확정하지 않음.</div></li>
+    </ol>
+    <div style="background:#f8f8f4;padding:12px 14px;border-radius:11px;margin-top:16px" class="caption"><b>다음 수집 요청:</b> Apply now 이후 성공/적용 대상 화면 1장 + 적용 시각. 당일 최종 지출/LPV 스냅샷 1장. 결과 캡처가 오면 이 블록과 아래의 검증 결론을 함께 업데이트합니다.</div>
+  </div>
+</section>
+<!-- META_TEXT_EXPERIMENT_END -->
+
 <div class="rec-workflow"><h3>앞으로 어떻게 추가할까?</h3><p>Meta 광고 관리자에서 <b>View all</b>로 추천 목록을 한 번에 열고, 가능하면 텍스트를 복사해 전달해주세요. 복사가 어렵다면 목록 화면을 나누어 캡처해도 됩니다. 추천 내용이 바뀌면 이전 기록과 비교합니다.</p></div>
 </section>
  <section id="lab" class="page">
