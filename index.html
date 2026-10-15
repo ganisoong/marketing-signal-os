@@ -420,6 +420,67 @@
 @media(max-width:880px){.week-project-grid{grid-template-columns:1fr}.week-project-card{min-height:0}.week-card-title{font-size:21px}}
 @media(max-width:500px){.week-project-card{padding:17px}.week-copy-duel,.week-variants{grid-template-columns:1fr}.week-project-header{align-items:flex-start}.week-card-title br{display:none}}
 
+
+/* Persistent project progress cockpit */
+.project-workspace{padding:30px 0 20px}
+.project-hero{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin:0 0 24px}
+.project-hero h1{font-size:clamp(29px,3vw,43px);letter-spacing:-1.8px;margin:7px 0 12px}
+.project-hero p{font-size:12px;color:#6b8377;line-height:1.8;max-width:690px;margin:0}
+.project-updated{padding:9px 13px;border-radius:9px;background:#e9f4eb;color:#317351;font-size:11px;font-weight:750}
+.project-primary{border:1px solid #d9e6dc;border-top:4px solid #238260;background:#fff;border-radius:16px;padding:24px;margin-bottom:17px}
+.project-topline{display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center;gap:10px}
+.project-topline span{color:#31805e;font-size:10px;font-weight:850;letter-spacing:1px}
+.project-topline em{font-style:normal;color:#92662c;font-weight:800;font-size:10px;background:#fff4e3;border-radius:7px;padding:7px 10px}
+.project-primary h2{margin:15px 0 8px;font-size:26px;letter-spacing:-.8px}
+.project-lead{margin:0;font-size:11px;line-height:1.8;color:#5d796a}
+.project-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:19px 0}
+.project-kpis>div{background:#f1f8f3;border-radius:10px;display:flex;flex-direction:column;gap:6px;padding:16px}
+.project-kpis small{font-size:10px;color:#718b7c}
+.project-kpis strong{font-size:20px;color:#17573e}
+.project-kpis span{font-size:10px;line-height:1.5;color:#7b9183}
+.project-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.project-panel{border:1px solid #e1eae3;border-radius:13px;background:#fff;padding:19px;min-width:0}
+.project-panel h3{font-size:15px;margin:0 0 13px;letter-spacing:-.3px}
+.project-before-after{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.project-measure{border-radius:10px;background:#eef7f0;padding:14px}
+.project-measure.waiting{background:#fff5e7}
+.project-measure small{display:block;font-size:10px;color:#779184}
+.project-measure strong{display:block;font-size:19px;color:#23684b;margin:6px 0}
+.project-measure.waiting strong{color:#a17a36}
+.project-measure span{display:block;font-size:10px;line-height:1.55;color:#738678}
+.project-post-baseline{margin-top:10px;display:grid;gap:6px}
+.project-post-baseline>div{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid #edf1ec;font-size:11px}
+.project-post-baseline b{color:#3b6952}
+.project-post-baseline span{color:#657c6e}
+.project-mini-note{margin:11px 0 0;font-size:10px;color:#799184;line-height:1.8}
+.project-recommend-list{display:grid;gap:8px}
+.project-recommend-row{display:grid;grid-template-columns:73px 1fr;gap:9px;align-items:start;background:#f6faf7;border:1px solid #e3ede5;border-radius:9px;padding:11px}
+.project-rec-state{font-size:10px;font-weight:800;color:#267b51;background:#e4f3e9;border-radius:5px;padding:5px 7px;text-align:center}
+.project-rec-state.held{background:#fff0dd;color:#a17033}
+.project-recommend-row strong{display:block;color:#29593f;font-size:11px}
+.project-recommend-row p{font-size:10px;line-height:1.7;color:#607a68;margin:5px 0 0}
+.project-progress{display:grid;gap:8px}
+.project-progress-line{display:grid;grid-template-columns:58px 1fr;gap:10px;background:#f9fcfa;border:1px solid #e7efe8;border-radius:8px;padding:10px}
+.project-progress-line time{font-size:11px;font-weight:850;color:#257d55}
+.project-progress-line b{font-size:11px;color:#2c5a43}
+.project-progress-line p{font-size:10px;line-height:1.65;color:#7a8e80;margin:4px 0 0}
+.project-log{display:grid;gap:8px}
+.project-log-item{border-left:3px solid #91c5a4;padding:9px 11px;background:#f7fbf8;border-radius:4px}
+.project-log-item small{font-size:10px;color:#739181}
+.project-log-item strong{display:block;font-size:11px;margin:4px 0;color:#2c6446}
+.project-log-item p{font-size:10px;line-height:1.7;color:#688171;margin:0}
+.project-next{background:#e9f5ed;border:1px solid #d2e5d8;border-radius:12px;padding:18px;margin:16px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.project-next h3{font-size:13px;margin:0 0 7px;color:#205d40}
+.project-next p{font-size:11px;line-height:1.7;color:#52765d;margin:0}
+.project-next b{color:#1b7851;font-size:13px;white-space:nowrap}
+.project-secondary{border:1px solid #dce7e0;background:white;border-radius:13px;padding:18px 21px}
+.project-secondary h3{font-size:14px;margin:9px 0}
+.project-secondary p{font-size:11px;color:#688274;line-height:1.8;margin:0}
+.project-secondary button{display:inline-block;margin-top:10px;border:1px solid #b9dbc4;color:#26724e;background:#eff9f1;border-radius:8px;padding:7px 10px;font-size:10px;font-weight:800}
+.project-footnote{font-size:10px;color:#86958a;line-height:1.8;margin:15px 0}
+@media(max-width:900px){.project-cols{grid-template-columns:1fr}.project-kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.project-workspace{padding-top:18px}.project-primary{padding:15px}.project-kpis{gap:7px}.project-kpis>div{padding:12px}.project-kpis strong{font-size:16px}.project-primary h2{font-size:22px}.project-before-after{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -428,12 +489,13 @@
  <div class="brand"><div class="brand-top"><span class="brand-glyph">↗</span><div><div class="brand-name">Signal OS</div><div class="brand-sub">MARKETING INTELLIGENCE</div></div></div></div>
  <div class="nav-section">WORKSPACE</div>
  <button class="nav-btn active" data-page="operations"><span class="nav-number">01</span><span class="nav-label">평가 홈</span><span class="nav-right">↗</span></button>
-  <button class="nav-btn" data-page="overview"><span class="nav-number">02</span><span class="nav-label">핵심 인사이트</span><span class="nav-right">↗</span></button>
- <button class="nav-btn" data-page="posts"><span class="nav-number">03</span><span class="nav-label">게시물 현황</span><span class="nav-right">↗</span></button>
-  <button class="nav-btn" data-page="recommendations"><span class="nav-number">04</span><span class="nav-label">Meta 추천 검토</span><span class="nav-right">↗</span></button>
-  <button class="nav-btn" data-page="lab"><span class="nav-number">05</span><span class="nav-label">비교 · 다음 실험</span><span class="nav-right">↗</span></button>
- <button class="nav-btn" data-page="evidence"><span class="nav-number">06</span><span class="nav-label">분석 근거 · 확률</span><span class="nav-right">↗</span></button>
- <button class="nav-btn" data-page="archive"><span class="nav-number">07</span><span class="nav-label">데이터 보관함</span><span class="nav-right">↗</span></button>
+  <button class="nav-btn" data-page="projects"><span class="nav-number">02</span><span class="nav-label">프로젝트 진행</span><span class="nav-right">↗</span></button>
+  <button class="nav-btn" data-page="overview"><span class="nav-number">03</span><span class="nav-label">핵심 인사이트</span><span class="nav-right">↗</span></button>
+ <button class="nav-btn" data-page="posts"><span class="nav-number">04</span><span class="nav-label">게시물 현황</span><span class="nav-right">↗</span></button>
+  <button class="nav-btn" data-page="recommendations"><span class="nav-number">05</span><span class="nav-label">Meta 추천 검토</span><span class="nav-right">↗</span></button>
+  <button class="nav-btn" data-page="lab"><span class="nav-number">06</span><span class="nav-label">비교 · 다음 실험</span><span class="nav-right">↗</span></button>
+ <button class="nav-btn" data-page="evidence"><span class="nav-number">07</span><span class="nav-label">분석 근거 · 확률</span><span class="nav-right">↗</span></button>
+ <button class="nav-btn" data-page="archive"><span class="nav-number">08</span><span class="nav-label">데이터 보관함</span><span class="nav-right">↗</span></button>
  <div class="side-bottom"><div class="source-indicator"><span class="dot"></span> META ADS · CSV 스냅샷</div><div class="side-date">2026. 09. 13 — 10. 13</div><div class="side-help">실시간 연동 아님<br/>마지막 자료 수신: 10.14 (시각 미기록)<br/>모든 성과 수치 USD 기준</div></div>
 </aside>
 <main class="content">
@@ -493,6 +555,16 @@
   </section>
  </details>
 </section>
+
+ <section id="projects" class="page">
+  <div class="project-workspace">
+   <div class="project-hero"><div><span class="eyebrow">PROJECT 02 / OPERATION JOURNAL</span><h1>프로젝트 진행</h1><p>지금 진행하는 인스타 실험의 목표, 기준선, 실제 변경 기록과 다음 점검 날짜를 하나의 페이지에서 관리합니다.</p></div><span class="project-updated">프로젝트 등록 · 2026.10.15</span></div>
+   <div id="projectTracker" aria-label="Meta 추천 전후 성과 검증 프로젝트"></div>
+   <div id="projectSideList" aria-label="다른 진행·기획 프로젝트"></div>
+   <p class="project-footnote">이 프로젝트는 이 대화에서 새 데이터를 받거나 결정을 내릴 때마다 제가 기록을 갱신하는 방식입니다. Meta 자동 연결·광고 변경·자동 업로드 기능은 아닙니다.</p>
+  </div>
+ </section>
+
  <section id="overview" class="page">
   <div class="hero"><div class="eyebrow">THE DECISION DESK / OVERVIEW</div><h1>핵심 발견은 한눈에,<br/>근거는 누르면 자세히.</h1><p>현재까지 확인한 광고 인사이트를 카드로 정리했습니다. 좋은 점, 상반된 신호, 관찰할 항목을 누르면 실제 게시물과 근거가 열립니다.</p><div class="subline"><span class="chip em"><span class="dot"></span> 검증된 집계 기준</span><span class="chip">분석 기간 · 09.13 — 10.14</span><span class="chip">자료 수신 · 10.14 (시각 미기록)</span></div></div>
   <div class="notice"><span class="mark">ⓘ</span><span><b>데이터 시차 안내.</b> 이 보고서는 10월 13일까지의 광고 실적입니다. 새 업로드는 9/14~10/13 연령·성별 분류이며, 겹치는 날짜는 다시 합산하지 않고 10/13 실적만 반영했습니다. 동일 제목 캠페인 2개는 10/13에 ID별 분리 불가합니다. 이전 파일을 같은 기간으로 재전송해도 합계에 두 번 더하지 않습니다.</span></div>
