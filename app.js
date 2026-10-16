@@ -463,7 +463,16 @@ function renderMetaRecommendations(){
  esc(x.campaign)+'</strong><span class="chip" style="margin-left:8px">'+esc(x.delivery_label||(x.delivery==='active'?'활성':x.delivery==='paused'?'일시 중단':'상태 확인 필요'))+'</span>'+
  '<div class="rec-captured-metrics"><span>조회수 <b>'+esc(x.views_display)+'회</b></span><span>웹사이트 방문 <b>'+number(x.website_visits)+'회</b></span><span>누적 지출 <b>'+money(x.spend_usd,2)+'</b></span></div></div>').join('')+
  '<p class="caption">현재 누적값은 이전 캡처와 별도 시점의 값입니다. 광고 검토 중 집계가 증가하더라도 실제 새 게재를 의미하지 않을 수 있습니다. 광고 관리자 변경 이력과 심사 상세 확인이 다음 단계입니다.</p></section>':'';
- cards.innerHTML=followupBox+executionBox+preApplyBox+performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
+ const latest=status.latest_delivery_snapshot;
+ const latestBox=latest?'<section class="rec-captured-performance" aria-label="10월 16일 인스타그램 광고 상태 추적" style="margin-bottom:14px">'+
+ '<h3>10/16 · 광고 검토 상태 지속 / 최신 스냅샷</h3>'+
+ '<p><b>하얘진다면</b> 광고는 아직 <b>게재되지 않음 · 광고 검토</b>입니다. `더 알아보기`에 문제가 있다는 설명은 있으나 실제 오류 문구·코드는 미확인입니다. 광고 세트 통합 시도가 검토 상태의 직접 원인인지는 아직 확정할 수 없습니다.</p>'+
+ latest.items.map(a=>'<div style="padding:11px 0;border-top:1px solid #e7ebe8">'+
+ '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><strong>'+esc(a.name)+'</strong><span class="chip">'+esc(a.status_label||(a.status==='active'?'활성':'일시 중단'))+'</span></div>'+
+ '<div class="rec-captured-metrics"><span>조회수 <b>'+esc(a.views_display)+'회</b></span><span>웹사이트 방문 <b>'+number(a.website_visits)+'회</b></span><span>광고비 <b>'+money(a.spend_usd,2)+'</b></span></div></div>').join('')+
+ '<p class="caption">첫 광고는 지난 캡처 이후 +1,112조회 / +12웹사이트 방문 / +$8.88입니다. 반면 하얘진다면은 +0방문 / +$0 지출입니다. 둘 모두 보고 시각이 정확히 표시되지 않은 누적 스냅샷이며 심사 거절이나 변경 원인에 대한 확정 증거가 아닙니다.</p>'+
+ '</section>':'';
+ cards.innerHTML=latestBox+followupBox+executionBox+preApplyBox+performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
  if(history.length){
   const archive=document.createElement('details');
   archive.className='rec-history';
