@@ -861,7 +861,7 @@ window.SIGNAL_OS_OPERATIONS={
         "category": "META RECOMMENDATIONS",
         "title": "Meta 추천 적용 전후 성과 검증",
         "short": "적용 가능한 기능을 검토하고 실제 사용 전·후 성과 비교",
-        "status": "하얘진다면 게재 오류 원문 확인 · Instagram 앱 홍보 설정 점검 대기",
+        "status": "광고 관리자 편집 오류 확인 · 게시물 정보 수정 화면은 해결 경로 아님",
         "status_type": "tracking",
         "window": "10/15–10/22",
         "deadline": "2026-10-22",
@@ -1146,13 +1146,14 @@ window.SIGNAL_OS_OPERATIONS={
         "actual_completion_date": null,
         "next_action": {
           "due": "2026-10-16",
-          "headline": "Instagram 앱 광고 도구에서 '하얘진다면' 릴스의 홍보 상태와 편집 메뉴 캡처",
+          "headline": "Instagram 모바일 앱의 광고 도구에서 기존 '하얘진다면' 홍보 관리 확인",
           "deliverables": [
-            "Instagram 프로필 → 프로페셔널 대시보드 → 광고 도구/홍보 관리 → 해당 광고 선택",
-            "광고 상세 상태·편집 가능 항목 캡처",
-            "Meta 관리자 미게시 초안 및 Activity history 확인"
+            "게시물 정보 수정 화면은 취소(원본 게시물 변경하지 않음)",
+            "Instagram 모바일 앱 프로페셔널 대시보드 또는 광고 도구에서 기존 홍보 선택",
+            "기존 홍보의 상태, 수정 가능한 광고 설정, 오류 문구를 캡처",
+            "Meta Ads Manager 생기부 광고의 In draft 변경 내용은 별도 확인"
           ],
-          "status": "원인 메시지 확인 완료 · 해결 미실행"
+          "status": "올바른 광고 관리 메뉴 진입 대기 · 실제 수정/복구 미실행"
         },
         "progress_log": [
           {
@@ -1231,6 +1232,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "Meta 광고 관리자 편집 제한 확인",
             "headline": "Instagram 앱 전용 홍보 편집 오류로 광고 게재 실패",
             "detail": "오류 원문 확보: Boosted Post Editing Is Only Allowed In Instagram App. 광고 변경 충돌 해결 경로를 Instagram 앱에서 확인 중. 광고 심사 거절/계정 제한으로 단정할 근거는 없음."
+          },
+          {
+            "at": "2026-10-16",
+            "kind": "수정 경로 구분",
+            "status": "게시물 원본 수정 불필요 · 광고 관리 경로 확인 필요",
+            "headline": "게시물 정보 수정과 기존 릴스 홍보 설정을 분리",
+            "detail": "사용자 제공 Instagram '정보 수정' 창은 게시물 원본 편집 인터페이스. Meta 오류는 Instagram 앱 부스트 편집 경로 제한이므로 게시물 수정 화면에서 해결 불가. 변경사항 저장하지 않음."
           }
         ],
         "change_log": [
@@ -1273,6 +1281,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "원인 메시지 확인 · 실제 복구 전",
             "detail": "Meta Ads Manager Ad row Not delivering + Delivery error. 팝업: 'Boosted Post Editing Is Only Allowed In Instagram App'. 옆 생기부 광고는 In draft. 광고 관리자에서는 인스타 앱에서 홍보한 게시물 변경이 제한된다는 증거이며, 원본 릴스를 수정해야 한다는 뜻은 아님.",
             "next": "Instagram 앱 프로필 광고 도구에서 하얘진다면 광고 관리 진입, 상세·편집 메뉴 캡처. 미게시 Meta 변경의 처리 여부는 별도 확인 후 결정."
+          },
+          {
+            "at": "2026-10-16 · Instagram 정보 수정 화면 확인",
+            "headline": "사용자가 연 화면은 게시물 '정보 수정' — 부스트 광고 설정이 아님",
+            "status": "잘못된 편집 경로 확인 · 게시물 수정 불필요",
+            "detail": "캡처는 Instagram 게시물 정보 수정 창으로 캡션, 사람 태그, AI 레이블, 접근성 등을 제공함. Meta 오류 'Boosted Post Editing Is Only Allowed In Instagram App'가 원본 이미지나 캡션을 수정하라는 요청은 아님. Meta fragmentation 추천이 기존 boosted ad 설정을 바꾸려다 편집 경로 제한에 부딪힌 정황. 정확한 수정 필드 및 실제 부분 게시 결과는 확인되지 않았음.",
+            "next": "변경 사항 없이 취소 → Instagram 모바일 앱 광고 도구/홍보 관리에서 해당 홍보의 상태·수정 메뉴 확인. 반복 Apply now, Meta Edit ad, 삭제, 신규 홍보 생성 보류."
           }
         ],
         "after_data": null,
