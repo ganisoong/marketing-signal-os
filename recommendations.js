@@ -627,5 +627,69 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "no_delivery_note": "Ad-level review does not indicate rejection. Spend/visit cumulative increases may reflect reporting latency or actions before review, not proof of delivery during review.",
     "followup": "Check Meta/Instagram ad review detail and Ads Manager Activity history; do not repeat Apply now or modify budgets until confirmed.",
     "identity_note": "Ad set Complete earlier ≠ currently delivering Ad; campaign to individual Meta Ad ID remains unverified."
+  },
+  "latest_delivery_snapshot": {
+    "date": "2026-10-16",
+    "observed_time": "unknown; screenshot time is not shown",
+    "source": "User Instagram Ads Management screenshot, 3 rows. User also reports generic problem message after More info, but text/code not shown.",
+    "affected_name": "면접장에서 머릿속이 하얘진다면",
+    "affected_delivery": "not_delivering_ad_under_review",
+    "problem_description": "Further details say there is a problem, but exact error text/screenshot not yet provided",
+    "prior_meta_apply": "2026-10-15 fragmentation attempt failed partially (one ad set Complete, one Fix errors; one ad not published)",
+    "causal_status": "Unknown. Temporal association only; do not call this the cause.",
+    "comparison_reference": "2026-10-15 latest prior screenshot (3,650 / 34 / $28.42 first; ~13k / 173 / $54.85 third)",
+    "items": [
+      {
+        "name": "3년 동안 쌓아온 생기부",
+        "status": "active",
+        "views": 4762,
+        "views_display": "4,762",
+        "website_visits": 46,
+        "spend_usd": 37.3,
+        "previous": {
+          "views": 3650,
+          "website_visits": 34,
+          "spend_usd": 28.42
+        },
+        "delta": {
+          "views": 1112,
+          "website_visits": 12,
+          "spend_usd": 8.88
+        }
+      },
+      {
+        "name": "가운데 광고 · 이름 미확인",
+        "status": "paused",
+        "views": 3824,
+        "views_display": "3,824",
+        "website_visits": 27,
+        "spend_usd": 21.28,
+        "previous": {
+          "views": 3824,
+          "website_visits": 27,
+          "spend_usd": 21.28
+        }
+      },
+      {
+        "name": "면접장에서 머릿속이 하얘진다면",
+        "status": "not_delivering_under_review",
+        "status_label": "게재되지 않음 · 광고 검토",
+        "views": null,
+        "views_display": "약 13,000",
+        "website_visits": 173,
+        "spend_usd": 54.85,
+        "previous": {
+          "views": null,
+          "website_visits": 173,
+          "spend_usd": 54.85
+        },
+        "delta": {
+          "website_visits": 0,
+          "spend_usd": 0
+        }
+      }
+    ],
+    "next": "Ask for full '더 알아보기' issue text/screenshot or Meta Ad delivery error description; inspect Account Quality/Activity history if needed",
+    "note": "No new spend or visits appear for affected ad between two screenshots, consistent with halted delivery but not sufficient to infer formal rejection. Other ad performance accumulated."
   }
 };
