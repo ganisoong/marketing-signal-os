@@ -706,6 +706,29 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "priority_signal": "50 opportunity points to fix a campaign that can't deliver is Meta issue priority, not actual performance improvement",
     "interpretation": "This is a restriction on editing an Instagram-created boosted ad in Meta Ads Manager. Does not establish that organic Reel/video/caption needs editing or that the ad was rejected for policy violations.",
     "action": "Check Instagram mobile > professional dashboard > ad tools/boost management > affected Reel > promotion status and allowed edit options; inspect unpublished Meta changes before any discard. Avoid clicking Meta Edit ad or re-applying ad set merge.",
-    "investigation_status": "error text verified; exact fix within Instagram app not yet verified"
+    "investigation_status": "error text verified; exact fix within Instagram app not yet verified",
+    "experiment_context": "Two original Instagram posts have the same creative intentionally but different ad age-targeting. That is not in itself the cause of Boosted Post Editing Is Only Allowed In Instagram App."
+  },
+  "audience_split_user_confirmation": {
+    "date": "2026-10-16",
+    "evidence": "User uploaded Instagram grid screenshot of two same-looking posts and explicitly said they uploaded the same post twice with different age-targeting for ads.",
+    "creative_label": "면접장에서 머릿속이 하얘진다면",
+    "post_count": 2,
+    "same_creative": true,
+    "intentionally_separate_age_targeting": true,
+    "age_brackets": "not provided",
+    "adset_ids_confirmed": false,
+    "conclusion": "User-intended age-segment comparison, not accidental duplicate content; deleting a post is not a verified fix for the Instagram-only Boosted Post editing restriction.",
+    "recommendation_relation": "Meta ad-set fragmentation suggestion could have arisen from similar ad sets; exact targeted ad sets remain unverified.",
+    "compare_fields": [
+      "actual_age_target",
+      "period",
+      "daily_budget",
+      "website_visits_or_lpv_by_same_definition",
+      "spend",
+      "ad_id"
+    ],
+    "interpretation_warning": "Separate original posts may also vary in publication timing and social engagement; a pure causal test of age requires other settings aligned.",
+    "next": "Preserve both posts/metrics. Identify the separate promoted ad/ad-set IDs and age target definitions before deciding whether to keep or consolidate campaigns."
   }
 };
