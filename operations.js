@@ -1,9 +1,9 @@
 window.SIGNAL_OS_OPERATIONS={
   "schema_version": 1,
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-16",
   "report_as_of": "2026-10-14 (당일 집계; 종료 전)",
   "last_confirmed_campaign_ids_as_of": "2026-10-12 for duplicate-name pair; single-name current status provisionally mapped",
-  "current_delivery_note": "10/15 최신 사용자 Instagram 홍보 캡처: '3년 동안 쌓아온 생기부' 활성(3,650조회·34웹방문·$28.42), 가운데 광고 일시중단(3,824조회·27웹방문·$21.28), '면접장에서 머릿속이 하얘진다면' 게재되지 않음 · 광고 검토(약1.3만조회·173웹방문·$54.85). 이전 Meta Fragmentation Apply now는 1 Ad set Complete/생기부 Fix errors, 전체 적용 실패. 광고 검토 원인은 미확인, Meta CSV 집계와 혼합 금지.",
+  "current_delivery_note": "10/16 Instagram 광고 관리 캡처: '3년 동안 쌓아온 생기부' 활성(4,762조회·46웹사이트 방문·$37.30), 가운데 광고 일시중단(3,824조회·27방문·$21.28), '면접장에서 머릿속이 하얘진다면' 게재되지 않음/광고 검토(약1.3만조회·173웹사이트 방문·$54.85). 후자는 10/15 최신 화면 대비 지출/방문 증가 없음. Meta Fragmentation Apply now 전체 실패 및 일부 광고세트 Complete 뒤 발생한 상태지만 인과 원인은 미확정.",
   "profile": "인스타그램 @alphaedu_ipsi · Meta Ads 광고 데이터 수동 제출 기반",
   "policy": {
     "auto_pause": false,
@@ -462,6 +462,14 @@ window.SIGNAL_OS_OPERATIONS={
       "action": "인스타 앱 광고 검토 화면과 Meta Ads Manager 수정 이력 확인. 승인/거절 전 신규 수정 및 재적용 자제.",
       "reason": "인스타 홍보 화면에서 하얘진다면 게재되지 않음/광고 검토, 생기부 활성.",
       "result": "변경 원인은 미확정. 10/15 누적 스냅샷을 다른 기간 CSV와 혼합하지 않음."
+    },
+    {
+      "at": "2026-10-16 (정확한 시각 미표시)",
+      "kind": "Meta 변경 오류 지속 점검",
+      "headline": "게재되지 않는 '하얘진다면' 추가 오류 확인 필요",
+      "action": "광고의 더 알아보기 오류 상세 확보, 가능하면 Meta Ads Manager 변경 기록 확인.",
+      "reason": "지난 Meta Apply now 부분 실패 후 광고 검토 지속. 10/16 지출/방문 증분 없음.",
+      "result": "현 시점 정상 게재 복구 미확인, 심사 거절/계정 문제 등 세부 원인 미확인."
     }
   ],
   "upload_spec": {
@@ -845,7 +853,7 @@ window.SIGNAL_OS_OPERATIONS={
         "category": "META RECOMMENDATIONS",
         "title": "Meta 추천 적용 전후 성과 검증",
         "short": "적용 가능한 기능을 검토하고 실제 사용 전·후 성과 비교",
-        "status": "통합 추천 실패 기록 · 하얘진다면 광고 검토 중(현재 게재되지 않음)",
+        "status": "10/16 하얘진다면 미게재/광고 검토 지속 · Meta 통합 추천 실패 영향 조사 중",
         "status_type": "tracking",
         "window": "10/15–10/22",
         "deadline": "2026-10-22",
@@ -1118,25 +1126,25 @@ window.SIGNAL_OS_OPERATIONS={
           }
         ],
         "caution": "'광고세트 통합' 추천을 사용자가 10/15 직접 클릭했습니다. 화면에는 게시 준비 중으로 표시돼 완료로 확정할 수 없습니다. 다른 추천인 Text improvements나 예산 증액은 실제 적용 확인되지 않았습니다. 통합이 성공하면 광고 구조/타겟이 바뀌어 전후 비교의 인과적 해석에 제약이 생길 수 있습니다.",
-        "result": "Meta 통합 추천 전체 적용 실패. 10/15 후속 스냅샷에서 '하얘진다면' 광고는 게재되지 않음/광고 검토; '생기부'는 활성. 재심사 사유와 부분 게시된 세트 변경 내역 미확인.",
+        "result": "Meta 추천 통합은 성공하지 못함. 10/16 후속 화면에서 생기부는 활성·지출 누적, 하얘진다면은 10/15부터 게재되지 않음/광고 검토 상태 유지. 사용자 '더 알아보기'에서 문제가 있다고 하나 구체 오류 문구 미제공. 실제 심사 실패/거절과 직접 인과는 미확인.",
         "last_checked": "2026-10-15",
         "project_name": "Meta Recommendation Impact Test",
         "started_at": "2026-10-15",
         "started_time_note": "2026-10-15 사용자 프로젝트 등록 시점; 추천 실제 적용 날짜는 별도 기록",
-        "last_updated": "2026-10-15",
-        "phase_current": "02 / 오류 이후 광고 심사 상태 확인 및 운영 영향 추적",
+        "last_updated": "2026-10-16",
+        "phase_current": "02 / 부분 게시 오류·광고 검토 지속 원인 추적",
         "progress_stage": 2,
         "progress_stage_total": 4,
         "actual_completion_date": null,
         "next_action": {
-          "due": "2026-10-15",
-          "headline": "'하얘진다면' 광고 검토 상세 및 Meta 변경 내역 확인",
+          "due": "2026-10-16",
+          "headline": "'하얘진다면' 더 알아보기 오류 상세 메시지 확보",
           "deliverables": [
-            "광고 검토 상세 문구·실제 상태(검토/승인/거절)",
-            "Meta 광고 관리자 Activity history에서 10/15 광고세트 변경 항목 확인",
-            "리뷰 완료 이후 같은 지표로 다시 캡처"
+            "정확한 오류 문구 또는 전체 팝업 화면 캡처",
+            "승인 대기/거절/수정 필요 중 어떤 상태인지 확인",
+            "Meta Ads Manager 변경 이력(해당 광고/세트)"
           ],
-          "status": "광고 검토 상태 확인 필요 · Meta 추천 재시도 보류"
+          "status": "광고 검토/게재 중단 지속 · 오류 근거 확인 대기"
         },
         "progress_log": [
           {
@@ -1201,6 +1209,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "광고 검토 · 게재되지 않음",
             "headline": "하얘진다면 광고 검토 시작 가능성 확인",
             "detail": "사용자 인스타 광고 관리 UI에서 해당 광고가 '게재되지 않음 / 광고 검토'로 표시. 생기부 광고는 계속 Active. Meta 세트 통합 시도와 인과관계는 아직 검증하지 못함."
+          },
+          {
+            "at": "2026-10-16",
+            "kind": "상태 재확인",
+            "status": "검토 중 · 미게재",
+            "headline": "광고 검토 상태가 다음 날까지 이어짐",
+            "detail": "면접장에서 하얘진다면 173웹사이트 방문/$54.85로 이전과 동일. 반면 생기부는 34→46웹사이트 방문, $28.42→$37.30. 변경 전후 메타 추천 효율 비교는 아직 불가."
           }
         ],
         "change_log": [
@@ -1229,6 +1244,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "광고 검토 / 재승인 미확인",
             "detail": "이전 Meta 오류 확인 후 사용자 Instagram 홍보 관리 화면: '3년 동안 쌓아온 생기부' Active(3,650뷰/34웹사이트 방문/$28.42), 가운데 Paused(3,824/27/$21.28), '면접장에서 머릿속이 하얘진다면' Not delivering + Ad review(약1.3만/173/$54.85). 직전 해당 광고세트 Complete 표시와 실제 광고 심사/게재 상태는 별개. 연관 가능성은 있으나 원인 확정 불가.",
             "next": "심사 상세·Meta 변경 이력 확인, 불필요한 재적용/예산 변경 보류"
+          },
+          {
+            "at": "2026-10-16 (캡처 시각 미표시)",
+            "headline": "하얘진다면 광고 게재 중단 상태 유지 · 최신 캡처 추적",
+            "status": "게재되지 않음 / 광고 검토 · 원인 미확정",
+            "detail": "10/16 화면에서 생기부는 Active·4,762조회·46웹사이트 방문·$37.30. 가운데 광고는 일시중단·3,824조회·27방문·$21.28. 하얘진다면은 검토 상태에서 약 1.3만조회·173방문·$54.85, 이전 10/15 후속 수치 대비 추가 방문·지출 없음. 사용자는 '더 알아보기'가 문제를 보여준다고 하나 정확한 오류 코드는 미제공.",
+            "next": "해당 광고 '더 알아보기'의 문제 상세 캡처/텍스트 확인. Meta 광고 관리자 재시도·새 광고 생성·예산 변경은 보류."
           }
         ],
         "after_data": null,
@@ -1293,6 +1315,42 @@ window.SIGNAL_OS_OPERATIONS={
             }
           ],
           "caution": "Meta 이전 광고세트 Complete = 광고 심사 승인/활성 아님. 변경 후 검토로 진입한 원인, 실제 적용된 설정은 확인되지 않음. 집계 지연 가능."
+        },
+        "latest_after_error_delivery": {
+          "as_of": "2026-10-16 Instagram UI 캡처(촬영 정확한 시각 없음)",
+          "rows": [
+            {
+              "name": "3년 쌓아온 생기부",
+              "status": "active",
+              "views": 4762,
+              "website_visits": 46,
+              "spend_usd": 37.3,
+              "delta_vs_previous": {
+                "views": 1112,
+                "website_visits": 12,
+                "spend_usd": 8.88
+              }
+            },
+            {
+              "name": "가운데 광고 · 신원 미확인",
+              "status": "paused",
+              "views": 3824,
+              "website_visits": 27,
+              "spend_usd": 21.28
+            },
+            {
+              "name": "면접장에서 머릿속이 하얘진다면",
+              "status": "not delivering; ad review",
+              "views_rounded": "1.3만",
+              "website_visits": 173,
+              "spend_usd": 54.85,
+              "delta_vs_previous": {
+                "website_visits": 0,
+                "spend_usd": 0
+              }
+            }
+          ],
+          "note": "광고가 재심사 중일 가능성은 있으나 정확한 오류 메시지가 없어 원인 불명. 수치 증가가 없다는 것은 해당 두 스냅샷 사이 추가 지출/웹사이트 방문이 없다는 뜻이며 광고 거절 확정 근거는 아님."
         }
       },
       {
