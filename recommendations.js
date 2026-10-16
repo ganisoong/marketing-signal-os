@@ -634,7 +634,7 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     "source": "User Instagram Ads Management screenshot, 3 rows. User also reports generic problem message after More info, but text/code not shown.",
     "affected_name": "면접장에서 머릿속이 하얘진다면",
     "affected_delivery": "not_delivering_ad_under_review",
-    "problem_description": "Further details say there is a problem, but exact error text/screenshot not yet provided",
+    "problem_description": "Confirmed Meta Ads Manager Delivery error: Boosted Post Editing Is Only Allowed In Instagram App. User has not yet shown the Instagram mobile editing options.",
     "prior_meta_apply": "2026-10-15 fragmentation attempt failed partially (one ad set Complete, one Fix errors; one ad not published)",
     "causal_status": "Unknown. Temporal association only; do not call this the cause.",
     "comparison_reference": "2026-10-15 latest prior screenshot (3,650 / 34 / $28.42 first; ~13k / 173 / $54.85 third)",
@@ -691,5 +691,21 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     ],
     "next": "Ask for full '더 알아보기' issue text/screenshot or Meta Ad delivery error description; inspect Account Quality/Activity history if needed",
     "note": "No new spend or visits appear for affected ad between two screenshots, consistent with halted delivery but not sufficient to infer formal rejection. Other ad performance accumulated."
+  },
+  "delivery_error_detail": {
+    "date": "2026-10-16",
+    "source": "Meta Ads Manager screenshots of campaign opportunity and Ads delivery error",
+    "campaign_name": "면접장에서 머릿속이 하얘진다면",
+    "ad_delivery": "Not delivering",
+    "error_badge": "Delivery error",
+    "error_title": "Boosted Post Editing Is Only Allowed In Instagram App",
+    "error_description": "Boosted post editing is only allowed in Instagram app.",
+    "toggle_position": "appears off in Meta Ads Manager Ads level",
+    "related_campaign": "3년 동안 쌓아온 생기부",
+    "related_campaign_ui": "In draft on neighboring ad row",
+    "priority_signal": "50 opportunity points to fix a campaign that can't deliver is Meta issue priority, not actual performance improvement",
+    "interpretation": "This is a restriction on editing an Instagram-created boosted ad in Meta Ads Manager. Does not establish that organic Reel/video/caption needs editing or that the ad was rejected for policy violations.",
+    "action": "Check Instagram mobile > professional dashboard > ad tools/boost management > affected Reel > promotion status and allowed edit options; inspect unpublished Meta changes before any discard. Avoid clicking Meta Edit ad or re-applying ad set merge.",
+    "investigation_status": "error text verified; exact fix within Instagram app not yet verified"
   }
 };
