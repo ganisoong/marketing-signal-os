@@ -861,7 +861,7 @@ window.SIGNAL_OS_OPERATIONS={
         "category": "META RECOMMENDATIONS",
         "title": "Meta 추천 적용 전후 성과 검증",
         "short": "적용 가능한 기능을 검토하고 실제 사용 전·후 성과 비교",
-        "status": "광고 관리자 편집 오류 확인 · 게시물 정보 수정 화면은 해결 경로 아님",
+        "status": "의도적 연령 타겟 분리 실험 확인 · Meta 통합 실패 및 게재 오류 별도 추적",
         "status_type": "tracking",
         "window": "10/15–10/22",
         "deadline": "2026-10-22",
@@ -1146,14 +1146,13 @@ window.SIGNAL_OS_OPERATIONS={
         "actual_completion_date": null,
         "next_action": {
           "due": "2026-10-16",
-          "headline": "Instagram 모바일 앱의 광고 도구에서 기존 '하얘진다면' 홍보 관리 확인",
+          "headline": "두 게시물 각각의 연령 타겟 설정과 기존 홍보 상태 확인",
           "deliverables": [
-            "게시물 정보 수정 화면은 취소(원본 게시물 변경하지 않음)",
-            "Instagram 모바일 앱 프로페셔널 대시보드 또는 광고 도구에서 기존 홍보 선택",
-            "기존 홍보의 상태, 수정 가능한 광고 설정, 오류 문구를 캡처",
-            "Meta Ads Manager 생기부 광고의 In draft 변경 내용은 별도 확인"
+            "두 원본 게시물의 홍보 광고별 연령 타겟 범위",
+            "광고별 예산·목표·집행 기간·ID",
+            "하얘진다면 미게재 광고의 Instagram 앱 홍보 상태/오류 상세"
           ],
-          "status": "올바른 광고 관리 메뉴 진입 대기 · 실제 수정/복구 미실행"
+          "status": "의도적 광고 타겟 분리 확인, ID와 세부 연령 확인 전"
         },
         "progress_log": [
           {
@@ -1239,6 +1238,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "게시물 원본 수정 불필요 · 광고 관리 경로 확인 필요",
             "headline": "게시물 정보 수정과 기존 릴스 홍보 설정을 분리",
             "detail": "사용자 제공 Instagram '정보 수정' 창은 게시물 원본 편집 인터페이스. Meta 오류는 Instagram 앱 부스트 편집 경로 제한이므로 게시물 수정 화면에서 해결 불가. 변경사항 저장하지 않음."
+          },
+          {
+            "at": "2026-10-16",
+            "kind": "광고 실험 조건 확인",
+            "status": "동일 콘텐츠 연령 분할 의도 확인",
+            "headline": "하얘진다면 2개 게시물을 연령 타겟 차이로 분리 집행",
+            "detail": "중복 게재가 실수가 아닌 의도적 타겟 실험임을 사용자에게 확인. 광고 세트 병합/게시물 삭제는 보류, 각 게시물별 집행 설정·성과 비교가 우선."
           }
         ],
         "change_log": [
@@ -1288,6 +1294,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "잘못된 편집 경로 확인 · 게시물 수정 불필요",
             "detail": "캡처는 Instagram 게시물 정보 수정 창으로 캡션, 사람 태그, AI 레이블, 접근성 등을 제공함. Meta 오류 'Boosted Post Editing Is Only Allowed In Instagram App'가 원본 이미지나 캡션을 수정하라는 요청은 아님. Meta fragmentation 추천이 기존 boosted ad 설정을 바꾸려다 편집 경로 제한에 부딪힌 정황. 정확한 수정 필드 및 실제 부분 게시 결과는 확인되지 않았음.",
             "next": "변경 사항 없이 취소 → Instagram 모바일 앱 광고 도구/홍보 관리에서 해당 홍보의 상태·수정 메뉴 확인. 반복 Apply now, Meta Edit ad, 삭제, 신규 홍보 생성 보류."
+          },
+          {
+            "at": "2026-10-16 · 사용자 실험 설계 명확화",
+            "headline": "동일 콘텐츠 두 게시물은 중복 실수가 아닌 연령별 타겟 실험",
+            "status": "실험 목적 확인 · 게시물 유지",
+            "detail": "사용자 설명과 인스타그램 프로필 캡처: '면접장에서 머릿속이 하얘진다면' 같은 이미지·문구의 별도 게시물 2개를 업로드했고 홍보 연령대 타겟을 다르게 설정. 원래 목적은 연령 집단별 성과 비교. Meta의 Fragmentation 통합 추천은 실험 목적을 훼손할 수 있지만, 그 추천이 이 두 세트였는지는 ID 미확인.",
+            "next": "두 게시물이나 기존 홍보를 삭제/통합하지 않고 게시물별 타겟 연령·지출·방문을 분리 수집. Delivery error 해결 경로는 별도로 확인."
           }
         ],
         "after_data": null,
@@ -1402,6 +1415,19 @@ window.SIGNAL_OS_OPERATIONS={
           },
           "warning": "제한된 광고 편집 경로 오류. 정책 위반·원본 게시물 편집 필수 여부를 추정하지 않음. Meta에서 재시도 또는 신규 boost 생성 전 Instagram 상태 확인.",
           "remedy_status": "pending_Instagram_app_inspection"
+        },
+        "experiment_intent_clarification": {
+          "date": "2026-10-16",
+          "source": "사용자 인스타그램 프로필 게시물 2개 캡처 및 명시적 설명",
+          "creative": "면접장에서 머릿속이 하얘진다면 · 동일한 콘텐츠를 별도 게시물 2개로 업로드",
+          "deliberate_split": true,
+          "experimental_variable": "연령대 광고 타겟 (두 집단 구체 연령값 미확인)",
+          "distinct_organic_posts": 2,
+          "goal": "광고 타겟 연령대별 성과 비교",
+          "user_intended_consolidation": false,
+          "caution": "Meta 'Combine 2 similar ad sets' 권고가 정확히 이 두 게시물/광고세트를 대상으로 했는지는 Ad set ID 확인 전 미확정. 두 게시물 삭제·병합으로 원본 광고 편집 경로 제한 오류가 해결되는 것은 아님.",
+          "test_quality": "동일한 원본 콘텐츠를 두 차례 게시했기 때문에 게시 시각·게시물별 반응/소셜 프루프·타겟 설정이 함께 다를 수 있어 완벽히 통제된 연령 A/B 테스트인지는 추가 확인 필요",
+          "next": "두 게시물별 실제 홍보 광고 Ad ID, 대상 연령/예산/목적/게재 기간을 확보해 비교. Meta 변경 이력과 현재 Delivery error는 별개 문제로 추적."
         }
       },
       {
