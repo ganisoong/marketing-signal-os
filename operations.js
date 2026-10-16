@@ -470,6 +470,14 @@ window.SIGNAL_OS_OPERATIONS={
       "action": "광고의 더 알아보기 오류 상세 확보, 가능하면 Meta Ads Manager 변경 기록 확인.",
       "reason": "지난 Meta Apply now 부분 실패 후 광고 검토 지속. 10/16 지출/방문 증분 없음.",
       "result": "현 시점 정상 게재 복구 미확인, 심사 거절/계정 문제 등 세부 원인 미확인."
+    },
+    {
+      "at": "2026-10-16",
+      "kind": "게재 오류 해결 계획",
+      "headline": "하얘진다면 광고는 Instagram 앱에서 홍보 관리 상태부터 확인",
+      "action": "Instagram 앱 광고 도구의 상태 및 편집 메뉴 확인. Ads Manager의 중복 수정/병합 재적용·광고 복제는 당분간 보류.",
+      "reason": "Meta는 인스타 앱 부스트 편집 전용이라고 명시, 광고 게재 오류 발생.",
+      "result": "정확한 오류 문구 저장, 앱 측 해결 여부는 미확인."
     }
   ],
   "upload_spec": {
@@ -853,7 +861,7 @@ window.SIGNAL_OS_OPERATIONS={
         "category": "META RECOMMENDATIONS",
         "title": "Meta 추천 적용 전후 성과 검증",
         "short": "적용 가능한 기능을 검토하고 실제 사용 전·후 성과 비교",
-        "status": "10/16 하얘진다면 미게재/광고 검토 지속 · Meta 통합 추천 실패 영향 조사 중",
+        "status": "하얘진다면 게재 오류 원문 확인 · Instagram 앱 홍보 설정 점검 대기",
         "status_type": "tracking",
         "window": "10/15–10/22",
         "deadline": "2026-10-22",
@@ -1126,25 +1134,25 @@ window.SIGNAL_OS_OPERATIONS={
           }
         ],
         "caution": "'광고세트 통합' 추천을 사용자가 10/15 직접 클릭했습니다. 화면에는 게시 준비 중으로 표시돼 완료로 확정할 수 없습니다. 다른 추천인 Text improvements나 예산 증액은 실제 적용 확인되지 않았습니다. 통합이 성공하면 광고 구조/타겟이 바뀌어 전후 비교의 인과적 해석에 제약이 생길 수 있습니다.",
-        "result": "Meta 추천 통합은 성공하지 못함. 10/16 후속 화면에서 생기부는 활성·지출 누적, 하얘진다면은 10/15부터 게재되지 않음/광고 검토 상태 유지. 사용자 '더 알아보기'에서 문제가 있다고 하나 구체 오류 문구 미제공. 실제 심사 실패/거절과 직접 인과는 미확인.",
+        "result": "Fragmentation 최적화 전체 적용 실패 뒤 하얘진다면 광고는 Not delivering/Delivery error. 정확한 오류는 'Boosted Post Editing Is Only Allowed In Instagram App'. 인스타 앱에서만 허용되는 광고 편집을 Meta가 시도해 실패한 것으로 보이며 원본 릴스 자체의 수정을 요구하는 오류는 아님. 생기부는 Meta Ads 탭에서 In draft 표시; 실제 운영 중인 인스타 홍보 상태와 구분.",
         "last_checked": "2026-10-15",
         "project_name": "Meta Recommendation Impact Test",
         "started_at": "2026-10-15",
         "started_time_note": "2026-10-15 사용자 프로젝트 등록 시점; 추천 실제 적용 날짜는 별도 기록",
         "last_updated": "2026-10-16",
-        "phase_current": "02 / 부분 게시 오류·광고 검토 지속 원인 추적",
+        "phase_current": "02 / Meta 광고 관리자 편집 제한 원인 확인 · 앱 진입 안내",
         "progress_stage": 2,
         "progress_stage_total": 4,
         "actual_completion_date": null,
         "next_action": {
           "due": "2026-10-16",
-          "headline": "'하얘진다면' 더 알아보기 오류 상세 메시지 확보",
+          "headline": "Instagram 앱 광고 도구에서 '하얘진다면' 릴스의 홍보 상태와 편집 메뉴 캡처",
           "deliverables": [
-            "정확한 오류 문구 또는 전체 팝업 화면 캡처",
-            "승인 대기/거절/수정 필요 중 어떤 상태인지 확인",
-            "Meta Ads Manager 변경 이력(해당 광고/세트)"
+            "Instagram 프로필 → 프로페셔널 대시보드 → 광고 도구/홍보 관리 → 해당 광고 선택",
+            "광고 상세 상태·편집 가능 항목 캡처",
+            "Meta 관리자 미게시 초안 및 Activity history 확인"
           ],
-          "status": "광고 검토/게재 중단 지속 · 오류 근거 확인 대기"
+          "status": "원인 메시지 확인 완료 · 해결 미실행"
         },
         "progress_log": [
           {
@@ -1216,6 +1224,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "검토 중 · 미게재",
             "headline": "광고 검토 상태가 다음 날까지 이어짐",
             "detail": "면접장에서 하얘진다면 173웹사이트 방문/$54.85로 이전과 동일. 반면 생기부는 34→46웹사이트 방문, $28.42→$37.30. 변경 전후 메타 추천 효율 비교는 아직 불가."
+          },
+          {
+            "at": "2026-10-16",
+            "kind": "오류 원인 확보",
+            "status": "Meta 광고 관리자 편집 제한 확인",
+            "headline": "Instagram 앱 전용 홍보 편집 오류로 광고 게재 실패",
+            "detail": "오류 원문 확보: Boosted Post Editing Is Only Allowed In Instagram App. 광고 변경 충돌 해결 경로를 Instagram 앱에서 확인 중. 광고 심사 거절/계정 제한으로 단정할 근거는 없음."
           }
         ],
         "change_log": [
@@ -1251,6 +1266,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "게재되지 않음 / 광고 검토 · 원인 미확정",
             "detail": "10/16 화면에서 생기부는 Active·4,762조회·46웹사이트 방문·$37.30. 가운데 광고는 일시중단·3,824조회·27방문·$21.28. 하얘진다면은 검토 상태에서 약 1.3만조회·173방문·$54.85, 이전 10/15 후속 수치 대비 추가 방문·지출 없음. 사용자는 '더 알아보기'가 문제를 보여준다고 하나 정확한 오류 코드는 미제공.",
             "next": "해당 광고 '더 알아보기'의 문제 상세 캡처/텍스트 확인. Meta 광고 관리자 재시도·새 광고 생성·예산 변경은 보류."
+          },
+          {
+            "at": "2026-10-16 · Meta 오류 상세 수신",
+            "headline": "하얘진다면 게재 오류 원문: Instagram 앱에서만 부스트 편집 가능",
+            "status": "원인 메시지 확인 · 실제 복구 전",
+            "detail": "Meta Ads Manager Ad row Not delivering + Delivery error. 팝업: 'Boosted Post Editing Is Only Allowed In Instagram App'. 옆 생기부 광고는 In draft. 광고 관리자에서는 인스타 앱에서 홍보한 게시물 변경이 제한된다는 증거이며, 원본 릴스를 수정해야 한다는 뜻은 아님.",
+            "next": "Instagram 앱 프로필 광고 도구에서 하얘진다면 광고 관리 진입, 상세·편집 메뉴 캡처. 미게시 Meta 변경의 처리 여부는 별도 확인 후 결정."
           }
         ],
         "after_data": null,
@@ -1351,6 +1373,20 @@ window.SIGNAL_OS_OPERATIONS={
             }
           ],
           "note": "광고가 재심사 중일 가능성은 있으나 정확한 오류 메시지가 없어 원인 불명. 수치 증가가 없다는 것은 해당 두 스냅샷 사이 추가 지출/웹사이트 방문이 없다는 뜻이며 광고 거절 확정 근거는 아님."
+        },
+        "error_root_cause_evidence": {
+          "as_of": "2026-10-16",
+          "message": "Boosted Post Editing Is Only Allowed In Instagram App: Boosted post editing is only allowed in Instagram app.",
+          "ads_manager": {
+            "affected_ad": "면접장에서 머릿속이 하얘진다면",
+            "delivery": "Not delivering",
+            "issue": "Delivery error",
+            "toggle": "Off as shown",
+            "other_ad": "3년 동안 쌓아온 생기부",
+            "other_state": "In draft"
+          },
+          "warning": "제한된 광고 편집 경로 오류. 정책 위반·원본 게시물 편집 필수 여부를 추정하지 않음. Meta에서 재시도 또는 신규 boost 생성 전 Instagram 상태 확인.",
+          "remedy_status": "pending_Instagram_app_inspection"
         }
       },
       {
