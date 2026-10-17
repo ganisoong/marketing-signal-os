@@ -3,7 +3,7 @@ window.SIGNAL_OS_OPERATIONS={
   "updated_at": "2026-10-17",
   "report_as_of": "2026-10-14 (당일 집계; 종료 전)",
   "last_confirmed_campaign_ids_as_of": "2026-10-12 for duplicate-name pair; single-name current status provisionally mapped",
-  "current_delivery_note": "10/17 사용자 Meta Ads Manager 캠페인 목록: '면접장에서 머릿속이 하얘진다면' Off(사용자가 직접 끔), '3년 동안 쌓아온 생기부' Active, '생기부 면접 준비' Off. 기존 Fragmentation 적용 시도는 전체 실패·부분 게시. 하얘진다면의 원본 릴스 2개는 의도적인 연령 타겟 실험이므로 삭제하지 않음. Meta 원본 광고/광고세트 ID 매칭은 아직 미확인.",
+  "current_delivery_note": "10/17 최신 Instagram 홍보 화면: 3년 쌓아온 생기부 1건 활성·조회 6,620·웹사이트 방문 62·누적 지출 $51.67. 10/16 이전 화면 4,762조회·방문46·$37.30 대비 +1,858조회/+16웹방문/+$14.37 (캡처 간 증가, 하루치 아님). 10/13 시작일부터 10/17까지 5개 날짜 기준 누적 지출/일 평균 약 $10.33. 하얘진다면 10/17 Meta 캠페인 OFF 확인, 이전 릴스 홍보 화면에는 광고 검토 오류가 남아 있었음.",
   "profile": "인스타그램 @alphaedu_ipsi · Meta Ads 광고 데이터 수동 제출 기반",
   "policy": {
     "auto_pause": false,
@@ -45,12 +45,12 @@ window.SIGNAL_OS_OPERATIONS={
       "level": "긴급",
       "type": "예산 통제",
       "campaign_ids": [],
-      "status": "사용자 운영안 확정 · Meta 실제 변경 미확인",
-      "title": "최신 생기부 릴스 2개만 남기고 기존 활성 4개 일시중지 확인",
+      "status": "10/17 생기부 활성, 하얘진다면 OFF 확인",
+      "title": "10/17 실제 활성 상태 · 생기부 1개 추적",
       "why": "사용자는 10/13에 시작한 생기부 릴스 2개만 계속 집행하기로 선택. 기준 일일 전체 광고비 2만 원. 최신 캡처에는 아직 6개 활성으로 보이므로 변경 완료 여부를 확인해야 함.",
-      "next": "Instagram 광고 관리의 위에서 3~6번째(하얘진다면 동명 2개, 공개된 면접 기출, 면접실 입장 프로필) 일시중지. 위에서 1~2번째 생기부 릴스는 남김. 광고 세트별 일예산을 각각 약 $5~6 수준으로 계획하고 총예산/종료일을 확인. 적용 후 캡처로 2개 활성 여부를 검증.",
+      "next": "Instagram 광고 관리에서 활성 생기부의 하루 예산과 종료일만 확인. 다른 광고 재개/증액 권고 보류.",
       "due": "2026-10-14",
-      "decision": "두 생기부 릴스 유지 / 다른 기존 활성 4개 일시중지 계획. 실제 실행 여부 미확인"
+      "decision": "10/17 기준 생기부 집행 중, 기존 다른 릴스 중단. 예산 한도와 지출을 추적하되 스크린샷 구간 증가액을 일일 지출로 오인하지 않음."
     },
     {
       "id": "P1",
@@ -75,12 +75,12 @@ window.SIGNAL_OS_OPERATIONS={
         "120252790032910529",
         "120252790030140529"
       ],
-      "status": "사용자 선택: 유일한 운영 후보 2개 · 실제 상태 미확인",
-      "title": "생기부 릴스 2개만 남겨 10/16까지 추적",
-      "why": "10/13 두 광고 합계 $9.70·19클릭·LPV 7 → 10/14 $16.72·41클릭·LPV 25. 10/14 랜딩당 비용 $0.669로 개선했지만 ‘하얘진다면’ 두 광고 합산 $0.229보다 비쌉니다.",
-      "next": "실제 각 광고 예산과 활성 여부를 확인. 합계 하루 $10~12 정도의 계획값으로 제한할지 검토하고 10/16에 10/13~10/15 데이터를 합산해 LPV당 비용·CTR·클릭 후 방문을 비교.",
+      "status": "10/17 활성 확인 · 누적 지출 $51.67 · 5개 날짜 기준 평균 $10.33/일",
+      "title": "3년 동안 쌓아온 생기부 · 단독 활성 광고 추적",
+      "why": "이전 10/16 스냅샷 $37.30/방문46/조회4762 → 10/17 $51.67/방문62/조회6620. 이전 대비 지출 +$14.37, 방문 +16. 현재 누적 웹사이트 방문당 비용 약 $0.833.",
+      "next": "다음 광고 관리자 Day breakdown 추출 시 10/16, 10/17 실제 일별 광고비 확인. 10/13~17 일평균 $10.33은 기간 경계 부분일 포함 추정치로 설명.",
       "due": "2026-10-16",
-      "decision": "두 소재 동시 관찰 계획 · 실제 종료/예산 변경 여부 확인 필요"
+      "decision": "오류 난 하얘진다면은 OFF 유지, 생기부 활성 1개만 추적. 캡처 간 비용 변화와 하루 평균을 분리 기록."
     },
     {
       "id": "P3",
@@ -486,6 +486,14 @@ window.SIGNAL_OS_OPERATIONS={
       "action": "광고 오류 수정/Meta 통합 추천 재적용 보류. 생기부 캠페인은 Active 유지(사용자 기존 설정 그대로).",
       "reason": "사용자가 하얘진다면 추가 집행을 원하지 않아 직접 OFF한 상태를 캡처로 확인.",
       "result": "Meta 캠페인 목록에서 Off 확인. 기존 데이터/실험 로그는 보관하며 추가 성과 발생 가능성은 지연 반영 여부로 따로 확인."
+    },
+    {
+      "at": "2026-10-17 17:06 KST (수신 기준)",
+      "kind": "광고비 추적/운영",
+      "headline": "3년 생기부 광고 지출 누적 $51.67 · 일평균 $10.33",
+      "action": "활성 생기부 릴스 계속 관찰. Meta 일별 Breakdown 확보 전 10/17 당일 지출로 $14.37 기록하지 않음.",
+      "reason": "10/16 캡처 $37.30, 10/17 $51.67, 10/13 광고 집행 시작.",
+      "result": "누적 지출/웹 방문 및 비교 스냅샷 검증 완료. 기존 전체 캠페인 CSV 합계와 합산하지 않음."
     }
   ],
   "upload_spec": {
@@ -510,7 +518,7 @@ window.SIGNAL_OS_OPERATIONS={
       "disclaimer": "정산 환율·수수료·Meta 일별 변동지출에 따라 실제 차이 발생"
     },
     "intent": "전체 광고 계정의 하루 지출 가이드로 적용(개별 캠페인당 2만 원이 아님).",
-    "provisional_active_ads": 2,
+    "provisional_active_ads": 1,
     "planning_daily_usd_range": [
       10,
       12
@@ -667,9 +675,11 @@ window.SIGNAL_OS_OPERATIONS={
       6
     ],
     "user_selected_on": "2026-10-14 21:49 이후 (정확한 시각 미기록)",
-    "user_selection_status": "의향 확인: 두 개 남길게; 기타 4개 일시중지의 실제 실행 화면은 아직 없음"
+    "user_selection_status": "의향 확인: 두 개 남길게; 기타 4개 일시중지의 실제 실행 화면은 아직 없음",
+    "current_active_ads_as_of": "2026-10-17",
+    "current_state": "생기부 릴스 1개만 사용자 캡처에서 Active. 현 누적 지출 $51.67, 10/13~10/17 달력상 5일 평균 $10.33/day. 캡처 간 증가 $14.37은 24시간 지출이 아님."
   },
-  "last_screenshot_as_of": "2026-10-14 21:49 KST",
+  "last_screenshot_as_of": "2026-10-17 17:06 KST 수신 (실제 촬영 시각 미표시)",
   "weekly_focus": {
     "id": "META-REELS-FORMAT-WEEK1",
     "title": "이번 주 프로젝트 1 · Meta 추천 적용 전후 성과 분석",
@@ -1260,6 +1270,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "OFF 확인",
             "headline": "하얘진다면 광고 캠페인 수동 중지",
             "detail": "사용자 직접 Meta 캠페인 OFF. 인스타 게시물 2개는 연령별 실험 기록으로 보존하고 오류는 따로 복구하지 않음. 기존 성과는 아카이브."
+          },
+          {
+            "at": "2026-10-17 17:06 KST 수신",
+            "kind": "유지 광고 예산 점검",
+            "status": "활성 1개 추적",
+            "headline": "3년 생기부 누적 광고비 및 일평균 갱신",
+            "detail": "$51.67 누적, 누적/5개 날짜 평균 $10.33, 직전 캡처 대비 추가 $14.37. 하얘진다면 OFF 유지."
           }
         ],
         "change_log": [
@@ -1324,6 +1341,14 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "확인 완료 · 오류 복구 불필요",
             "detail": "Meta Ads Manager 캠페인 목록 첫 번째 행 '면접장에서 머릿속이 하얘진다면...' 게재상태 Off 및 토글 Off. 두 번째 '3년 동안 쌓아온 생기부' Active, 세 번째 '생기부 면접 준비' Off. 사용자가 더 집행할 계획이 없다고 명시. 기존 인스타 앱 홍보 광고 편집 제한/Fragmentation 적용 실패 이력과 성과 데이터는 보존.",
             "next": "재시도·재개·게시물 삭제를 하지 않고 기록 종료. 이후 새로운 성과가 유입되면 기존 집계 기간과 구분."
+          },
+          {
+            "at": "2026-10-17 17:06 KST 수신",
+            "kind": "광고비 누적 추적",
+            "headline": "생기부 릴스 $51.67 누적 · 평균 $10.33/일(5개 날짜)",
+            "status": "수치 확인·평균 계산 완료",
+            "detail": "10/16 캡처 대비 $37.30→$51.67(+14.37), 조회수 4,762→6,620(+1,858), 웹사이트 방문 46→62(+16). 캠페인은 10/13 시작, 10/17까지 달력상 5일이므로 누적 광고비 $51.67÷5≈$10.33/일. 10/17은 진행 중인 날이고 캡처 시각은 미표시라 증가액을 하루치로 간주하지 않음.",
+            "next": "정확한 24시간 집행비는 Meta Day breakdown 날짜별 CSV로 추후 검증"
           }
         ],
         "after_data": null,
@@ -1464,6 +1489,49 @@ window.SIGNAL_OS_OPERATIONS={
           "other_active": "3년 동안 쌓아온 생기부",
           "other_off": "생기부 면접 준비",
           "caution": "Meta 인스타 앱 자체 오류는 해결되지 않았지만 사용자가 해당 캠페인을 더 집행하지 않을 계획이므로 복구는 진행하지 않음. 이미 발생한 성과/비용이 지연 집계될 수 있음. 같은 제목의 다른 캠페인까지 모두 Off임을 검증한 것은 아님."
+        },
+        "latest_active_campaign_spend": {
+          "id": "REEL-STUDENT-RECORD-20261017-SPEND",
+          "type": "cumulative_snapshot_comparison",
+          "as_of": "2026-10-17 17:06 KST (수신 시각; 화면 촬영 시각 미표시)",
+          "campaign": "3년 동안 쌓아온 생기부",
+          "status": "Active",
+          "start_date": "2026-10-13",
+          "end_calendar_date": "2026-10-17",
+          "calendar_days_inclusive": 5,
+          "partial_days_possible": true,
+          "previous": {
+            "date": "2026-10-16",
+            "capture_time_unknown": true,
+            "views": 4762,
+            "website_visits": 46,
+            "spend_usd": 37.3
+          },
+          "current": {
+            "date": "2026-10-17",
+            "captured_at": "화면 캡처 내 촬영 시각 없음",
+            "received_at": "2026-10-17 17:06 KST",
+            "campaign": "3년 동안 쌓아온 생기부",
+            "campaign_id_candidate": "120252790032910529",
+            "campaign_id_confirmed": false,
+            "status": "active",
+            "views": 6620,
+            "website_visits": 62,
+            "spend_usd": 51.67
+          },
+          "delta_since_previous": {
+            "spend_usd": 14.37,
+            "views": 1858,
+            "website_visits": 16
+          },
+          "cumulative_calendar_daily_mean_usd": 10.334,
+          "cumulative_website_visit_cost_usd": 0.8333870967741935,
+          "incremental_website_visit_cost_usd": 0.898125,
+          "daily_spend_verified": false,
+          "actual_24h_spend": null,
+          "notes": "광고 시작일 10/13부터 10/17까지 달력상 5일에 누적 $51.67을 나눈 참고 평균. 10/13, 10/17이 부분일 수 있고 직전/현재 캡처의 실제 촬영 시간이 없어 $14.37을 하루 지출로 간주하지 않음. Instagram '조회수'는 Meta 노출수와 구분, '웹사이트 방문'은 Ads CSV LPV와 동의어로 보지 않음. Meta 누적 기존 파일과 중복 합산하지 않음.",
+          "evidence": "사용자 2026-10-17 Instagram 광고 관리 전체 목록 캡처; 이전 2026-10-16 인스타 광고 관리 캡처",
+          "other_campaigns": "하얘진다면 캠페인 OFF, 생기부 면접 준비 OFF(10/17 Meta Campaigns 확인). 인스타 광고 목록에서 이전 광고들의 누적 지출은 대부분 고정."
         }
       },
       {
@@ -1574,5 +1642,48 @@ window.SIGNAL_OS_OPERATIONS={
       }
     ],
     "focus_end_note": "Meta 추천 적용 전후 비교 결과와 소구점 A/B 결과는 서로 다른 실험으로 관리하고, 광고 지출까지 한 표에 섞어 인과적 결론을 내리지 않습니다."
+  },
+  "latest_paid_reel_spend": {
+    "id": "REEL-STUDENT-RECORD-20261017-SPEND",
+    "type": "cumulative_snapshot_comparison",
+    "as_of": "2026-10-17 17:06 KST (수신 시각; 화면 촬영 시각 미표시)",
+    "campaign": "3년 동안 쌓아온 생기부",
+    "status": "Active",
+    "start_date": "2026-10-13",
+    "end_calendar_date": "2026-10-17",
+    "calendar_days_inclusive": 5,
+    "partial_days_possible": true,
+    "previous": {
+      "date": "2026-10-16",
+      "capture_time_unknown": true,
+      "views": 4762,
+      "website_visits": 46,
+      "spend_usd": 37.3
+    },
+    "current": {
+      "date": "2026-10-17",
+      "captured_at": "화면 캡처 내 촬영 시각 없음",
+      "received_at": "2026-10-17 17:06 KST",
+      "campaign": "3년 동안 쌓아온 생기부",
+      "campaign_id_candidate": "120252790032910529",
+      "campaign_id_confirmed": false,
+      "status": "active",
+      "views": 6620,
+      "website_visits": 62,
+      "spend_usd": 51.67
+    },
+    "delta_since_previous": {
+      "spend_usd": 14.37,
+      "views": 1858,
+      "website_visits": 16
+    },
+    "cumulative_calendar_daily_mean_usd": 10.334,
+    "cumulative_website_visit_cost_usd": 0.8333870967741935,
+    "incremental_website_visit_cost_usd": 0.898125,
+    "daily_spend_verified": false,
+    "actual_24h_spend": null,
+    "notes": "광고 시작일 10/13부터 10/17까지 달력상 5일에 누적 $51.67을 나눈 참고 평균. 10/13, 10/17이 부분일 수 있고 직전/현재 캡처의 실제 촬영 시간이 없어 $14.37을 하루 지출로 간주하지 않음. Instagram '조회수'는 Meta 노출수와 구분, '웹사이트 방문'은 Ads CSV LPV와 동의어로 보지 않음. Meta 누적 기존 파일과 중복 합산하지 않음.",
+    "evidence": "사용자 2026-10-17 Instagram 광고 관리 전체 목록 캡처; 이전 2026-10-16 인스타 광고 관리 캡처",
+    "other_campaigns": "하얘진다면 캠페인 OFF, 생기부 면접 준비 OFF(10/17 Meta Campaigns 확인). 인스타 광고 목록에서 이전 광고들의 누적 지출은 대부분 고정."
   }
 };
