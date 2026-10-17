@@ -1,9 +1,9 @@
 window.SIGNAL_OS_OPERATIONS={
   "schema_version": 1,
-  "updated_at": "2026-10-16",
+  "updated_at": "2026-10-17",
   "report_as_of": "2026-10-14 (당일 집계; 종료 전)",
   "last_confirmed_campaign_ids_as_of": "2026-10-12 for duplicate-name pair; single-name current status provisionally mapped",
-  "current_delivery_note": "10/16 Instagram 광고 관리 캡처: '3년 동안 쌓아온 생기부' 활성(4,762조회·46웹사이트 방문·$37.30), 가운데 광고 일시중단(3,824조회·27방문·$21.28), '면접장에서 머릿속이 하얘진다면' 게재되지 않음/광고 검토(약1.3만조회·173웹사이트 방문·$54.85). 후자는 10/15 최신 화면 대비 지출/방문 증가 없음. Meta Fragmentation Apply now 전체 실패 및 일부 광고세트 Complete 뒤 발생한 상태지만 인과 원인은 미확정.",
+  "current_delivery_note": "10/17 사용자 Meta Ads Manager 캠페인 목록: '면접장에서 머릿속이 하얘진다면' Off(사용자가 직접 끔), '3년 동안 쌓아온 생기부' Active, '생기부 면접 준비' Off. 기존 Fragmentation 적용 시도는 전체 실패·부분 게시. 하얘진다면의 원본 릴스 2개는 의도적인 연령 타겟 실험이므로 삭제하지 않음. Meta 원본 광고/광고세트 ID 매칭은 아직 미확인.",
   "profile": "인스타그램 @alphaedu_ipsi · Meta Ads 광고 데이터 수동 제출 기반",
   "policy": {
     "auto_pause": false,
@@ -478,6 +478,14 @@ window.SIGNAL_OS_OPERATIONS={
       "action": "Instagram 앱 광고 도구의 상태 및 편집 메뉴 확인. Ads Manager의 중복 수정/병합 재적용·광고 복제는 당분간 보류.",
       "reason": "Meta는 인스타 앱 부스트 편집 전용이라고 명시, 광고 게재 오류 발생.",
       "result": "정확한 오류 문구 저장, 앱 측 해결 여부는 미확인."
+    },
+    {
+      "at": "2026-10-17",
+      "kind": "추가 집행 중단",
+      "headline": "하얘진다면 캠페인 OFF 상태 확인",
+      "action": "광고 오류 수정/Meta 통합 추천 재적용 보류. 생기부 캠페인은 Active 유지(사용자 기존 설정 그대로).",
+      "reason": "사용자가 하얘진다면 추가 집행을 원하지 않아 직접 OFF한 상태를 캡처로 확인.",
+      "result": "Meta 캠페인 목록에서 Off 확인. 기존 데이터/실험 로그는 보관하며 추가 성과 발생 가능성은 지연 반영 여부로 따로 확인."
     }
   ],
   "upload_spec": {
@@ -861,7 +869,7 @@ window.SIGNAL_OS_OPERATIONS={
         "category": "META RECOMMENDATIONS",
         "title": "Meta 추천 적용 전후 성과 검증",
         "short": "적용 가능한 기능을 검토하고 실제 사용 전·후 성과 비교",
-        "status": "의도적 연령 타겟 분리 실험 확인 · Meta 통합 실패 및 게재 오류 별도 추적",
+        "status": "통합 추천 적용 실패 · 하얘진다면 캠페인 OFF 확인, 추가 집행 중단",
         "status_type": "tracking",
         "window": "10/15–10/22",
         "deadline": "2026-10-22",
@@ -1134,25 +1142,25 @@ window.SIGNAL_OS_OPERATIONS={
           }
         ],
         "caution": "'광고세트 통합' 추천을 사용자가 10/15 직접 클릭했습니다. 화면에는 게시 준비 중으로 표시돼 완료로 확정할 수 없습니다. 다른 추천인 Text improvements나 예산 증액은 실제 적용 확인되지 않았습니다. 통합이 성공하면 광고 구조/타겟이 바뀌어 전후 비교의 인과적 해석에 제약이 생길 수 있습니다.",
-        "result": "Fragmentation 최적화 전체 적용 실패 뒤 하얘진다면 광고는 Not delivering/Delivery error. 정확한 오류는 'Boosted Post Editing Is Only Allowed In Instagram App'. 인스타 앱에서만 허용되는 광고 편집을 Meta가 시도해 실패한 것으로 보이며 원본 릴스 자체의 수정을 요구하는 오류는 아님. 생기부는 Meta Ads 탭에서 In draft 표시; 실제 운영 중인 인스타 홍보 상태와 구분.",
+        "result": "10/17 사용자가 '하얘진다면' 캠페인을 직접 Off 처리했고 Meta 캠페인 화면에서 Off 확인. '3년 동안 쌓아온 생기부' Active, '생기부 면접 준비' Off. 통합 추천 자체는 실패했으며, 일부 게시 세트 변경 효과나 효율 개선은 검증할 수 없음. 원본 릴스는 그대로 보존.",
         "last_checked": "2026-10-15",
         "project_name": "Meta Recommendation Impact Test",
         "started_at": "2026-10-15",
         "started_time_note": "2026-10-15 사용자 프로젝트 등록 시점; 추천 실제 적용 날짜는 별도 기록",
-        "last_updated": "2026-10-16",
-        "phase_current": "02 / Meta 광고 관리자 편집 제한 원인 확인 · 앱 진입 안내",
-        "progress_stage": 2,
+        "last_updated": "2026-10-17",
+        "phase_current": "03 / 광고 OFF 확인 및 실패 실험 기록 정리",
+        "progress_stage": 3,
         "progress_stage_total": 4,
         "actual_completion_date": null,
         "next_action": {
-          "due": "2026-10-16",
-          "headline": "두 게시물 각각의 연령 타겟 설정과 기존 홍보 상태 확인",
+          "due": null,
+          "headline": "중단 광고의 오류 복구·재집행은 진행하지 않음. 향후 다른 광고 분석 시 기존 성과 자료로 보관",
           "deliverables": [
-            "두 원본 게시물의 홍보 광고별 연령 타겟 범위",
-            "광고별 예산·목표·집행 기간·ID",
-            "하얘진다면 미게재 광고의 Instagram 앱 홍보 상태/오류 상세"
+            "광고별 변경 전 성과 보존",
+            "고객 비용의 지연 집계/청구 가능성 관찰",
+            "향후 재집행을 요청하는 경우 상태 및 설정 재확인"
           ],
-          "status": "의도적 광고 타겟 분리 확인, ID와 세부 연령 확인 전"
+          "status": "해당 캠페인 OFF 확인 · 추가 조치 불필요"
         },
         "progress_log": [
           {
@@ -1245,6 +1253,13 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "동일 콘텐츠 연령 분할 의도 확인",
             "headline": "하얘진다면 2개 게시물을 연령 타겟 차이로 분리 집행",
             "detail": "중복 게재가 실수가 아닌 의도적 타겟 실험임을 사용자에게 확인. 광고 세트 병합/게시물 삭제는 보류, 각 게시물별 집행 설정·성과 비교가 우선."
+          },
+          {
+            "at": "2026-10-17",
+            "kind": "캠페인 종료 확인",
+            "status": "OFF 확인",
+            "headline": "하얘진다면 광고 캠페인 수동 중지",
+            "detail": "사용자 직접 Meta 캠페인 OFF. 인스타 게시물 2개는 연령별 실험 기록으로 보존하고 오류는 따로 복구하지 않음. 기존 성과는 아카이브."
           }
         ],
         "change_log": [
@@ -1301,6 +1316,14 @@ window.SIGNAL_OS_OPERATIONS={
             "status": "실험 목적 확인 · 게시물 유지",
             "detail": "사용자 설명과 인스타그램 프로필 캡처: '면접장에서 머릿속이 하얘진다면' 같은 이미지·문구의 별도 게시물 2개를 업로드했고 홍보 연령대 타겟을 다르게 설정. 원래 목적은 연령 집단별 성과 비교. Meta의 Fragmentation 통합 추천은 실험 목적을 훼손할 수 있지만, 그 추천이 이 두 세트였는지는 ID 미확인.",
             "next": "두 게시물이나 기존 홍보를 삭제/통합하지 않고 게시물별 타겟 연령·지출·방문을 분리 수집. Delivery error 해결 경로는 별도로 확인."
+          },
+          {
+            "at": "2026-10-17 · 캡처 시각 미표시",
+            "kind": "사용자 캠페인 운영 변경",
+            "headline": "하얘진다면 캠페인 OFF 확인 · 추가 광고 집행 중단",
+            "status": "확인 완료 · 오류 복구 불필요",
+            "detail": "Meta Ads Manager 캠페인 목록 첫 번째 행 '면접장에서 머릿속이 하얘진다면...' 게재상태 Off 및 토글 Off. 두 번째 '3년 동안 쌓아온 생기부' Active, 세 번째 '생기부 면접 준비' Off. 사용자가 더 집행할 계획이 없다고 명시. 기존 인스타 앱 홍보 광고 편집 제한/Fragmentation 적용 실패 이력과 성과 데이터는 보존.",
+            "next": "재시도·재개·게시물 삭제를 하지 않고 기록 종료. 이후 새로운 성과가 유입되면 기존 집계 기간과 구분."
           }
         ],
         "after_data": null,
@@ -1428,6 +1451,19 @@ window.SIGNAL_OS_OPERATIONS={
           "caution": "Meta 'Combine 2 similar ad sets' 권고가 정확히 이 두 게시물/광고세트를 대상으로 했는지는 Ad set ID 확인 전 미확정. 두 게시물 삭제·병합으로 원본 광고 편집 경로 제한 오류가 해결되는 것은 아님.",
           "test_quality": "동일한 원본 콘텐츠를 두 차례 게시했기 때문에 게시 시각·게시물별 반응/소셜 프루프·타겟 설정이 함께 다를 수 있어 완벽히 통제된 연령 A/B 테스트인지는 추가 확인 필요",
           "next": "두 게시물별 실제 홍보 광고 Ad ID, 대상 연령/예산/목적/게재 기간을 확보해 비교. Meta 변경 이력과 현재 Delivery error는 별개 문제로 추적."
+        },
+        "shutdown_confirmation": {
+          "date": "2026-10-17",
+          "source": "User Meta Ads Manager Campaigns screenshot",
+          "campaign_label": "Instagram 게시물: 면접장에서 머릿속이 하얘진다면...",
+          "delivery": "Off",
+          "toggle": "Off",
+          "confirmed_by_user": true,
+          "ad_ids": "not shown",
+          "campaign_ids": "not shown; name-based historical matching only",
+          "other_active": "3년 동안 쌓아온 생기부",
+          "other_off": "생기부 면접 준비",
+          "caution": "Meta 인스타 앱 자체 오류는 해결되지 않았지만 사용자가 해당 캠페인을 더 집행하지 않을 계획이므로 복구는 진행하지 않음. 이미 발생한 성과/비용이 지연 집계될 수 있음. 같은 제목의 다른 캠페인까지 모두 Off임을 검증한 것은 아님."
         }
       },
       {
