@@ -474,7 +474,15 @@ function renderMetaRecommendations(){
  '</section>':'';
  const off=status.campaign_off_confirmation;
  const offBox=off?'<section class="rec-captured-performance"><h3>10/17 · 하얘진다면 캠페인 OFF 확인</h3><p>사용자가 직접 캠페인 Off 설정을 완료했습니다. 생기부 광고는 Active, 생기부 면접 준비는 Off. 기존 오류와 10/16 광고 검토 화면은 과거 기록입니다. 광고 재개·오류 수정은 진행하지 않습니다.</p></section>':'';
- cards.innerHTML=offBox+latestBox+followupBox+executionBox+preApplyBox+performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
+ const spend=window.SIGNAL_OS_OPERATIONS?.latest_paid_reel_spend;
+ const spendBox=spend?'<section class="rec-captured-performance" aria-label="10월 17일 생기부 광고비 추적"><h3>10/17 · 생기부 릴스 누적 광고비 추적</h3><div class="rec-captured-metrics">'+
+ '<span>누적 광고비 <b>'+money(spend.current.spend_usd,2)+'</b></span>'+
+ '<span>5개 날짜 기준 일평균 <b>'+money(spend.cumulative_calendar_daily_mean_usd,2)+'/일</b></span>'+
+ '<span>직전 캡처 대비 증가 <b>+'+money(spend.delta_since_previous.spend_usd,2)+'</b></span>'+
+ '<span>누적 웹 방문당 비용 <b>'+money(spend.cumulative_website_visit_cost_usd,3)+'</b></span></div>'+
+ '<p>조회수 '+number(spend.previous.views)+' → '+number(spend.current.views)+' / 웹사이트 방문 '+number(spend.previous.website_visits)+' → '+number(spend.current.website_visits)+' / 광고비 '+money(spend.previous.spend_usd,2)+' → '+money(spend.current.spend_usd,2)+'</p>'+
+ '<p class="caption">일평균은 10/13 집행 시작부터 10/17까지 달력상 5일의 누적액을 나눈 참고치(부분일 포함)입니다. 직전 캡처 대비 +'+money(spend.delta_since_previous.spend_usd,2)+'는 하루 지출이 아닙니다. 실제 일별 비용은 Day breakdown으로 검증할 수 있습니다.</p></section>':'';
+ cards.innerHTML=spendBox+offBox+latestBox+followupBox+executionBox+preApplyBox+performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
  if(history.length){
   const archive=document.createElement('details');
   archive.className='rec-history';
@@ -536,10 +544,14 @@ function renderOperations(){
  holder.innerHTML='<div class="ops-snapshot-main"><strong>광고 운영 판단 기준: '+esc(os.updated_at)+' · 확정 성과: '+esc(os.report_as_of)+'까지</strong><p>'+esc(os.current_delivery_note)+'</p>'+
  (stale?'<p style="font-weight:850;color:#a3662c">마지막 판단일 이후 데이터가 갱신되지 않았습니다. 지금 상태를 확인하려면 최신 파일을 보내주세요.</p>':'')+
  '</div><div class="ops-fresh">'+(stale?'추가 업로드 필요':'오늘 운영 초안')+'</div>';
+ const spending=os.latest_paid_reel_spend;
+ if(spending){
+  holder.innerHTML+='<div class="ops-snapshot-main" style="margin-top:10px"><strong>10/17 · 3년 동안 쌓아온 생기부 광고비 최신 분석</strong><p>누적 '+money(spending.current.spend_usd,2)+' / 10/13~10/17(달력상 5개 날짜) 일평균 '+money(spending.cumulative_calendar_daily_mean_usd,2)+' / 직전 캡처 대비 추가 지출 '+money(spending.delta_since_previous.spend_usd,2)+' / 웹사이트 방문 '+number(spending.current.website_visits)+'회</p><p>캡처 간 추가 비용은 정확한 24시간 지출이 아닙니다. 실제 일자별 집행액은 Meta Day breakdown 별도 확인 필요.</p></div>';
+ }
  const decisionCards=[
-  {label:'사용자 선택 · 유지할 광고',value:'현재 활성 2개',desc:'최근 확인 화면: 3년 쌓아온 생기부 / 면접장에서 머릿속이 하얘진다면. 10/14까지 Ads CSV 기준선 확보.',tone:'green',id:'P2'},
-  {label:'예산 통제 · 잠시 쉴 광고',value:'기존 활성 4개',desc:'하얘진다면 광고 2개 + 프로필 방문 목적 광고 2개를 일시중지할 계획. 실제 일시중지 완료 여부는 미확인.',tone:'amber',id:'P0'},
-  {label:'10/16 · 다시 판단',value:'방문 효율 비교',desc:'현재 활성 두 광고의 일별 지출·클릭·랜딩을 Meta 추천 적용 전후로 비교해 유지·수정 여부 판단.',tone:'blue',id:'P2'}
+  {label:'현재 집행',value:'생기부 1개 활성',desc:'하얘진다면 캠페인 OFF. 최신 10/17 인스타 광고 화면 기준.',tone:'green',id:'P2'},
+  {label:'현재까지 하루 평균',value:spending?money(spending.cumulative_calendar_daily_mean_usd,2)+'/일':'미집계',desc:'10/13 시작 후 달력상 5개 날짜 누적 광고비 평균. 일부 날짜는 부분일.',tone:'blue',id:'P2'},
+  {label:'직전 캡처 대비',value:spending?'+'+money(spending.delta_since_previous.spend_usd,2):'미집계',desc:'10/16~10/17 캡처 간 증가액. 10/17 당일 지출로 오인하지 않기.',tone:'amber',id:'P0'}
  ];
  el('opsDecisionCards').innerHTML=decisionCards.map(v=>'<button type="button" class="ops-decision-card '+v.tone+'" data-ops-detail="priority" data-ops-id="'+v.id+'"><small>'+esc(v.label)+'</small><strong>'+esc(v.value)+'</strong><p>'+esc(v.desc)+'</p><span style="margin-top:auto;font-size:10px;font-weight:800;color:#267454">판단 근거 보기 ↗</span></button>').join('');
  el('opsPriorities').innerHTML=os.priorities.map(it=>'<button type="button" class="ops-priority-item" data-ops-detail="priority" data-ops-id="'+esc(it.id)+'"><div><span class="ops-priority-tag">'+esc(it.level)+' · '+esc(it.type)+'</span><span style="font-size:10px;color:#7b8e82">'+esc(it.status)+'</span><strong>'+esc(it.title)+'</strong><p>'+esc(it.why)+'</p></div><time>'+esc(it.due.slice(5).replace('-','/'))+'<br>확인</time><span class="ops-priority-arrow">↗</span></button>').join('');
