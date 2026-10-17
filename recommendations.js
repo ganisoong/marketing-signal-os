@@ -730,5 +730,19 @@ window.SIGNAL_OS_META_RECOMMENDATIONS_STATUS={
     ],
     "interpretation_warning": "Separate original posts may also vary in publication timing and social engagement; a pure causal test of age requires other settings aligned.",
     "next": "Preserve both posts/metrics. Identify the separate promoted ad/ad-set IDs and age target definitions before deciding whether to keep or consolidate campaigns."
+  },
+  "campaign_off_confirmation": {
+    "date": "2026-10-17",
+    "user_action": "User manually turned off the '면접장에서 머릿속이 하얘진다면' campaign",
+    "screenshot_evidence": "Campaigns list shows this named campaign Off with toggle Off, '3년 동안 쌓아온 생기부' Active and '생기부 면접 준비' Off",
+    "current_state": "Off",
+    "ad_id_verified": false,
+    "campaign_id_verified": false,
+    "duplicate_campaigns_caution": "This confirms the displayed campaign is off, not all previously duplicate-name campaigns by unique ID",
+    "editor_error_resolved": false,
+    "fragmentation_recommendation_success": false,
+    "additional_promotion_planned": false,
+    "result": "No need to fix Instagram-only boosted-post edit error for this intentionally stopped campaign; preserve historical ad performance and age-target experiment posts",
+    "followup": "Check for delayed reporting or billing, do not confuse with newly incurred spend."
   }
 };
