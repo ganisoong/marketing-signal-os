@@ -472,7 +472,9 @@ function renderMetaRecommendations(){
  '<div class="rec-captured-metrics"><span>조회수 <b>'+esc(a.views_display)+'회</b></span><span>웹사이트 방문 <b>'+number(a.website_visits)+'회</b></span><span>광고비 <b>'+money(a.spend_usd,2)+'</b></span></div></div>').join('')+
  '<p class="caption">첫 광고는 지난 캡처 이후 +1,112조회 / +12웹사이트 방문 / +$8.88입니다. 반면 하얘진다면은 +0방문 / +$0 지출입니다. 둘 모두 보고 시각이 정확히 표시되지 않은 누적 스냅샷이며 심사 거절이나 변경 원인에 대한 확정 증거가 아닙니다.</p>'+
  '</section>':'';
- cards.innerHTML=latestBox+followupBox+executionBox+preApplyBox+performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
+ const off=status.campaign_off_confirmation;
+ const offBox=off?'<section class="rec-captured-performance"><h3>10/17 · 하얘진다면 캠페인 OFF 확인</h3><p>사용자가 직접 캠페인 Off 설정을 완료했습니다. 생기부 광고는 Active, 생기부 면접 준비는 Off. 기존 오류와 10/16 광고 검토 화면은 과거 기록입니다. 광고 재개·오류 수정은 진행하지 않습니다.</p></section>':'';
+ cards.innerHTML=offBox+latestBox+followupBox+executionBox+preApplyBox+performanceBox+(sorted.map(card).join('')||'<p class="empty">현재 등록된 Meta 추천이 없습니다.</p>');
  if(history.length){
   const archive=document.createElement('details');
   archive.className='rec-history';
